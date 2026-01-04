@@ -28,7 +28,7 @@ flowchart TB
 Establish the engagement foundation and research direction.
 - **Client Contract Agreement** — Formalize scope, deliverables, and expectations
 - **Research Methodology** — Define the approach (this framework)
-- **Client Analysis Report** — Deep analysis identifying high-value research topics
+- **Client Analysis Report** — Deep-dive analysis identifying high-value research topics
 
 ### Develop
 Transform identified opportunities into testable theories.
