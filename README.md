@@ -6,6 +6,9 @@ A structured research methodology for client-focused research projects.
 config:
   layout: dagre
   look: handDrawn
+  theme: base
+  themeVariables:
+    lineColor: gray
 ---
 flowchart TB
     I["<b>Identify</b>"] --> D["<b>Develop</b>"]
