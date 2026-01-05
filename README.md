@@ -8,27 +8,21 @@ config:
   look: handDrawn
 ---
 flowchart TB
-    I["<b>Identify</b><br>• Client Contract Agreement<br>• Research Methodology<br>• Client Analysis Report"] --> D["<b>Develop</b><br>• Hypothesis Development<br>• Feasibility Assessment<br>• Prior Work Review<br>• Scope Definition"]
-    D --> E["<b>Evaluate</b><br>• Data Collection &amp; Analysis<br>• Results Interpretation<br>• Problem-Fit Check<br>• Quality Assurance"]
-    E --> A["<b>Articulate</b><br>• Contribution Positioning<br>• Audience Targeting<br>• Competitive Differentiation<br>• Implementation Roadmap"]
-    A --> S["<b>Share</b><br>• Pre-print / Publication<br>• Prototype / Proof-of-Concept<br>• Client Deliverable<br>• Knowledge Transfer"]
-    A -- weak novelty --> I
-    A -- overclaiming results --> E
-    E -- results don't support theory --> D
-    E -- wrong problem --> I
-    D -- idea not tractable --> I
-    S -- peer review rejection --> E
-    S -- implementation issues --> D
-    S -- client feedback --> A
+    I["<b>Identify</b>"] --> D["<b>Develop</b>"]
+    D --> E["<b>Evaluate</b>"]
+    E --> A["<b>Articulate</b>"]
+    A --> S["<b>Share</b>"]
+    S -.-> |iterate| I
 ```
 
 ## Stages
 
 ### Identify
-Establish the engagement foundation and research direction.
-- **Client Contract Agreement** — Formalize scope, deliverables, and expectations
-- **Research Methodology** — Define the approach (this framework)
-- **Client Analysis Report** — Deep-dive analysis identifying high-value research topics
+Surface research opportunities from client context.
+- **Client Contract Agreement** — Scope of work, deliverables, and engagement boundaries
+- **Client Analysis Report** — Deep-dive analysis identifying areas where you can provide value
+
+These inputs are used to identify promising research directions and prioritize ideas.
 
 ### Develop
 Transform identified opportunities into testable theories.
@@ -60,7 +54,7 @@ Deliver outputs to relevant audiences.
 
 ## Feedback Loops
 
-The framework includes explicit failure modes that route back to earlier stages:
+The framework includes explicit conditions that route back to earlier stages:
 
 | From | Condition | To |
 |------|-----------|-----|
