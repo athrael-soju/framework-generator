@@ -25,10 +25,10 @@ Surface research opportunities from client context.
 These inputs are used to identify promising research directions and prioritize ideas.
 
 ### Develop
-Transform identified opportunities into testable theories.
+Transform identified opportunities into testable hypotheses.
+- **Prior Work Review** — Survey existing research and identify gaps
 - **Hypothesis Development** — Refine research questions into specific claims
 - **Feasibility Assessment** — Evaluate data availability, resources, and timeline
-- **Prior Work Review** — Survey existing research and identify gaps
 - **Scope Definition** — Set boundaries, assumptions, and limitations
 
 ### Evaluate
