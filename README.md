@@ -34,12 +34,16 @@ Transform identified opportunities into testable hypotheses.
 - **Feasibility Assessment** - Evaluate data availability, resources, and timeline
 - **Scope Definition** - Set boundaries, assumptions, and limitations
 
+These activities ensure the research is well-defined and achievable before execution begins.
+
 ### Evaluate
 Test theoretical claims against evidence.
 - **Data Collection & Analysis** - Gather and analyze evidence
 - **Results Interpretation** - Assess support for hypotheses, effect sizes, alternatives
 - **Problem-Fit Check** - Verify findings address actual client needs
 - **Quality Assurance** - Ensure rigor, reproducibility, and documentation
+
+These steps validate whether the research holds up and solves the right problem.
 
 ### Articulate
 Frame validated findings for maximum impact.
@@ -48,12 +52,16 @@ Frame validated findings for maximum impact.
 - **Competitive Differentiation** - Establish unique value proposition
 - **Implementation Roadmap** - Outline recommendations and next steps
 
+These outputs position the research for clarity, credibility, and actionability.
+
 ### Share
 Deliver outputs to relevant audiences.
 - **Pre-print / Publication** - Academic dissemination
 - **Prototype / Proof-of-Concept** - Technical demonstration
 - **Client Deliverable** - Reports, presentations, recommendations
 - **Knowledge Transfer** - Training and handoff
+
+These channels ensure findings reach and benefit the intended audiences.
 
 ## Feedback Loops
 
@@ -69,3 +77,4 @@ The framework includes explicit conditions that route back to earlier stages:
 | Share | Peer review rejection | Evaluate |
 | Share | Implementation issues | Develop |
 | Share | Client feedback | Articulate |
+| Any | Fundamental misalignment | Exit/Renegotiate |
