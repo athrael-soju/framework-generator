@@ -141,124 +141,302 @@ Cloud infrastructure company acquired through SPARC, delivered via IDEAS.
 #### Identify
 
 **Inputs:**
-- Client Contract Agreement (6-month retainer, $15K/month)
-- Client Analysis Report (expanded from Prospect Analysis)
+- Client Contract Agreement (Schedule 1: AI Reference Architectures — RAG, knowledge graphs, agentic workflows, ColPali, ColQwen)
+- Client Analysis Report (Vultr needs technical content differentiating from DigitalOcean/competitors)
 
 **Research Opportunities:**
 
-| Priority | Opportunity | Client Need | Hypothesis |
-|----------|-------------|-------------|------------|
-| 1 | AI Reference Architectures | Technical content for DevRel | Production-ready implementations drive adoption |
-| 2 | Developer Experience Benchmarking | Competitive positioning | Documentation depth is primary selection factor |
-| 3 | Community Infrastructure Design | Scale engagement | Platform choice affects engagement velocity |
-| 4 | GPU Performance Validation | Marketing credibility | Third-party benchmarks increase confidence |
+| Priority | Opportunity | Contract Alignment | Research Gap |
+|----------|-------------|-------------------|--------------|
+| 1 | Hybrid retrieval vs late interaction | Enterprise RAG | No clear guidance on when to use ColPali vs traditional RAG |
+| 2 | Knowledge graph augmented retrieval | Knowledge graphs | Limited production examples on cloud GPU |
+| 3 | Multi-agent orchestration patterns | Agentic workflows | Fragmented best practices |
 
-**Selected Focus:** AI Reference Architectures + Developer Experience Benchmarking
+**Selected Focus:** Hybrid retrieval vs late interaction for document understanding
+
+**Rationale:** 
+- Directly addresses ColPali/ColQwen deliverable in contract
+- Clear research question with testable hypothesis
+- Publication potential + immediate DevRel content value
 
 ---
 
 #### Develop
 
-**Hypothesis Document: Documentation Depth**
+**Prior Work Review:**
+- ColPali (Faysse et al., 2024): Late interaction for visual documents, strong on layout-heavy PDFs
+- BGE-M3 (Chen et al., 2024): Hybrid dense+sparse, strong on text-dominant documents
+- Gap: No systematic comparison for enterprise document types (invoices, contracts, technical docs)
 
-**Statement:**
-```
-IF Vultr increases tutorial depth to match DigitalOcean's coverage
-THEN developer acquisition from organic search will increase
-BECAUSE developers choose platforms where they find implementation guidance
-MEASURABLE BY tutorial page traffic, search rankings, time-to-first-deploy
-```
+**Hypothesis:**
 
-**Prior Work:**
-- DigitalOcean's 8,000+ tutorial library cited as primary differentiator
-- Developer surveys: documentation quality in top 3 selection criteria
-- SEO analysis: DigitalOcean ranks for long-tail developer queries
+```
+IF document corpus is layout-heavy (forms, invoices, diagrams)
+THEN late interaction models (ColPali/ColQwen) outperform hybrid retrieval
+BECAUSE visual structure carries semantic information lost in text extraction
+MEASURABLE BY retrieval accuracy on document-type stratified benchmarks
+```
 
 **Feasibility Assessment:**
 
 | Criterion | Score | Notes |
 |-----------|-------|-------|
-| Data Availability | 5 | Public (competitor docs, SEO tools, reviews) |
-| Resources | 5 | Web research, content analysis |
-| Timeline | 4 | 3-4 weeks for comprehensive analysis |
-| Skill Match | 5 | Content strategy, SEO analysis |
-| Client Dependency | 5 | Low (mostly public data) |
-
-**Total: 4.8 / 5.0** — Proceed
+| Data Availability | 4 | ViDoRe public; need to curate enterprise-like subset |
+| Resources | 5 | Vultr GPUs available per contract |
+| Timeline | 4 | 4-5 weeks for full evaluation |
+| Skill Match | 5 | Direct expertise area |
+| Client Dependency | 4 | Need GPU allocation approval |
 
 **Scope:**
-- Compare documentation across 5 competitors
-- Analyze SEO performance for 50 key queries
-- Survey developers on documentation influence (if client provides access)
-- Exclude: Actual content creation (separate workstream)
+- Included: ColPali, ColQwen2, BGE-M3, dense-only baseline
+- Included: Document types — forms, contracts, technical PDFs, text-heavy reports
+- Excluded: Training/fine-tuning (inference only)
+- Excluded: Production deployment optimization (separate workstream)
 
 ---
 
 #### Evaluate
 
-**Evidence Collected:**
+**Data Collection:**
 
-| Source | Method | Sample |
-|--------|--------|--------|
-| Documentation audit | Manual review | 5 competitors, 12 dimensions |
-| SEO analysis | Tool-based | 50 key developer queries |
-| Review sentiment | Text analysis | G2, Reddit, HN — 200+ mentions |
-| Developer survey | Client-facilitated | 15 responses |
+| Dataset | Document Type | Samples | Source |
+|---------|---------------|---------|--------|
+| ViDoRe-forms | Forms, invoices | 500 | ViDoRe subset |
+| ViDoRe-technical | Diagrams, schematics | 500 | ViDoRe subset |
+| Contract-QA | Legal contracts | 200 | Curated |
+| Text-reports | Text-heavy PDFs | 300 | Curated |
 
-**Key Findings:**
-1. DigitalOcean ranks #1-3 for 78% of queries; Vultr ranks #1-3 for 12%
-2. Documentation depth correlation with organic traffic: r=0.73
-3. 11/15 surveyed developers cited "finding tutorials" as selection factor
-4. Vultr docs rated "functional but sparse" in 60% of reviews
+**Experimental Setup:**
+- GPU: Vultr L40S (ColPali, ColQwen), A100 (BGE-M3 for comparison)
+- Metrics: Recall@5, Recall@10, MRR, latency (p50, p95)
+- Controls: Same query set across all models, 3 runs averaged
+
+**Results:**
+
+| Model | Forms R@5 | Technical R@5 | Contracts R@5 | Text-heavy R@5 |
+|-------|-----------|---------------|---------------|----------------|
+| ColPali | **0.89** | **0.84** | 0.76 | 0.71 |
+| ColQwen2 | **0.91** | **0.86** | 0.79 | 0.73 |
+| BGE-M3 | 0.72 | 0.68 | **0.82** | **0.85** |
+| Dense-only | 0.65 | 0.61 | 0.78 | 0.81 |
 
 **Verdict:** Supported (High Confidence)
-- Multiple evidence types converge
-- Effect size meaningful (6x ranking gap)
-- Mechanism plausible (tutorials → SEO → discovery → adoption)
+- Late interaction outperforms on layout-heavy documents (15-20% gain)
+- Hybrid retrieval outperforms on text-dominant documents (10-15% gain)
+- Crossover point identifiable by layout complexity heuristic
 
-**Problem-Fit:** High — directly actionable, clear success metrics
+**Problem-Fit:** High — directly informs architecture decision framework for DevRel content
 
 ---
 
 #### Articulate
 
-**Deliverable: Developer Experience Strategy Report**
+**Contribution Positioning:**
+- Novel: First systematic comparison across enterprise document types
+- Quantified: Specific crossover thresholds for model selection
+- Actionable: Decision framework for practitioners
 
-**Executive Summary:**
-Vultr's infrastructure investment is undersold due to documentation and community gaps. Closing these gaps is the highest-leverage growth opportunity.
+**Deliverables:**
 
-**Key Findings:**
-1. Documentation depth is primary developer selection factor
-2. 6x search ranking gap vs DigitalOcean
-3. Community infrastructure absent vs competitor presence
-4. AI positioning strong on hardware, weak on experience
+| Deliverable | Audience | Format |
+|-------------|----------|--------|
+| Research paper | Academic/technical community | ArXiv preprint |
+| Architecture decision guide | Developers | Tutorial + flowchart |
+| Benchmark harness | Developers | GitHub repo |
+| Executive summary | Vultr marketing | 1-page brief |
 
-**Recommendations:**
+**Decision Framework (for tutorial):**
+```
+Document Corpus Assessment:
+├── >50% layout-heavy (forms, diagrams, tables)?
+│   └── YES → ColPali/ColQwen pipeline
+│   └── NO → Continue
+├── >70% text-dominant?
+│   └── YES → BGE-M3 hybrid pipeline
+│   └── NO → Hybrid approach (route by document type)
+```
 
-| Priority | Action | Timeline |
-|----------|--------|----------|
-| 1 | Expand GPU/AI tutorial coverage | Month 1-2 |
-| 2 | Launch developer community (Discord) | Month 2-3 |
-| 3 | Content production system (2-3/week) | Month 3-4 |
-| 4 | Ambassador program pilot | Month 4-6 |
-
-**Format:** Report + presentation for executive team
+**Implementation Roadmap:**
+1. Week 1: Publish ArXiv preprint
+2. Week 2: Tutorial + GitHub repo live
+3. Week 3: Conference workshop proposal (if timing aligns)
+4. Week 4: Marketing brief, social amplification
 
 ---
 
 #### Share
 
-**Delivery:**
-- Presentation to CMO + DevRel lead
-- Report delivered for reference
-- Q&A session, feedback collected
+**Delivery Channels:**
 
-**Feedback:**
-- Positive reception on competitive analysis
-- Request for deeper dive on community platforms
-- Follow-on: Ambassador program design
+| Channel | Content | Status |
+|---------|---------|--------|
+| ArXiv | Full paper | Client review (30 days per contract 5.4) |
+| GitHub | Benchmark harness + configs | Public on approval |
+| Vultr blog | Tutorial adaptation | Draft to DevRel team |
+| LinkedIn | Thread summarizing findings | Post-publication |
 
-**Referral Request:** At month 4, requested introductions to peer CMOs.
+**Authorship (per contract 5.4):**
+- Athos Georgiou — lead author
+- Vultr acknowledgment in paper
+- Co-authorship offered if Vultr engineer contributes substantially
+
+**Feedback Collection:**
+- GitHub issues for benchmark harness
+- DevRel team review of tutorial
+- Track citation/fork metrics
+
+**Referral Opportunity:** Research positions Vultr for AI infrastructure conversations; request introductions to peer CMOs/DevRel leads at month 4.
+
+**Outcome:** Engagement extended, case study approved, two referrals received.
+
+---
+
+## Research Publication Example
+
+**Context:** Contract clause 5.4 permits publication with 30-day client review, removal of confidential information, and appropriate authorship attribution.
+
+### Publication: ColPali Performance on Cloud GPU Infrastructure
+
+**Target Venue:** ArXiv preprint → EMNLP Industry Track
+
+**Title:** "Scaling Visual Document Retrieval: A Benchmark of ColPali and ColQwen on Consumer Cloud GPUs"
+
+**Research Question:**
+How do multimodal retrieval models (ColPali, ColQwen) perform across different GPU tiers available on cloud infrastructure, and what are the cost-performance tradeoffs for enterprise deployment?
+
+**Methodology:**
+| Phase | Activity | Output |
+|-------|----------|--------|
+| Setup | Deploy models on L40S, A100, MI300X | Reproducible environment configs |
+| Benchmark | Run retrieval on ViDoRe, DocVQA, InfoVQA | Latency, throughput, accuracy metrics |
+| Analysis | Cost-performance curves, batch size optimization | Deployment recommendations |
+| Validation | Compare against published baselines | Delta analysis |
+
+**Key Contributions:**
+1. First public benchmark of ColQwen2 on AMD MI300X
+2. Cost-performance Pareto frontier for visual retrieval workloads
+3. Batch size optimization guidelines for different document volumes
+4. Open-source benchmark harness
+
+**Authorship:**
+- Athos Georgiou (NCA) — lead author, methodology, analysis
+- [Vultr engineer] — infrastructure, reproducibility review
+- Acknowledgment: "Research conducted in collaboration with Vultr"
+
+**Client Value:**
+- Positions Vultr as serious AI infrastructure player
+- Demonstrates MI300X competitive with NVIDIA for retrieval workloads
+- Drives developer interest through technical credibility
+
+**Timeline:**
+| Week | Milestone |
+|------|-----------|
+| 1-2 | Environment setup, baseline runs |
+| 3-4 | Full benchmark suite execution |
+| 5 | Analysis and draft |
+| 6 | Client review (30-day window starts) |
+| 10 | Submit to ArXiv |
+
+---
+
+## Proof of Concept Example
+
+### PoC: Agentic RAG Pipeline on Vultr GPU Cloud
+
+**Objective:** Demonstrate end-to-end agentic RAG architecture running on Vultr infrastructure, suitable for DevRel content and conference workshops.
+
+**Architecture:**
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    Vultr GPU Cloud                          │
+├─────────────────────────────────────────────────────────────┤
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐         │
+│  │  Embedding  │  │  Reranker   │  │    LLM      │         │
+│  │  (BGE-M3)   │  │  (ColBERT)  │  │ (Llama 3.1) │         │
+│  │   L40S      │  │    L40S     │  │   A100      │         │
+│  └──────┬──────┘  └──────┬──────┘  └──────┬──────┘         │
+│         │                │                │                 │
+│         └────────────────┼────────────────┘                 │
+│                          │                                  │
+│                    ┌─────▼─────┐                            │
+│                    │  Agent    │                            │
+│                    │  Router   │                            │
+│                    └─────┬─────┘                            │
+│                          │                                  │
+│         ┌────────────────┼────────────────┐                 │
+│         │                │                │                 │
+│    ┌────▼────┐     ┌────▼────┐     ┌────▼────┐             │
+│    │ Search  │     │  Code   │     │  SQL    │             │
+│    │  Tool   │     │  Exec   │     │  Query  │             │
+│    └─────────┘     └─────────┘     └─────────┘             │
+└─────────────────────────────────────────────────────────────┘
+```
+
+**Components:**
+
+| Component | Model/Tool | GPU | Purpose |
+|-----------|------------|-----|---------|
+| Embedder | BGE-M3 | L40S | Hybrid dense+sparse retrieval |
+| Reranker | ColBERTv2 | L40S | Cross-encoder reranking |
+| Generator | Llama 3.1 70B | A100 | Response generation |
+| Vector Store | Qdrant | CPU | Document index |
+| Orchestrator | Claude Agent SDK | — | Tool routing, planning |
+
+**Features Demonstrated:**
+1. Hybrid retrieval (dense + sparse + late interaction)
+2. Agentic tool use (search, code execution, SQL)
+3. Multi-GPU pipeline with optimal placement
+4. Streaming responses with citation grounding
+
+**Deliverables:**
+
+| Deliverable | Format | Audience |
+|-------------|--------|----------|
+| GitHub repo | Code + Docker Compose | Developers |
+| Tutorial | Markdown + video | DevRel content |
+| Benchmark results | Report | Marketing |
+| Workshop materials | Slides + exercises | Conferences |
+
+**Infrastructure Spec:**
+```yaml
+# vultr-rag-cluster.yaml
+nodes:
+  embedding:
+    type: vgpu-l40s-48gb
+    count: 1
+  reranker:
+    type: vgpu-l40s-48gb
+    count: 1
+  generator:
+    type: vgpu-a100-80gb
+    count: 1
+  orchestrator:
+    type: cpu-optimized-32vcpu
+    count: 1
+
+estimated_cost: $12.50/hour (on-demand)
+```
+
+**Success Metrics:**
+| Metric | Target |
+|--------|--------|
+| End-to-end latency (simple query) | <3s |
+| End-to-end latency (agentic, 3 tools) | <10s |
+| Retrieval accuracy (ViDoRe subset) | >85% |
+| Tutorial completion rate | >70% |
+| GitHub stars (6 months) | >500 |
+
+**Timeline:**
+| Week | Milestone |
+|------|-----------|
+| 1 | Architecture design, infra provisioning |
+| 2 | Core pipeline (embed → retrieve → generate) |
+| 3 | Agent routing, tool integration |
+| 4 | Optimization, benchmarking |
+| 5 | Documentation, tutorial draft |
+| 6 | Client review, publish |
+
+---
 
 **Outcome:** Engagement extended, case study approved, two referrals received.
 

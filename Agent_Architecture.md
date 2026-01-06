@@ -1,8 +1,6 @@
-# Agent Architecture for SPARC + IDEAS
+# Agent Architecture for PRAXIS
 
-## Overview
-
-Both frameworks decompose into **skills** (atomic instruction sets) that **agents** (specialists) invoke to complete stage objectives. An **orchestrator** routes work between agents, with **human approval gates** at each handoff.
+Claude Agent SDK with MCP integration for SPARC and IDEAS execution.
 
 ```mermaid
 ---
@@ -14,663 +12,605 @@ config:
     lineColor: gray
 ---
 flowchart TB
-    subgraph SPARC ["SPARC (Acquisition)"]
-        S_Agent["Signal Agent"]
-        P_Agent["Profile Agent"]
-        A_Agent["Analyze Agent"]
-        R_Agent["Rank Agent"]
-        C_Agent["Craft Agent"]
+    subgraph Orchestrator
+        O["Orchestrator Agent"]
     end
     
-    subgraph IDEAS ["IDEAS (Delivery)"]
-        I_Agent["Identify Agent"]
-        D_Agent["Develop Agent"]
-        E_Agent["Evaluate Agent"]
-        Ar_Agent["Articulate Agent"]
-        Sh_Agent["Share Agent"]
+    subgraph SPARC ["SPARC Agents"]
+        S_Agent["Signal"]
+        P_Agent["Profile"]
+        A_Agent["Analyze"]
+        R_Agent["Rank"]
+        C_Agent["Craft"]
     end
     
-    Orchestrator["Orchestrator"]
-    Human["Human Approval"]
+    subgraph IDEAS ["IDEAS Agents"]
+        I_Agent["Identify"]
+        D_Agent["Develop"]
+        E_Agent["Evaluate"]
+        Ar_Agent["Articulate"]
+        Sh_Agent["Share"]
+    end
     
-    Orchestrator --> S_Agent
-    S_Agent --> Human
-    Human --> P_Agent
-    P_Agent --> Human
-    Human --> A_Agent
-    A_Agent --> Human
-    Human --> R_Agent
-    R_Agent --> Human
-    Human --> C_Agent
-    C_Agent --> Human
-    Human -.-> |signed agreement| I_Agent
-    I_Agent --> Human
-    Human --> D_Agent
-    D_Agent --> Human
-    Human --> E_Agent
-    E_Agent --> Human
-    Human --> Ar_Agent
-    Ar_Agent --> Human
-    Human --> Sh_Agent
+    subgraph MCP ["MCP Servers"]
+        Research["research-mcp"]
+        Analysis["analysis-mcp"]
+        Storage["storage-mcp"]
+        Notify["notify-mcp"]
+    end
+    
+    O --> S_Agent & P_Agent & A_Agent & R_Agent & C_Agent
+    O --> I_Agent & D_Agent & E_Agent & Ar_Agent & Sh_Agent
+    
+    S_Agent & P_Agent & A_Agent --> Research
+    A_Agent & R_Agent & E_Agent --> Analysis
+    All --> Storage
+    O --> Notify
 ```
 
 ---
 
-## Skill Catalog
+## Stack
 
-Skills are atomic, reusable instruction sets. Each skill has:
-- **Purpose**: What it accomplishes
-- **Inputs**: What it requires
-- **Outputs**: What it produces
-- **Tools**: MCP servers or APIs it uses
+| Component | Choice |
+|-----------|--------|
+| Agent Runtime | Claude Agent SDK |
+| Tool Protocol | MCP |
+| Model | Claude Sonnet 4.5 |
+| Persistence | MCP storage server (Notion/Airtable/Postgres) |
+| Notifications | MCP notify server (Slack/Email) |
 
-### Research Skills
+---
 
-| Skill | Purpose | Inputs | Outputs | Tools |
-|-------|---------|--------|---------|-------|
-| `web_search` | Search web for specific queries | Query string, filters | Ranked results with snippets | `web_search`, `web_fetch` |
-| `company_lookup` | Retrieve firmographic data | Company name or domain | Structured company record | Crunchbase MCP, Clearbit API |
-| `funding_monitor` | Track funding events | Vertical filters, amount thresholds | Funding event records | Crunchbase MCP, RSS feeds |
-| `job_posting_search` | Find hiring signals | Company name, role keywords | Job listings with metadata | LinkedIn MCP, Indeed API |
-| `social_monitor` | Track social posts by keywords/people | Keywords, account lists | Post records with engagement | LinkedIn MCP, Twitter API |
-| `github_org_profile` | Analyze GitHub presence | Org name | Repo stats, activity metrics, contributors | GitHub MCP |
-| `documentation_audit` | Assess docs quality | Docs URL | Structure analysis, gap identification | `web_fetch`, custom parser |
-| `competitor_identification` | Find competitors | Company name, vertical | Competitor list with positioning | `web_search`, market databases |
-| `review_aggregation` | Collect customer sentiment | Company name, product | Reviews with sentiment scores | G2 API, `web_fetch` (Reddit, HN) |
-| `news_monitor` | Track company/vertical news | Company names, keywords | News items with summaries | Google Alerts, NewsAPI |
+## MCP Servers
 
-### Analysis Skills
+### research-mcp
 
-| Skill | Purpose | Inputs | Outputs | Tools |
-|-------|---------|--------|---------|-------|
-| `competitive_analysis` | Compare company vs competitors | Company profile, competitor profiles | Gap matrix, positioning map | LLM synthesis |
-| `gap_analysis` | Identify gaps between current/desired state | Current state doc, benchmark | Prioritized gap list | LLM synthesis |
-| `signal_scoring` | Score signals by strength | Signal records, scoring criteria | Scored signal list | Rule engine or LLM |
-| `prospect_scoring` | Score prospects against ICP | Prospect profile, ICP criteria, weights | Weighted score with breakdown | Rule engine or LLM |
-| `market_sizing` | Estimate market opportunity | Vertical, segment criteria | TAM/SAM/SOM estimates | `web_search`, analyst reports |
-| `hypothesis_generation` | Generate testable hypotheses | Opportunity description, constraints | Hypothesis statements with rationale | LLM synthesis |
-| `feasibility_assessment` | Evaluate research feasibility | Hypothesis, available resources | Feasibility score, risk factors | LLM synthesis |
-| `evidence_evaluation` | Assess evidence for/against hypothesis | Hypothesis, collected evidence | Support/refute assessment, confidence | LLM synthesis |
+Web research and data collection.
 
-### Synthesis Skills
+| Tool | Purpose | Inputs | Outputs |
+|------|---------|--------|---------|
+| `web_search` | Search queries | query, filters | results[] |
+| `web_fetch` | Fetch page content | url | content |
+| `company_lookup` | Firmographic data | domain | company record |
+| `job_search` | Find job postings | company, keywords | postings[] |
+| `github_profile` | Org/repo analysis | org_name | profile |
 
-| Skill | Purpose | Inputs | Outputs | Tools |
-|-------|---------|--------|---------|-------|
-| `profile_synthesis` | Create structured company profile | Raw data from research skills | Company Profile document | LLM synthesis, template |
-| `analysis_report` | Generate analysis report | Analysis outputs, template | Prospect Analysis Report | LLM synthesis, `docx` skill |
-| `outreach_draft` | Draft personalized outreach | Prospect profile, analysis, templates | Outreach message variants | LLM synthesis |
-| `proposal_draft` | Draft consulting proposal | Client needs, service offerings, pricing | Proposal document | LLM synthesis, `docx` skill |
-| `research_brief` | Summarize research findings | Evidence, analysis | Research brief document | LLM synthesis, `docx` skill |
-| `presentation_build` | Create slide deck | Content outline, template | Presentation file | `pptx` skill |
+### analysis-mcp
 
-### Utility Skills
+Structured analysis operations.
 
-| Skill | Purpose | Inputs | Outputs | Tools |
-|-------|---------|--------|---------|-------|
-| `document_parse` | Extract structured data from documents | Document file | Structured content | `pdf` skill, `docx` skill |
-| `template_fill` | Populate template with data | Template, data object | Filled document | Template engine |
-| `data_store` | Persist data to storage | Data object, schema | Storage confirmation | Database, Airtable, Notion MCP |
-| `data_retrieve` | Retrieve data from storage | Query, filters | Data records | Database, Airtable, Notion MCP |
-| `notification_send` | Send notification to human | Message, channel | Delivery confirmation | Slack MCP, email API |
-| `approval_request` | Request human approval | Context, options | Approval decision | Custom approval UI |
+| Tool | Purpose | Inputs | Outputs |
+|------|---------|--------|---------|
+| `score_prospect` | Apply qualification scorecard | profile, criteria | score breakdown |
+| `compare_competitors` | Gap matrix generation | target, competitors, dimensions | matrix |
+| `evaluate_hypothesis` | Evidence assessment | hypothesis, evidence | verdict |
+
+### storage-mcp
+
+Persistence and retrieval.
+
+| Tool | Purpose | Inputs | Outputs |
+|------|---------|--------|---------|
+| `save_document` | Store artifact | type, content, metadata | id |
+| `get_document` | Retrieve artifact | id | content |
+| `list_documents` | Query artifacts | type, filters | ids[] |
+| `update_pipeline` | Update pipeline state | stage, status, data | confirmation |
+
+### notify-mcp
+
+Human interaction.
+
+| Tool | Purpose | Inputs | Outputs |
+|------|---------|--------|---------|
+| `request_approval` | Pause for human approval | context, options | decision |
+| `send_notification` | Alert human | channel, message | confirmation |
 
 ---
 
 ## Agent Definitions
 
-Each agent has:
-- **Role**: What it's responsible for
-- **Skills**: Which skills it can invoke
-- **Input**: What it receives to start
-- **Output**: What it produces
-- **Handoff Condition**: When it requests human approval to proceed
+Each agent is a Claude Agent SDK instance with:
+- System prompt defining role and stage
+- MCP servers it can access
+- Allowed tools subset
+
+### Orchestrator
+
+```python
+orchestrator = Agent(
+    model="claude-sonnet-4-5-20250514",
+    system_prompt=ORCHESTRATOR_PROMPT,
+    mcp_servers=["storage-mcp", "notify-mcp"],
+    allowed_tools=[
+        "mcp__storage-mcp__*",
+        "mcp__notify-mcp__request_approval"
+    ]
+)
+```
+
+**Responsibilities:**
+- Route tasks to appropriate specialist agent
+- Collect outputs and request human approval
+- Manage pipeline state transitions
+- Handle feedback loops (retry, reroute)
 
 ### SPARC Agents
 
 #### Signal Agent
-```yaml
-role: Detect companies exhibiting buying signals
-skills:
-  - funding_monitor
-  - job_posting_search
-  - social_monitor
-  - news_monitor
-  - signal_scoring
-  - data_store
-input:
-  - ICP criteria
-  - Signal strength thresholds
-  - Monitored sources config
-output:
-  - Signal Log (timestamped records)
-  - Recommended prospects for profiling
-handoff_condition: New high-priority signals detected
-approval_prompt: |
-  Found {n} new signals this period:
-  {signal_summary}
-  
-  Recommend profiling: {prospect_list}
-  
-  Approve to proceed with profiling?
+```python
+signal_agent = Agent(
+    model="claude-sonnet-4-5-20250514",
+    system_prompt=load_prompt("sparc/signal.md"),
+    mcp_servers=["research-mcp", "storage-mcp"],
+    allowed_tools=[
+        "mcp__research-mcp__web_search",
+        "mcp__research-mcp__company_lookup",
+        "mcp__research-mcp__job_search",
+        "mcp__storage-mcp__save_document",
+        "mcp__storage-mcp__list_documents"
+    ]
+)
 ```
 
 #### Profile Agent
-```yaml
-role: Build structured company profiles from public data
-skills:
-  - company_lookup
-  - github_org_profile
-  - documentation_audit
-  - social_monitor
-  - web_search
-  - web_fetch
-  - profile_synthesis
-  - data_store
-input:
-  - Company identifiers (name, domain)
-  - Profile template
-output:
-  - Company Profile document
-handoff_condition: Profile complete
-approval_prompt: |
-  Completed profile for {company_name}:
-  
-  {profile_summary}
-  
-  Proceed to deep analysis?
+```python
+profile_agent = Agent(
+    model="claude-sonnet-4-5-20250514",
+    system_prompt=load_prompt("sparc/profile.md"),
+    mcp_servers=["research-mcp", "storage-mcp"],
+    allowed_tools=[
+        "mcp__research-mcp__web_search",
+        "mcp__research-mcp__web_fetch",
+        "mcp__research-mcp__company_lookup",
+        "mcp__research-mcp__github_profile",
+        "mcp__storage-mcp__save_document",
+        "mcp__storage-mcp__get_document"
+    ]
+)
 ```
 
 #### Analyze Agent
-```yaml
-role: Conduct deep research on strategic gaps and opportunities
-skills:
-  - competitor_identification
-  - competitive_analysis
-  - review_aggregation
-  - documentation_audit
-  - gap_analysis
-  - market_sizing
-  - web_search
-  - web_fetch
-  - analysis_report
-input:
-  - Company Profile
-  - Positioning statement
-  - Analysis framework template
-output:
-  - Prospect Analysis Report
-handoff_condition: Analysis complete
-approval_prompt: |
-  Completed analysis for {company_name}:
-  
-  Key findings:
-  {findings_summary}
-  
-  Identified opportunities:
-  {opportunities_list}
-  
-  Proceed to ranking?
+```python
+analyze_agent = Agent(
+    model="claude-sonnet-4-5-20250514",
+    system_prompt=load_prompt("sparc/analyze.md"),
+    mcp_servers=["research-mcp", "analysis-mcp", "storage-mcp"],
+    allowed_tools=[
+        "mcp__research-mcp__web_search",
+        "mcp__research-mcp__web_fetch",
+        "mcp__analysis-mcp__compare_competitors",
+        "mcp__storage-mcp__*"
+    ]
+)
 ```
 
 #### Rank Agent
-```yaml
-role: Score prospects against qualification criteria
-skills:
-  - prospect_scoring
-  - data_retrieve
-  - data_store
-input:
-  - Prospect Analysis Report
-  - Qualification criteria + weights
-  - Current pipeline state
-output:
-  - Prospect Score with breakdown
-  - Pipeline position recommendation
-handoff_condition: Scoring complete
-approval_prompt: |
-  Scored {company_name}:
-  
-  {score_breakdown}
-  
-  Total: {total_score} — Recommendation: {recommendation}
-  
-  Proceed to craft outreach?
+```python
+rank_agent = Agent(
+    model="claude-sonnet-4-5-20250514",
+    system_prompt=load_prompt("sparc/rank.md"),
+    mcp_servers=["analysis-mcp", "storage-mcp"],
+    allowed_tools=[
+        "mcp__analysis-mcp__score_prospect",
+        "mcp__storage-mcp__*"
+    ]
+)
 ```
 
 #### Craft Agent
-```yaml
-role: Develop tailored outreach based on analysis
-skills:
-  - outreach_draft
-  - data_retrieve
-  - web_search
-input:
-  - Prospect Analysis Report
-  - Prospect Score
-  - Outreach templates
-  - Decision-maker profiles
-output:
-  - Outreach Message (multiple variants)
-  - Supporting Brief (talking points)
-handoff_condition: Outreach drafted
-approval_prompt: |
-  Drafted outreach for {company_name}:
-  
-  Target: {decision_maker}
-  Channel: {channel}
-  
-  Message:
-  {outreach_message}
-  
-  Approve to send? (or edit)
+```python
+craft_agent = Agent(
+    model="claude-sonnet-4-5-20250514",
+    system_prompt=load_prompt("sparc/craft.md"),
+    mcp_servers=["research-mcp", "storage-mcp"],
+    allowed_tools=[
+        "mcp__research-mcp__web_search",
+        "mcp__storage-mcp__*"
+    ]
+)
 ```
 
 ### IDEAS Agents
 
 #### Identify Agent
-```yaml
-role: Surface research opportunities from client context
-skills:
-  - document_parse
-  - gap_analysis
-  - hypothesis_generation
-  - web_search
-  - data_store
-input:
-  - Client Contract Agreement
-  - Client Analysis Report (from SPARC or separate)
-output:
-  - Research Opportunities list
-  - Prioritized ideas with rationale
-handoff_condition: Opportunities identified
-approval_prompt: |
-  Identified {n} research opportunities for {client_name}:
-  
-  {opportunities_summary}
-  
-  Recommended priority:
-  {priority_ranking}
-  
-  Approve to develop hypotheses?
+```python
+identify_agent = Agent(
+    model="claude-sonnet-4-5-20250514",
+    system_prompt=load_prompt("ideas/identify.md"),
+    mcp_servers=["research-mcp", "storage-mcp"],
+    allowed_tools=[
+        "mcp__research-mcp__web_search",
+        "mcp__storage-mcp__*"
+    ]
+)
 ```
 
 #### Develop Agent
-```yaml
-role: Transform opportunities into testable hypotheses
-skills:
-  - web_search
-  - hypothesis_generation
-  - feasibility_assessment
-  - data_store
-input:
-  - Research Opportunities
-  - Client constraints (timeline, resources, data)
-output:
-  - Hypothesis documents
-  - Feasibility assessments
-  - Scope definitions
-handoff_condition: Hypotheses developed
-approval_prompt: |
-  Developed hypotheses for {opportunity_name}:
-  
-  {hypothesis_statements}
-  
-  Feasibility: {feasibility_summary}
-  
-  Proceed to evaluation?
+```python
+develop_agent = Agent(
+    model="claude-sonnet-4-5-20250514",
+    system_prompt=load_prompt("ideas/develop.md"),
+    mcp_servers=["research-mcp", "storage-mcp"],
+    allowed_tools=[
+        "mcp__research-mcp__web_search",
+        "mcp__research-mcp__web_fetch",
+        "mcp__storage-mcp__*"
+    ]
+)
 ```
 
 #### Evaluate Agent
-```yaml
-role: Test theoretical claims against evidence
-skills:
-  - web_search
-  - web_fetch
-  - evidence_evaluation
-  - data_store
-input:
-  - Hypothesis documents
-  - Data sources
-  - Evaluation criteria
-output:
-  - Evidence collection
-  - Results interpretation
-  - Problem-fit assessment
-handoff_condition: Evaluation complete
-approval_prompt: |
-  Evaluation results for {hypothesis}:
-  
-  Evidence summary:
-  {evidence_summary}
-  
-  Support level: {support_assessment}
-  
-  Proceed to articulate findings?
+```python
+evaluate_agent = Agent(
+    model="claude-sonnet-4-5-20250514",
+    system_prompt=load_prompt("ideas/evaluate.md"),
+    mcp_servers=["research-mcp", "analysis-mcp", "storage-mcp"],
+    allowed_tools=[
+        "mcp__research-mcp__*",
+        "mcp__analysis-mcp__evaluate_hypothesis",
+        "mcp__storage-mcp__*"
+    ]
+)
 ```
 
 #### Articulate Agent
-```yaml
-role: Frame validated findings for maximum impact
-skills:
-  - research_brief
-  - proposal_draft
-  - presentation_build
-  - web_search
-input:
-  - Evaluation results
-  - Client context
-  - Output format requirements
-output:
-  - Research deliverable (report, presentation, etc.)
-  - Contribution positioning
-  - Implementation roadmap
-handoff_condition: Deliverable drafted
-approval_prompt: |
-  Drafted deliverable for {client_name}:
-  
-  Format: {format}
-  Key contributions: {contributions}
-  
-  {deliverable_preview}
-  
-  Approve for sharing?
+```python
+articulate_agent = Agent(
+    model="claude-sonnet-4-5-20250514",
+    system_prompt=load_prompt("ideas/articulate.md"),
+    mcp_servers=["storage-mcp"],
+    allowed_tools=[
+        "mcp__storage-mcp__*"
+    ]
+)
 ```
 
 #### Share Agent
-```yaml
-role: Deliver outputs to relevant audiences
-skills:
-  - notification_send
-  - data_store
-  - web_search
-input:
-  - Approved deliverable
-  - Distribution list
-  - Delivery channels
-output:
-  - Delivery confirmation
-  - Feedback collection setup
-handoff_condition: Ready to deliver
-approval_prompt: |
-  Ready to deliver to {audience}:
-  
-  Channel: {channel}
-  Recipients: {recipients}
-  
-  Confirm delivery?
-```
-
----
-
-## Shared Skills Across Frameworks
-
-Many skills are used by multiple agents:
-
-| Skill | SPARC Agents | IDEAS Agents |
-|-------|--------------|--------------|
-| `web_search` | Profile, Analyze, Craft | Identify, Develop, Evaluate, Articulate |
-| `web_fetch` | Profile, Analyze | Evaluate |
-| `gap_analysis` | Analyze | Identify |
-| `data_store` | All | All |
-| `data_retrieve` | Rank, Craft | Develop, Evaluate |
-| `document_parse` | — | Identify |
-| `hypothesis_generation` | — | Identify, Develop |
-
----
-
-## MCP Integration Points
-
-### Existing MCP Servers (Available)
-- **Hugging Face**: Model search, paper search, dataset search — useful for Evaluate agent
-- **Web Search/Fetch**: Core research capability — used across most agents
-
-### Recommended MCP Servers (To Build or Find)
-
-| MCP Server | Purpose | Used By |
-|------------|---------|---------|
-| `crunchbase-mcp` | Funding data, company profiles | Signal, Profile agents |
-| `linkedin-mcp` | Social monitoring, job posts, people lookup | Signal, Profile, Craft agents |
-| `github-mcp` | Org profiles, repo analysis | Profile agent |
-| `notion-mcp` | Data storage, knowledge base | All agents |
-| `airtable-mcp` | Pipeline CRM, structured data | All agents |
-| `slack-mcp` | Notifications, approvals | Orchestrator |
-| `google-alerts-mcp` | News monitoring | Signal agent |
-
-### Custom MCP Server Candidates
-
-```
-crunchbase-mcp/
-├── tools/
-│   ├── company_lookup    — Get company by name/domain
-│   ├── funding_search    — Search funding rounds by criteria
-│   └── investor_lookup   — Get investor portfolio
-└── resources/
-    └── watchlist         — Monitored companies
-
-linkedin-mcp/
-├── tools/
-│   ├── profile_lookup    — Get person/company profile
-│   ├── job_search        — Search job postings
-│   ├── post_search       — Search posts by keyword/author
-│   └── connection_check  — Check connection path
-└── resources/
-    └── saved_searches    — Configured searches
-```
-
----
-
-## Orchestration Patterns
-
-### Option A: Sequential with Approval Gates
-
-```mermaid
-sequenceDiagram
-    participant O as Orchestrator
-    participant A as Agent
-    participant H as Human
-    
-    O->>A: Invoke with input
-    A->>A: Execute skills
-    A->>O: Return output
-    O->>H: Request approval
-    H->>O: Approve / Reject / Edit
-    alt Approved
-        O->>Next Agent: Invoke with output
-    else Rejected
-        O->>A: Retry with feedback
-    else Edit
-        O->>A: Retry with edits
-    end
-```
-
-### Option B: Event-Driven with Queues
-
-```mermaid
-flowchart LR
-    subgraph Queues
-        SQ["Signal Queue"]
-        PQ["Profile Queue"]
-        AQ["Analysis Queue"]
-        RQ["Rank Queue"]
-        CQ["Craft Queue"]
-    end
-    
-    Signal["Signal Agent"] --> SQ
-    SQ --> |approved| Profile["Profile Agent"]
-    Profile --> PQ
-    PQ --> |approved| Analyze["Analyze Agent"]
-    Analyze --> AQ
-    AQ --> |approved| Rank["Rank Agent"]
-    Rank --> RQ
-    RQ --> |approved| Craft["Craft Agent"]
-    Craft --> CQ
-```
-
-### Option C: Graph-Based (LangGraph Style)
-
 ```python
-# Pseudocode
-from langgraph import StateGraph, END
-
-workflow = StateGraph(PipelineState)
-
-workflow.add_node("signal", signal_agent)
-workflow.add_node("profile", profile_agent)
-workflow.add_node("analyze", analyze_agent)
-workflow.add_node("rank", rank_agent)
-workflow.add_node("craft", craft_agent)
-workflow.add_node("human_approval", human_approval_node)
-
-workflow.add_edge("signal", "human_approval")
-workflow.add_conditional_edges(
-    "human_approval",
-    route_after_approval,
-    {
-        "profile": "profile",
-        "analyze": "analyze",
-        "rank": "rank",
-        "craft": "craft",
-        "retry": "previous_node",
-        "end": END
-    }
+share_agent = Agent(
+    model="claude-sonnet-4-5-20250514",
+    system_prompt=load_prompt("ideas/share.md"),
+    mcp_servers=["storage-mcp", "notify-mcp"],
+    allowed_tools=[
+        "mcp__storage-mcp__*",
+        "mcp__notify-mcp__send_notification"
+    ]
 )
 ```
 
 ---
 
-## Skill File Structure
+## Pipeline with Approval Gates
 
-Each skill follows SKILL.md pattern:
-
-```
-skills/
-├── research/
-│   ├── web_search/
-│   │   └── SKILL.md
-│   ├── company_lookup/
-│   │   └── SKILL.md
-│   ├── funding_monitor/
-│   │   └── SKILL.md
-│   ├── job_posting_search/
-│   │   └── SKILL.md
-│   ├── github_org_profile/
-│   │   └── SKILL.md
-│   └── ...
-├── analysis/
-│   ├── competitive_analysis/
-│   │   └── SKILL.md
-│   ├── gap_analysis/
-│   │   └── SKILL.md
-│   ├── prospect_scoring/
-│   │   └── SKILL.md
-│   └── ...
-├── synthesis/
-│   ├── profile_synthesis/
-│   │   └── SKILL.md
-│   ├── analysis_report/
-│   │   └── SKILL.md
-│   ├── outreach_draft/
-│   │   └── SKILL.md
-│   └── ...
-└── utility/
-    ├── data_store/
-    │   └── SKILL.md
-    ├── approval_request/
-    │   └── SKILL.md
-    └── ...
-```
-
-### Example SKILL.md: `competitive_analysis`
-
-```markdown
-# Competitive Analysis Skill
-
-## Purpose
-Compare a target company against its competitors to identify positioning gaps and opportunities.
-
-## Inputs
-- `target_profile`: Company Profile document for the target
-- `competitor_profiles`: List of Company Profile documents for competitors
-- `dimensions`: Analysis dimensions (e.g., pricing, features, content, community)
-
-## Outputs
-- `gap_matrix`: Table of target vs competitors across dimensions
-- `positioning_map`: Visual positioning summary
-- `key_gaps`: Prioritized list of gaps with opportunity assessment
-- `key_strengths`: Areas where target outperforms
-
-## Process
-1. Extract comparable attributes from each profile
-2. Score each company on each dimension (1-5 scale)
-3. Identify dimensions where target scores lowest relative to competitors
-4. Identify dimensions where target scores highest
-5. Assess opportunity value for each gap (market importance × feasibility)
-6. Generate gap matrix and positioning summary
-
-## Tools Required
-- LLM for synthesis and scoring
-- Template for gap matrix output
-
-## Example Usage
-```yaml
-skill: competitive_analysis
-inputs:
-  target_profile: "./profiles/vultr.md"
-  competitor_profiles:
-    - "./profiles/digitalocean.md"
-    - "./profiles/linode.md"
-    - "./profiles/hetzner.md"
-  dimensions:
-    - documentation_depth
-    - community_size
-    - ai_ml_offerings
-    - pricing_transparency
-    - global_coverage
-outputs:
-  gap_matrix: "./analysis/vultr_gap_matrix.md"
-  key_gaps: "./analysis/vultr_gaps.md"
-```
-
-## Quality Criteria
-- All dimensions scored with evidence citations
-- Gaps prioritized by opportunity value, not just size
-- Strengths identified to inform positioning
+```mermaid
+---
+config:
+  layout: dagre
+  look: handDrawn
+  theme: base
+  themeVariables:
+    lineColor: gray
+---
+flowchart TB
+    subgraph SPARC
+        S[Signal Agent] --> G1{Approve?}
+        G1 --> |yes| P[Profile Agent]
+        G1 --> |no| S
+        P --> G2{Approve?}
+        G2 --> |yes| A[Analyze Agent]
+        G2 --> |no| P
+        A --> G3{Approve?}
+        G3 --> |yes| R[Rank Agent]
+        G3 --> |no| A
+        R --> G4{Approve?}
+        G4 --> |yes| C[Craft Agent]
+        G4 --> |no| R
+        C --> G5{Approve?}
+    end
+    
+    subgraph IDEAS
+        G5 --> |signed| I[Identify Agent]
+        I --> G6{Approve?}
+        G6 --> |yes| D[Develop Agent]
+        G6 --> |no| I
+        D --> G7{Approve?}
+        G7 --> |yes| E[Evaluate Agent]
+        G7 --> |no| D
+        E --> G8{Approve?}
+        G8 --> |yes| Ar[Articulate Agent]
+        G8 --> |no| E
+        Ar --> G9{Approve?}
+        G9 --> |yes| Sh[Share Agent]
+        G9 --> |no| Ar
+        Sh --> G10{Approve?}
+        G10 --> |yes| Done[Complete]
+    end
+    
+    G5 --> |rejected| S
 ```
 
 ---
 
-## Implementation Recommendations
+## Human-in-the-Loop
 
-### Phase 1: Core Skills + Manual Orchestration
-1. Implement `web_search`, `web_fetch`, `profile_synthesis`, `analysis_report` skills
-2. Run orchestration manually (you invoke each agent, review, approve)
-3. Store outputs in Notion/Airtable
+Every stage transition requires human approval before proceeding.
 
-### Phase 2: MCP Integration
-1. Build or integrate `crunchbase-mcp` for Signal agent
-2. Add `notion-mcp` or `airtable-mcp` for data persistence
-3. Implement `approval_request` skill with Slack/email notification
+```mermaid
+---
+config:
+  layout: dagre
+  look: handDrawn
+  theme: base
+  themeVariables:
+    lineColor: gray
+---
+flowchart LR
+    A[Agent completes stage] --> O[Orchestrator]
+    O --> S[Summary to human]
+    S --> H{Human decision}
+    H --> |approve| N[Next agent]
+    H --> |reject| R[Retry with feedback]
+    H --> |edit| E[Apply edits, proceed]
+    H --> |abort| X[End pipeline]
+```
 
-### Phase 3: Automated Orchestration
-1. Implement orchestrator (LangGraph recommended for graph-based routing)
-2. Add feedback loops (retry with edits, route to earlier stage)
-3. Build approval UI for reviewing agent outputs
+**Approval Request Structure:**
+```python
+{
+    "stage": "analyze",
+    "agent": "analyze_agent",
+    "summary": "Completed competitive analysis for Vultr...",
+    "outputs": ["prospect_analysis_report_vultr.md"],
+    "next_stage": "rank",
+    "options": ["approve", "reject", "edit", "abort"]
+}
+```
 
-### Phase 4: Monitoring + Learning
-1. Track skill performance (success rate, time, quality)
-2. Collect approval/rejection patterns
-3. Refine skills based on feedback
+**Human Response:**
+```python
+{
+    "decision": "approve" | "reject" | "edit" | "abort",
+    "feedback": "Optional feedback for retry",
+    "edits": {"field": "new_value"}  # If decision is "edit"
+}
+```
 
 ---
 
-## Open Questions
+## Agent Handoffs
 
-1. **State persistence**: Where does pipeline state live between agent runs? (Notion, Airtable, Postgres, file system)
+Agents do not communicate directly. All handoffs flow through the orchestrator with explicit state transfer.
 
-2. **Skill versioning**: How to handle skill updates without breaking running pipelines?
+```mermaid
+---
+config:
+  layout: dagre
+  look: handDrawn
+  theme: base
+  themeVariables:
+    lineColor: gray
+---
+sequenceDiagram
+    participant O as Orchestrator
+    participant A1 as Agent 1
+    participant H as Human
+    participant A2 as Agent 2
+    
+    O->>A1: Task + Context
+    A1->>A1: Execute (uses MCP tools)
+    A1->>O: Output + Status
+    O->>H: Request approval
+    H->>O: Approve
+    O->>O: Update pipeline state
+    O->>A2: Task + Context (includes A1 output)
+    A2->>A2: Execute
+    A2->>O: Output + Status
+```
 
-3. **Multi-tenant**: Will this serve just you, or multiple consultants with different positioning/ICP?
+**Handoff Protocol:**
 
-4. **Cost controls**: LLM calls add up — implement token budgets per skill/agent?
+| Step | Actor | Action |
+|------|-------|--------|
+| 1 | Orchestrator | Selects agent for current stage |
+| 2 | Orchestrator | Prepares context (previous outputs, pipeline state) |
+| 3 | Orchestrator | Delegates task to agent |
+| 4 | Agent | Executes using allowed MCP tools |
+| 5 | Agent | Returns output + completion status |
+| 6 | Orchestrator | Validates output against stage criteria |
+| 7 | Orchestrator | Requests human approval via notify-mcp |
+| 8 | Human | Reviews, decides (approve/reject/edit/abort) |
+| 9 | Orchestrator | Updates pipeline state in storage-mcp |
+| 10 | Orchestrator | Routes to next agent or handles feedback |
 
-5. **Feedback integration**: How do approval rejections feed back into skill improvement?
+**Context Passed Between Agents:**
+
+| From | To | Context Includes |
+|------|----|------------------|
+| Signal | Profile | signal_log, company_identifiers |
+| Profile | Analyze | company_profile, signal_log |
+| Analyze | Rank | prospect_analysis, company_profile |
+| Rank | Craft | qualification_score, prospect_analysis, decision_maker_profile |
+| Craft | Identify (IDEAS) | signed_agreement, prospect_analysis, outreach_brief |
+| Identify | Develop | research_opportunities, contract_scope |
+| Develop | Evaluate | hypothesis_documents, data_sources |
+| Evaluate | Articulate | evaluation_report, evidence_collection |
+| Articulate | Share | client_deliverable, audience_profile |
+
+---
+
+## Orchestration Flow
+
+```python
+async def run_pipeline(framework: str, initial_input: dict):
+    """Run SPARC or IDEAS pipeline with approval gates."""
+    
+    stages = SPARC_STAGES if framework == "sparc" else IDEAS_STAGES
+    state = {"input": initial_input, "outputs": {}}
+    
+    for stage in stages:
+        agent = get_agent(stage)
+        context = build_context(state, stage)
+        
+        # Execute agent
+        output = await orchestrator.delegate(agent, context)
+        state["outputs"][stage] = output
+        
+        # Human approval gate
+        decision = await request_approval(stage, state)
+        
+        if decision["action"] == "reject":
+            # Retry same stage with feedback
+            state["feedback"] = decision["feedback"]
+            continue
+            
+        if decision["action"] == "edit":
+            state["outputs"][stage] = apply_edits(output, decision["edits"])
+            
+        if decision["action"] == "abort":
+            return {"status": "aborted", "stage": stage, "state": state}
+        
+        # Persist state
+        await save_pipeline_state(state)
+    
+    return {"status": "complete", "state": state}
+
+
+SPARC_STAGES = ["signal", "profile", "analyze", "rank", "craft"]
+IDEAS_STAGES = ["identify", "develop", "evaluate", "articulate", "share"]
+```
+
+---
+
+## Approval Hooks
+
+```python
+async def approval_hook(tool_call):
+    """Pre-tool-use hook for approval gates."""
+    if tool_call.name == "mcp__notify-mcp__request_approval":
+        # Always allow approval requests
+        return tool_call
+    
+    # Log all tool calls for audit
+    await log_tool_call(tool_call)
+    return tool_call
+
+async def request_approval(stage: str, state: dict) -> bool:
+    """Request human approval before stage transition."""
+    result = await orchestrator.use_tool(
+        "mcp__notify-mcp__request_approval",
+        {
+            "context": {
+                "stage": stage,
+                "summary": summarize_state(state),
+                "next_stage": get_next_stage(stage)
+            },
+            "options": ["approve", "reject", "edit"]
+        }
+    )
+    
+    if result["decision"] == "reject":
+        await handle_rejection(stage, state, result.get("feedback"))
+        return False
+    
+    if result["decision"] == "edit":
+        state.update(result["edits"])
+    
+    return True
+```
+
+---
+
+## Project Structure
+
+```
+praxis/
+├── agents/
+│   ├── orchestrator.py
+│   ├── sparc/
+│   │   ├── signal.py
+│   │   ├── profile.py
+│   │   ├── analyze.py
+│   │   ├── rank.py
+│   │   └── craft.py
+│   └── ideas/
+│       ├── identify.py
+│       ├── develop.py
+│       ├── evaluate.py
+│       ├── articulate.py
+│       └── share.py
+├── mcp_servers/
+│   ├── research/
+│   │   └── server.py
+│   ├── analysis/
+│   │   └── server.py
+│   ├── storage/
+│   │   └── server.py
+│   └── notify/
+│       └── server.py
+├── prompts/
+│   ├── sparc/
+│   │   ├── signal.md
+│   │   ├── profile.md
+│   │   ├── analyze.md
+│   │   ├── rank.md
+│   │   └── craft.md
+│   └── ideas/
+│       ├── identify.md
+│       ├── develop.md
+│       ├── evaluate.md
+│       ├── articulate.md
+│       └── share.md
+├── config/
+│   ├── mcp_servers.json
+│   └── scoring_criteria.json
+├── main.py
+└── CLAUDE.md
+```
+
+---
+
+## Implementation Phases
+
+### Phase 1: Core Infrastructure
+1. Set up Claude Agent SDK
+2. Implement storage-mcp (start with filesystem, migrate to Notion/Postgres)
+3. Implement notify-mcp (start with CLI, add Slack later)
+4. Create orchestrator with basic routing
+
+### Phase 2: SPARC Pipeline
+1. Implement research-mcp tools
+2. Create SPARC agent prompts
+3. Wire Signal → Profile → Analyze → Rank → Craft
+4. Add approval gates
+
+### Phase 3: IDEAS Pipeline
+1. Implement analysis-mcp tools
+2. Create IDEAS agent prompts
+3. Wire Identify → Develop → Evaluate → Articulate → Share
+4. Connect SPARC handoff to IDEAS intake
+
+### Phase 4: Polish
+1. Add persistent state across sessions
+2. Implement feedback loops (retry, reroute)
+3. Add observability/logging
+4. Build simple UI for approvals
+
+---
+
+## Dependencies
+
+```toml
+[project]
+dependencies = [
+    "anthropic>=0.52.0",
+    "claude-agent-sdk>=0.1.0",
+    "mcp>=1.0.0",
+    "httpx>=0.27.0",
+    "pydantic>=2.0.0",
+]
+
+[project.optional-dependencies]
+storage = ["notion-client", "airtable-python-wrapper", "asyncpg"]
+notify = ["slack-sdk"]
+```
