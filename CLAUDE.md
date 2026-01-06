@@ -8,10 +8,11 @@ You have access to:
 
 | Document | Purpose |
 |----------|---------|
-| `PRAXIS_Model.md` | Integration layer, lifecycle, metrics |
-| `SPARC_Framework.md` | Client acquisition: Signal → Profile → Analyze → Rank → Craft |
-| `IDEAS_Framework.md` | Research delivery: Identify → Develop → Evaluate → Articulate → Share |
-| `Agent_Architecture.md` | Skills catalog, agent definitions, orchestration patterns |
+| `frameworks/PRAXIS_Model.md` | Integration layer, lifecycle, metrics |
+| `frameworks/SPARC_Framework.md` | Client acquisition: Signal → Profile → Analyze → Rank → Craft |
+| `frameworks/IDEAS_Framework.md` | Research delivery: Identify → Develop → Evaluate → Articulate → Share |
+| `implementation/Agent_Architecture.md` | Skills catalog, agent definitions, orchestration patterns |
+| `implementation/Examples.md` | Usage examples and worked scenarios |
 
 ## Roles
 
@@ -62,7 +63,7 @@ When developing skills or agents:
 
 - Skills are atomic, stateless instruction sets with defined inputs/outputs
 - Agents compose skills to complete stage objectives
-- Follow the SKILL.md pattern in Agent_Architecture.md
+- Follow the SKILL.md pattern in `implementation/Agent_Architecture.md`
 - Identify MCP integration points where external tools are needed
 - Human approval gates exist at every stage handoff
 
