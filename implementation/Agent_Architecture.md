@@ -44,7 +44,8 @@ flowchart TB
     
     S_Agent & P_Agent & A_Agent --> Research
     A_Agent & R_Agent & E_Agent --> Analysis
-    All --> Storage
+    S_Agent & P_Agent & A_Agent & R_Agent & C_Agent --> Storage
+    I_Agent & D_Agent & E_Agent & Ar_Agent & Sh_Agent --> Storage
     O --> Notify
 ```
 

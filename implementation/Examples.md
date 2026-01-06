@@ -438,10 +438,6 @@ estimated_cost: $12.50/hour (on-demand)
 
 ---
 
-**Outcome:** Engagement extended, case study approved, two referrals received.
-
----
-
 ## Stage Output Templates
 
 ### Signal Log Entry
