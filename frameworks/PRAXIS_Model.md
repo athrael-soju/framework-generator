@@ -239,8 +239,8 @@ The PRAXIS model maps to agents and skills:
 
 | Framework | Agents | Shared Skills |
 |-----------|--------|---------------|
-| SPARC | Signal, Profile, Analyze, Rank, Craft | web_search, web_fetch, gap_analysis, data_store |
-| IDEAS | Identify, Develop, Evaluate, Articulate, Share | web_search, web_fetch, gap_analysis, data_store |
+| SPARC | Signal, Profile, Analyze, Rank, Craft | web_search, web_fetch, save_document, get_document |
+| IDEAS | Identify, Develop, Evaluate, Articulate, Share | web_search, web_fetch, save_document, get_document |
 
 See `implementation/Agent_Architecture.md` for full skill catalog and orchestration patterns.
 
@@ -272,5 +272,7 @@ See `implementation/Agent_Architecture.md` for full skill catalog and orchestrat
 | `frameworks/PRAXIS_Model.md` | This document - overview and integration |
 | `frameworks/SPARC_Framework.md` | Client acquisition methodology |
 | `frameworks/IDEAS_Framework.md` | Research delivery methodology |
-| `implementation/Agent_Architecture.md` | Skills, agents, and automation |
+| `implementation/Agent_Architecture.md` | Agents, MCP servers, and orchestration |
+| `implementation/SPARC_Skills.md` | Atomic skill definitions for SPARC agents |
+| `implementation/IDEAS_Skills.md` | Atomic skill definitions for IDEAS agents |
 | `implementation/Examples.md` | Usage examples and worked scenarios |

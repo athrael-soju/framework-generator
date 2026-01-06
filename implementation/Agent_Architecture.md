@@ -430,7 +430,7 @@ sequenceDiagram
 | Signal | Profile | signal_log, company_identifiers |
 | Profile | Analyze | company_profile, signal_log |
 | Analyze | Rank | prospect_analysis, company_profile |
-| Rank | Craft | qualification_score, prospect_analysis, decision_maker_profile |
+| Rank | Craft | qualification_score, prospect_analysis, key_people |
 | Craft | Identify (IDEAS) | signed_agreement, prospect_analysis, outreach_brief |
 | Identify | Develop | research_opportunities, contract_scope |
 | Develop | Evaluate | hypothesis_documents, data_sources |
