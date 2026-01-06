@@ -4,6 +4,47 @@ Atomic skill definitions for IDEAS agents.
 
 ---
 
+## Core Skills
+
+### web_search
+
+**Purpose:** Search the web for specific queries.
+
+**Inputs:**
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| query | string | yes | Search query |
+| filters | object | no | Date range, domain restrictions |
+
+**Outputs:**
+| Field | Type | Description |
+|-------|------|-------------|
+| results | array | Ranked results with title, snippet, url |
+
+**Tools:** research-mcp
+
+---
+
+### web_fetch
+
+**Purpose:** Fetch and parse content from a URL.
+
+**Inputs:**
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| url | string | yes | URL to fetch |
+| extract | string | no | What to extract: "text", "links", "structured" |
+
+**Outputs:**
+| Field | Type | Description |
+|-------|------|-------------|
+| content | string | Extracted content |
+| metadata | object | Title, description, publish date if available |
+
+**Tools:** research-mcp
+
+---
+
 ## Identify Stage Skills
 
 ### contract_review
