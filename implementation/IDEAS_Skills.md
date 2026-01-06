@@ -595,6 +595,181 @@ MEASURABLE BY [metric/evidence]
 
 ---
 
+### venue_selection
+
+**Purpose:** Select appropriate publication venue for research findings.
+
+**Inputs:**
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| findings | object | yes | Research findings to publish |
+| timeline | object | yes | Publication timeline constraints |
+| audience | string | yes | Target audience (academic, practitioner, both) |
+| contract_terms | object | yes | Client publication permissions |
+
+**Outputs:**
+| Field | Type | Description |
+|-------|------|-------------|
+| venue | object | Selected venue with rationale |
+| venue_type | string | arxiv, workshop, conference, journal, blog |
+| timeline | object | Submission deadlines and expected dates |
+| requirements | array | Formatting and submission requirements |
+
+**Venue Types:**
+| Type | Timeline | Review | Best For |
+|------|----------|--------|----------|
+| ArXiv preprint | Days | None | Fast dissemination, priority |
+| Workshop | 2-4 months | Light | Early-stage ideas |
+| Conference | 4-8 months | Rigorous | Complete research |
+| Journal | 6-18 months | Thorough | Comprehensive studies |
+| Blog/Technical | Days | Internal | Practitioner audience |
+
+---
+
+### paper_drafting
+
+**Purpose:** Draft research paper from evaluation findings.
+
+**Inputs:**
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| evaluation_report | object | yes | From Evaluate stage |
+| venue_requirements | object | yes | Format, length, style requirements |
+| authorship | array | yes | Author list with contributions |
+
+**Outputs:**
+| Field | Type | Description |
+|-------|------|-------------|
+| draft | string | Complete paper draft |
+| sections | object | Individual sections for review |
+| citations | array | Bibliography entries |
+| supplementary | array | Additional materials |
+
+**Paper Structure:**
+1. Title — Specific, searchable, indicates contribution
+2. Abstract — Problem, approach, results, significance
+3. Introduction — Context, gap, contribution, outline
+4. Related Work — Prior art, positioning
+5. Methodology — Approach, data, setup
+6. Results — Findings, visualizations
+7. Discussion — Implications, limitations
+8. Conclusion — Summary, significance
+
+---
+
+### client_review_management
+
+**Purpose:** Manage client review of publication content.
+
+**Inputs:**
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| draft | string | yes | Paper draft for review |
+| contract_terms | object | yes | Review period, restrictions |
+| client_contact | string | yes | Reviewer contact |
+
+**Outputs:**
+| Field | Type | Description |
+|-------|------|-------------|
+| approval_status | string | approved, pending, rejected |
+| feedback | array | Client feedback items |
+| redactions | array | Content to remove |
+| revised_draft | string | Post-review draft |
+
+**Process:**
+1. Send draft with review deadline (typical: 30 days)
+2. Track response and follow up
+3. Incorporate feedback and redactions
+4. Obtain final approval
+5. Document approval for records
+
+---
+
+### submission_execution
+
+**Purpose:** Execute submission to selected venue.
+
+**Inputs:**
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| final_draft | string | yes | Approved paper |
+| venue | object | yes | Target venue details |
+| supplementary | array | no | Code, data, appendices |
+
+**Outputs:**
+| Field | Type | Description |
+|-------|------|-------------|
+| submission_id | string | Venue-assigned identifier |
+| confirmation | object | Submission receipt |
+| arxiv_id | string | ArXiv ID if applicable |
+
+**Pre-submission Checklist:**
+- [ ] Formatting meets venue requirements
+- [ ] All authors approved final version
+- [ ] Client review complete
+- [ ] Acknowledgments correct
+- [ ] Supplementary materials ready
+- [ ] Conflicts of interest declared
+
+---
+
+### peer_review_response
+
+**Purpose:** Respond to peer review feedback.
+
+**Inputs:**
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| reviews | array | yes | Reviewer comments |
+| original_paper | string | yes | Submitted version |
+| decision | string | yes | accept, revise, reject |
+
+**Outputs:**
+| Field | Type | Description |
+|-------|------|-------------|
+| response_letter | string | Point-by-point response |
+| revised_paper | string | Updated paper |
+| changes_summary | array | List of changes made |
+
+**Response Categories:**
+| Feedback Type | Action |
+|---------------|--------|
+| Factual error | Correct immediately |
+| Missing experiment | Conduct or explain limitation |
+| Clarity issue | Revise text |
+| Disagreement | Explain reasoning politely |
+| Out of scope | Acknowledge, defer to future work |
+
+---
+
+### post_publication
+
+**Purpose:** Maximize impact after publication.
+
+**Inputs:**
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| published_paper | object | yes | Publication details and links |
+| audiences | array | yes | Target dissemination audiences |
+
+**Outputs:**
+| Field | Type | Description |
+|-------|------|-------------|
+| dissemination_log | array | Where and when shared |
+| metrics | object | Citations, downloads, engagement |
+| follow_up_items | array | Responses, corrections, extensions |
+
+**Dissemination Channels:**
+- Social media (LinkedIn, Twitter/X)
+- Communities (Reddit, HN, Discord)
+- Mailing lists
+- Client channels
+- Personal/company website
+
+**Tools:** web_search (for tracking), send_notification
+
+---
+
 ## Shared Skills
 
 ### save_document
@@ -744,6 +919,12 @@ MEASURABLE BY [metric/evidence]
 | delivery_execution | | | | | ✓ |
 | feedback_collection | | | | | ✓ |
 | knowledge_transfer | | | | | ✓ |
+| venue_selection | | | | | ✓ |
+| paper_drafting | | | | | ✓ |
+| client_review_management | | | | | ✓ |
+| submission_execution | | | | | ✓ |
+| peer_review_response | | | | | ✓ |
+| post_publication | | | | | ✓ |
 | save_document | ✓ | ✓ | ✓ | ✓ | ✓ |
 | get_document | ✓ | ✓ | ✓ | ✓ | ✓ |
 | list_documents | ✓ | ✓ | ✓ | ✓ | ✓ |
