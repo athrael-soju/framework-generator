@@ -256,4 +256,4 @@ signal_agent = Agent(
 )
 ```
 
-See [Agent_Architecture.md](Agent_Architecture.md) for complete agent definitions.
+See [Agents.md](../architecture/Agents.md) for complete agent definitions.

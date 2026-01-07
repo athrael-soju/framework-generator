@@ -8,16 +8,22 @@ A complete framework for research consulting: from finding clients to delivering
 
 ```
 PRAXIS/
-├── frameworks/              # Conceptual models (what to do)
-│   ├── PRAXIS_Framework.md    # Integration layer, lifecycle, metrics
-│   ├── SPARC_Methodology.md   # Client acquisition
-│   └── IDEAS_Methodology.md   # Research delivery
+├── framework/           # The PRAXIS framework
+│   └── PRAXIS.md        # Integration layer, lifecycle, metrics
 │
-└── implementation/          # Technical execution (how to do it)
-    ├── Agent_Architecture.md # Agents, MCP servers, orchestration
-    ├── SPARC_Skills.md      # Stage-level skills for SPARC agents
-    ├── IDEAS_Skills.md      # Stage-level skills for IDEAS agents
-    └── Examples.md          # Usage examples
+├── methodologies/       # SPARC and IDEAS methodologies
+│   ├── SPARC.md         # Client acquisition
+│   └── IDEAS.md         # Research delivery
+│
+├── skills/              # Stage-level skill definitions
+│   ├── SPARC.md         # Skills for SPARC agents
+│   └── IDEAS.md         # Skills for IDEAS agents
+│
+├── architecture/        # Technical architecture
+│   └── Agents.md        # Agents, MCP servers, orchestration
+│
+└── implementation/      # Usage and examples
+    └── Examples.md      # Worked scenarios
 ```
 
 ## Methodologies
@@ -29,4 +35,4 @@ PRAXIS/
 
 ## Getting Started
 
-Start with [frameworks/PRAXIS_Framework.md](frameworks/PRAXIS_Framework.md) for the complete overview.
+Start with [framework/PRAXIS.md](framework/PRAXIS.md) for the complete overview.

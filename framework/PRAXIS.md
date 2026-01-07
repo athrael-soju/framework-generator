@@ -242,7 +242,7 @@ The PRAXIS framework maps to agents and skills:
 | SPARC | Signal, Profile, Analyze, Rank, Craft | web_search, web_fetch, save_document, get_document |
 | IDEAS | Identify, Develop, Evaluate, Articulate, Share | web_search, web_fetch, save_document, get_document |
 
-See `implementation/Agent_Architecture.md` for full skill catalog and orchestration patterns.
+See `architecture/Agents.md` for full skill catalog and orchestration patterns.
 
 ---
 
@@ -269,10 +269,10 @@ See `implementation/Agent_Architecture.md` for full skill catalog and orchestrat
 
 | Document | Purpose |
 |----------|---------|
-| `frameworks/PRAXIS_Framework.md` | This document - overview and integration |
-| `frameworks/SPARC_Methodology.md` | Client acquisition methodology |
-| `frameworks/IDEAS_Methodology.md` | Research delivery methodology |
-| `implementation/Agent_Architecture.md` | Agents, MCP servers, and orchestration |
-| `implementation/SPARC_Skills.md` | Stage-level skill definitions for SPARC agents |
-| `implementation/IDEAS_Skills.md` | Stage-level skill definitions for IDEAS agents |
+| `framework/PRAXIS.md` | This document - overview and integration |
+| `methodologies/SPARC.md` | Client acquisition methodology |
+| `methodologies/IDEAS.md` | Research delivery methodology |
+| `architecture/Agents.md` | Agent definitions, MCP servers, orchestration |
+| `skills/SPARC.md` | Stage-level skill definitions for SPARC agents |
+| `skills/IDEAS.md` | Stage-level skill definitions for IDEAS agents |
 | `implementation/Examples.md` | Usage examples and worked scenarios |

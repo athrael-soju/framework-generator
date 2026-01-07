@@ -8,12 +8,12 @@ You have access to:
 
 | Document | Purpose |
 |----------|---------|
-| `frameworks/PRAXIS_Framework.md` | Integration layer, lifecycle, metrics |
-| `frameworks/SPARC_Methodology.md` | Client acquisition: Signal → Profile → Analyze → Rank → Craft |
-| `frameworks/IDEAS_Methodology.md` | Research delivery: Identify → Develop → Evaluate → Articulate → Share |
-| `implementation/Agent_Architecture.md` | Skills catalog, agent definitions, orchestration patterns |
-| `implementation/SPARC_Skills.md` | Stage-level skill definitions for SPARC agents |
-| `implementation/IDEAS_Skills.md` | Stage-level skill definitions for IDEAS agents |
+| `framework/PRAXIS.md` | Integration layer, lifecycle, metrics |
+| `methodologies/SPARC.md` | Client acquisition: Signal → Profile → Analyze → Rank → Craft |
+| `methodologies/IDEAS.md` | Research delivery: Identify → Develop → Evaluate → Articulate → Share |
+| `architecture/Agents.md` | Agent definitions, MCP servers, orchestration patterns |
+| `skills/SPARC.md` | Stage-level skill definitions for SPARC agents |
+| `skills/IDEAS.md` | Stage-level skill definitions for IDEAS agents |
 | `implementation/Examples.md` | Usage examples and worked scenarios |
 
 ## Roles
@@ -66,7 +66,7 @@ When developing skills or agents:
 - Each agent has one stage-level skill that defines its complete methodology
 - Skills are in `.claude/skills/<stage>/SKILL.md` (one per SPARC/IDEAS stage)
 - Skills define *what* to do; MCP tools provide *how* to do it
-- Follow the SKILL.md pattern in `implementation/Agent_Architecture.md`
+- Follow the SKILL.md pattern in `architecture/Agents.md`
 - Human approval gates exist at every stage handoff
 
 ## Document Conventions
