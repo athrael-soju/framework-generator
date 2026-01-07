@@ -1,6 +1,6 @@
 # IDEAS Skills
 
-Stage-level skill definitions for IDEAS agents. Each skill defines the complete methodology for one stage of the IDEAS methodology.
+Stage-level skill definitions for IDEAS. Each skill defines the complete methodology for one stage of the IDEAS methodology.
 
 ---
 
@@ -16,23 +16,22 @@ Stage-level skill definitions for IDEAS agents. Each skill defines the complete 
 ```
 
 Each skill is a self-contained instruction set that defines:
-- **Inputs**: What the agent receives from prior stages
+- **Inputs**: What the stage receives from prior stages
 - **Process**: Step-by-step methodology with templates
-- **Outputs**: What the agent produces
-- **Tools**: MCP tools available for execution
+- **Outputs**: What the stage produces
 - **Quality Criteria**: Checklist before stage completion
 
 ---
 
 ## Skills Overview
 
-| Skill | Stage | Purpose |
-|-------|-------|---------|
-| `identify` | Identify | Define research opportunities from client engagement |
-| `develop` | Develop | Formalize hypotheses and define execution scope |
-| `evaluate` | Evaluate | Test hypotheses through data collection and analysis |
-| `articulate` | Articulate | Transform findings into actionable deliverables |
-| `share` | Share | Deliver and disseminate findings to stakeholders |
+| Skill | Command | Purpose |
+|-------|---------|---------|
+| `identify` | `/identify` | Define research opportunities from client engagement |
+| `develop` | `/develop` | Formalize hypotheses and define execution scope |
+| `evaluate` | `/evaluate` | Test hypotheses through data collection and analysis |
+| `articulate` | `/articulate` | Transform findings into actionable deliverables |
+| `share` | `/share` | Deliver and disseminate findings to stakeholders |
 
 ---
 
@@ -47,8 +46,6 @@ Each skill is a self-contained instruction set that defines:
 2. Gap Analysis — Identify gaps between current and desired state
 3. Opportunity Mapping — Map gaps to research directions
 4. Prioritization — Rank and select opportunities
-
-**Tools:** `web_search`, `web_fetch`, `save_document`, `get_document`, `list_documents`
 
 **Outputs:** contract_summary, gap_analysis, opportunity_map, research_agenda
 
@@ -76,8 +73,6 @@ Each skill is a self-contained instruction set that defines:
 3. Feasibility Assessment — Score and assess risks
 4. Scope Definition — Define precise boundaries and methods
 
-**Tools:** `web_search`, `web_fetch`, `save_document`, `get_document`, `list_documents`
-
 **Outputs:** prior_work_review, hypothesis_documents, feasibility_scores, scope_definitions
 
 **Decision Points:**
@@ -104,8 +99,6 @@ Each skill is a self-contained instruction set that defines:
 3. Hypothesis Evaluation — Assess verdict and confidence
 4. Quality Assurance — Run QA checklist
 
-**Tools:** `web_search`, `web_fetch`, `evaluate_hypothesis`, `save_document`, `get_document`, `list_documents`
-
 **Outputs:** raw_data, collection_log, analysis_results, evaluation_report, qa_report
 
 **Decision Points:**
@@ -131,8 +124,6 @@ Each skill is a self-contained instruction set that defines:
 2. Audience Targeting — Adapt content per stakeholder
 3. Recommendation Development — Convert findings to actions
 4. Roadmap Creation — Organize into implementation phases
-
-**Tools:** `save_document`, `get_document`, `list_documents`
 
 **Outputs:** contribution_statement, audience_profiles, recommendations, roadmap, client_deliverable
 
@@ -169,8 +160,6 @@ Each skill is a self-contained instruction set that defines:
 9. Peer Review Response — Handle reviewer feedback
 10. Post-Publication — Maximize impact
 
-**Tools:** `save_document`, `get_document`, `list_documents`, `send_notification`
-
 **Outputs:** delivery_log, feedback_log, handoff_materials, publication (if applicable)
 
 **Decision Points:**
@@ -186,86 +175,18 @@ Each skill is a self-contained instruction set that defines:
 
 ---
 
-## MCP Tool Reference
+## Skill Execution
 
-Tools available to IDEAS agents via MCP servers:
+Run skills via command:
 
-### research-mcp
-
-| Tool | Purpose |
-|------|---------|
-| `web_search` | Search queries with filters |
-| `web_fetch` | Fetch and parse URL content |
-
-### analysis-mcp
-
-| Tool | Purpose |
-|------|---------|
-| `evaluate_hypothesis` | Formal hypothesis assessment |
-
-### storage-mcp
-
-| Tool | Purpose |
-|------|---------|
-| `save_document` | Persist artifacts |
-| `get_document` | Retrieve artifacts by ID |
-| `list_documents` | Query artifacts by type |
-| `update_pipeline` | Update pipeline state |
-
-### notify-mcp
-
-| Tool | Purpose |
-|------|---------|
-| `request_approval` | Human approval gate |
-| `send_notification` | Alert human |
-
----
-
-## Skill → Agent Mapping
-
-One skill per agent. The skill defines what to do; the agent executes it.
-
-| Agent | Skill | MCP Servers |
-|-------|-------|-------------|
-| Identify | `identify` | research-mcp, storage-mcp |
-| Develop | `develop` | research-mcp, storage-mcp |
-| Evaluate | `evaluate` | research-mcp, analysis-mcp, storage-mcp |
-| Articulate | `articulate` | storage-mcp |
-| Share | `share` | storage-mcp, notify-mcp |
-
----
-
-## Agent Loading
-
-Each agent loads its stage skill at initialization:
-
-```python
-def load_skill(stage: str) -> str:
-    """Load skill definition for a stage."""
-    path = f".claude/skills/{stage}/SKILL.md"
-    return read_file(path)
-
-def build_agent_prompt(stage: str, framework: str) -> str:
-    """Build complete agent system prompt."""
-    return f"""
-You are the {stage.title()} Agent for {framework.upper()}.
-
-{load_skill(stage)}
-
-When finished, call request_approval with your outputs summary.
-"""
-
-# Example: Identify Agent
-identify_agent = Agent(
-    model="claude-sonnet-4-5-20250514",
-    system_prompt=build_agent_prompt("identify", "ideas"),
-    mcp_servers=["research-mcp", "storage-mcp"],
-    allowed_tools=[
-        "mcp__research-mcp__web_search",
-        "mcp__research-mcp__web_fetch",
-        "mcp__storage-mcp__*"
-    ]
-)
+```
+/identify        # Start with contract and gap analysis
+/develop         # After research agenda defined
+/evaluate        # After hypotheses formalized
+/articulate      # After evaluation complete
+/share           # After deliverables ready
 ```
 
-See [Agents.md](../architecture/Agents.md) for complete agent definitions.
+Each skill guides you through its methodology, requests inputs, presents decision points, and produces outputs for the next stage.
+
+See [Execution.md](../architecture/Execution.md) for detailed execution patterns.

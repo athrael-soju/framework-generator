@@ -291,6 +291,166 @@ Document Corpus Assessment:
 
 ---
 
+## Feedback Loop Example
+
+Demonstrating what happens when a feedback condition triggers a return to an earlier stage.
+
+### Scenario: Problem-Fit Mismatch in Analyze
+
+**Context:** During SPARC execution, a profiled prospect reaches Analyze stage but analysis reveals their actual needs don't match your positioning.
+
+#### Signal → Profile → Analyze
+
+**Prospect:** CloudScale (fictional)
+
+**Signal:** Series A funding ($12M), hiring DevRel lead
+
+**Profile Summary:**
+- 45 employees, API infrastructure startup
+- Target: Enterprise clients with complex integration needs
+- Recent pivot from developer tools to enterprise security
+
+**Analyze Findings:**
+```
+Gap Analysis:
+
+| Gap | Your Capability | Match |
+|-----|-----------------|-------|
+| Security documentation | DevRel content | Weak |
+| Compliance certifications | Research/content | None |
+| Enterprise sales enablement | Not offered | None |
+
+Entry Point Assessment:
+- Buyer: VP Sales (not DevRel)
+- Budget: Security/compliance, not content
+- Actual need: SOC 2 compliance documentation
+```
+
+**Feedback Loop Triggered:**
+
+```
+Condition: Problem doesn't match positioning
+From: Analyze
+Action: → Pass or Nurture
+```
+
+**Decision Menu Presented:**
+1. **Pass** — Not a fit; document learnings and move on
+2. **Nurture** — Add to watch list; pivot may not stick
+3. **Adjust positioning** — If this represents a market pattern
+
+**Decision:** Nurture
+
+**Rationale:**
+- Company is early-stage and may pivot back
+- Security focus may be temporary for enterprise deals
+- Watch for DevRel hiring signals in 6-12 months
+
+**Nurture Entry:**
+```yaml
+company: CloudScale
+entered_nurture: 2025-01-15
+reason: Pivot to enterprise security; core offering mismatch
+re-engagement_triggers:
+  - DevRel hiring resumes
+  - New product launch in developer tools
+  - Series B with developer-focused narrative
+check_in: 2025-07-15
+```
+
+**Outcome:** Prospect moved to Nurture list instead of continuing to Rank. SPARC pipeline continues with other prospects.
+
+---
+
+## IDEAS → SPARC Referral Example
+
+Demonstrating the referral loop from Share back to Signal.
+
+### Scenario: Processing Referrals from Vultr Engagement
+
+**Context:** At the end of the Vultr IDEAS engagement (month 4), the CMO provided two referrals as noted in the engagement outcome.
+
+#### Share → Referral Request
+
+**Referral Request (month 4):**
+> "Given the results we've delivered on the retrieval benchmarks and the positive reception of the tutorial, would you be open to introducing me to other DevRel or marketing leaders who might benefit from similar research partnerships?"
+
+**Referrals Received:**
+1. Sarah Chen, VP DevRel at StreamData (data streaming platform)
+2. Marcus Webb, CMO at InfraScale (edge computing)
+
+#### Referral → SPARC Signal
+
+**Referral Processing:**
+
+For each referral, create a Signal entry with "Referral" as source:
+
+```yaml
+# Signal Log Entry 1
+date: 2025-01-20
+company: StreamData
+signal_type: referral
+source: Kevin Cochrane (Vultr CMO)
+url: null
+strength: hot
+notes: Direct intro from satisfied client; VP DevRel target buyer
+referral_context:
+  introducer: Kevin Cochrane
+  relationship: Vultr engagement (4 months)
+  warm_intro: scheduled
+```
+
+```yaml
+# Signal Log Entry 2
+date: 2025-01-20
+company: InfraScale
+signal_type: referral
+source: Kevin Cochrane (Vultr CMO)
+url: null
+strength: warm
+notes: CMO intro; need to assess DevRel relevance
+referral_context:
+  introducer: Kevin Cochrane
+  relationship: Vultr engagement (4 months)
+  warm_intro: email introduction sent
+```
+
+**Signal Assessment:**
+- StreamData: **Hot** — direct buyer intro, immediate profile
+- InfraScale: **Warm** — decision-maker unclear, profile after StreamData
+
+#### Fast-Track to Profile
+
+Referrals skip extensive signal monitoring and proceed directly to Profile:
+
+**StreamData Profile (abbreviated):**
+
+| Field | Value |
+|-------|-------|
+| Company | StreamData |
+| HQ | San Francisco |
+| Funding | Series B ($45M) |
+| Signal Source | Referral (Vultr) |
+
+**Key Difference from Cold Signal:**
+- Warm introduction provides access advantage
+- Referrer context informs positioning
+- Trust transfer from successful engagement
+
+**Qualification Boost:**
+```
+Access score: 5 (vs typical 3)
+Rationale: Direct intro from trusted referrer
+```
+
+#### Continue SPARC
+
+From Profile, StreamData continues through Analyze → Rank → Craft with the referral advantage noted in scoring.
+
+**Outcome:** StreamData engagement signed (month 6); referral flywheel continues.
+
+---
+
 ## Research Publication Example
 
 **Context:** Contract clause 5.4 permits publication with 30-day client review, removal of confidential information, and appropriate authorship attribution.

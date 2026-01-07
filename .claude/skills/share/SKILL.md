@@ -61,8 +61,6 @@ Execute delivery per channel:
 }
 ```
 
-Tool: `send_notification`
-
 ### 3. Feedback Collection
 
 Gather and process feedback:
@@ -175,14 +173,16 @@ Wrap up and set up future value:
 | publication (optional) | document | Published paper/article |
 | engagement_closure | document | Final status and next steps |
 
-## Tools Available
+## Decision Points
 
-| Tool | Purpose |
-|------|---------|
-| `send_notification` | Notify stakeholders |
-| `save_document` | Persist outputs |
-| `get_document` | Retrieve deliverables |
-| `list_documents` | Find related documents |
+| Point | Type | Options |
+|-------|------|---------|
+| Channel selection | Multi-select | Executive brief, technical report, workshop, documentation |
+| Publication decision | Decision | Pursue publication, client-only, defer decision |
+| Venue selection | Clarification | Which publication venue to target |
+| Feedback handling | Decision | Incorporate feedback, note for future, escalate |
+| Knowledge transfer scope | Decision | Full handoff, partial, ongoing support |
+| Stage completion | Approval | Approve → Complete, Reject → retry, Edit → modify, Abort |
 
 ## Quality Criteria
 
@@ -194,11 +194,10 @@ Wrap up and set up future value:
 
 ## Completion
 
-When finished:
-1. Save engagement_closure using `save_document`
-2. Call `request_approval` with:
-   - Delivery status summary
-   - Feedback highlights
-   - Knowledge transfer status
-   - Publication status (if applicable)
-   - Engagement closure confirmation
+When finished, present for approval:
+- Delivery status summary
+- Feedback highlights
+- Knowledge transfer status
+- Publication status (if applicable)
+- Engagement closure confirmation
+- Referral opportunity (if appropriate)

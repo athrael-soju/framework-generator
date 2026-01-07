@@ -41,7 +41,6 @@ Extract key constraints and requirements:
 - Confidentiality constraints
 - Review periods
 
-Tool: Review contract document
 
 ### 2. Gap Analysis
 
@@ -69,7 +68,6 @@ Identify gaps between current and desired state:
 - Major: Significant impact on outcomes
 - Minor: Improvement opportunity, not blocking
 
-Tool: `web_search`, `web_fetch` for additional context
 
 ### 3. Opportunity Mapping
 
@@ -147,15 +145,15 @@ Rank opportunities for execution:
 | opportunity_map | document | Gaps mapped to research directions |
 | research_agenda | document | Prioritized opportunities for execution |
 
-## Tools Available
+## Decision Points
 
-| Tool | Purpose |
-|------|---------|
-| `web_search` | Research context |
-| `web_fetch` | Retrieve relevant content |
-| `save_document` | Persist outputs |
-| `get_document` | Retrieve SPARC outputs |
-| `list_documents` | Find related documents |
+| Point | Type | Options |
+|-------|------|---------|
+| Scope interpretation | Clarification | Confirm understanding of ambiguous contract terms |
+| Gap prioritization | Decision | Which gaps to address first |
+| Opportunity selection | Multi-select | Which opportunities to include in agenda |
+| Resource constraints | Decision | Full scope, reduced scope, phased approach |
+| Stage completion | Approval | Approve → Develop, Reject → retry, Edit → modify, Abort |
 
 ## Quality Criteria
 
@@ -167,10 +165,8 @@ Rank opportunities for execution:
 
 ## Completion
 
-When finished:
-1. Save research_agenda using `save_document`
-2. Call `request_approval` with:
-   - Number of opportunities identified
-   - Selected vs deferred count
-   - Key constraints affecting scope
-   - Readiness for Develop stage
+When finished, present for approval:
+- Number of opportunities identified
+- Selected vs deferred count
+- Key constraints affecting scope
+- Recommendation: proceed to Develop or refine agenda

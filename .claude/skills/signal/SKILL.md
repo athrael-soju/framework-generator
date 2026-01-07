@@ -28,22 +28,18 @@ Search for each signal type:
 **Funding Signals**
 - Search: "[industry] startup funding announcement"
 - Look for: Series A/B/C, growth rounds, strategic investment
-- Tool: `web_search`
 
 **Hiring Signals**
 - Search company job boards for relevant roles
 - Look for: DevRel, AI/ML, Platform, Documentation roles
-- Tool: `job_search`
 
 **News Signals**
 - Search: "[company] launch OR partnership OR expansion"
 - Look for: Product launches, partnerships, market expansion
-- Tool: `web_search`
 
 **Company Data**
 - Get firmographics for detected companies
 - Look for: Employee count, funding stage, location
-- Tool: `company_lookup`
 
 ### 2. Signal Scoring
 
@@ -77,15 +73,14 @@ Produce signal log with:
 | warm_prospects | list | Companies to queue for profiling |
 | watch_list | list | Companies to monitor |
 
-## Tools Available
+## Decision Points
 
-| Tool | Purpose |
-|------|---------|
-| `web_search` | Search for funding, news, announcements |
-| `company_lookup` | Get firmographic data |
-| `job_search` | Find job postings |
-| `save_document` | Persist signal log |
-| `list_documents` | Check for existing signals |
+| Point | Type | Options |
+|-------|------|---------|
+| Multiple hot signals for same company | Clarification | Prioritize by type (funding/hiring/product) or weight equally |
+| Signal source conflict | Decision | Trust source A, trust source B, flag for manual verification |
+| Edge of lookback window | Decision | Include with caveat, exclude, extend search |
+| Stage completion | Approval | Approve → Profile, Reject → retry, Edit → modify, Abort |
 
 ## Quality Criteria
 
@@ -97,9 +92,8 @@ Produce signal log with:
 
 ## Completion
 
-When finished:
-1. Save signal_log using `save_document`
-2. Call `request_approval` with:
-   - Count of signals detected per tier
-   - List of hot prospects for profiling
-   - Any gaps in signal coverage
+When finished, present for approval:
+- Count of signals detected per tier
+- List of hot prospects for profiling
+- Any gaps in signal coverage
+- Recommendation: proceed to Profile or continue monitoring

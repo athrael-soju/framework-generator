@@ -47,7 +47,6 @@ For each hypothesis, execute collection per scope:
 - Note gaps in expected data
 - Record attempted mitigations
 
-Tools: `web_search`, `web_fetch`, domain-specific APIs
 
 ### 2. Analysis Execution
 
@@ -106,7 +105,6 @@ Assess evidence against each hypothesis:
 - What else could explain these findings?
 - Were alternatives considered and ruled out?
 
-Tool: `evaluate_hypothesis`
 
 ### 4. Quality Assurance
 
@@ -156,16 +154,15 @@ Run QA checklist before proceeding:
 | evaluation_report | document | Verdict per hypothesis |
 | qa_report | document | Quality check results |
 
-## Tools Available
+## Decision Points
 
-| Tool | Purpose |
-|------|---------|
-| `web_search` | Gather data |
-| `web_fetch` | Retrieve content |
-| `evaluate_hypothesis` | Formal assessment |
-| `save_document` | Persist outputs |
-| `get_document` | Retrieve hypotheses |
-| `list_documents` | Find related documents |
+| Point | Type | Options |
+|-------|------|---------|
+| Evidence insufficiency | Decision | Collect more, proceed with caveats, revise hypothesis |
+| Unexpected results | Decision | Report as-is, investigate further, return to Develop |
+| Hypothesis not supported | Decision | Report negative, pivot to new hypothesis, return to Identify |
+| Confidence level | Clarification | Confirm appropriate confidence assignment |
+| Stage completion | Approval | Approve → Articulate, Reject → retry, Edit → modify, Abort |
 
 ## Quality Criteria
 
@@ -177,11 +174,9 @@ Run QA checklist before proceeding:
 
 ## Completion
 
-When finished:
-1. Save evaluation_report using `save_document`
-2. Call `request_approval` with:
-   - Verdict summary per hypothesis
-   - Confidence levels
-   - Key findings
-   - QA status
-   - Readiness for Articulate stage
+When finished, present for approval:
+- Verdict summary per hypothesis
+- Confidence levels
+- Key findings
+- QA status
+- Recommendation: proceed to Articulate or investigate further

@@ -26,25 +26,23 @@ Transform signal data into structured company profiles with enough depth to supp
 For each company:
 
 **Basic Data**
-- Tool: `company_lookup`
 - Capture: Legal name, domain, founded, HQ location
 - Capture: Employee count, funding history, investors
 
 **Web Presence**
-- Tool: `web_fetch` on company about page
+- Review company about page
 - Capture: Mission, positioning, key products
 - Capture: Leadership team mentions
 
 ### 2. Technical Footprint
 
 **GitHub Analysis**
-- Tool: `github_profile`
 - Capture: Repo count, stars, contributors
 - Capture: Primary languages, activity level
 - Assess: Open source commitment, developer focus
 
 **Documentation Review**
-- Tool: `web_fetch` on docs site
+- Review docs site
 - Assess: Depth (API ref, guides, tutorials)
 - Assess: Freshness (last updated dates)
 - Assess: Quality (structure, examples)
@@ -53,7 +51,6 @@ For each company:
 
 **Community Presence**
 - Search for Discord, Slack, forum links
-- Tool: `web_search`, `web_fetch`
 - Assess: Community size and activity
 
 **SDK/Library Quality**
@@ -98,16 +95,15 @@ Combine all data into structured profile:
 | profile_gaps | list | Missing data requiring follow-up |
 | profile_summary | document | Overview of all profiled companies |
 
-## Tools Available
+## Decision Points
 
-| Tool | Purpose |
-|------|---------|
-| `web_search` | Find additional company info |
-| `web_fetch` | Retrieve page content |
-| `company_lookup` | Get firmographic data |
-| `github_profile` | Analyze GitHub presence |
-| `save_document` | Persist profiles |
-| `get_document` | Retrieve signal log |
+| Point | Type | Options |
+|-------|------|---------|
+| Incomplete data | Decision | Continue with gaps noted, return to Signal, request manual input |
+| Conflicting information | Clarification | Which source to trust, how to reconcile |
+| Key person identification | Clarification | Confirm decision-maker role and priority |
+| Data staleness | Decision | Accept older data, flag for refresh, seek current source |
+| Stage completion | Approval | Approve → Analyze, Reject → retry, Edit → modify, Abort |
 
 ## Quality Criteria
 
@@ -119,10 +115,8 @@ Combine all data into structured profile:
 
 ## Completion
 
-When finished:
-1. Save each company_profile using `save_document`
-2. Call `request_approval` with:
-   - Number of profiles completed
-   - Key findings across profiles
-   - Significant data gaps
-   - Readiness for Analyze stage
+When finished, present for approval:
+- Number of profiles completed
+- Key findings across profiles
+- Significant data gaps
+- Recommendation: proceed to Analyze or gather more data

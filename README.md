@@ -16,14 +16,26 @@ PRAXIS/
 │   └── IDEAS.md         # Research delivery
 │
 ├── skills/              # Stage-level skill definitions
-│   ├── SPARC.md         # Skills for SPARC agents
-│   └── IDEAS.md         # Skills for IDEAS agents
+│   ├── SPARC.md         # Skills for SPARC stages
+│   └── IDEAS.md         # Skills for IDEAS stages
 │
-├── architecture/        # Technical architecture
-│   └── Agents.md        # Agents, MCP servers, orchestration
+├── architecture/        # Execution patterns
+│   └── Execution.md     # How to run stages
 │
-└── implementation/      # Usage and examples
-    └── Examples.md      # Worked scenarios
+├── implementation/      # Usage and examples
+│   └── Examples.md      # Worked scenarios
+│
+└── .claude/skills/      # Individual stage skills (invoked via /command)
+    ├── signal/          # SPARC stages
+    ├── profile/
+    ├── analyze/
+    ├── rank/
+    ├── craft/
+    ├── identify/        # IDEAS stages
+    ├── develop/
+    ├── evaluate/
+    ├── articulate/
+    └── share/
 ```
 
 ## Methodologies

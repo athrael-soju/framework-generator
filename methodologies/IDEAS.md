@@ -261,8 +261,9 @@ Deliver outputs to relevant audiences.
 
 ## SPARC → IDEAS Handoff
 
-| SPARC Output | Becomes | IDEAS Input |
-|--------------|---------|-------------|
-| Prospect Analysis Report | → | Client Analysis Report |
-| Signed Agreement | → | Client Contract Agreement |
-| Outreach Brief | → | Initial hypothesis seeds |
+IDEAS receives inputs from a completed SPARC cycle:
+- Client Analysis Report (from Prospect Analysis)
+- Client Contract Agreement (signed)
+- Initial hypothesis seeds (from Outreach Brief)
+
+See [PRAXIS.md](../framework/PRAXIS.md#sparc--ideas-agreement-handoff) for the complete handoff checklist and required actions.

@@ -28,7 +28,6 @@ For each selected opportunity:
 **Literature Search**
 - Academic: Google Scholar, arXiv, ACM DL
 - Industry: Company blogs, technical reports, conference talks
-- Tool: `web_search`, `web_fetch`
 
 **Extract:**
 | Element | What to Capture |
@@ -157,15 +156,15 @@ For each approved hypothesis:
 | feasibility_scores | document | Scoring and risk assessment |
 | scope_definitions | document | Precise scope per hypothesis |
 
-## Tools Available
+## Decision Points
 
-| Tool | Purpose |
-|------|---------|
-| `web_search` | Literature search |
-| `web_fetch` | Retrieve papers/reports |
-| `save_document` | Persist outputs |
-| `get_document` | Retrieve agenda |
-| `list_documents` | Find related documents |
+| Point | Type | Options |
+|-------|------|---------|
+| Hypothesis framing | Clarification | Refine IF/THEN/BECAUSE structure |
+| Feasibility concerns | Decision | Proceed, adjust scope, return to Identify |
+| Data source access | Decision | Use available sources, seek alternatives, descope |
+| Methodology selection | Decision | Quantitative, qualitative, mixed methods |
+| Stage completion | Approval | Approve → Evaluate, Reject → retry, Edit → modify, Abort |
 
 ## Quality Criteria
 
@@ -177,10 +176,8 @@ For each approved hypothesis:
 
 ## Completion
 
-When finished:
-1. Save hypothesis_documents using `save_document`
-2. Call `request_approval` with:
-   - Number of hypotheses formalized
-   - Feasibility summary (proceed/modify/defer)
-   - Key risks identified
-   - Readiness for Evaluate stage
+When finished, present for approval:
+- Number of hypotheses formalized
+- Feasibility summary (proceed/modify/defer)
+- Key risks identified
+- Recommendation: proceed to Evaluate or refine hypotheses

@@ -233,16 +233,16 @@ Beyond stage-level loops, some conditions route between frameworks:
 
 ---
 
-## Agent Architecture Integration
+## Execution
 
-The PRAXIS framework maps to agents and skills:
+Run PRAXIS stages via skill commands:
 
-| Methodology | Agents | Shared Skills |
-|-------------|--------|---------------|
-| SPARC | Signal, Profile, Analyze, Rank, Craft | web_search, web_fetch, save_document, get_document |
-| IDEAS | Identify, Develop, Evaluate, Articulate, Share | web_search, web_fetch, save_document, get_document |
+| Methodology | Commands |
+|-------------|----------|
+| SPARC | `/signal` → `/profile` → `/analyze` → `/rank` → `/craft` |
+| IDEAS | `/identify` → `/develop` → `/evaluate` → `/articulate` → `/share` |
 
-See `architecture/Agents.md` for full skill catalog and orchestration patterns.
+Each stage requires approval before proceeding to the next. See `architecture/Execution.md` for detailed patterns.
 
 ---
 
@@ -272,7 +272,8 @@ See `architecture/Agents.md` for full skill catalog and orchestration patterns.
 | `framework/PRAXIS.md` | This document - overview and integration |
 | `methodologies/SPARC.md` | Client acquisition methodology |
 | `methodologies/IDEAS.md` | Research delivery methodology |
-| `architecture/Agents.md` | Agent definitions, MCP servers, orchestration |
-| `skills/SPARC.md` | Stage-level skill definitions for SPARC agents |
-| `skills/IDEAS.md` | Stage-level skill definitions for IDEAS agents |
+| `architecture/Execution.md` | How to run stages via skill commands |
+| `skills/SPARC.md` | Stage-level skill definitions for SPARC |
+| `skills/IDEAS.md` | Stage-level skill definitions for IDEAS |
 | `implementation/Examples.md` | Usage examples and worked scenarios |
+| `CLAUDE.md` | Project instructions for Claude Code |

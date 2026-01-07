@@ -1,6 +1,6 @@
 # SPARC Skills
 
-Stage-level skill definitions for SPARC agents. Each skill defines the complete methodology for one stage of the SPARC methodology.
+Stage-level skill definitions for SPARC. Each skill defines the complete methodology for one stage of the SPARC methodology.
 
 ---
 
@@ -16,23 +16,22 @@ Stage-level skill definitions for SPARC agents. Each skill defines the complete 
 ```
 
 Each skill is a self-contained instruction set that defines:
-- **Inputs**: What the agent receives from prior stages
+- **Inputs**: What the stage receives from prior stages
 - **Process**: Step-by-step methodology with templates
-- **Outputs**: What the agent produces
-- **Tools**: MCP tools available for execution
+- **Outputs**: What the stage produces
 - **Quality Criteria**: Checklist before stage completion
 
 ---
 
 ## Skills Overview
 
-| Skill | Stage | Purpose |
-|-------|-------|---------|
-| `signal` | Signal | Detect and score prospect signals |
-| `profile` | Profile | Build comprehensive company profiles |
-| `analyze` | Analyze | Assess competitive position and opportunities |
-| `rank` | Rank | Score and prioritize prospects |
-| `craft` | Craft | Create personalized outreach |
+| Skill | Command | Purpose |
+|-------|---------|---------|
+| `signal` | `/signal` | Detect and score prospect signals |
+| `profile` | `/profile` | Build comprehensive company profiles |
+| `analyze` | `/analyze` | Assess competitive position and opportunities |
+| `rank` | `/rank` | Score and prioritize prospects |
+| `craft` | `/craft` | Create personalized outreach |
 
 ---
 
@@ -55,8 +54,6 @@ Each skill is a self-contained instruction set that defines:
 | Product | Medium | New API launch, platform release |
 | Content | Low-Medium | Blog posts about relevant topics |
 | News | Variable | Depends on event type |
-
-**Tools:** `web_search`, `company_lookup`, `job_search`, `save_document`, `list_documents`
 
 **Outputs:** signal_log with company identifiers and scores
 
@@ -85,8 +82,6 @@ Each skill is a self-contained instruction set that defines:
 - Technical footprint (GitHub stats, languages, activity)
 - Market position (vertical, competitors, positioning)
 - Recent activity (news, hiring, product launches)
-
-**Tools:** `web_search`, `web_fetch`, `company_lookup`, `github_profile`, `save_document`, `get_document`
 
 **Outputs:** company_profile with gap annotations
 
@@ -120,8 +115,6 @@ Each skill is a self-contained instruction set that defines:
 - Global coverage
 - AI/ML offerings
 - Developer experience
-
-**Tools:** `web_search`, `web_fetch`, `compare_competitors`, `save_document`, `get_document`, `list_documents`
 
 **Outputs:** prospect_analysis_report, competitive_matrix, opportunities
 
@@ -162,7 +155,7 @@ Each skill is a self-contained instruction set that defines:
 - 2.0-2.9 → Nurture
 - <2.0 → Pass
 
-**Tools:** `score_prospect`, `save_document`, `get_document`, `list_documents`
+See [SPARC.md](../methodologies/SPARC.md#rank) for the detailed 1/3/5 scoring rubric.
 
 **Outputs:** qualification_score with breakdown and recommendation
 
@@ -195,9 +188,7 @@ Each skill is a self-contained instruction set that defines:
 3. Bridge — Connect gap to your capability
 4. Ask — Low-commitment next step
 
-**Tools:** `web_search`, `web_fetch`, `save_document`, `get_document`, `list_documents`
-
-**Outputs:** decision_maker_profile, outreach_message, variants, response_brief
+**Outputs:** decision_maker_profile, outreach_message, variants, talking_points, outreach_brief
 
 **Decision Points:**
 | Point | Type | Options |
@@ -211,92 +202,18 @@ Each skill is a self-contained instruction set that defines:
 
 ---
 
-## MCP Tool Reference
+## Skill Execution
 
-Tools available to SPARC agents via MCP servers:
+Run skills via command:
 
-### research-mcp
-
-| Tool | Purpose |
-|------|---------|
-| `web_search` | Search queries with filters |
-| `web_fetch` | Fetch and parse URL content |
-| `company_lookup` | Firmographic data retrieval |
-| `job_search` | Find job postings |
-| `github_profile` | GitHub org analysis |
-
-### analysis-mcp
-
-| Tool | Purpose |
-|------|---------|
-| `score_prospect` | Apply qualification scorecard |
-| `compare_competitors` | Generate gap matrix |
-
-### storage-mcp
-
-| Tool | Purpose |
-|------|---------|
-| `save_document` | Persist artifacts |
-| `get_document` | Retrieve artifacts by ID |
-| `list_documents` | Query artifacts by type |
-| `update_pipeline` | Update pipeline state |
-
-### notify-mcp
-
-| Tool | Purpose |
-|------|---------|
-| `request_approval` | Human approval gate |
-| `send_notification` | Alert human |
-
----
-
-## Skill → Agent Mapping
-
-One skill per agent. The skill defines what to do; the agent executes it.
-
-| Agent | Skill | MCP Servers |
-|-------|-------|-------------|
-| Signal | `signal` | research-mcp, storage-mcp |
-| Profile | `profile` | research-mcp, storage-mcp |
-| Analyze | `analyze` | research-mcp, analysis-mcp, storage-mcp |
-| Rank | `rank` | analysis-mcp, storage-mcp |
-| Craft | `craft` | research-mcp, storage-mcp |
-
----
-
-## Agent Loading
-
-Each agent loads its stage skill at initialization:
-
-```python
-def load_skill(stage: str) -> str:
-    """Load skill definition for a stage."""
-    path = f".claude/skills/{stage}/SKILL.md"
-    return read_file(path)
-
-def build_agent_prompt(stage: str, framework: str) -> str:
-    """Build complete agent system prompt."""
-    return f"""
-You are the {stage.title()} Agent for {framework.upper()}.
-
-{load_skill(stage)}
-
-When finished, call request_approval with your outputs summary.
-"""
-
-# Example: Signal Agent
-signal_agent = Agent(
-    model="claude-sonnet-4-5-20250514",
-    system_prompt=build_agent_prompt("signal", "sparc"),
-    mcp_servers=["research-mcp", "storage-mcp"],
-    allowed_tools=[
-        "mcp__research-mcp__web_search",
-        "mcp__research-mcp__company_lookup",
-        "mcp__research-mcp__job_search",
-        "mcp__storage-mcp__save_document",
-        "mcp__storage-mcp__list_documents"
-    ]
-)
+```
+/signal          # Start with signal detection
+/profile         # After signals identified
+/analyze         # After profiles complete
+/rank            # After analysis complete
+/craft           # After ranking complete
 ```
 
-See [Agents.md](../architecture/Agents.md) for complete agent definitions.
+Each skill guides you through its methodology, requests inputs, presents decision points, and produces outputs for the next stage.
+
+See [Execution.md](../architecture/Execution.md) for detailed execution patterns.

@@ -64,8 +64,6 @@ weighted_total = (
 # = 4.05
 ```
 
-Tool: `score_prospect`
-
 ### 3. Action Assignment
 
 Based on weighted total:
@@ -118,14 +116,15 @@ Produce qualification report:
 | priority_ranking | list | Ordered list for outreach |
 | action_assignments | document | Recommendation per prospect |
 
-## Tools Available
+## Decision Points
 
-| Tool | Purpose |
-|------|---------|
-| `score_prospect` | Calculate weighted scores |
-| `save_document` | Persist rankings |
-| `get_document` | Retrieve analyses |
-| `list_documents` | Find related documents |
+| Point | Type | Options |
+|-------|------|---------|
+| Threshold boundary (score near cutoff) | Decision | Nurture, Qualify anyway, Pass |
+| Criterion weighting adjustment | Clarification | Override default weights for this prospect |
+| Pipeline capacity | Decision | Proceed, defer to next cycle, fast-track |
+| Scoring disagreement | Clarification | Re-evaluate criterion, accept with note |
+| Stage completion | Approval | Approve → Craft, Reject → retry, Edit → modify, Abort |
 
 ## Quality Criteria
 
@@ -137,9 +136,8 @@ Produce qualification report:
 
 ## Completion
 
-When finished:
-1. Save qualification_scores using `save_document`
-2. Call `request_approval` with:
-   - Distribution across tiers
-   - Top prospects for Craft stage
-   - Any borderline cases for discussion
+When finished, present for approval:
+- Distribution across tiers
+- Top prospects for Craft stage
+- Any borderline cases for discussion
+- Recommendation: proceed to Craft or adjust rankings

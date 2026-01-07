@@ -178,13 +178,16 @@ Create final deliverables per audience:
 | roadmap | document | Phased implementation plan |
 | client_deliverable | document | Final deliverable(s) |
 
-## Tools Available
+## Decision Points
 
-| Tool | Purpose |
-|------|---------|
-| `save_document` | Persist deliverables |
-| `get_document` | Retrieve findings |
-| `list_documents` | Find related documents |
+| Point | Type | Options |
+|-------|------|---------|
+| Audience prioritization | Multi-select | Which stakeholders to target |
+| Deliverable format | Decision | Report, presentation, workshop, documentation |
+| Recommendation strength | Clarification | Confirm claim strength matches evidence |
+| Novelty framing | Clarification | How to position contribution |
+| Limitation disclosure | Decision | Which limitations to emphasize |
+| Stage completion | Approval | Approve → Share, Reject → retry, Edit → modify, Abort |
 
 ## Quality Criteria
 
@@ -196,10 +199,8 @@ Create final deliverables per audience:
 
 ## Completion
 
-When finished:
-1. Save client_deliverable using `save_document`
-2. Call `request_approval` with:
-   - Deliverables ready for review
-   - Audience coverage
-   - Recommendation summary
-   - Readiness for Share stage
+When finished, present for approval:
+- Deliverables ready for review
+- Audience coverage
+- Recommendation summary
+- Next steps: proceed to Share or refine deliverables
