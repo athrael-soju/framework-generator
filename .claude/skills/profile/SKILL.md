@@ -15,6 +15,7 @@ Transform signal data into structured company profiles with enough depth to supp
 
 | Input | Source | Description |
 |-------|--------|-------------|
+| identity_profile | Identity stage | Your `ideal_client.characteristics` for comparison criteria |
 | signal_log | Signal stage | Companies to profile with initial signals |
 | profile_template | Configuration | Standard profile structure |
 | priority_tier | Signal stage | Which tier to profile (typically: hot) |
@@ -26,25 +27,23 @@ Transform signal data into structured company profiles with enough depth to supp
 For each company:
 
 **Basic Data**
-- Tool: `company_lookup`
 - Capture: Legal name, domain, founded, HQ location
 - Capture: Employee count, funding history, investors
 
 **Web Presence**
-- Tool: `web_fetch` on company about page
+- Review company about page
 - Capture: Mission, positioning, key products
 - Capture: Leadership team mentions
 
 ### 2. Technical Footprint
 
 **GitHub Analysis**
-- Tool: `github_profile`
 - Capture: Repo count, stars, contributors
 - Capture: Primary languages, activity level
 - Assess: Open source commitment, developer focus
 
 **Documentation Review**
-- Tool: `web_fetch` on docs site
+- Review docs site
 - Assess: Depth (API ref, guides, tutorials)
 - Assess: Freshness (last updated dates)
 - Assess: Quality (structure, examples)
@@ -53,14 +52,25 @@ For each company:
 
 **Community Presence**
 - Search for Discord, Slack, forum links
-- Tool: `web_search`, `web_fetch`
 - Assess: Community size and activity
 
 **SDK/Library Quality**
 - Review GitHub repos for official SDKs
 - Assess: Language coverage, maintenance
 
-### 4. Profile Synthesis
+### 4. Key People
+
+**Decision-Maker Identification**
+- Search for relevant titles: VP Engineering, Head of DevRel, CTO, CMO
+- Capture: Name, title, tenure, LinkedIn profile
+- Assess: Decision-making authority, budget control
+
+**Background Research**
+- Review LinkedIn profiles
+- Note: Previous companies, career trajectory
+- Note: Public content, speaking engagements
+
+### 5. Profile Synthesis
 
 Combine all data into structured profile:
 
@@ -80,6 +90,11 @@ Combine all data into structured profile:
 - SDK coverage
 - Developer experience score (1-5)
 
+## Key People
+- Decision-makers identified
+- Roles and tenure
+- Background notes
+
 ## Recent Activity
 - Key signals from Signal stage
 - News and announcements
@@ -98,31 +113,41 @@ Combine all data into structured profile:
 | profile_gaps | list | Missing data requiring follow-up |
 | profile_summary | document | Overview of all profiled companies |
 
-## Tools Available
+## Decision Points
 
-| Tool | Purpose |
-|------|---------|
-| `web_search` | Find additional company info |
-| `web_fetch` | Retrieve page content |
-| `company_lookup` | Get firmographic data |
-| `github_profile` | Analyze GitHub presence |
-| `save_document` | Persist profiles |
-| `get_document` | Retrieve signal log |
+All menus must include an Other option for custom input.
+
+| Point | Type | Options |
+|-------|------|---------|
+| Incomplete data | Decision | Continue with gaps noted, return to Signal, request manual input |
+| Conflicting information | Clarification | Which source to trust, how to reconcile |
+| Key person identification | Clarification | Confirm decision-maker role and priority |
+| Data staleness | Decision | Accept older data, flag for refresh, seek current source |
+| Stage completion | Approval | Approve → Analyze, Reject → retry, Edit → modify, Abort |
 
 ## Quality Criteria
 
 - [ ] All template fields populated or marked as gaps
 - [ ] Technical footprint assessed
 - [ ] Developer ecosystem evaluated
+- [ ] Key decision-makers identified
 - [ ] Sources documented for key claims
 - [ ] Cross-referenced for consistency
 
 ## Completion
 
-When finished:
-1. Save each company_profile using `save_document`
-2. Call `request_approval` with:
-   - Number of profiles completed
-   - Key findings across profiles
-   - Significant data gaps
-   - Readiness for Analyze stage
+When finished, present for approval:
+- Number of profiles completed
+- Key findings across profiles
+- Significant data gaps
+- Recommendation: proceed to Analyze or gather more data
+
+## Artifact Persistence
+
+On approval, save outputs to run directory:
+1. Create stage folder: `artifacts/2_profile_YYYY-MM-DD/`
+2. Save company profile to `artifacts/2_profile_YYYY-MM-DD/company_profile.yaml`
+3. Log decision to `decisions.md` with rationale
+4. Update `run.yaml` with `current_stage: profile`
+
+See [Execution.md](../../../architecture/Execution.md#artifact-persistence) for structure details.

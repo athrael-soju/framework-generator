@@ -15,8 +15,8 @@ Compare profiled prospects against their competitors to identify gaps where your
 
 | Input | Source | Description |
 |-------|--------|-------------|
+| identity_profile | Identity stage | Your `positioning` and `expertise` for finding angles |
 | company_profiles | Profile stage | Structured profiles to analyze |
-| positioning | Configuration | Your service positioning statement |
 | analysis_dimensions | Configuration | What to compare (docs, community, DX, etc.) |
 
 ## Process
@@ -26,8 +26,7 @@ Compare profiled prospects against their competitors to identify gaps where your
 For each prospect:
 
 **Direct Competitors**
-- Tool: `web_search` "[company] competitors"
-- Tool: `web_search` "[company] alternatives"
+- Search "[company] competitors" and "[company] alternatives"
 - Check G2, Gartner, industry reports
 
 **Competitive Landscape**
@@ -50,14 +49,13 @@ Build comparison matrix:
 
 **Scoring**
 - Score each company 1-5 per dimension
-- Tool: `compare_competitors`
 - Calculate gaps: prospect score - competitor average
 
 ### 3. Sentiment Analysis
 
 **Customer Perception**
-- Tool: `web_search` for G2 reviews, Reddit, HN mentions
-- Tool: `web_fetch` to read review content
+- Search for G2 reviews, Reddit, HN mentions
+- Read review content
 - Categorize: Praise themes, complaint themes
 - Extract representative quotes
 
@@ -67,7 +65,6 @@ Build comparison matrix:
 - Documentation: Depth, structure, freshness
 - Blog: Technical content, frequency
 - Tutorials: Quality, coverage
-- Tool: `web_fetch` on key pages
 
 ### 5. Opportunity Synthesis
 
@@ -107,16 +104,17 @@ Map findings to your capabilities:
 | competitor_matrix | document | Comparison scores |
 | opportunity_summary | document | Prioritized opportunities |
 
-## Tools Available
+## Decision Points
 
-| Tool | Purpose |
-|------|---------|
-| `web_search` | Find competitors, reviews |
-| `web_fetch` | Read content for assessment |
-| `compare_competitors` | Generate gap matrix |
-| `save_document` | Persist analysis |
-| `get_document` | Retrieve profiles |
-| `list_documents` | Find related documents |
+All menus must include an Other option for custom input.
+
+| Point | Type | Options |
+|-------|------|---------|
+| Competitor set selection | Clarification | Which competitors to include in analysis |
+| Problem-solution mismatch | Decision | Pass (not a fit), Nurture (revisit later), adjust positioning |
+| Opportunity prioritization | Decision | Rank order of identified opportunities |
+| Insufficient competitor data | Decision | Proceed with gaps, expand search, reduce competitor count |
+| Stage completion | Approval | Approve → Rank, Reject → retry, Edit → modify, Abort |
 
 ## Quality Criteria
 
@@ -128,9 +126,18 @@ Map findings to your capabilities:
 
 ## Completion
 
-When finished:
-1. Save prospect_analysis for each company using `save_document`
-2. Call `request_approval` with:
-   - Key competitive insights
-   - Top opportunities identified
-   - Recommended prospects for Rank stage
+When finished, present for approval:
+- Key competitive insights
+- Top opportunities identified
+- Recommended prospects for Rank stage
+
+## Artifact Persistence
+
+On approval, save outputs to run directory:
+1. Create stage folder: `artifacts/3_analyze_YYYY-MM-DD/`
+2. Save prospect analysis to `artifacts/3_analyze_YYYY-MM-DD/prospect_analysis.yaml`
+3. Save competitor matrix to `artifacts/3_analyze_YYYY-MM-DD/competitor_matrix.yaml`
+4. Log decision to `decisions.md` with rationale
+5. Update `run.yaml` with `current_stage: analyze`
+
+See [Execution.md](../../../architecture/Execution.md#artifact-persistence) for structure details.

@@ -15,6 +15,7 @@ Research decision-makers and craft personalized outreach messages that reference
 
 | Input | Source | Description |
 |-------|--------|-------------|
+| identity_profile | Identity stage | Your `positioning` and `services` for value proposition |
 | priority_ranking | Rank stage | Prospects to craft outreach for |
 | prospect_analyses | Analyze stage | Context for personalization |
 | outreach_templates | Configuration | Message templates by channel |
@@ -28,7 +29,7 @@ For each prioritized prospect:
 
 **Find the Right Person**
 - Target: VP Engineering, Head of DevRel, CTO
-- Tool: `web_search` "[company] [title] linkedin"
+- Search "[company] [title] linkedin"
 - Identify 1-2 contacts per company
 
 ### 2. Decision-Maker Research
@@ -50,8 +51,6 @@ Build profile for each contact:
 - Mutual connections
 - Shared communities
 - Common background (schools, companies)
-
-Tool: `web_search`, `web_fetch`
 
 ### 3. Message Drafting
 
@@ -130,14 +129,17 @@ Prepare for responses:
 - No clear ask
 - Obviously templated
 
-## Tools Available
+## Decision Points
 
-| Tool | Purpose |
-|------|---------|
-| `web_search` | Research decision-makers |
-| `web_fetch` | Read their content |
-| `save_document` | Persist outreach materials |
-| `get_document` | Retrieve analyses and rankings |
+All menus must include an Other option for custom input.
+
+| Point | Type | Options |
+|-------|------|---------|
+| Decision-maker selection | Clarification | Which contact to target first |
+| Channel selection | Decision | Email, LinkedIn, warm intro, event |
+| Message variant selection | Decision | Choose from generated variants |
+| Tone/positioning | Clarification | Formal/casual, technical/business focus |
+| Stage completion | Approval | Approve → Send, Reject → retry, Edit → modify, Abort |
 
 ## Quality Criteria
 
@@ -149,10 +151,20 @@ Prepare for responses:
 
 ## Completion
 
-When finished:
-1. Save outreach_brief using `save_document`
-2. Call `request_approval` with:
-   - Outreach ready for X prospects
-   - Sample message for review
-   - Recommended send timing
-   - Handoff readiness to IDEAS (if signed)
+When finished, present for approval:
+- Outreach ready for X prospects
+- Sample message for review
+- Recommended send timing
+- Next steps: send outreach, await response, transition to IDEAS if signed
+
+## Artifact Persistence
+
+On approval, save outputs to run directory:
+1. Create stage folder: `artifacts/5_craft_YYYY-MM-DD/`
+2. Save outreach message to `artifacts/5_craft_YYYY-MM-DD/outreach_message.md`
+3. Save outreach brief to `artifacts/5_craft_YYYY-MM-DD/outreach_brief.yaml`
+4. Log decision to `decisions.md` with rationale
+5. Update `run.yaml` with `current_stage: craft`
+6. On signed agreement, set `outcome: signed_agreement` and initiate IDEAS run
+
+See [Execution.md](../../../architecture/Execution.md#artifact-persistence) for structure details.

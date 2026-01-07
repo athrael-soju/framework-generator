@@ -15,6 +15,7 @@ Execute delivery of client deliverables, collect feedback, transfer knowledge, a
 
 | Input | Source | Description |
 |-------|--------|-------------|
+| identity_profile | Identity stage | Your `positioning` for professional framing |
 | client_deliverable | Articulate stage | Final deliverables |
 | audience_profiles | Articulate stage | Who receives what |
 | contract_summary | Identify stage | Delivery requirements, publication rights |
@@ -61,8 +62,6 @@ Execute delivery per channel:
 }
 ```
 
-Tool: `send_notification`
-
 ### 3. Feedback Collection
 
 Gather and process feedback:
@@ -78,7 +77,7 @@ Gather and process feedback:
 
 **Feedback Processing:**
 ```
-## Feedback Summary
+## Feedback Log
 
 ### Received
 | Source | Category | Content | Action |
@@ -97,7 +96,7 @@ Gather and process feedback:
 
 Ensure client can sustain and build on work:
 
-**Handoff Package:**
+**Handoff Materials:**
 - Executive summary
 - Technical documentation
 - How-to guides for ongoing use
@@ -169,20 +168,21 @@ Wrap up and set up future value:
 
 | Output | Type | Description |
 |--------|------|-------------|
-| delivery_log | document | What was delivered, when, to whom |
-| feedback_summary | document | Collected feedback and responses |
-| handoff_package | document | Materials for ongoing use |
+| delivery_log | document | What was delivered, when, to whom, including feedback_log, handoff_materials, and engagement_closure |
 | publication (optional) | document | Published paper/article |
-| engagement_closure | document | Final status and next steps |
 
-## Tools Available
+## Decision Points
 
-| Tool | Purpose |
-|------|---------|
-| `send_notification` | Notify stakeholders |
-| `save_document` | Persist outputs |
-| `get_document` | Retrieve deliverables |
-| `list_documents` | Find related documents |
+All menus must include an Other option for custom input.
+
+| Point | Type | Options |
+|-------|------|---------|
+| Channel selection | Multi-select | Executive brief, technical report, workshop, documentation |
+| Publication decision | Decision | Pursue publication, client-only, defer decision |
+| Venue selection | Clarification | Which publication venue to target |
+| Feedback handling | Decision | Incorporate feedback, note for future, escalate |
+| Knowledge transfer scope | Decision | Full handoff, partial, ongoing support |
+| Stage completion | Approval | Approve → Complete, Reject → retry, Edit → modify, Abort |
 
 ## Quality Criteria
 
@@ -194,11 +194,21 @@ Wrap up and set up future value:
 
 ## Completion
 
-When finished:
-1. Save engagement_closure using `save_document`
-2. Call `request_approval` with:
-   - Delivery status summary
-   - Feedback highlights
-   - Knowledge transfer status
-   - Publication status (if applicable)
-   - Engagement closure confirmation
+When finished, present for approval:
+- Delivery status summary
+- Feedback highlights
+- Knowledge transfer status
+- Publication status (if applicable)
+- Engagement closure confirmation
+- Referral opportunity (if appropriate)
+
+## Artifact Persistence
+
+On approval, save outputs to run directory:
+1. Create stage folder: `artifacts/5_share_YYYY-MM-DD/`
+2. Save delivery log to `artifacts/5_share_YYYY-MM-DD/delivery_log.yaml`
+3. Log decision to `decisions.md` with rationale
+4. Update `run.yaml` with `current_stage: share`, `status: completed`, `outcome: delivered`
+5. For referrals, create new SPARC run entries in `runs/`
+
+See [Execution.md](../../../architecture/Execution.md#artifact-persistence) for structure details.

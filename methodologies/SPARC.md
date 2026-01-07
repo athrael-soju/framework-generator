@@ -22,7 +22,7 @@ flowchart TB
 
 ## Inputs
 
-SPARC assumes the following are defined:
+SPARC requires an **Identity Profile** (run `/identity` first) which provides:
 
 - **Positioning Statement** — Who you help, with what problem, and your differentiation
 - **Ideal Client Profile (ICP)** — Company characteristics that indicate fit
@@ -55,9 +55,9 @@ Detect companies exhibiting buying signals.
 
 | Tier | Criteria | Action |
 |------|----------|--------|
-| Hot | Funding + AI hiring + public gap acknowledgment | Immediate Profile |
-| Warm | Funding OR AI hiring + relevant vertical | Profile within 1 week |
-| Watch | Single weak signal | Add to monitoring list |
+| Hot | Multiple strong signals, recent timing (e.g., funding + hiring in last 14 days) | Immediate Profile |
+| Warm | Single strong or multiple moderate signals (e.g., Series B, or 3+ relevant job posts) | Profile within 1 week |
+| Watch | Weak signals, early indicators (e.g., mentioned AI strategy, 1 relevant hire) | Add to monitoring list |
 
 **Output:** Signal Log — timestamped records with company, signal type, source, link, score
 
@@ -177,6 +177,60 @@ Develop tailored outreach based on analysis.
 | Craft | Response but no fit | Pass or refer out |
 | Craft | Response + fit | Discovery → Proposal → IDEAS |
 
+For cross-framework feedback loops (e.g., scope expansion routing back to Craft, referrals routing from IDEAS), see [PRAXIS.md](../framework/PRAXIS.md#cross-framework-feedback-loops).
+
+---
+
+## Nurture and Pass States
+
+### Pass
+
+Prospects scored <2.0 or identified as not a fit exit the active pipeline.
+
+**Pass Actions:**
+- Document reason for exclusion
+- Capture learnings (refine ICP, positioning)
+- No further outreach unless they re-signal
+
+**Pass Record:**
+```yaml
+company: [Name]
+passed_date: YYYY-MM-DD
+stage_exited: [analyze | rank | craft]
+reason: [Not in ICP | No budget indicators | Problem mismatch | Rejected outreach]
+learnings: [Optional insight for ICP refinement]
+```
+
+### Nurture
+
+Prospects scored 2.0–2.9 or with timing issues enter a monitoring state.
+
+**Nurture Actions:**
+- Add to watch list for re-engagement triggers
+- Continue content engagement (not direct outreach)
+- Periodic check-in review (quarterly)
+
+**Nurture Record:**
+```yaml
+company: [Name]
+entered_nurture: YYYY-MM-DD
+reason: [Timing not right | Budget uncertain | Access blocked | Partial fit]
+re-engagement_triggers:
+  - [Trigger 1: e.g., "New funding round"]
+  - [Trigger 2: e.g., "DevRel hiring resumes"]
+check_in: YYYY-MM-DD  # Quarterly review
+```
+
+**Re-engagement:**
+
+When a nurture trigger fires:
+1. Create new Signal entry with "Nurture re-engagement" source
+2. Re-run Profile (update stale data)
+3. Re-score through Rank
+4. If score improves to 3.0+, proceed to Craft
+
+See [Examples.md](../implementation/Examples.md#feedback-loop-example) for a worked example.
+
 ---
 
 ## Stage Outputs Summary
@@ -223,10 +277,9 @@ Develop tailored outreach based on analysis.
 
 ## SPARC → IDEAS Handoff
 
-When Craft produces a signed agreement:
+When Craft produces a signed agreement, artifacts transfer to IDEAS for research delivery. Key transfers:
+- Prospect Analysis Report → Client Analysis Report
+- Signed Agreement → Client Contract Agreement
+- Outreach Brief → Initial hypothesis seeds
 
-| SPARC Output | Becomes | IDEAS Input |
-|--------------|---------|-------------|
-| Prospect Analysis Report | → | Client Analysis Report |
-| Signed Agreement | → | Client Contract Agreement |
-| Outreach Brief | → | Initial hypothesis seeds |
+See [PRAXIS.md](../framework/PRAXIS.md#sparc--ideas-agreement-handoff) for the complete handoff checklist.

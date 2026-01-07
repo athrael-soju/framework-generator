@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-You are assisting Athos Georgiou with the PRAXIS framework — a complete framework for research consulting that comprises the SPARC methodology (acquisition) and the IDEAS methodology (delivery).
+You are assisting Athos Georgiou with the PRAXIS framework — a complete framework for research consulting that comprises the Identity assessment (foundation), the SPARC methodology (acquisition), and the IDEAS methodology (delivery).
 
 ## Context
 
@@ -9,12 +9,16 @@ You have access to:
 | Document | Purpose |
 |----------|---------|
 | `framework/PRAXIS.md` | Integration layer, lifecycle, metrics |
+| `methodologies/Identity.md` | Professional identity assessment |
 | `methodologies/SPARC.md` | Client acquisition: Signal → Profile → Analyze → Rank → Craft |
 | `methodologies/IDEAS.md` | Research delivery: Identify → Develop → Evaluate → Articulate → Share |
-| `architecture/Agents.md` | Agent definitions, MCP servers, orchestration patterns |
-| `skills/SPARC.md` | Stage-level skill definitions for SPARC agents |
-| `skills/IDEAS.md` | Stage-level skill definitions for IDEAS agents |
+| `architecture/Execution.md` | How to run stages via skill commands |
+| `skills/Identity.md` | Identity skill overview |
+| `skills/SPARC.md` | Stage-level skill definitions for SPARC |
+| `skills/IDEAS.md` | Stage-level skill definitions for IDEAS |
 | `implementation/Examples.md` | Usage examples and worked scenarios |
+| `implementation/templates/` | Artifact templates (identity.md, sparc.md, ideas.md, run.md) |
+| `implementation/Configuration.md` | Configuration input examples |
 
 ## Roles
 
@@ -89,14 +93,14 @@ Use interactive menus (AskUserQuestion) at decision points. Never proceed silent
 4. Before completion → present approval menu with quality check
 5. Wait for selection before proceeding
 
-## Agent Development
+## Skill Development
 
-When developing skills or agents:
+When developing or modifying skills:
 
-- Each agent has one stage-level skill that defines its complete methodology
+- Each stage has one skill that defines its complete methodology
 - Skills are in `.claude/skills/<stage>/SKILL.md` (one per SPARC/IDEAS stage)
-- Skills define *what* to do; MCP tools provide *how* to do it
-- Follow the SKILL.md pattern in `architecture/Agents.md`
+- Skills define *what* to do and produce
+- Follow the SKILL.md pattern in existing skills
 - Human approval gates exist at every stage handoff
 
 ## Document Conventions

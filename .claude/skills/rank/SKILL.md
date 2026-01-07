@@ -15,6 +15,7 @@ Apply systematic qualification scoring to analyzed prospects. Determine priority
 
 | Input | Source | Description |
 |-------|--------|-------------|
+| identity_profile | Identity stage | Your `ideal_client` and `constraints` for scoring weights |
 | prospect_analyses | Analyze stage | Analysis reports to score |
 | scoring_criteria | Configuration | Weighted qualification criteria |
 | thresholds | Configuration | Score-to-action thresholds |
@@ -40,6 +41,16 @@ Apply scoring criteria to each prospect:
 - 2: Weak fit, concerns present
 - 1: Poor fit, significant blockers
 
+**Detailed Scoring Rubric:**
+
+| Criterion | 1 (Poor) | 3 (Moderate) | 5 (Strong) |
+|-----------|----------|--------------|------------|
+| Budget Indicators | Pre-seed, <20 emp | Series A, 50-200 emp | Series B+, >200 emp |
+| Problem Fit | Tangential | Adjacent | Direct match |
+| Timing | No urgency | General interest | Active signals |
+| Access | No path | Mutual connections | Direct/warm intro |
+| Strategic Value | One-off | Ongoing potential | Ongoing + referrals |
+
 ### 2. Score Calculation
 
 For each prospect:
@@ -63,8 +74,6 @@ weighted_total = (
 )
 # = 4.05
 ```
-
-Tool: `score_prospect`
 
 ### 3. Action Assignment
 
@@ -110,22 +119,42 @@ Produce qualification report:
 [Reasons for exclusion]
 ```
 
+### 6. Nurture and Pass Processing
+
+**Pass Actions (Score <2.0):**
+- Document reason for exclusion
+- Capture learnings (refine ICP, positioning)
+- No further outreach unless they re-signal
+
+**Nurture Actions (Score 2.0-2.9):**
+- Add to watch list for re-engagement triggers
+- Continue content engagement (not direct outreach)
+- Set quarterly check-in review date
+
+**Re-engagement Triggers:**
+When a nurture trigger fires:
+1. Create new Signal entry with "Nurture re-engagement" source
+2. Re-run Profile (update stale data)
+3. Re-score through Rank
+4. If score improves to 3.0+, proceed to Craft
+
 ## Outputs
 
 | Output | Type | Description |
 |--------|------|-------------|
-| qualification_scores | document | Detailed scoring per prospect |
-| priority_ranking | list | Ordered list for outreach |
-| action_assignments | document | Recommendation per prospect |
+| qualification_score | document | Detailed scoring per prospect, including priority ranking and action assignments |
 
-## Tools Available
+## Decision Points
 
-| Tool | Purpose |
-|------|---------|
-| `score_prospect` | Calculate weighted scores |
-| `save_document` | Persist rankings |
-| `get_document` | Retrieve analyses |
-| `list_documents` | Find related documents |
+All menus must include an Other option for custom input.
+
+| Point | Type | Options |
+|-------|------|---------|
+| Threshold boundary (score near cutoff) | Decision | Nurture, Qualify anyway, Pass |
+| Criterion weighting adjustment | Clarification | Override default weights for this prospect |
+| Pipeline capacity | Decision | Proceed, defer to next cycle, fast-track |
+| Scoring disagreement | Clarification | Re-evaluate criterion, accept with note |
+| Stage completion | Approval | Approve → Craft, Reject → retry, Edit → modify, Abort |
 
 ## Quality Criteria
 
@@ -137,9 +166,19 @@ Produce qualification report:
 
 ## Completion
 
-When finished:
-1. Save qualification_scores using `save_document`
-2. Call `request_approval` with:
-   - Distribution across tiers
-   - Top prospects for Craft stage
-   - Any borderline cases for discussion
+When finished, present for approval:
+- Distribution across tiers
+- Top prospects for Craft stage
+- Any borderline cases for discussion
+- Recommendation: proceed to Craft or adjust rankings
+
+## Artifact Persistence
+
+On approval, save outputs to run directory:
+1. Create stage folder: `artifacts/4_rank_YYYY-MM-DD/`
+2. Save qualification score to `artifacts/4_rank_YYYY-MM-DD/qualification_score.yaml`
+3. Log decision to `decisions.md` with rationale
+4. Update `run.yaml` with `current_stage: rank`
+5. For nurture/pass outcomes, copy record to `nurture/` or `passed/`
+
+See [Execution.md](../../../architecture/Execution.md#artifact-persistence) for structure details.

@@ -27,6 +27,7 @@ IDEAS assumes the following are provided:
 
 - **Client Contract Agreement** — Scope of work, deliverables, engagement boundaries, timeline
 - **Client Analysis Report** — Deep-dive analysis identifying areas where you can provide value
+- **Outreach Brief** - Hypothesis seeds and engagement context from [SPARC Craft](SPARC.md#craft)
 
 ---
 
@@ -52,7 +53,7 @@ Surface research opportunities from client context.
 | Which gaps align with your expertise and scope? | Filter to tractable work |
 | What creates most value within timeline? | Prioritize ruthlessly |
 
-**Output:** Research Opportunities Document — prioritized list with rationale, initial hypotheses
+**Output:** Research Agenda — prioritized list with rationale, initial hypotheses
 
 ---
 
@@ -192,7 +193,19 @@ Deliver outputs to relevant audiences.
 | Implementation questions | Detailed guidance, follow-on engagement |
 | New directions | Log for future, assess against scope |
 
-**Output:** Delivery Confirmation + Feedback Log + Follow-up Actions
+**Publication Process (when applicable):**
+
+| Step | Activity | Timeline |
+|------|----------|----------|
+| 1 | Client review of draft | Per contract (typically 30 days) |
+| 2 | Revisions and redactions | 1-2 weeks |
+| 3 | Venue submission | Per venue deadlines |
+| 4 | Peer review response | As required |
+| 5 | Dissemination | Post-acceptance |
+
+Publication requires contract permission. See [Examples.md](../implementation/Examples.md#research-publication-example) for a worked example.
+
+**Output:** Delivery Log (includes feedback log, handoff materials, and engagement closure)
 
 ---
 
@@ -210,17 +223,19 @@ Deliver outputs to relevant audiences.
 | Share | Client feedback | Articulate |
 | Any | Fundamental misalignment | Exit/Renegotiate |
 
+For cross-framework feedback loops (e.g., client not a fit routing to SPARC, market insights informing Signal), see [PRAXIS.md](../framework/PRAXIS.md#cross-framework-feedback-loops).
+
 ---
 
 ## Stage Outputs Summary
 
 | Stage | Output | Format |
 |-------|--------|--------|
-| Identify | Research Opportunities Document | Prioritized list |
+| Identify | Research Agenda | Prioritized list |
 | Develop | Hypothesis Document | Structured hypotheses |
 | Evaluate | Evaluation Report | Evidence + verdicts |
 | Articulate | Client Deliverable | Report/slides/prototype |
-| Share | Delivery Confirmation | Log + actions |
+| Share | Delivery Log | Log + actions |
 
 ---
 
@@ -261,8 +276,9 @@ Deliver outputs to relevant audiences.
 
 ## SPARC → IDEAS Handoff
 
-| SPARC Output | Becomes | IDEAS Input |
-|--------------|---------|-------------|
-| Prospect Analysis Report | → | Client Analysis Report |
-| Signed Agreement | → | Client Contract Agreement |
-| Outreach Brief | → | Initial hypothesis seeds |
+IDEAS receives inputs from a completed SPARC cycle:
+- Client Analysis Report (from Prospect Analysis)
+- Client Contract Agreement (signed)
+- Initial hypothesis seeds (from Outreach Brief)
+
+See [PRAXIS.md](../framework/PRAXIS.md#sparc--ideas-agreement-handoff) for the complete handoff checklist and required actions.

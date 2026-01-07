@@ -15,6 +15,7 @@ Identify companies exhibiting signals that suggest they may need your services. 
 
 | Input | Source | Description |
 |-------|--------|-------------|
+| identity_profile | Identity stage | Your `ideal_client.signals` and `ideal_client.characteristics` |
 | target_criteria | Configuration | Industry, size, geography filters |
 | signal_types | Configuration | What signals to look for |
 | lookback_days | Configuration | How far back to search (default: 30) |
@@ -25,25 +26,30 @@ Identify companies exhibiting signals that suggest they may need your services. 
 
 Search for each signal type:
 
+**Signal Type Weights:**
+| Type | Weight | Examples |
+|------|--------|----------|
+| Funding | High | Series A+, growth round |
+| Hiring | Medium-High | DevRel, API, Developer roles |
+| Product | Medium | New API launch, platform release |
+| Content | Low-Medium | Blog posts about relevant topics |
+| News | Variable | Depends on event type |
+
 **Funding Signals**
 - Search: "[industry] startup funding announcement"
 - Look for: Series A/B/C, growth rounds, strategic investment
-- Tool: `web_search`
 
 **Hiring Signals**
 - Search company job boards for relevant roles
 - Look for: DevRel, AI/ML, Platform, Documentation roles
-- Tool: `job_search`
 
 **News Signals**
 - Search: "[company] launch OR partnership OR expansion"
 - Look for: Product launches, partnerships, market expansion
-- Tool: `web_search`
 
 **Company Data**
 - Get firmographics for detected companies
 - Look for: Employee count, funding stage, location
-- Tool: `company_lookup`
 
 ### 2. Signal Scoring
 
@@ -72,20 +78,18 @@ Produce signal log with:
 
 | Output | Type | Description |
 |--------|------|-------------|
-| signal_log | document | All detected signals with metadata |
-| hot_prospects | list | Companies requiring immediate profiling |
-| warm_prospects | list | Companies to queue for profiling |
-| watch_list | list | Companies to monitor |
+| signal_log | document | All detected signals with metadata, including hot/warm/watch lists |
 
-## Tools Available
+## Decision Points
 
-| Tool | Purpose |
-|------|---------|
-| `web_search` | Search for funding, news, announcements |
-| `company_lookup` | Get firmographic data |
-| `job_search` | Find job postings |
-| `save_document` | Persist signal log |
-| `list_documents` | Check for existing signals |
+All menus must include an Other option for custom input.
+
+| Point | Type | Options |
+|-------|------|---------|
+| Multiple hot signals for same company | Clarification | Prioritize by type (funding/hiring/product) or weight equally |
+| Signal source conflict | Decision | Trust source A, trust source B, flag for manual verification |
+| Edge of lookback window | Decision | Include with caveat, exclude, extend search |
+| Stage completion | Approval | Approve → Profile, Reject → retry, Edit → modify, Abort |
 
 ## Quality Criteria
 
@@ -97,9 +101,18 @@ Produce signal log with:
 
 ## Completion
 
-When finished:
-1. Save signal_log using `save_document`
-2. Call `request_approval` with:
-   - Count of signals detected per tier
-   - List of hot prospects for profiling
-   - Any gaps in signal coverage
+When finished, present for approval:
+- Count of signals detected per tier
+- List of hot prospects for profiling
+- Any gaps in signal coverage
+- Recommendation: proceed to Profile or continue monitoring
+
+## Artifact Persistence
+
+On approval, save outputs to run directory:
+1. Create stage folder: `artifacts/1_signal_YYYY-MM-DD/`
+2. Save signal log to `artifacts/1_signal_YYYY-MM-DD/signal_log.yaml`
+3. Log decision to `decisions.md` with rationale
+4. Update `run.yaml` with `current_stage: signal`
+
+See [Execution.md](../../../architecture/Execution.md#artifact-persistence) for structure details.

@@ -15,9 +15,10 @@ Transform a signed client engagement into a prioritized research agenda. Identif
 
 | Input | Source | Description |
 |-------|--------|-------------|
+| identity_profile | Identity stage | Your `expertise.primary` for filtering to strengths |
 | signed_agreement | SPARC Craft | Client contract |
 | prospect_analysis | SPARC Analyze | Analysis from acquisition |
-| expertise_inventory | Configuration | Your capabilities and constraints |
+| outreach_brief | SPARC Craft | Hypothesis seeds and engagement context |
 
 ## Process
 
@@ -41,7 +42,6 @@ Extract key constraints and requirements:
 - Confidentiality constraints
 - Review periods
 
-Tool: Review contract document
 
 ### 2. Gap Analysis
 
@@ -69,7 +69,6 @@ Identify gaps between current and desired state:
 - Major: Significant impact on outcomes
 - Minor: Improvement opportunity, not blocking
 
-Tool: `web_search`, `web_fetch` for additional context
 
 ### 3. Opportunity Mapping
 
@@ -143,19 +142,19 @@ Rank opportunities for execution:
 | Output | Type | Description |
 |--------|------|-------------|
 | contract_summary | document | Extracted scope, stakeholders, terms |
-| gap_analysis | document | Current vs desired state gaps |
-| opportunity_map | document | Gaps mapped to research directions |
-| research_agenda | document | Prioritized opportunities for execution |
+| research_agenda | document | Prioritized opportunities for execution, including gap_analysis and opportunity_map |
 
-## Tools Available
+## Decision Points
 
-| Tool | Purpose |
-|------|---------|
-| `web_search` | Research context |
-| `web_fetch` | Retrieve relevant content |
-| `save_document` | Persist outputs |
-| `get_document` | Retrieve SPARC outputs |
-| `list_documents` | Find related documents |
+All menus must include an Other option for custom input.
+
+| Point | Type | Options |
+|-------|------|---------|
+| Scope interpretation | Clarification | Confirm understanding of ambiguous contract terms |
+| Gap prioritization | Decision | Which gaps to address first |
+| Opportunity selection | Multi-select | Which opportunities to include in agenda |
+| Resource constraints | Decision | Full scope, reduced scope, phased approach |
+| Stage completion | Approval | Approve → Develop, Reject → retry, Edit → modify, Abort |
 
 ## Quality Criteria
 
@@ -167,10 +166,19 @@ Rank opportunities for execution:
 
 ## Completion
 
-When finished:
-1. Save research_agenda using `save_document`
-2. Call `request_approval` with:
-   - Number of opportunities identified
-   - Selected vs deferred count
-   - Key constraints affecting scope
-   - Readiness for Develop stage
+When finished, present for approval:
+- Number of opportunities identified
+- Selected vs deferred count
+- Key constraints affecting scope
+- Recommendation: proceed to Develop or refine agenda
+
+## Artifact Persistence
+
+On approval, save outputs to run directory:
+1. Create stage folder: `artifacts/1_identify_YYYY-MM-DD/`
+2. Save contract summary to `artifacts/1_identify_YYYY-MM-DD/contract_summary.yaml`
+3. Save research agenda to `artifacts/1_identify_YYYY-MM-DD/research_agenda.yaml`
+4. Log decision to `decisions.md` with rationale
+5. Update `run.yaml` with `current_stage: identify`
+
+See [Execution.md](../../../architecture/Execution.md#artifact-persistence) for structure details.

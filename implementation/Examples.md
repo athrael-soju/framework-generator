@@ -2,6 +2,10 @@
 
 Worked examples demonstrating SPARC and IDEAS execution.
 
+**Related:**
+- [templates/](templates/) — Artifact templates (sparc.md, ideas.md, run.md)
+- [Configuration.md](Configuration.md) — Configuration input examples
+
 ---
 
 ## Example: Vultr Engagement
@@ -154,7 +158,7 @@ Cloud infrastructure company acquired through SPARC, delivered via IDEAS.
 
 **Selected Focus:** Hybrid retrieval vs late interaction for document understanding
 
-**Rationale:** 
+**Rationale:**
 - Directly addresses ColPali/ColQwen deliverable in contract
 - Clear research question with testable hypothesis
 - Publication potential + immediate DevRel content value
@@ -288,6 +292,166 @@ Document Corpus Assessment:
 **Referral Opportunity:** Research positions Vultr for AI infrastructure conversations; request introductions to peer CMOs/DevRel leads at month 4.
 
 **Outcome:** Engagement extended, case study approved, two referrals received.
+
+---
+
+## Feedback Loop Example
+
+Demonstrating what happens when a feedback condition triggers a return to an earlier stage.
+
+### Scenario: Problem-Fit Mismatch in Analyze
+
+**Context:** During SPARC execution, a profiled prospect reaches Analyze stage but analysis reveals their actual needs don't match your positioning.
+
+#### Signal → Profile → Analyze
+
+**Prospect:** CloudScale (fictional)
+
+**Signal:** Series A funding ($12M), hiring DevRel lead
+
+**Profile Summary:**
+- 45 employees, API infrastructure startup
+- Target: Enterprise clients with complex integration needs
+- Recent pivot from developer tools to enterprise security
+
+**Analyze Findings:**
+```
+Gap Analysis:
+
+| Gap | Your Capability | Match |
+|-----|-----------------|-------|
+| Security documentation | DevRel content | Weak |
+| Compliance certifications | Research/content | None |
+| Enterprise sales enablement | Not offered | None |
+
+Entry Point Assessment:
+- Buyer: VP Sales (not DevRel)
+- Budget: Security/compliance, not content
+- Actual need: SOC 2 compliance documentation
+```
+
+**Feedback Loop Triggered:**
+
+```
+Condition: Problem doesn't match positioning
+From: Analyze
+Action: → Pass or Nurture
+```
+
+**Decision Menu Presented:**
+1. **Pass** — Not a fit; document learnings and move on
+2. **Nurture** — Add to watch list; pivot may not stick
+3. **Adjust positioning** — If this represents a market pattern
+
+**Decision:** Nurture
+
+**Rationale:**
+- Company is early-stage and may pivot back
+- Security focus may be temporary for enterprise deals
+- Watch for DevRel hiring signals in 6-12 months
+
+**Nurture Entry:**
+```yaml
+company: CloudScale
+entered_nurture: 2025-01-15
+reason: Pivot to enterprise security; core offering mismatch
+re-engagement_triggers:
+  - DevRel hiring resumes
+  - New product launch in developer tools
+  - Series B with developer-focused narrative
+check_in: 2025-07-15
+```
+
+**Outcome:** Prospect moved to Nurture list instead of continuing to Rank. SPARC pipeline continues with other prospects.
+
+---
+
+## IDEAS → SPARC Referral Example
+
+Demonstrating the referral loop from Share back to Signal.
+
+### Scenario: Processing Referrals from Vultr Engagement
+
+**Context:** At the end of the Vultr IDEAS engagement (month 4), the CMO provided two referrals as noted in the engagement outcome.
+
+#### Share → Referral Request
+
+**Referral Request (month 4):**
+> "Given the results we've delivered on the retrieval benchmarks and the positive reception of the tutorial, would you be open to introducing me to other DevRel or marketing leaders who might benefit from similar research partnerships?"
+
+**Referrals Received:**
+1. Sarah Chen, VP DevRel at StreamData (data streaming platform)
+2. Marcus Webb, CMO at InfraScale (edge computing)
+
+#### Referral → SPARC Signal
+
+**Referral Processing:**
+
+For each referral, create a Signal entry with "Referral" as source:
+
+```yaml
+# Signal Log Entry 1
+date: 2025-01-20
+company: StreamData
+signal_type: referral
+source: Kevin Cochrane (Vultr CMO)
+url: null
+strength: hot
+notes: Direct intro from satisfied client; VP DevRel target buyer
+referral_context:
+  introducer: Kevin Cochrane
+  relationship: Vultr engagement (4 months)
+  warm_intro: scheduled
+```
+
+```yaml
+# Signal Log Entry 2
+date: 2025-01-20
+company: InfraScale
+signal_type: referral
+source: Kevin Cochrane (Vultr CMO)
+url: null
+strength: warm
+notes: CMO intro; need to assess DevRel relevance
+referral_context:
+  introducer: Kevin Cochrane
+  relationship: Vultr engagement (4 months)
+  warm_intro: email introduction sent
+```
+
+**Signal Assessment:**
+- StreamData: **Hot** — direct buyer intro, immediate profile
+- InfraScale: **Warm** — decision-maker unclear, profile after StreamData
+
+#### Fast-Track to Profile
+
+Referrals skip extensive signal monitoring and proceed directly to Profile:
+
+**StreamData Profile (abbreviated):**
+
+| Field | Value |
+|-------|-------|
+| Company | StreamData |
+| HQ | San Francisco |
+| Funding | Series B ($45M) |
+| Signal Source | Referral (Vultr) |
+
+**Key Difference from Cold Signal:**
+- Warm introduction provides access advantage
+- Referrer context informs positioning
+- Trust transfer from successful engagement
+
+**Qualification Boost:**
+```
+Access score: 5 (vs typical 3)
+Rationale: Direct intro from trusted referrer
+```
+
+#### Continue SPARC
+
+From Profile, StreamData continues through Analyze → Rank → Craft with the referral advantage noted in scoring.
+
+**Outcome:** StreamData engagement signed (month 6); referral flywheel continues.
 
 ---
 
@@ -438,88 +602,130 @@ estimated_cost: $12.50/hour (on-demand)
 
 ---
 
-## Stage Output Templates
+## IDEAS Feedback Loop Example
 
-### Signal Log Entry
-```yaml
-date: YYYY-MM-DD
-company: Company Name
-signal_type: funding | hiring | announcement | social | technical
-source: Source Name
-url: https://...
-strength: hot | warm | watch
-notes: Brief context
+Demonstrating what happens when evaluation results don't support the original hypothesis.
+
+### Scenario: Results Don't Support Theory in Evaluate
+
+**Context:** During IDEAS execution for an API company, the Develop stage produced a hypothesis about documentation structure impact on adoption. During Evaluate, the data contradicts expectations.
+
+#### Develop → Evaluate
+
+**Hypothesis (from Develop):**
+```
+IF we restructure API documentation around use cases rather than endpoints
+THEN developer time-to-first-success will decrease by 30%
+BECAUSE developers think in terms of tasks, not API structure
+MEASURABLE BY tracking onboarding completion rates before/after
 ```
 
-### Company Profile
+**Evaluation Findings:**
 ```yaml
-company:
-  legal_name: 
-  dba: 
-  hq: 
-  founded: 
-  employees: 
-  funding_history:
-    - round: 
-      amount: 
-      date: 
-      valuation: 
+hypothesis_id: H1
+date: 2025-02-15
 
-market:
-  vertical: 
-  competitors: []
-  differentiation: 
+evidence_collected:
+  - source: Analytics comparison (30 days pre/post)
+    type: quantitative
+    finding: Time-to-first-success decreased only 8% (not 30%)
+    direction: partial_support
 
-people:
-  - name: 
-    title: 
-    notes: 
+  - source: User interviews (n=12)
+    type: qualitative
+    finding: Developers appreciated use-case structure but still needed endpoint reference
+    direction: neutral
 
-technical:
-  github: 
-  docs_quality: 
-  community: 
+  - source: Support ticket analysis
+    type: quantitative
+    finding: "Can't find endpoint" tickets increased 15%
+    direction: contradicts
 
-recent_activity: []
+verdict: not_supported
+confidence: medium
+
+rationale: |
+  While use-case organization improved discoverability for new users,
+  experienced developers struggled without quick endpoint reference.
+  The 8% improvement is within noise. Support ticket increase suggests
+  the change created new friction for a significant user segment.
+
+alternatives_considered:
+  - alternative: Hybrid structure (use cases + endpoint reference)
+    why_ruled_out: Not tested yet, emerged from this analysis
+
+limitations:
+  - 30-day window may be too short
+  - Sample size for interviews limited
 ```
 
-### Qualification Score
-```yaml
-company: 
-date: 
-scores:
-  budget: {score: , rationale: }
-  problem_fit: {score: , rationale: }
-  timing: {score: , rationale: }
-  access: {score: , rationale: }
-  strategic_value: {score: , rationale: }
-total: 
-recommendation: prioritize | qualified | nurture | pass
+**Feedback Loop Triggered:**
+```
+Condition: Results don't support theory
+From: Evaluate
+Action: → Develop (refine hypothesis)
 ```
 
-### Hypothesis Document
-```yaml
-id: 
-opportunity: 
-statement:
-  if: 
-  then: 
-  because: 
-  measurable_by: 
+**Decision Menu Presented:**
+1. **Return to Develop** — Refine hypothesis based on findings
+2. **Report as negative finding** — Document what didn't work
+3. **Investigate further** — Extend evaluation period or sample
+4. **Return to Identify** — Pivot to different opportunity
 
-prior_work: []
+**Decision:** Return to Develop
 
-feasibility:
-  data_availability: {score: , notes: }
-  resources: {score: , notes: }
-  timeline: {score: , notes: }
-  skill_match: {score: , notes: }
-  client_dependency: {score: , notes: }
-  total: 
+**Rationale:**
+- The qualitative data suggests a hybrid approach may work
+- This isn't a failed research direction, just a refinement needed
+- Client value preserved by iterating rather than abandoning
 
-scope:
-  included: []
-  excluded: []
+#### Return to Develop
 
-risks: []
+**Revised Hypothesis:**
+```
+IF we implement a hybrid documentation structure
+   (use-case guides linked to endpoint reference)
+THEN developer time-to-first-success will decrease by 20%
+   AND support tickets for "can't find endpoint" will not increase
+BECAUSE developers need both task-oriented navigation AND quick reference
+MEASURABLE BY tracking both onboarding completion AND support ticket categories
+```
+
+**Scope Adjustment:**
+- Add endpoint quick-reference sidebar to use-case pages
+- Implement A/B test rather than full rollout
+- Extend measurement window to 60 days
+
+**Outcome:** Revised hypothesis tested successfully; hybrid approach achieved 22% improvement with no increase in support tickets.
+
+#### Decision Log Entry
+```markdown
+## Evaluate — 2025-02-15
+
+**Decision Point:** Hypothesis not supported by evidence
+**Options Presented:**
+1. Return to Develop — refine hypothesis
+2. Report as negative finding
+3. Investigate further — extend evaluation
+4. Return to Identify — pivot direction
+
+**Decision:** Return to Develop
+**Rationale:** Qualitative evidence suggests hybrid approach worth testing.
+This is refinement, not failure. Client engagement preserved.
+**Artifacts:** `artifacts/3_evaluate_2025-02-15/`
+
+---
+
+## Develop (iteration) — 2025-02-16
+
+**Decision Point:** Hypothesis refinement approach
+**Options Presented:**
+1. Hybrid structure with sidebar reference
+2. Dual navigation (tabs for use-case vs endpoint view)
+3. Search-first approach with AI assistance
+
+**Decision:** Hybrid structure with sidebar reference
+**Rationale:** Lowest implementation effort, directly addresses user feedback.
+A/B test de-risks full rollout.
+**Artifacts:** `artifacts/2_develop_2025-02-16/`
 ```

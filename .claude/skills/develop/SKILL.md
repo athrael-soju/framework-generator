@@ -15,6 +15,7 @@ Transform prioritized opportunities into formal, testable hypotheses. Review pri
 
 | Input | Source | Description |
 |-------|--------|-------------|
+| identity_profile | Identity stage | Your `expertise.methods` for available approaches |
 | research_agenda | Identify stage | Prioritized opportunities |
 | opportunity_details | Identify stage | Initial hypothesis seeds |
 | constraints | Identify stage | Timeline, resources, access |
@@ -28,7 +29,6 @@ For each selected opportunity:
 **Literature Search**
 - Academic: Google Scholar, arXiv, ACM DL
 - Industry: Company blogs, technical reports, conference talks
-- Tool: `web_search`, `web_fetch`
 
 **Extract:**
 | Element | What to Capture |
@@ -157,15 +157,17 @@ For each approved hypothesis:
 | feasibility_scores | document | Scoring and risk assessment |
 | scope_definitions | document | Precise scope per hypothesis |
 
-## Tools Available
+## Decision Points
 
-| Tool | Purpose |
-|------|---------|
-| `web_search` | Literature search |
-| `web_fetch` | Retrieve papers/reports |
-| `save_document` | Persist outputs |
-| `get_document` | Retrieve agenda |
-| `list_documents` | Find related documents |
+All menus must include an Other option for custom input.
+
+| Point | Type | Options |
+|-------|------|---------|
+| Hypothesis framing | Clarification | Refine IF/THEN/BECAUSE structure |
+| Feasibility concerns | Decision | Proceed, adjust scope, return to Identify |
+| Data source access | Decision | Use available sources, seek alternatives, descope |
+| Methodology selection | Decision | Quantitative, qualitative, mixed methods |
+| Stage completion | Approval | Approve → Evaluate, Reject → retry, Edit → modify, Abort |
 
 ## Quality Criteria
 
@@ -177,10 +179,19 @@ For each approved hypothesis:
 
 ## Completion
 
-When finished:
-1. Save hypothesis_documents using `save_document`
-2. Call `request_approval` with:
-   - Number of hypotheses formalized
-   - Feasibility summary (proceed/modify/defer)
-   - Key risks identified
-   - Readiness for Evaluate stage
+When finished, present for approval:
+- Number of hypotheses formalized
+- Feasibility summary (proceed/modify/defer)
+- Key risks identified
+- Recommendation: proceed to Evaluate or refine hypotheses
+
+## Artifact Persistence
+
+On approval, save outputs to run directory:
+1. Create stage folder: `artifacts/2_develop_YYYY-MM-DD/`
+2. Save hypothesis documents to `artifacts/2_develop_YYYY-MM-DD/hypothesis_[id].yaml`
+3. Save prior work review to `artifacts/2_develop_YYYY-MM-DD/prior_work_review.yaml`
+4. Log decision to `decisions.md` with rationale
+5. Update `run.yaml` with `current_stage: develop`
+
+See [Execution.md](../../../architecture/Execution.md#artifact-persistence) for structure details.
