@@ -1,6 +1,6 @@
 # SPARC Skills
 
-Stage-level skill definitions for SPARC agents. Each skill defines the complete methodology for one stage of the SPARC framework.
+Stage-level skill definitions for SPARC agents. Each skill defines the complete methodology for one stage of the SPARC methodology.
 
 ---
 

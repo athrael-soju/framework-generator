@@ -1,4 +1,4 @@
-# The IDEAS Framework
+# The IDEAS Methodology
 
 A structured research methodology for client-focused research projects.
 
@@ -12,7 +12,7 @@ config:
     lineColor: gray
 ---
 flowchart TB
-    SPARC["SPARC Framework"] -.-> |"signed agreement"| I
+    SPARC["SPARC Methodology"] -.-> |"signed agreement"| I
     I["<b>Identify</b>"] --> D["<b>Develop</b>"]
     D --> E["<b>Evaluate</b>"]
     E --> A["<b>Articulate</b>"]

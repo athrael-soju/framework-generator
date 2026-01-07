@@ -1,4 +1,4 @@
-# The SPARC Framework
+# The SPARC Methodology
 
 A structured methodology for identifying and pitching research consulting clients.
 
@@ -16,7 +16,7 @@ flowchart TB
     P --> A["<b>Analyze</b>"]
     A --> R["<b>Rank</b>"]
     R --> C["<b>Craft</b>"]
-    C -.-> |signed agreement| IDEAS["IDEAS Framework"]
+    C -.-> |signed agreement| IDEAS["IDEAS Methodology"]
     C -.-> |no response / rejected| S
 ```
 
