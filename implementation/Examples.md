@@ -659,13 +659,13 @@ recommendation: prioritize | qualified | nurture | pass
 
 ### Hypothesis Document
 ```yaml
-id: 
-opportunity: 
+id:
+opportunity:
 statement:
-  if: 
-  then: 
-  because: 
-  measurable_by: 
+  if:
+  then:
+  because:
+  measurable_by:
 
 prior_work: []
 
@@ -675,11 +675,147 @@ feasibility:
   timeline: {score: , notes: }
   skill_match: {score: , notes: }
   client_dependency: {score: , notes: }
-  total: 
+  total:
 
 scope:
   included: []
   excluded: []
 
 risks: []
+```
+
+### Prospect Analysis Report
+```yaml
+company:
+date:
+analyst:
+
+executive_summary: |
+  [3 bullets: position, key gaps, opportunity]
+
+competitive_position:
+  leads_in: []
+  lags_in: []
+  market_perception:
+
+gap_analysis:
+  - gap:
+    severity: critical | major | minor
+    your_capability:
+    opportunity: primary | secondary | none
+
+entry_point:
+  buyer_persona:
+  budget_indicators:
+  timing_assessment:
+  access_path:
+
+recommended_approach:
+  value_proposition:
+  supporting_evidence: []
+  potential_objections: []
+```
+
+### Outreach Brief
+```yaml
+prospect:
+date:
+channel: linkedin_dm | email | warm_intro
+
+decision_maker:
+  name:
+  title:
+  linkedin:
+  recent_activity: []
+
+message:
+  hook:
+  insight:
+  bridge:
+  ask:
+
+variants:
+  - variant_id: 1
+    hook:
+    tone:
+
+talking_points:
+  likely_questions:
+    - question:
+      response:
+  objection_handling:
+    - objection:
+      response:
+```
+
+### Evaluation Report
+```yaml
+hypothesis_id:
+date:
+
+evidence_collected:
+  - source:
+    type: quantitative | qualitative | secondary | expert | anecdotal
+    finding:
+    direction: supports | contradicts | neutral
+
+verdict: strongly_supported | supported | inconclusive | not_supported | refuted
+confidence: high | medium | low
+
+rationale: |
+  [Summary of evidence assessment]
+
+alternatives_considered:
+  - alternative:
+    why_ruled_out:
+
+limitations: []
+
+problem_fit: high | medium | low
+problem_fit_rationale:
+```
+
+### Client Deliverable
+```yaml
+engagement:
+deliverable_id:
+date:
+version:
+
+metadata:
+  title:
+  audience: executive | technical | marketing | board
+  format: report | presentation | workshop | documentation
+
+executive_summary:
+  key_findings: []
+  recommendations: []
+  immediate_actions: []
+
+sections:
+  - title:
+    content_summary:
+
+recommendations:
+  - id:
+    title:
+    priority: high | medium | low
+    effort: high | medium | low
+    rationale:
+    success_metrics: []
+
+roadmap:
+  quick_wins: []
+  phase_1:
+    name:
+    timeline:
+    actions: []
+    milestone:
+  phase_2:
+    name:
+    timeline:
+    actions: []
+    milestone:
+
+appendices: []
 ```

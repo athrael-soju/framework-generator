@@ -189,7 +189,10 @@ Some conditions route back to earlier stages:
 | Results don't support theory | Evaluate | Develop |
 | Weak novelty | Articulate | Identify |
 | Overclaiming results | Articulate | Evaluate |
+| Peer review rejection | Share | Evaluate |
 | Implementation issues | Share | Develop |
+| Client feedback requires changes | Share | Articulate |
+| Fundamental misalignment | Any | Exit/Renegotiate |
 
 When a feedback condition is triggered, the skill will present options and guide you to the appropriate stage.
 

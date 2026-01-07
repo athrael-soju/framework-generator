@@ -192,6 +192,18 @@ Deliver outputs to relevant audiences.
 | Implementation questions | Detailed guidance, follow-on engagement |
 | New directions | Log for future, assess against scope |
 
+**Publication Process (when applicable):**
+
+| Step | Activity | Timeline |
+|------|----------|----------|
+| 1 | Client review of draft | Per contract (typically 30 days) |
+| 2 | Revisions and redactions | 1-2 weeks |
+| 3 | Venue submission | Per venue deadlines |
+| 4 | Peer review response | As required |
+| 5 | Dissemination | Post-acceptance |
+
+Publication requires contract permission. See [Examples.md](../implementation/Examples.md#research-publication-example) for a worked example.
+
 **Output:** Delivery Confirmation + Feedback Log + Follow-up Actions
 
 ---
@@ -209,6 +221,8 @@ Deliver outputs to relevant audiences.
 | Share | Implementation issues | Develop |
 | Share | Client feedback | Articulate |
 | Any | Fundamental misalignment | Exit/Renegotiate |
+
+For cross-framework feedback loops (e.g., client not a fit routing to SPARC, market insights informing Signal), see [PRAXIS.md](../framework/PRAXIS.md#cross-framework-feedback-loops).
 
 ---
 

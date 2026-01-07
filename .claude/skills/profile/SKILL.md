@@ -57,7 +57,19 @@ For each company:
 - Review GitHub repos for official SDKs
 - Assess: Language coverage, maintenance
 
-### 4. Profile Synthesis
+### 4. Key People
+
+**Decision-Maker Identification**
+- Search for relevant titles: VP Engineering, Head of DevRel, CTO, CMO
+- Capture: Name, title, tenure, LinkedIn profile
+- Assess: Decision-making authority, budget control
+
+**Background Research**
+- Review LinkedIn profiles
+- Note: Previous companies, career trajectory
+- Note: Public content, speaking engagements
+
+### 5. Profile Synthesis
 
 Combine all data into structured profile:
 
@@ -76,6 +88,11 @@ Combine all data into structured profile:
 - Community size and channels
 - SDK coverage
 - Developer experience score (1-5)
+
+## Key People
+- Decision-makers identified
+- Roles and tenure
+- Background notes
 
 ## Recent Activity
 - Key signals from Signal stage
@@ -110,6 +127,7 @@ Combine all data into structured profile:
 - [ ] All template fields populated or marked as gaps
 - [ ] Technical footprint assessed
 - [ ] Developer ecosystem evaluated
+- [ ] Key decision-makers identified
 - [ ] Sources documented for key claims
 - [ ] Cross-referenced for consistency
 

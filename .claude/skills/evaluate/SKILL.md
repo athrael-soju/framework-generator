@@ -82,6 +82,15 @@ Apply methods specified in scope:
 
 Assess evidence against each hypothesis:
 
+**Evidence Strength:**
+| Type | Strength | Use For |
+|------|----------|---------|
+| Quantitative (metrics, benchmarks) | High | Measuring effects, comparisons |
+| Qualitative (interviews, reviews) | Medium-High | Understanding mechanisms |
+| Secondary research (reports) | Medium | Supporting arguments |
+| Expert opinion | Low-Medium | Filling gaps |
+| Anecdotal | Low | Illustration only |
+
 **Evidence Assessment:**
 | Evidence Type | Finding | Supports/Contradicts |
 |---------------|---------|----------------------|

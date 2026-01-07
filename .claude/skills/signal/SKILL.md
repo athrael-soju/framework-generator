@@ -25,6 +25,15 @@ Identify companies exhibiting signals that suggest they may need your services. 
 
 Search for each signal type:
 
+**Signal Type Weights:**
+| Type | Weight | Examples |
+|------|--------|----------|
+| Funding | High | Series A+, growth round |
+| Hiring | Medium-High | DevRel, API, Developer roles |
+| Product | Medium | New API launch, platform release |
+| Content | Low-Medium | Blog posts about relevant topics |
+| News | Variable | Depends on event type |
+
 **Funding Signals**
 - Search: "[industry] startup funding announcement"
 - Look for: Series A/B/C, growth rounds, strategic investment

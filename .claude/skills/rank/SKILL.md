@@ -40,6 +40,16 @@ Apply scoring criteria to each prospect:
 - 2: Weak fit, concerns present
 - 1: Poor fit, significant blockers
 
+**Detailed Scoring Rubric:**
+
+| Criterion | 1 (Poor) | 3 (Moderate) | 5 (Strong) |
+|-----------|----------|--------------|------------|
+| Budget Indicators | Pre-seed, <20 emp | Series A, 50-200 emp | Series B+, >200 emp |
+| Problem Fit | Tangential | Adjacent | Direct match |
+| Timing | No urgency | General interest | Active signals |
+| Access | No path | Mutual connections | Direct/warm intro |
+| Strategic Value | One-off | Ongoing potential | Ongoing + referrals |
+
 ### 2. Score Calculation
 
 For each prospect:
@@ -107,6 +117,25 @@ Produce qualification report:
 ## Passed
 [Reasons for exclusion]
 ```
+
+### 6. Nurture and Pass Processing
+
+**Pass Actions (Score <2.0):**
+- Document reason for exclusion
+- Capture learnings (refine ICP, positioning)
+- No further outreach unless they re-signal
+
+**Nurture Actions (Score 2.0-2.9):**
+- Add to watch list for re-engagement triggers
+- Continue content engagement (not direct outreach)
+- Set quarterly check-in review date
+
+**Re-engagement Triggers:**
+When a nurture trigger fires:
+1. Create new Signal entry with "Nurture re-engagement" source
+2. Re-run Profile (update stale data)
+3. Re-score through Rank
+4. If score improves to 3.0+, proceed to Craft
 
 ## Outputs
 

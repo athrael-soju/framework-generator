@@ -111,10 +111,10 @@ Each skill is a self-contained instruction set that defines:
 **Comparison Dimensions:**
 - Documentation depth
 - Community size
-- Pricing transparency
-- Global coverage
-- AI/ML offerings
 - Developer experience
+- Content quality
+- Pricing transparency
+- Enterprise features
 
 **Outputs:** prospect_analysis_report, competitive_matrix, opportunities
 

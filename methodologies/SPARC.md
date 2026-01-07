@@ -177,6 +177,8 @@ Develop tailored outreach based on analysis.
 | Craft | Response but no fit | Pass or refer out |
 | Craft | Response + fit | Discovery → Proposal → IDEAS |
 
+For cross-framework feedback loops (e.g., scope expansion routing back to Craft, referrals routing from IDEAS), see [PRAXIS.md](../framework/PRAXIS.md#cross-framework-feedback-loops).
+
 ---
 
 ## Nurture and Pass States
