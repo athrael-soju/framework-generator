@@ -97,7 +97,7 @@ Started: [date]
 
 **Decision:** [Which option was chosen]
 **Rationale:** [Why this decision was made]
-**Artifact:** `artifacts/1_signal_log.yaml`
+**Artifacts:** `artifacts/1_signal_[date]/`
 
 ---
 
@@ -110,7 +110,7 @@ Started: [date]
 
 **Decision:** [Which option was chosen]
 **Rationale:** [Why this decision was made]
-**Artifact:** `artifacts/2_company_profile.yaml`
+**Artifacts:** `artifacts/2_profile_[date]/`
 
 ---
 
@@ -149,7 +149,7 @@ Started: 2025-01-15
 
 **Decision:** Prioritize by funding signal
 **Rationale:** $333M funding round indicates immediate budget availability and strategic investment in growth areas matching our positioning.
-**Artifact:** `artifacts/1_signal_log.yaml`
+**Artifacts:** `artifacts/1_signal_2025-01-15/`
 
 ---
 
@@ -163,7 +163,7 @@ Started: 2025-01-15
 
 **Decision:** Continue with gaps noted
 **Rationale:** Sufficient data exists for competitive analysis. Community gap is itself a finding that supports our value proposition.
-**Artifact:** `artifacts/2_company_profile.yaml`
+**Artifacts:** `artifacts/2_profile_2025-01-16/`
 
 ---
 
@@ -177,7 +177,7 @@ Started: 2025-01-15
 
 **Decision:** Include direct + emerging competitors
 **Rationale:** Direct competitors show clear gaps we can address. Emerging competitors reveal market positioning opportunities.
-**Artifact:** `artifacts/3_prospect_analysis.yaml`
+**Artifacts:** `artifacts/3_analysis_2025-01-17/`
 
 ---
 
@@ -191,7 +191,7 @@ Started: 2025-01-15
 
 **Decision:** Approve
 **Rationale:** Score of 4.8 clearly qualifies for Prioritize tier. All criteria scored with strong evidence.
-**Artifact:** `artifacts/4_qualification_score.yaml`
+**Artifacts:** `artifacts/4_rank_2025-01-18/`
 
 ---
 
@@ -205,7 +205,7 @@ Started: 2025-01-15
 
 **Decision:** LinkedIn DM
 **Rationale:** CMO actively posts about developer experience; DM allows casual tone and quick response. Can escalate to email if no response.
-**Artifacts:** `artifacts/5_outreach_message.md`, `artifacts/5_outreach_brief.yaml`
+**Artifacts:** `artifacts/5_craft_2025-01-19/`
 
 ---
 

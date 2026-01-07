@@ -712,7 +712,7 @@ MEASURABLE BY tracking both onboarding completion AND support ticket categories
 **Decision:** Return to Develop
 **Rationale:** Qualitative evidence suggests hybrid approach worth testing.
 This is refinement, not failure. Client engagement preserved.
-**Artifact:** `artifacts/3_evaluation_h1_v1.yaml`
+**Artifacts:** `artifacts/3_evaluate_2025-02-15/`
 
 ---
 
@@ -727,5 +727,5 @@ This is refinement, not failure. Client engagement preserved.
 **Decision:** Hybrid structure with sidebar reference
 **Rationale:** Lowest implementation effort, directly addresses user feedback.
 A/B test de-risks full rollout.
-**Artifact:** `artifacts/2_hypothesis_h1_v2.yaml`
+**Artifacts:** `artifacts/2_develop_2025-02-16/`
 ```

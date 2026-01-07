@@ -214,23 +214,35 @@ praxis/
 │   │   ├── run.yaml                    # Run metadata
 │   │   ├── decisions.md                # Decision log
 │   │   └── artifacts/
-│   │       ├── 1_signal_log.yaml
-│   │       ├── 2_company_profile.yaml
-│   │       ├── 3_prospect_analysis.yaml
-│   │       ├── 4_qualification_score.yaml
-│   │       ├── 5_outreach_message.md
-│   │       └── 5_outreach_brief.yaml
+│   │       ├── 1_signal_2025-01-15/
+│   │       │   └── signal_log.yaml
+│   │       ├── 2_profile_2025-01-16/
+│   │       │   └── company_profile.yaml
+│   │       ├── 3_analysis_2025-01-17/
+│   │       │   ├── prospect_analysis.yaml
+│   │       │   └── competitor_matrix.yaml
+│   │       ├── 4_rank_2025-01-18/
+│   │       │   └── qualification_score.yaml
+│   │       └── 5_craft_2025-01-19/
+│   │           ├── outreach_message.md
+│   │           └── outreach_brief.yaml
 │   │
 │   ├── 2025-02-01_vultr_ideas/
 │   │   ├── run.yaml                    # Links to SPARC run
 │   │   ├── decisions.md
 │   │   └── artifacts/
-│   │       ├── 1_contract_summary.yaml
-│   │       ├── 1_research_agenda.yaml
-│   │       ├── 2_hypothesis_h1.yaml
-│   │       ├── 3_evaluation_h1.yaml
-│   │       ├── 4_deliverable_report.md
-│   │       └── 5_delivery_log.yaml
+│   │       ├── 1_identify_2025-02-01/
+│   │       │   ├── contract_summary.yaml
+│   │       │   └── research_agenda.yaml
+│   │       ├── 2_develop_2025-02-05/
+│   │       │   ├── hypothesis_h1.yaml
+│   │       │   └── prior_work_review.yaml
+│   │       ├── 3_evaluate_2025-02-12/
+│   │       │   └── evaluation_h1.yaml
+│   │       ├── 4_articulate_2025-02-20/
+│   │       │   └── deliverable_report.md
+│   │       └── 5_share_2025-02-25/
+│   │           └── delivery_log.yaml
 │   │
 │   └── 2025-01-20_streamdata_sparc/
 │       └── ...
@@ -257,19 +269,23 @@ Examples:
 - `2025-02-01_vultr_ideas`
 - `2025-01-20_streamdata_sparc`
 
-### Artifact Numbering
+### Artifact Folder Naming
 
-Prefix artifacts with stage number to maintain execution order:
+Each stage produces a folder with a stage number, name, and completion date:
 
-| Stage | SPARC Artifacts | IDEAS Artifacts |
-|-------|-----------------|-----------------|
-| 1 | `1_signal_log.yaml` | `1_contract_summary.yaml`, `1_research_agenda.yaml` |
-| 2 | `2_company_profile.yaml` | `2_hypothesis_[id].yaml` |
-| 3 | `3_prospect_analysis.yaml` | `3_evaluation_[id].yaml` |
-| 4 | `4_qualification_score.yaml` | `4_deliverable_[id].md` |
-| 5 | `5_outreach_message.md`, `5_outreach_brief.yaml` | `5_delivery_log.yaml` |
+```
+[stage_number]_[stage_name]_[YYYY-MM-DD]/
+```
 
-For single deliverables, use `report` as the id (for example, `4_deliverable_report.md`).
+| Stage | SPARC Folder | IDEAS Folder |
+|-------|--------------|--------------|
+| 1 | `1_signal_YYYY-MM-DD/` | `1_identify_YYYY-MM-DD/` |
+| 2 | `2_profile_YYYY-MM-DD/` | `2_develop_YYYY-MM-DD/` |
+| 3 | `3_analysis_YYYY-MM-DD/` | `3_evaluate_YYYY-MM-DD/` |
+| 4 | `4_rank_YYYY-MM-DD/` | `4_articulate_YYYY-MM-DD/` |
+| 5 | `5_craft_YYYY-MM-DD/` | `5_share_YYYY-MM-DD/` |
+
+Files within each folder use descriptive names without prefixes (e.g., `signal_log.yaml`, `hypothesis_h1.yaml`).
 
 ### Starting a Run
 
@@ -284,9 +300,10 @@ When beginning a new SPARC or IDEAS execution:
 
 At each stage completion:
 
-1. Save artifact to `artifacts/` with appropriate prefix
-2. Append decision entry to `decisions.md`
-3. Update `run.yaml` with current stage
+1. Create stage folder in `artifacts/` using naming convention
+2. Save all stage outputs to the folder
+3. Append decision entry to `decisions.md`
+4. Update `run.yaml` with current stage
 
 ### Completing a Run
 
