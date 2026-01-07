@@ -273,6 +273,6 @@ See `implementation/Agent_Architecture.md` for full skill catalog and orchestrat
 | `frameworks/SPARC_Framework.md` | Client acquisition methodology |
 | `frameworks/IDEAS_Framework.md` | Research delivery methodology |
 | `implementation/Agent_Architecture.md` | Agents, MCP servers, and orchestration |
-| `implementation/SPARC_Skills.md` | Atomic skill definitions for SPARC agents |
-| `implementation/IDEAS_Skills.md` | Atomic skill definitions for IDEAS agents |
+| `implementation/SPARC_Skills.md` | Stage-level skill definitions for SPARC agents |
+| `implementation/IDEAS_Skills.md` | Stage-level skill definitions for IDEAS agents |
 | `implementation/Examples.md` | Usage examples and worked scenarios |

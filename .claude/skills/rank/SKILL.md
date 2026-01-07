@@ -1,0 +1,145 @@
+---
+name: rank
+description: Execute SPARC Rank stage to score and prioritize prospects. Use after Analyze stage to apply qualification criteria and determine which prospects warrant outreach.
+---
+
+# Rank Stage
+
+Score prospects against qualification criteria and prioritize for outreach.
+
+## Objective
+
+Apply systematic qualification scoring to analyzed prospects. Determine priority order and recommended action for each.
+
+## Inputs
+
+| Input | Source | Description |
+|-------|--------|-------------|
+| prospect_analyses | Analyze stage | Analysis reports to score |
+| scoring_criteria | Configuration | Weighted qualification criteria |
+| thresholds | Configuration | Score-to-action thresholds |
+
+## Process
+
+### 1. Qualification Scoring
+
+Apply scoring criteria to each prospect:
+
+| Criterion | Weight | Scoring Rubric |
+|-----------|--------|----------------|
+| **Budget Indicators** | 25% | Funding stage, employee count, stated budgets |
+| **Problem Fit** | 25% | Alignment with your positioning |
+| **Timing** | 20% | Urgency signals, active buying behavior |
+| **Access** | 15% | Path to decision-maker, warm intros |
+| **Strategic Value** | 15% | Ongoing potential, referral value, logo value |
+
+**Scoring Scale (1-5):**
+- 5: Excellent fit, strong evidence
+- 4: Good fit, some evidence
+- 3: Moderate fit, limited evidence
+- 2: Weak fit, concerns present
+- 1: Poor fit, significant blockers
+
+### 2. Score Calculation
+
+For each prospect:
+
+```python
+# Example scoring
+scores = {
+    "budget_indicators": 4,  # Series B, 200 employees
+    "problem_fit": 5,        # Clear doc gaps matching our service
+    "timing": 3,             # Hiring but no urgency signal
+    "access": 4,             # LinkedIn connection to VP Eng
+    "strategic_value": 4     # Strong logo, good referral potential
+}
+
+weighted_total = (
+    scores["budget_indicators"] * 0.25 +
+    scores["problem_fit"] * 0.25 +
+    scores["timing"] * 0.20 +
+    scores["access"] * 0.15 +
+    scores["strategic_value"] * 0.15
+)
+# = 4.05
+```
+
+Tool: `score_prospect`
+
+### 3. Action Assignment
+
+Based on weighted total:
+
+| Score | Recommendation | Action |
+|-------|----------------|--------|
+| 4.0+ | **Prioritize** | Immediate personalized outreach |
+| 3.0-3.9 | **Qualified** | Standard outreach sequence |
+| 2.0-2.9 | **Nurture** | Add to nurture campaign |
+| <2.0 | **Pass** | Do not pursue |
+
+### 4. Priority Ranking
+
+Order qualified prospects by:
+1. Weighted score (primary)
+2. Timing score (tiebreaker)
+3. Strategic value (secondary tiebreaker)
+
+### 5. Output Generation
+
+Produce qualification report:
+
+```
+## Qualification Summary
+
+| Prospect | Score | Recommendation | Key Factor |
+|----------|-------|----------------|------------|
+| Acme Corp | 4.2 | Prioritize | Strong problem fit |
+| Beta Inc | 3.6 | Qualified | Good access |
+| Gamma Ltd | 2.4 | Nurture | Timing not right |
+
+## Prioritize Tier (4.0+)
+[Detailed breakdown for each]
+
+## Qualified Tier (3.0-3.9)
+[Summary for each]
+
+## Nurture Tier (2.0-2.9)
+[Brief notes on re-engagement triggers]
+
+## Passed
+[Reasons for exclusion]
+```
+
+## Outputs
+
+| Output | Type | Description |
+|--------|------|-------------|
+| qualification_scores | document | Detailed scoring per prospect |
+| priority_ranking | list | Ordered list for outreach |
+| action_assignments | document | Recommendation per prospect |
+
+## Tools Available
+
+| Tool | Purpose |
+|------|---------|
+| `score_prospect` | Calculate weighted scores |
+| `save_document` | Persist rankings |
+| `get_document` | Retrieve analyses |
+| `list_documents` | Find related documents |
+
+## Quality Criteria
+
+- [ ] All criteria scored with rationale
+- [ ] Weights applied correctly
+- [ ] Thresholds applied consistently
+- [ ] Priority order justified
+- [ ] Pass decisions documented
+
+## Completion
+
+When finished:
+1. Save qualification_scores using `save_document`
+2. Call `request_approval` with:
+   - Distribution across tiers
+   - Top prospects for Craft stage
+   - Any borderline cases for discussion

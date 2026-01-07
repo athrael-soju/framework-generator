@@ -1,0 +1,176 @@
+---
+name: identify
+description: Execute IDEAS Identify stage to define research opportunities. Use at project start to review contracts, identify gaps, map opportunities, and prioritize the research agenda.
+---
+
+# Identify Stage
+
+Define research opportunities from client engagement scope.
+
+## Objective
+
+Transform a signed client engagement into a prioritized research agenda. Identify gaps between client's current and desired state, then map those gaps to tractable research opportunities.
+
+## Inputs
+
+| Input | Source | Description |
+|-------|--------|-------------|
+| signed_agreement | SPARC Craft | Client contract |
+| prospect_analysis | SPARC Analyze | Analysis from acquisition |
+| expertise_inventory | Configuration | Your capabilities and constraints |
+
+## Process
+
+### 1. Contract Review
+
+Extract key constraints and requirements:
+
+**Scope Definition**
+- What is explicitly in scope
+- What is explicitly excluded
+- Deliverable formats and deadlines
+
+**Stakeholders**
+- Key contacts and their roles
+- Approval chain
+- Communication preferences
+
+**Terms**
+- IP ownership
+- Publication rights
+- Confidentiality constraints
+- Review periods
+
+Tool: Review contract document
+
+### 2. Gap Analysis
+
+Identify gaps between current and desired state:
+
+**Current State Assessment**
+- What does client have now?
+- What are they doing today?
+- Where are the pain points?
+- Source: prospect_analysis, contract scope
+
+**Desired State Definition**
+- What does client want to achieve?
+- What does success look like?
+- What are the stated objectives?
+- Source: contract scope, stakeholder input
+
+**Gap Identification**
+| Gap | Current | Desired | Severity |
+|-----|---------|---------|----------|
+| [Gap name] | [Current state] | [Desired state] | Critical/Major/Minor |
+
+**Severity Criteria:**
+- Critical: Blocks primary business objectives
+- Major: Significant impact on outcomes
+- Minor: Improvement opportunity, not blocking
+
+Tool: `web_search`, `web_fetch` for additional context
+
+### 3. Opportunity Mapping
+
+Map gaps to research opportunities:
+
+For each gap:
+- Can this be addressed through research?
+- Does it match your expertise?
+- Is it tractable within constraints?
+
+**Opportunity Structure:**
+```
+## Opportunity: [Name]
+
+Gap Reference: [Which gap this addresses]
+Research Direction: [What to investigate]
+Initial Hypothesis: [Preliminary idea to test]
+Expertise Alignment: [How this matches your skills]
+Feasibility Flag: Proceed / Caution / Blocked
+Resource Requirements: [Time, data, access needed]
+```
+
+### 4. Prioritization
+
+Rank opportunities for execution:
+
+**Scoring Factors:**
+| Factor | Weight | Description |
+|--------|--------|-------------|
+| Client Value | 40% | Impact on client objectives |
+| Feasibility | 30% | Likelihood of completion |
+| Timeline Fit | 20% | Fits engagement window |
+| Strategic Value | 10% | Future relationship potential |
+
+**Selection Decision:**
+- Select top opportunities for this engagement
+- Document deferred opportunities with reasoning
+- Note dependencies between opportunities
+
+### 5. Research Agenda Output
+
+```
+## Research Agenda
+
+### Engagement Overview
+- Client: [Name]
+- Timeline: [Start - End]
+- Key Stakeholders: [Names and roles]
+
+### Selected Opportunities
+1. [Opportunity 1] - Priority: High
+   - Hypothesis seed: [Initial direction]
+   - Timeline allocation: [Portion of engagement]
+
+2. [Opportunity 2] - Priority: Medium
+   ...
+
+### Deferred Opportunities
+- [Opportunity X]: [Reason for deferral]
+
+### Constraints and Dependencies
+- [Key constraints from contract]
+- [Dependencies between opportunities]
+
+### Success Criteria
+- [How we'll know if we succeeded]
+```
+
+## Outputs
+
+| Output | Type | Description |
+|--------|------|-------------|
+| contract_summary | document | Extracted scope, stakeholders, terms |
+| gap_analysis | document | Current vs desired state gaps |
+| opportunity_map | document | Gaps mapped to research directions |
+| research_agenda | document | Prioritized opportunities for execution |
+
+## Tools Available
+
+| Tool | Purpose |
+|------|---------|
+| `web_search` | Research context |
+| `web_fetch` | Retrieve relevant content |
+| `save_document` | Persist outputs |
+| `get_document` | Retrieve SPARC outputs |
+| `list_documents` | Find related documents |
+
+## Quality Criteria
+
+- [ ] Contract constraints clearly extracted
+- [ ] Gaps have severity ratings
+- [ ] Opportunities aligned to expertise
+- [ ] Prioritization rationale documented
+- [ ] Deferred items captured for future
+
+## Completion
+
+When finished:
+1. Save research_agenda using `save_document`
+2. Call `request_approval` with:
+   - Number of opportunities identified
+   - Selected vs deferred count
+   - Key constraints affecting scope
+   - Readiness for Develop stage
