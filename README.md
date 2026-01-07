@@ -23,7 +23,9 @@ PRAXIS/
 │   └── Execution.md     # How to run stages
 │
 ├── implementation/      # Usage and examples
-│   └── Examples.md      # Worked scenarios
+│   ├── Examples.md      # Worked scenarios
+│   ├── Templates.md     # Artifact templates
+│   └── Configuration.md # Configuration inputs
 │
 └── .claude/skills/      # Individual stage skills (invoked via /command)
     ├── signal/          # SPARC stages

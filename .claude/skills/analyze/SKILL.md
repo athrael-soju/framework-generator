@@ -16,7 +16,7 @@ Compare profiled prospects against their competitors to identify gaps where your
 | Input | Source | Description |
 |-------|--------|-------------|
 | company_profiles | Profile stage | Structured profiles to analyze |
-| positioning | Configuration | Your service positioning statement |
+| positioning_statement | Configuration | Your service positioning statement |
 | analysis_dimensions | Configuration | What to compare (docs, community, DX, etc.) |
 | expertise_inventory | Configuration | Your skills, methods, and past work |
 

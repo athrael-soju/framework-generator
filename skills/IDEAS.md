@@ -2,6 +2,8 @@
 
 Stage-level skill definitions for IDEAS. Each skill defines the complete methodology for one stage of the IDEAS methodology.
 
+> **Note:** For detailed tables (evidence strength, verdict criteria, contribution types, etc.), see the individual SKILL.md files linked below. For conceptual overview, see [IDEAS.md](../methodologies/IDEAS.md).
+
 ---
 
 ## Skill Architecture

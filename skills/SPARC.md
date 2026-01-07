@@ -2,6 +2,8 @@
 
 Stage-level skill definitions for SPARC. Each skill defines the complete methodology for one stage of the SPARC methodology.
 
+> **Note:** For detailed tables (signal scoring, qualification rubrics, etc.), see the individual SKILL.md files linked below. For conceptual overview, see [SPARC.md](../methodologies/SPARC.md).
+
 ---
 
 ## Skill Architecture
@@ -46,14 +48,7 @@ Each skill is a self-contained instruction set that defines:
 2. Signal Scoring — Apply strength criteria (hot/warm/watch)
 3. Output Generation — Create signal log for profiling
 
-**Signal Types:**
-| Type | Weight | Examples |
-|------|--------|----------|
-| Funding | High | Series A+, growth round |
-| Hiring | Medium-High | DevRel, API, Developer roles |
-| Product | Medium | New API launch, platform release |
-| Content | Low-Medium | Blog posts about relevant topics |
-| News | Variable | Depends on event type |
+**Signal Types:** Funding (high weight), Hiring (medium-high), Product (medium), Content (low-medium), News (variable). See [signal/SKILL.md](../.claude/skills/signal/SKILL.md) for detailed scoring criteria.
 
 **Outputs:** signal_log with company identifiers and scores
 
@@ -140,22 +135,11 @@ Each skill is a self-contained instruction set that defines:
 2. Weighted Calculation — Compute total score
 3. Recommendation Assignment — Prioritize/Qualified/Nurture/Pass
 
-**Scoring Criteria:**
-| Criterion | Weight | Focus |
-|-----------|--------|-------|
-| Budget Indicators | 25% | Funding, employee count, stated budgets |
-| Problem Fit | 25% | Alignment with your positioning |
-| Timing | 20% | Urgency signals, active buying |
-| Access | 15% | Path to decision-maker |
-| Strategic Value | 15% | Ongoing potential, referral value |
+**Scoring Criteria:** Budget Indicators (25%), Problem Fit (25%), Timing (20%), Access (15%), Strategic Value (15%).
 
-**Thresholds:**
-- 4.0+ → Prioritize
-- 3.0-3.9 → Qualified
-- 2.0-2.9 → Nurture
-- <2.0 → Pass
+**Thresholds:** 4.0+ → Prioritize, 3.0-3.9 → Qualified, 2.0-2.9 → Nurture, <2.0 → Pass.
 
-See [SPARC.md](../methodologies/SPARC.md#rank) for the detailed 1/3/5 scoring rubric.
+See [rank/SKILL.md](../.claude/skills/rank/SKILL.md) for detailed scoring rubric and [SPARC.md](../methodologies/SPARC.md#rank) for the 1/3/5 scale.
 
 **Outputs:** qualification_score with breakdown and recommendation
 

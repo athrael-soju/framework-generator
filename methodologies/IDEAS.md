@@ -27,7 +27,7 @@ IDEAS assumes the following are provided:
 
 - **Client Contract Agreement** — Scope of work, deliverables, engagement boundaries, timeline
 - **Client Analysis Report** — Deep-dive analysis identifying areas where you can provide value
-- **Outreach Brief** - Hypothesis seeds and engagement context from SPARC
+- **Outreach Brief** - Hypothesis seeds and engagement context from [SPARC Craft](SPARC.md#craft)
 
 ---
 

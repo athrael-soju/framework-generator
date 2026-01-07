@@ -276,4 +276,6 @@ Each stage requires approval before proceeding to the next. See `architecture/Ex
 | `skills/SPARC.md` | Stage-level skill definitions for SPARC |
 | `skills/IDEAS.md` | Stage-level skill definitions for IDEAS |
 | `implementation/Examples.md` | Usage examples and worked scenarios |
+| `implementation/Templates.md` | Artifact templates for stage outputs |
+| `implementation/Configuration.md` | Configuration input examples |
 | `CLAUDE.md` | Project instructions for Claude Code |
