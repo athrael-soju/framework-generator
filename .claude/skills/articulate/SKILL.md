@@ -204,3 +204,12 @@ When finished, present for approval:
 - Audience coverage
 - Recommendation summary
 - Next steps: proceed to Share or refine deliverables
+
+## Artifact Persistence
+
+On approval, save outputs to run directory:
+1. Save client deliverable to `artifacts/4_deliverable_[id].md`
+2. Log decision to `decisions.md` with rationale
+3. Update `run.yaml` with `current_stage: articulate`
+
+See [Execution.md](../../architecture/Execution.md#artifact-persistence) for structure details.

@@ -198,38 +198,108 @@ When a feedback condition is triggered, the skill will present options and guide
 
 ---
 
-## Document Management
+## Artifact Persistence
+
+Each PRAXIS run persists two things:
+1. **Decision log** — What the user decided at each stage and why
+2. **Artifacts** — Complete outputs from each stage
+
+### Run-Based Structure
+
+```
+praxis/
+├── runs/
+│   ├── 2025-01-15_vultr_sparc/
+│   │   ├── run.yaml                    # Run metadata
+│   │   ├── decisions.md                # Decision log
+│   │   └── artifacts/
+│   │       ├── 1_signal_log.yaml
+│   │       ├── 2_company_profile.yaml
+│   │       ├── 3_prospect_analysis.yaml
+│   │       ├── 4_qualification_score.yaml
+│   │       ├── 5_outreach_message.md
+│   │       └── 5_outreach_brief.yaml
+│   │
+│   ├── 2025-02-01_vultr_ideas/
+│   │   ├── run.yaml                    # Links to SPARC run
+│   │   ├── decisions.md
+│   │   └── artifacts/
+│   │       ├── 1_contract_summary.yaml
+│   │       ├── 1_research_agenda.yaml
+│   │       ├── 2_hypothesis_h1.yaml
+│   │       ├── 3_evaluation_h1.yaml
+│   │       ├── 4_deliverable_report.md
+│   │       └── 5_delivery_log.yaml
+│   │
+│   └── 2025-01-20_streamdata_sparc/
+│       └── ...
+│
+├── nurture/                            # Prospects in nurture state
+│   └── cloudscale.yaml
+│
+└── passed/                             # Archived pass records
+    └── acme.yaml
+```
+
+### Run Naming Convention
+
+```
+YYYY-MM-DD_[entity-slug]_[type]
+```
+
+- **Date**: Run start date
+- **Entity**: Prospect (SPARC) or client (IDEAS) name, lowercase with hyphens
+- **Type**: `sparc` or `ideas`
+
+Examples:
+- `2025-01-15_vultr_sparc`
+- `2025-02-01_vultr_ideas`
+- `2025-01-20_streamdata_sparc`
+
+### Artifact Numbering
+
+Prefix artifacts with stage number to maintain execution order:
+
+| Stage | SPARC Artifacts | IDEAS Artifacts |
+|-------|-----------------|-----------------|
+| 1 | `1_signal_log.yaml` | `1_contract_summary.yaml`, `1_research_agenda.yaml` |
+| 2 | `2_company_profile.yaml` | `2_hypothesis_[id].yaml` |
+| 3 | `3_prospect_analysis.yaml` | `3_evaluation_[id].yaml` |
+| 4 | `4_qualification_score.yaml` | `4_deliverable_[id].md` |
+| 5 | `5_outreach_message.md`, `5_outreach_brief.yaml` | `5_delivery_log.yaml` |
+
+### Starting a Run
+
+When beginning a new SPARC or IDEAS execution:
+
+1. Create run directory: `praxis/runs/YYYY-MM-DD_entity_type/`
+2. Initialize `run.yaml` with metadata
+3. Create empty `decisions.md`
+4. Create `artifacts/` directory
 
 ### During Execution
 
-Skills produce outputs as structured documents. Save these for:
-- Input to subsequent stages
-- Client deliverables
-- Reference and audit
+At each stage completion:
 
-### Recommended Structure
+1. Save artifact to `artifacts/` with appropriate prefix
+2. Append decision entry to `decisions.md`
+3. Update `run.yaml` with current stage
 
-```
-project/
-├── sparc/
-│   ├── signal_log.md
-│   ├── profiles/
-│   │   └── [company].md
-│   ├── analyses/
-│   │   └── [company].md
-│   ├── rankings.md
-│   └── outreach/
-│       └── [company].md
-└── ideas/
-    ├── research_agenda.md
-    ├── hypotheses/
-    │   └── [hypothesis].md
-    ├── evaluations/
-    │   └── [hypothesis].md
-    ├── deliverables/
-    │   └── [deliverable].md
-    └── delivery_log.md
-```
+### Completing a Run
+
+When run finishes:
+
+1. Update `run.yaml` status to `completed`
+2. Set outcome (`signed_agreement`, `nurture`, `pass`, etc.)
+3. For nurture/pass outcomes, copy record to `nurture/` or `passed/`
+
+### Linking Runs
+
+When an IDEAS run follows a SPARC run, link them via `linked_run` in `run.yaml`. This enables:
+- Tracing client engagements back to acquisition
+- Referencing SPARC artifacts from IDEAS stages
+
+See [Examples.md](../implementation/Examples.md#run-templates) for `run.yaml` and `decisions.md` templates.
 
 ---
 

@@ -181,3 +181,12 @@ When finished, present for approval:
 - Feasibility summary (proceed/modify/defer)
 - Key risks identified
 - Recommendation: proceed to Evaluate or refine hypotheses
+
+## Artifact Persistence
+
+On approval, save outputs to run directory:
+1. Save hypothesis document to `artifacts/2_hypothesis_[id].yaml`
+2. Log decision to `decisions.md` with rationale
+3. Update `run.yaml` with `current_stage: develop`
+
+See [Execution.md](../../architecture/Execution.md#artifact-persistence) for structure details.

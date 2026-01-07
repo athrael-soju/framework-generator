@@ -128,3 +128,12 @@ When finished, present for approval:
 - Key competitive insights
 - Top opportunities identified
 - Recommended prospects for Rank stage
+
+## Artifact Persistence
+
+On approval, save outputs to run directory:
+1. Save prospect analysis to `artifacts/3_prospect_analysis.yaml`
+2. Log decision to `decisions.md` with rationale
+3. Update `run.yaml` with `current_stage: analyze`
+
+See [Execution.md](../../architecture/Execution.md#artifact-persistence) for structure details.

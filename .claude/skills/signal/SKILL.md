@@ -106,3 +106,12 @@ When finished, present for approval:
 - List of hot prospects for profiling
 - Any gaps in signal coverage
 - Recommendation: proceed to Profile or continue monitoring
+
+## Artifact Persistence
+
+On approval, save outputs to run directory:
+1. Save signal log to `artifacts/1_signal_log.yaml`
+2. Log decision to `decisions.md` with rationale
+3. Update `run.yaml` with `current_stage: signal`
+
+See [Execution.md](../../architecture/Execution.md#artifact-persistence) for structure details.

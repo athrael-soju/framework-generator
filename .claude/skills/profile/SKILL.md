@@ -138,3 +138,12 @@ When finished, present for approval:
 - Key findings across profiles
 - Significant data gaps
 - Recommendation: proceed to Analyze or gather more data
+
+## Artifact Persistence
+
+On approval, save outputs to run directory:
+1. Save company profile to `artifacts/2_company_profile.yaml`
+2. Log decision to `decisions.md` with rationale
+3. Update `run.yaml` with `current_stage: profile`
+
+See [Execution.md](../../architecture/Execution.md#artifact-persistence) for structure details.

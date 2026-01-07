@@ -153,3 +153,14 @@ When finished, present for approval:
 - Sample message for review
 - Recommended send timing
 - Next steps: send outreach, await response, transition to IDEAS if signed
+
+## Artifact Persistence
+
+On approval, save outputs to run directory:
+1. Save outreach message to `artifacts/5_outreach_message.md`
+2. Save outreach brief to `artifacts/5_outreach_brief.yaml`
+3. Log decision to `decisions.md` with rationale
+4. Update `run.yaml` with `current_stage: craft`
+5. On signed agreement, set `outcome: signed_agreement` and initiate IDEAS run
+
+See [Execution.md](../../architecture/Execution.md#artifact-persistence) for structure details.

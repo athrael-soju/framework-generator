@@ -201,3 +201,13 @@ When finished, present for approval:
 - Publication status (if applicable)
 - Engagement closure confirmation
 - Referral opportunity (if appropriate)
+
+## Artifact Persistence
+
+On approval, save outputs to run directory:
+1. Save delivery log to `artifacts/5_delivery_log.yaml`
+2. Log decision to `decisions.md` with rationale
+3. Update `run.yaml` with `current_stage: share`, `status: completed`, `outcome: delivered`
+4. For referrals, create new SPARC run entries in `runs/`
+
+See [Execution.md](../../architecture/Execution.md#artifact-persistence) for structure details.

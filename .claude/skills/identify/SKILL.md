@@ -170,3 +170,13 @@ When finished, present for approval:
 - Selected vs deferred count
 - Key constraints affecting scope
 - Recommendation: proceed to Develop or refine agenda
+
+## Artifact Persistence
+
+On approval, save outputs to run directory:
+1. Save contract summary to `artifacts/1_contract_summary.yaml`
+2. Save research agenda to `artifacts/1_research_agenda.yaml`
+3. Log decision to `decisions.md` with rationale
+4. Update `run.yaml` with `current_stage: identify`
+
+See [Execution.md](../../architecture/Execution.md#artifact-persistence) for structure details.
