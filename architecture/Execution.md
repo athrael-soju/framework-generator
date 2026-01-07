@@ -302,7 +302,7 @@ When an IDEAS run follows a SPARC run, link them via `linked_run` in `run.yaml`.
 - Tracing client engagements back to acquisition
 - Referencing SPARC artifacts from IDEAS stages
 
-See [Templates.md](../implementation/Templates.md#run-templates) for `run.yaml` and `decisions.md` templates.
+See [run.md](../implementation/templates/run.md) for `run.yaml` and `decisions.md` templates.
 
 ---
 

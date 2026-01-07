@@ -3,7 +3,7 @@
 Worked examples demonstrating SPARC and IDEAS execution.
 
 **Related:**
-- [Templates.md](Templates.md) — Artifact templates for stage outputs
+- [templates/](templates/) — Artifact templates (sparc.md, ideas.md, run.md)
 - [Configuration.md](Configuration.md) — Configuration input examples
 
 ---

@@ -15,7 +15,7 @@ You have access to:
 | `skills/SPARC.md` | Stage-level skill definitions for SPARC |
 | `skills/IDEAS.md` | Stage-level skill definitions for IDEAS |
 | `implementation/Examples.md` | Usage examples and worked scenarios |
-| `implementation/Templates.md` | Artifact templates for stage outputs |
+| `implementation/templates/` | Artifact templates (sparc.md, ideas.md, run.md) |
 | `implementation/Configuration.md` | Configuration input examples |
 
 ## Roles
