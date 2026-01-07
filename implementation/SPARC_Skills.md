@@ -162,7 +162,7 @@ Each skill is a self-contained instruction set that defines:
 3. Bridge — Connect gap to your capability
 4. Ask — Low-commitment next step
 
-**Tools:** `web_search`, `save_document`, `get_document`, `list_documents`
+**Tools:** `web_search`, `web_fetch`, `save_document`, `get_document`, `list_documents`
 
 **Outputs:** decision_maker_profile, outreach_message, variants, response_brief
 

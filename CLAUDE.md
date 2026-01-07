@@ -12,6 +12,8 @@ You have access to:
 | `frameworks/SPARC_Framework.md` | Client acquisition: Signal → Profile → Analyze → Rank → Craft |
 | `frameworks/IDEAS_Framework.md` | Research delivery: Identify → Develop → Evaluate → Articulate → Share |
 | `implementation/Agent_Architecture.md` | Skills catalog, agent definitions, orchestration patterns |
+| `implementation/SPARC_Skills.md` | Stage-level skill definitions for SPARC agents |
+| `implementation/IDEAS_Skills.md` | Stage-level skill definitions for IDEAS agents |
 | `implementation/Examples.md` | Usage examples and worked scenarios |
 
 ## Roles

@@ -290,6 +290,7 @@ craft_agent = Agent(
     mcp_servers=["research-mcp", "storage-mcp"],
     allowed_tools=[
         "mcp__research-mcp__web_search",
+        "mcp__research-mcp__web_fetch",
         "mcp__storage-mcp__*"
     ]
 )

@@ -14,7 +14,7 @@ PRAXIS/
 │   └── IDEAS_Framework.md   # Research delivery
 │
 └── implementation/          # Technical execution (how to do it)
-    ├── Agent_Architecture.md# Agents, MCP servers, orchestration
+    ├── Agent_Architecture.md # Agents, MCP servers, orchestration
     ├── SPARC_Skills.md      # Stage-level skills for SPARC agents
     ├── IDEAS_Skills.md      # Stage-level skills for IDEAS agents
     └── Examples.md          # Usage examples
