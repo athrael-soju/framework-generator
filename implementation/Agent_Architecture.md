@@ -109,12 +109,90 @@ Human interaction.
 
 ---
 
+## Skills, Agents, and Tools
+
+The architecture separates concerns into three layers:
+
+```mermaid
+---
+config:
+  layout: dagre
+  look: handDrawn
+  theme: base
+  themeVariables:
+    lineColor: gray
+---
+flowchart TB
+    subgraph Layer1 ["Skills (What)"]
+        SK["Methodology<br/>Instructions<br/>I/O Definitions"]
+    end
+
+    subgraph Layer2 ["Agents (Who)"]
+        AG["Claude Instance<br/>System Prompt<br/>Permissions"]
+    end
+
+    subgraph Layer3 ["Tools (How)"]
+        TL["MCP Functions<br/>API Calls<br/>Data Access"]
+    end
+
+    SK --> |loaded into| AG
+    AG --> |invokes| TL
+```
+
+| Layer | Purpose | Example |
+|-------|---------|---------|
+| **Skills** | Define *what* to do and *how* to think about it | `identify` skill defines the Identify stage methodology |
+| **Agents** | Execute skills using available tools | `identify_agent` runs the identify skill |
+| **Tools** | Perform actions and return data | `web_search` queries the web |
+
+### Skill Loading
+
+Each agent loads one stage-level skill that defines its complete methodology:
+
+```python
+def load_skill(stage: str) -> str:
+    """Load skill definition for a stage."""
+    path = f".claude/skills/{stage}/SKILL.md"
+    return read_file(path)
+
+def build_agent_prompt(stage: str, framework: str) -> str:
+    """Build complete agent system prompt."""
+    return f"""
+You are the {stage.title()} Agent for {framework.upper()}.
+
+{load_skill(stage)}
+
+When finished, call request_approval with your outputs summary.
+"""
+```
+
+### Skill-to-Agent Mapping
+
+One skill per agent. Each skill contains the complete stage methodology:
+
+| Agent | Skill | Description |
+|-------|-------|-------------|
+| **Signal** | `signal` | Detect and score prospect signals |
+| **Profile** | `profile` | Build comprehensive company profiles |
+| **Analyze** | `analyze` | Assess competitive position |
+| **Rank** | `rank` | Score and prioritize prospects |
+| **Craft** | `craft` | Create personalized outreach |
+| **Identify** | `identify` | Define research opportunities |
+| **Develop** | `develop` | Formalize hypotheses |
+| **Evaluate** | `evaluate` | Test hypotheses |
+| **Articulate** | `articulate` | Create deliverables |
+| **Share** | `share` | Deliver and disseminate |
+
+Skills define the *methodology* (what to do, in what order, what outputs to produce). Tools provide the *capabilities* (how to actually do it).
+
+---
+
 ## Agent Definitions
 
 Each agent is a Claude Agent SDK instance with:
-- System prompt defining role and stage
+- System prompt built from loaded skills
 - MCP servers it can access
-- Allowed tools subset
+- Allowed tools matching skill requirements
 
 ### Orchestrator
 
@@ -139,10 +217,11 @@ orchestrator = Agent(
 ### SPARC Agents
 
 #### Signal Agent
+
 ```python
 signal_agent = Agent(
     model="claude-sonnet-4-5-20250514",
-    system_prompt=load_prompt("sparc/signal.md"),
+    system_prompt=build_agent_prompt("signal", "sparc"),
     mcp_servers=["research-mcp", "storage-mcp"],
     allowed_tools=[
         "mcp__research-mcp__web_search",
@@ -155,10 +234,11 @@ signal_agent = Agent(
 ```
 
 #### Profile Agent
+
 ```python
 profile_agent = Agent(
     model="claude-sonnet-4-5-20250514",
-    system_prompt=load_prompt("sparc/profile.md"),
+    system_prompt=build_agent_prompt("profile", "sparc"),
     mcp_servers=["research-mcp", "storage-mcp"],
     allowed_tools=[
         "mcp__research-mcp__web_search",
@@ -172,10 +252,11 @@ profile_agent = Agent(
 ```
 
 #### Analyze Agent
+
 ```python
 analyze_agent = Agent(
     model="claude-sonnet-4-5-20250514",
-    system_prompt=load_prompt("sparc/analyze.md"),
+    system_prompt=build_agent_prompt("analyze", "sparc"),
     mcp_servers=["research-mcp", "analysis-mcp", "storage-mcp"],
     allowed_tools=[
         "mcp__research-mcp__web_search",
@@ -187,10 +268,11 @@ analyze_agent = Agent(
 ```
 
 #### Rank Agent
+
 ```python
 rank_agent = Agent(
     model="claude-sonnet-4-5-20250514",
-    system_prompt=load_prompt("sparc/rank.md"),
+    system_prompt=build_agent_prompt("rank", "sparc"),
     mcp_servers=["analysis-mcp", "storage-mcp"],
     allowed_tools=[
         "mcp__analysis-mcp__score_prospect",
@@ -200,10 +282,11 @@ rank_agent = Agent(
 ```
 
 #### Craft Agent
+
 ```python
 craft_agent = Agent(
     model="claude-sonnet-4-5-20250514",
-    system_prompt=load_prompt("sparc/craft.md"),
+    system_prompt=build_agent_prompt("craft", "sparc"),
     mcp_servers=["research-mcp", "storage-mcp"],
     allowed_tools=[
         "mcp__research-mcp__web_search",
@@ -215,23 +298,26 @@ craft_agent = Agent(
 ### IDEAS Agents
 
 #### Identify Agent
+
 ```python
 identify_agent = Agent(
     model="claude-sonnet-4-5-20250514",
-    system_prompt=load_prompt("ideas/identify.md"),
+    system_prompt=build_agent_prompt("identify", "ideas"),
     mcp_servers=["research-mcp", "storage-mcp"],
     allowed_tools=[
         "mcp__research-mcp__web_search",
+        "mcp__research-mcp__web_fetch",
         "mcp__storage-mcp__*"
     ]
 )
 ```
 
 #### Develop Agent
+
 ```python
 develop_agent = Agent(
     model="claude-sonnet-4-5-20250514",
-    system_prompt=load_prompt("ideas/develop.md"),
+    system_prompt=build_agent_prompt("develop", "ideas"),
     mcp_servers=["research-mcp", "storage-mcp"],
     allowed_tools=[
         "mcp__research-mcp__web_search",
@@ -242,10 +328,11 @@ develop_agent = Agent(
 ```
 
 #### Evaluate Agent
+
 ```python
 evaluate_agent = Agent(
     model="claude-sonnet-4-5-20250514",
-    system_prompt=load_prompt("ideas/evaluate.md"),
+    system_prompt=build_agent_prompt("evaluate", "ideas"),
     mcp_servers=["research-mcp", "analysis-mcp", "storage-mcp"],
     allowed_tools=[
         "mcp__research-mcp__*",
@@ -256,10 +343,11 @@ evaluate_agent = Agent(
 ```
 
 #### Articulate Agent
+
 ```python
 articulate_agent = Agent(
     model="claude-sonnet-4-5-20250514",
-    system_prompt=load_prompt("ideas/articulate.md"),
+    system_prompt=build_agent_prompt("articulate", "ideas"),
     mcp_servers=["storage-mcp"],
     allowed_tools=[
         "mcp__storage-mcp__*"
@@ -268,10 +356,11 @@ articulate_agent = Agent(
 ```
 
 #### Share Agent
+
 ```python
 share_agent = Agent(
     model="claude-sonnet-4-5-20250514",
-    system_prompt=load_prompt("ideas/share.md"),
+    system_prompt=build_agent_prompt("share", "ideas"),
     mcp_servers=["storage-mcp", "notify-mcp"],
     allowed_tools=[
         "mcp__storage-mcp__*",
@@ -526,8 +615,21 @@ async def request_approval(stage: str, state: dict) -> bool:
 
 ```
 praxis/
+├── .claude/
+│   └── skills/                    # Stage-level skill definitions
+│       ├── signal/               # SPARC stages
+│       ├── profile/
+│       ├── analyze/
+│       ├── rank/
+│       ├── craft/
+│       ├── identify/             # IDEAS stages
+│       ├── develop/
+│       ├── evaluate/
+│       ├── articulate/
+│       └── share/
 ├── agents/
 │   ├── orchestrator.py
+│   ├── skill_loader.py            # load_skill(), build_agent_prompt()
 │   ├── sparc/
 │   │   ├── signal.py
 │   │   ├── profile.py
@@ -549,25 +651,14 @@ praxis/
 │   │   └── server.py
 │   └── notify/
 │       └── server.py
-├── prompts/
-│   ├── sparc/
-│   │   ├── signal.md
-│   │   ├── profile.md
-│   │   ├── analyze.md
-│   │   ├── rank.md
-│   │   └── craft.md
-│   └── ideas/
-│       ├── identify.md
-│       ├── develop.md
-│       ├── evaluate.md
-│       ├── articulate.md
-│       └── share.md
 ├── config/
 │   ├── mcp_servers.json
 │   └── scoring_criteria.json
 ├── main.py
 └── CLAUDE.md
 ```
+
+Skills are stored in `.claude/skills/` following the Claude Code convention. Each stage has its own skill directory with a `SKILL.md` file defining the complete stage methodology: inputs, process steps, outputs, available tools, and quality criteria.
 
 ---
 

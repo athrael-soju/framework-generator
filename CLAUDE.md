@@ -61,10 +61,10 @@ If inputs are missing or unclear, stop and ask rather than assuming.
 
 When developing skills or agents:
 
-- Skills are atomic, stateless instruction sets with defined inputs/outputs
-- Agents compose skills to complete stage objectives
+- Each agent has one stage-level skill that defines its complete methodology
+- Skills are in `.claude/skills/<stage>/SKILL.md` (one per SPARC/IDEAS stage)
+- Skills define *what* to do; MCP tools provide *how* to do it
 - Follow the SKILL.md pattern in `implementation/Agent_Architecture.md`
-- Identify MCP integration points where external tools are needed
 - Human approval gates exist at every stage handoff
 
 ## Document Conventions
