@@ -92,10 +92,10 @@ See [evaluate/SKILL.md](../.claude/skills/evaluate/SKILL.md) for verdict criteri
 ### Contribution Types
 
 Findings are positioned by contribution type:
-- **Novel Finding** — New insight not previously documented
-- **Quantified Confirmation** — Evidence for suspected truth
-- **Framework** — New way to organize thinking
-- **Benchmark** — Comparison point for evaluation
-- **Recommendation** — Actionable guidance
+- **Novel Finding** - New insight not previously documented
+- **Quantified Confirmation** - Evidence for suspected truth
+- **Framework** - New way to organize thinking
+- **Benchmark** - Comparison point for evaluation
+- **Recommendation** - Actionable guidance
 
 See [articulate/SKILL.md](../.claude/skills/articulate/SKILL.md) for audience targeting and roadmap creation.

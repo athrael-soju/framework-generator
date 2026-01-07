@@ -8,6 +8,8 @@ Templates for tracking PRAXIS pipeline execution. Used by both SPARC and IDEAS r
 
 Metadata file created at run start, updated throughout execution.
 
+> **Note:** `run.yaml` remains YAML because it's machine-read state data, not a human-reviewed artifact. It tracks run status programmatically.
+
 ### SPARC Example
 
 ```yaml
@@ -74,7 +76,7 @@ notes: |
 
 ## decisions.md
 
-Decision log capturing choices made at each stage.
+Decision log capturing choices made at each stage. This is human-readable documentation of the reasoning behind each stage transition.
 
 ### Template
 
@@ -82,7 +84,7 @@ Decision log capturing choices made at each stage.
 # Decisions: [Entity Name]
 
 Run: `[run-id]`
-Type: [SPARC | IDEAS]
+Type: SPARC / IDEAS
 Started: [date]
 
 ---
@@ -90,7 +92,8 @@ Started: [date]
 ## Signal - [date]
 
 **Decision Point:** [What triggered a decision]
-**Options Presented:**
+
+**Options Considered:**
 1. [Option A]
 2. [Option B]
 3. [Option C]
@@ -104,7 +107,8 @@ Started: [date]
 ## Profile - [date]
 
 **Decision Point:** [What triggered a decision]
-**Options Presented:**
+
+**Options Considered:**
 1. [Option A]
 2. [Option B]
 
@@ -122,8 +126,8 @@ Started: [date]
 
 ## Run Outcome - [date]
 
-**Final Status:** [completed | aborted]
-**Outcome:** [signed_agreement | nurture | pass | delivered]
+**Final Status:** completed / aborted
+**Outcome:** signed_agreement / nurture / pass / delivered
 **Summary:** [Brief summary of the run result]
 **Next Steps:** [What happens next, if anything]
 ```
@@ -142,7 +146,8 @@ Started: 2025-01-15
 ## Signal - 2025-01-15
 
 **Decision Point:** Multiple hot signals detected for same company
-**Options Presented:**
+
+**Options Considered:**
 1. Prioritize by funding signal (strongest budget indicator)
 2. Prioritize by hiring signal (strongest timing indicator)
 3. Weight all signals equally
@@ -156,7 +161,8 @@ Started: 2025-01-15
 ## Profile - 2025-01-16
 
 **Decision Point:** Incomplete data for community presence
-**Options Presented:**
+
+**Options Considered:**
 1. Continue with gaps noted
 2. Return to Signal for more monitoring
 3. Request manual research input
@@ -170,7 +176,8 @@ Started: 2025-01-15
 ## Analyze - 2025-01-17
 
 **Decision Point:** Competitor set selection
-**Options Presented:**
+
+**Options Considered:**
 1. Include only direct competitors (DigitalOcean, Linode)
 2. Include adjacent competitors (AWS, GCP at lower tier)
 3. Include emerging competitors (Hetzner, OVHcloud)
@@ -184,7 +191,8 @@ Started: 2025-01-15
 ## Rank - 2025-01-18
 
 **Decision Point:** Stage completion approval
-**Options Presented:**
+
+**Options Considered:**
 1. Approve - proceed to Craft
 2. Edit - adjust scoring
 3. Retry - re-evaluate with different weights
@@ -198,7 +206,8 @@ Started: 2025-01-15
 ## Craft - 2025-01-19
 
 **Decision Point:** Channel selection
-**Options Presented:**
+
+**Options Considered:**
 1. LinkedIn DM (CMO active on platform)
 2. Email (more formal, detailed)
 3. Warm intro (check for mutual connections)

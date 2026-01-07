@@ -25,8 +25,8 @@ flowchart TB
 
 IDEAS assumes the following are provided:
 
-- **Client Contract Agreement** — Scope of work, deliverables, engagement boundaries, timeline
-- **Client Analysis Report** — Deep-dive analysis identifying areas where you can provide value
+- **Client Contract Agreement** - Scope of work, deliverables, engagement boundaries, timeline
+- **Client Analysis Report** - Deep-dive analysis identifying areas where you can provide value
 - **Outreach Brief** - Hypothesis seeds and engagement context from [SPARC Craft](SPARC.md#craft)
 
 ---
@@ -53,7 +53,7 @@ Surface research opportunities from client context.
 | Which gaps align with your expertise and scope? | Filter to tractable work |
 | What creates most value within timeline? | Prioritize ruthlessly |
 
-**Output:** Research Agenda — prioritized list with rationale, initial hypotheses
+**Output:** Research Agenda - prioritized list with rationale, initial hypotheses
 
 ---
 
@@ -87,7 +87,7 @@ MEASURABLE BY [metric/evidence]
 | Skill Match | 15% | Requires expertise we have? |
 | Client Dependency | 15% | How much depends on client responsiveness? |
 
-**Output:** Hypothesis Document — statements, required evidence, data sources, timeline, assumptions, risks
+**Output:** Hypothesis Document - statements, required evidence, data sources, timeline, assumptions, risks
 
 ---
 
@@ -123,7 +123,7 @@ Test claims against evidence.
 | Not Supported | Evidence contradicts hypothesis |
 | Refuted | Strong evidence against |
 
-**Output:** Evaluation Report — evidence summary, verdicts, confidence, alternatives considered, limitations
+**Output:** Evaluation Report - evidence summary, verdicts, confidence, alternatives considered, limitations
 
 ---
 
@@ -157,7 +157,7 @@ Frame findings for maximum impact.
 | Marketing/DevRel | Slides + talking points | Medium |
 | Board/Investors | Executive brief | Minimal |
 
-**Output:** Client Deliverable — executive summary, findings, recommendations, roadmap, appendices
+**Output:** Client Deliverable - executive summary, findings, recommendations, roadmap, appendices
 
 ---
 

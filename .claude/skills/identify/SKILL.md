@@ -176,8 +176,8 @@ When finished, present for approval:
 
 On approval, save outputs to run directory:
 1. Create stage folder: `artifacts/1_identify_YYYY-MM-DD/`
-2. Save contract summary to `artifacts/1_identify_YYYY-MM-DD/contract_summary.yaml`
-3. Save research agenda to `artifacts/1_identify_YYYY-MM-DD/research_agenda.yaml`
+2. Save contract summary to `artifacts/1_identify_YYYY-MM-DD/contract_summary.md`
+3. Save research agenda to `artifacts/1_identify_YYYY-MM-DD/research_agenda.md`
 4. Log decision to `decisions.md` with rationale
 5. Update `run.yaml` with `current_stage: identify`
 

@@ -9,7 +9,7 @@ Define your professional identity to inform client acquisition and research deli
 
 ## Objective
 
-Create a structured YAML profile capturing who you are, what you offer, and who you serve. This profile becomes the foundation for SPARC signal detection and IDEAS research scoping.
+Create a structured Markdown profile capturing who you are, what you offer, and who you serve. This profile becomes the foundation for SPARC signal detection and IDEAS research scoping.
 
 ## Inputs
 
@@ -98,7 +98,7 @@ Ask targeted questions to fill gaps. Adapt based on what was discovered.
 
 ### Phase 4: Synthesize
 
-Combine all findings into structured YAML profile.
+Combine all findings into structured Markdown profile.
 
 **Profile Sections:**
 
@@ -122,7 +122,7 @@ Combine all findings into structured YAML profile.
 
 | Output | Type | Description |
 |--------|------|-------------|
-| profile | YAML | Complete professional identity profile |
+| profile | Markdown | Complete professional identity profile |
 
 ## Decision Points
 
@@ -144,7 +144,7 @@ All menus must include an Other option for custom input.
 - [ ] Ideal client characteristics are filterable
 - [ ] At least 2 red flags identified
 - [ ] Constraints include rate floor and deal-breakers
-- [ ] Profile is succinct (<200 lines YAML)
+- [ ] Profile is succinct (<200 lines)
 
 ## Completion
 
@@ -154,13 +154,13 @@ When finished, present for approval:
 - Any gaps or caveats
 - Quality criteria checklist results
 
-On approval, save profile to `praxis/identity/profile.yaml` and confirm it's ready for SPARC/IDEAS use.
+On approval, save profile to `praxis/identity/profile.md` and confirm it's ready for SPARC/IDEAS use.
 
 ## Artifact Persistence
 
 On approval, save outputs:
 1. Create directory: `praxis/identity/`
-2. Save profile to `praxis/identity/profile.yaml`
+2. Save profile to `praxis/identity/profile.md`
 3. Log creation date and sources used
 
-For updates, version the prior profile as `profile_YYYY-MM-DD.yaml` before overwriting.
+For updates, version the prior profile as `profile_YYYY-MM-DD.md` before overwriting.

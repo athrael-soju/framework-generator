@@ -111,7 +111,7 @@ When finished, present for approval:
 
 On approval, save outputs to run directory:
 1. Create stage folder: `artifacts/1_signal_YYYY-MM-DD/`
-2. Save signal log to `artifacts/1_signal_YYYY-MM-DD/signal_log.yaml`
+2. Save signal log to `artifacts/1_signal_YYYY-MM-DD/signal_log.md`
 3. Log decision to `decisions.md` with rationale
 4. Update `run.yaml` with `current_stage: signal`
 

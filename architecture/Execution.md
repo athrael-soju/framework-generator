@@ -44,7 +44,7 @@ Each PRAXIS component has corresponding skills:
 
 | Component | Stage | Skill Command | Purpose |
 |-----------|-------|---------------|---------|
-| Identity | — | `/identity` | Define professional identity profile |
+| Identity | - | `/identity` | Define professional identity profile |
 | SPARC | Signal | `/signal` | Detect and score prospect signals |
 | SPARC | Profile | `/profile` | Build comprehensive company profiles |
 | SPARC | Analyze | `/analyze` | Assess competitive position |
@@ -190,59 +190,59 @@ For the complete feedback loop definitions, see:
 ## Artifact Persistence
 
 Each PRAXIS run persists two things:
-1. **Decision log** — What the user decided at each stage and why
-2. **Artifacts** — Complete outputs from each stage
+1. **Decision log** - What the user decided at each stage and why
+2. **Artifacts** - Complete outputs from each stage
 
 ### Run-Based Structure
 
 ```
 praxis/
 ├── identity/
-│   └── profile.yaml                      # Your professional identity
+│   └── profile.md                        # Your professional identity
 │
 ├── runs/
 │   ├── 2025-01-15_vultr_sparc/
-│   │   ├── run.yaml                    # Run metadata
+│   │   ├── run.yaml                    # Run metadata (state tracking)
 │   │   ├── decisions.md                # Decision log
 │   │   └── artifacts/
 │   │       ├── 1_signal_2025-01-15/
-│   │       │   └── signal_log.yaml
+│   │       │   └── signal_log.md
 │   │       ├── 2_profile_2025-01-16/
-│   │       │   └── company_profile.yaml
+│   │       │   └── company_profile.md
 │   │       ├── 3_analyze_2025-01-17/
-│   │       │   ├── prospect_analysis.yaml
-│   │       │   └── competitor_matrix.yaml
+│   │       │   ├── prospect_analysis.md
+│   │       │   └── competitor_matrix.md
 │   │       ├── 4_rank_2025-01-18/
-│   │       │   └── qualification_score.yaml
+│   │       │   └── qualification_score.md
 │   │       └── 5_craft_2025-01-19/
 │   │           ├── outreach_message.md
-│   │           └── outreach_brief.yaml
+│   │           └── outreach_brief.md
 │   │
 │   ├── 2025-02-01_vultr_ideas/
 │   │   ├── run.yaml                    # Links to SPARC run
 │   │   ├── decisions.md
 │   │   └── artifacts/
 │   │       ├── 1_identify_2025-02-01/
-│   │       │   ├── contract_summary.yaml
-│   │       │   └── research_agenda.yaml
+│   │       │   ├── contract_summary.md
+│   │       │   └── research_agenda.md
 │   │       ├── 2_develop_2025-02-05/
-│   │       │   ├── hypothesis_h1.yaml
-│   │       │   └── prior_work_review.yaml
+│   │       │   ├── hypothesis_h1.md
+│   │       │   └── prior_work_review.md
 │   │       ├── 3_evaluate_2025-02-12/
-│   │       │   └── evaluation_h1.yaml
+│   │       │   └── evaluation_h1.md
 │   │       ├── 4_articulate_2025-02-20/
 │   │       │   └── deliverable_report.md
 │   │       └── 5_share_2025-02-25/
-│   │           └── delivery_log.yaml
+│   │           └── delivery_log.md
 │   │
 │   └── 2025-01-20_streamdata_sparc/
 │       └── ...
 │
 ├── nurture/                            # Prospects in nurture state
-│   └── cloudscale.yaml
+│   └── cloudscale.md
 │
 └── passed/                             # Archived pass records
-    └── acme.yaml
+    └── acme.md
 ```
 
 ### Run Naming Convention
@@ -276,7 +276,7 @@ Each stage produces a folder with a stage number, name, and completion date:
 | 4 | `4_rank_YYYY-MM-DD/` | `4_articulate_YYYY-MM-DD/` |
 | 5 | `5_craft_YYYY-MM-DD/` | `5_share_YYYY-MM-DD/` |
 
-Files within each folder use descriptive names without prefixes (e.g., `signal_log.yaml`, `hypothesis_h1.yaml`).
+Files within each folder use descriptive names without prefixes (e.g., `signal_log.md`, `hypothesis_h1.md`).
 
 ### Starting a Run
 

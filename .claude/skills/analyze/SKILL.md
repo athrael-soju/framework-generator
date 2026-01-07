@@ -135,8 +135,8 @@ When finished, present for approval:
 
 On approval, save outputs to run directory:
 1. Create stage folder: `artifacts/3_analyze_YYYY-MM-DD/`
-2. Save prospect analysis to `artifacts/3_analyze_YYYY-MM-DD/prospect_analysis.yaml`
-3. Save competitor matrix to `artifacts/3_analyze_YYYY-MM-DD/competitor_matrix.yaml`
+2. Save prospect analysis to `artifacts/3_analyze_YYYY-MM-DD/prospect_analysis.md`
+3. Save competitor matrix to `artifacts/3_analyze_YYYY-MM-DD/competitor_matrix.md`
 4. Log decision to `decisions.md` with rationale
 5. Update `run.yaml` with `current_stage: analyze`
 

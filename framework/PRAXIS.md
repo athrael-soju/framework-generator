@@ -2,7 +2,7 @@
 
 A complete framework for research consulting: from finding clients to delivering value.
 
-**PRAXIS** = Practice + Axis — the central axis around which your consulting practice operates.
+**PRAXIS** = Practice + Axis - the central axis around which your consulting practice operates.
 
 ```mermaid
 ---
@@ -18,14 +18,14 @@ flowchart TB
         Identity["Identity"]
     end
 
-    subgraph SPARC ["SPARC — Acquisition"]
+    subgraph SPARC ["SPARC - Acquisition"]
         S["Signal"] --> P["Profile"]
         P --> A["Analyze"]
         A --> R["Rank"]
         R --> C["Craft"]
     end
 
-    subgraph IDEAS ["IDEAS — Delivery"]
+    subgraph IDEAS ["IDEAS - Delivery"]
         Id["Identify"] --> D["Develop"]
         D --> E["Evaluate"]
         E --> Ar["Articulate"]
@@ -92,12 +92,12 @@ When Share completes successfully, outcomes feed back to SPARC:
 
 ## Shared Inputs
 
-Both SPARC and IDEAS depend on your **Identity Profile** — your professional identity definition:
+Both SPARC and IDEAS depend on your **Identity Profile** - your professional identity definition:
 
 | Identity Profile Section | Used By SPARC | Used By IDEAS |
 |-------------------|---------------|---------------|
 | `positioning` | Filtering prospects, messaging | Scoping research |
-| `ideal_client` | Signal detection, ranking | — |
+| `ideal_client` | Signal detection, ranking | - |
 | `services` | Craft outreach | Articulate recommendations |
 | `expertise` | Analyze gaps, find angles | Identify opportunities, Develop methods |
 | `constraints` | Rank scoring | Scope feasibility |

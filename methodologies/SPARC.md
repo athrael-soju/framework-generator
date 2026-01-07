@@ -24,9 +24,9 @@ flowchart TB
 
 SPARC requires an **Identity Profile** (run `/identity` first) which provides:
 
-- **Positioning Statement** — Who you help, with what problem, and your differentiation
-- **Ideal Client Profile (ICP)** — Company characteristics that indicate fit
-- **Service Offerings** — What you deliver, at what price points
+- **Positioning Statement** - Who you help, with what problem, and your differentiation
+- **Ideal Client Profile (ICP)** - Company characteristics that indicate fit
+- **Service Offerings** - What you deliver, at what price points
 
 ---
 
@@ -59,7 +59,7 @@ Detect companies exhibiting buying signals.
 | Warm | Single strong or multiple moderate signals (e.g., Series B, or 3+ relevant job posts) | Profile within 1 week |
 | Watch | Weak signals, early indicators (e.g., mentioned AI strategy, 1 relevant hire) | Add to monitoring list |
 
-**Output:** Signal Log — timestamped records with company, signal type, source, link, score
+**Output:** Signal Log - timestamped records with company, signal type, source, link, score
 
 ---
 
@@ -82,7 +82,7 @@ Build structured company profiles from public data.
 | Key People | Decision-makers, backgrounds |
 | Recent Activity | Last 90 days: announcements, hires, launches |
 
-**Output:** Company Profile (1-2 pages) — structured document with above fields
+**Output:** Company Profile (1-2 pages) - structured document with above fields
 
 ---
 
@@ -106,7 +106,7 @@ Conduct deep research on strategic gaps and opportunities.
 | Strategic Priorities | What are they publicly investing in? |
 | Entry Points | Who is the buyer? What makes them look good? |
 
-**Output:** Prospect Analysis Report (3-5 pages) — gaps, opportunities, engagement rationale
+**Output:** Prospect Analysis Report (3-5 pages) - gaps, opportunities, engagement rationale
 
 ---
 
@@ -133,12 +133,12 @@ Score prospects against qualification criteria.
 
 | Score | Action |
 |-------|--------|
-| 4.0+ | Prioritize — active outreach |
-| 3.0–3.9 | Qualified — outreach when capacity allows |
-| 2.0–2.9 | Nurture — monitor, engage with content |
+| 4.0+ | Prioritize - active outreach |
+| 3.0–3.9 | Qualified - outreach when capacity allows |
+| 2.0–2.9 | Nurture - monitor, engage with content |
 | <2.0 | Pass |
 
-**Output:** Ranked Prospect List — scored, sorted by priority
+**Output:** Ranked Prospect List - scored, sorted by priority
 
 ---
 
@@ -193,12 +193,15 @@ Prospects scored <2.0 or identified as not a fit exit the active pipeline.
 - No further outreach unless they re-signal
 
 **Pass Record:**
-```yaml
-company: [Name]
-passed_date: YYYY-MM-DD
-stage_exited: [analyze | rank | craft]
-reason: [Not in ICP | No budget indicators | Problem mismatch | Rejected outreach]
-learnings: [Optional insight for ICP refinement]
+```markdown
+# Pass Record: [Company Name]
+
+**Passed Date:** YYYY-MM-DD
+**Stage Exited:** analyze / rank / craft
+**Reason:** Not in ICP / No budget indicators / Problem mismatch / Rejected outreach
+
+## Learnings
+[Optional insight for ICP refinement]
 ```
 
 ### Nurture
@@ -211,14 +214,16 @@ Prospects scored 2.0–2.9 or with timing issues enter a monitoring state.
 - Periodic check-in review (quarterly)
 
 **Nurture Record:**
-```yaml
-company: [Name]
-entered_nurture: YYYY-MM-DD
-reason: [Timing not right | Budget uncertain | Access blocked | Partial fit]
-re-engagement_triggers:
-  - [Trigger 1: e.g., "New funding round"]
-  - [Trigger 2: e.g., "DevRel hiring resumes"]
-check_in: YYYY-MM-DD  # Quarterly review
+```markdown
+# Nurture Record: [Company Name]
+
+**Entered Nurture:** YYYY-MM-DD
+**Reason:** Timing not right / Budget uncertain / Access blocked / Partial fit
+**Check-in Date:** YYYY-MM-DD (quarterly review)
+
+## Re-engagement Triggers
+- [Trigger 1: e.g., "New funding round"]
+- [Trigger 2: e.g., "DevRel hiring resumes"]
 ```
 
 **Re-engagement:**

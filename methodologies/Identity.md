@@ -78,7 +78,7 @@ Questions adapt based on what was discovered in phase 2. Don't ask what's alread
 
 ### 4. Synthesize
 
-Combine findings into a structured YAML profile covering:
+Combine findings into a structured Markdown profile covering:
 
 | Section | Content |
 |---------|---------|
@@ -94,55 +94,82 @@ Combine findings into a structured YAML profile covering:
 
 ## Output
 
-A single YAML profile document:
+A single Markdown profile document:
 
-```yaml
-identity:
-  name:
-  tagline:
-  contact:
-    email:
-    linkedin:
-    website:
+```markdown
+# Identity Profile
 
-positioning:
-  who_you_help:
-  with_what_problem:
-  differentiation:
-  proof_points: []
+Generated: YYYY-MM-DD
 
-expertise:
-  primary: []      # Core skills you lead with
-  secondary: []    # Supporting skills
-  methods: []      # Frameworks, approaches
-  tools: []        # Technologies, platforms
+## Identity
 
-experience:
-  industries: []
-  years:
-  notable_projects:
-    - project:
-      client_type:
-      outcome:
-      relevance:
+**Name:**
+**Tagline:**
 
-services:
-  offerings:
-    - name:
-      description:
-      price_range:
-      engagement_type:
+### Contact
+- Email:
+- LinkedIn:
+- Website:
 
-ideal_client:
-  characteristics: []
-  signals: []       # What indicates they're ready to buy
-  red_flags: []     # Warning signs to avoid
+## Positioning
 
-constraints:
-  rate_floor:
-  availability:
-  geography:
-  deal_breakers: []
+**Who you help:**
+**With what problem:**
+**Differentiation:**
+
+### Proof Points
+- [Evidence supporting claims]
+
+## Expertise
+
+### Primary Skills
+- [Core skills you lead with]
+
+### Secondary Skills
+- [Supporting skills]
+
+### Methods
+- [Frameworks, approaches]
+
+### Tools
+- [Technologies, platforms]
+
+## Experience
+
+**Industries:**
+**Years:**
+
+### Notable Projects
+
+| Project | Client Type | Outcome | Relevance |
+|---------|-------------|---------|-----------|
+| [Name] | [Type] | [Result] | [Why it matters] |
+
+## Services
+
+| Offering | Description | Price Range | Engagement Type |
+|----------|-------------|-------------|-----------------|
+| [Name] | [What's included] | [Range] | project / retainer / advisory |
+
+## Ideal Client
+
+### Characteristics
+- [Company attributes that indicate fit]
+
+### Signals
+- [What indicates they're ready to buy]
+
+### Red Flags
+- [Warning signs to avoid]
+
+## Constraints
+
+**Rate Floor:**
+**Availability:**
+**Geography:**
+
+### Deal Breakers
+- [Absolute no-gos]
 ```
 
 ---
@@ -153,11 +180,11 @@ The Identity profile informs every SPARC stage:
 
 | SPARC Stage | Profile Input Used |
 |-------------|-------------------|
-| Signal | `ideal_client.signals` — Which buying indicators to weight |
-| Profile | `ideal_client.characteristics` — Criteria for comparison |
-| Analyze | `positioning.differentiation`, `expertise` — Finding angles |
-| Rank | `ideal_client`, `constraints` — Scoring weights |
-| Craft | `positioning`, `services` — Value proposition and messaging |
+| Signal | `ideal_client.signals` - Which buying indicators to weight |
+| Profile | `ideal_client.characteristics` - Criteria for comparison |
+| Analyze | `positioning.differentiation`, `expertise` - Finding angles |
+| Rank | `ideal_client`, `constraints` - Scoring weights |
+| Craft | `positioning`, `services` - Value proposition and messaging |
 
 ---
 
@@ -167,11 +194,11 @@ The Identity profile informs research scoping:
 
 | IDEAS Stage | Profile Input Used |
 |-------------|-------------------|
-| Identify | `expertise.primary` — Filter opportunities to strengths |
-| Develop | `expertise.methods` — Available approaches |
-| Evaluate | `expertise.tools` — Feasible data sources |
-| Articulate | `services.offerings` — Frame recommendations |
-| Share | `positioning` — Professional framing |
+| Identify | `expertise.primary` - Filter opportunities to strengths |
+| Develop | `expertise.methods` - Available approaches |
+| Evaluate | `expertise.tools` - Feasible data sources |
+| Articulate | `services.offerings` - Frame recommendations |
+| Share | `positioning` - Professional framing |
 
 ---
 

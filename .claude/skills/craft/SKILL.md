@@ -162,7 +162,7 @@ When finished, present for approval:
 On approval, save outputs to run directory:
 1. Create stage folder: `artifacts/5_craft_YYYY-MM-DD/`
 2. Save outreach message to `artifacts/5_craft_YYYY-MM-DD/outreach_message.md`
-3. Save outreach brief to `artifacts/5_craft_YYYY-MM-DD/outreach_brief.yaml`
+3. Save outreach brief to `artifacts/5_craft_YYYY-MM-DD/outreach_brief.md`
 4. Log decision to `decisions.md` with rationale
 5. Update `run.yaml` with `current_stage: craft`
 6. On signed agreement, set `outcome: signed_agreement` and initiate IDEAS run

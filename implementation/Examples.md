@@ -3,8 +3,8 @@
 Worked examples demonstrating SPARC and IDEAS execution.
 
 **Related:**
-- [templates/](templates/) — Artifact templates (sparc.md, ideas.md, run.md)
-- [Configuration.md](Configuration.md) — Configuration input examples
+- [templates/](templates/) - Artifact templates (sparc.md, ideas.md, run.md)
+- [Configuration.md](Configuration.md) - Configuration input examples
 
 ---
 
@@ -116,7 +116,7 @@ Cloud infrastructure company acquired through SPARC, delivered via IDEAS.
 
 **Total: 4.8 / 5.0**
 
-**Recommendation:** Prioritize — active outreach
+**Recommendation:** Prioritize - active outreach
 
 ---
 
@@ -124,7 +124,7 @@ Cloud infrastructure company acquired through SPARC, delivered via IDEAS.
 
 **Outreach Message:**
 
-> Saw your post about building out Vultr's AI developer experience — and noticed the gap between your GPU infrastructure investment and DigitalOcean's tutorial dominance came up in the comments.
+> Saw your post about building out Vultr's AI developer experience - and noticed the gap between your GPU infrastructure investment and DigitalOcean's tutorial dominance came up in the comments.
 >
 > I've been researching this space and found that mid-market cloud providers have a specific window right now: enterprises are frustrated with hyperscaler complexity but need more than raw compute. Vultr's 32 data centers + NVIDIA Elite status is undersold.
 >
@@ -145,7 +145,7 @@ Cloud infrastructure company acquired through SPARC, delivered via IDEAS.
 #### Identify
 
 **Inputs:**
-- Client Contract Agreement (Schedule 1: AI Reference Architectures — RAG, knowledge graphs, agentic workflows, ColPali, ColQwen)
+- Client Contract Agreement (Schedule 1: AI Reference Architectures - RAG, knowledge graphs, agentic workflows, ColPali, ColQwen)
 - Client Analysis Report (Vultr needs technical content differentiating from DigitalOcean/competitors)
 
 **Research Opportunities:**
@@ -193,7 +193,7 @@ MEASURABLE BY retrieval accuracy on document-type stratified benchmarks
 
 **Scope:**
 - Included: ColPali, ColQwen2, BGE-M3, dense-only baseline
-- Included: Document types — forms, contracts, technical PDFs, text-heavy reports
+- Included: Document types - forms, contracts, technical PDFs, text-heavy reports
 - Excluded: Training/fine-tuning (inference only)
 - Excluded: Production deployment optimization (separate workstream)
 
@@ -229,7 +229,7 @@ MEASURABLE BY retrieval accuracy on document-type stratified benchmarks
 - Hybrid retrieval outperforms on text-dominant documents (10-15% gain)
 - Crossover point identifiable by layout complexity heuristic
 
-**Problem-Fit:** High — directly informs architecture decision framework for DevRel content
+**Problem-Fit:** High - directly informs architecture decision framework for DevRel content
 
 ---
 
@@ -280,7 +280,7 @@ Document Corpus Assessment:
 | LinkedIn | Thread summarizing findings | Post-publication |
 
 **Authorship (per contract 5.4):**
-- Athos Georgiou — lead author
+- Athos Georgiou - lead author
 - Vultr acknowledgment in paper
 - Co-authorship offered if Vultr engineer contributes substantially
 
@@ -339,9 +339,9 @@ Action: → Pass or Nurture
 ```
 
 **Decision Menu Presented:**
-1. **Pass** — Not a fit; document learnings and move on
-2. **Nurture** — Add to watch list; pivot may not stick
-3. **Adjust positioning** — If this represents a market pattern
+1. **Pass** - Not a fit; document learnings and move on
+2. **Nurture** - Add to watch list; pivot may not stick
+3. **Adjust positioning** - If this represents a market pattern
 
 **Decision:** Nurture
 
@@ -351,15 +351,17 @@ Action: → Pass or Nurture
 - Watch for DevRel hiring signals in 6-12 months
 
 **Nurture Entry:**
-```yaml
-company: CloudScale
-entered_nurture: 2025-01-15
-reason: Pivot to enterprise security; core offering mismatch
-re-engagement_triggers:
-  - DevRel hiring resumes
-  - New product launch in developer tools
-  - Series B with developer-focused narrative
-check_in: 2025-07-15
+```markdown
+# Nurture Record: CloudScale
+
+**Entered Nurture:** 2025-01-15
+**Reason:** Pivot to enterprise security; core offering mismatch
+**Check-in Date:** 2025-07-15
+
+## Re-engagement Triggers
+- DevRel hiring resumes
+- New product launch in developer tools
+- Series B with developer-focused narrative
 ```
 
 **Outcome:** Prospect moved to Nurture list instead of continuing to Rank. SPARC pipeline continues with other prospects.
@@ -389,39 +391,43 @@ Demonstrating the referral loop from Share back to Signal.
 
 For each referral, create a Signal entry with "Referral" as source:
 
-```yaml
-# Signal Log Entry 1
-date: 2025-01-20
-company: StreamData
-signal_type: referral
-source: Kevin Cochrane (Vultr CMO)
-url: null
-strength: hot
-notes: Direct intro from satisfied client; VP DevRel target buyer
-referral_context:
-  introducer: Kevin Cochrane
-  relationship: Vultr engagement (4 months)
-  warm_intro: scheduled
+```markdown
+### StreamData
+
+**Date Detected:** 2025-01-20
+**Signal Type:** referral
+**Source:** Kevin Cochrane (Vultr CMO)
+**Strength:** hot
+
+**Notes:**
+Direct intro from satisfied client; VP DevRel target buyer
+
+**Referral Context:**
+- Introducer: Kevin Cochrane
+- Relationship: Vultr engagement (4 months)
+- Warm intro: scheduled
 ```
 
-```yaml
-# Signal Log Entry 2
-date: 2025-01-20
-company: InfraScale
-signal_type: referral
-source: Kevin Cochrane (Vultr CMO)
-url: null
-strength: warm
-notes: CMO intro; need to assess DevRel relevance
-referral_context:
-  introducer: Kevin Cochrane
-  relationship: Vultr engagement (4 months)
-  warm_intro: email introduction sent
+```markdown
+### InfraScale
+
+**Date Detected:** 2025-01-20
+**Signal Type:** referral
+**Source:** Kevin Cochrane (Vultr CMO)
+**Strength:** warm
+
+**Notes:**
+CMO intro; need to assess DevRel relevance
+
+**Referral Context:**
+- Introducer: Kevin Cochrane
+- Relationship: Vultr engagement (4 months)
+- Warm intro: email introduction sent
 ```
 
 **Signal Assessment:**
-- StreamData: **Hot** — direct buyer intro, immediate profile
-- InfraScale: **Warm** — decision-maker unclear, profile after StreamData
+- StreamData: **Hot** - direct buyer intro, immediate profile
+- InfraScale: **Warm** - decision-maker unclear, profile after StreamData
 
 #### Fast-Track to Profile
 
@@ -483,8 +489,8 @@ How do multimodal retrieval models (ColPali, ColQwen) perform across different G
 4. Open-source benchmark harness
 
 **Authorship:**
-- Athos Georgiou (NCA) — lead author, methodology, analysis
-- [Vultr engineer] — infrastructure, reproducibility review
+- Athos Georgiou (NCA) - lead author, methodology, analysis
+- [Vultr engineer] - infrastructure, reproducibility review
 - Acknowledgment: "Research conducted in collaboration with Vultr"
 
 **Client Value:**
@@ -544,7 +550,7 @@ How do multimodal retrieval models (ColPali, ColQwen) perform across different G
 | Reranker | ColBERTv2 | L40S | Cross-encoder reranking |
 | Generator | Llama 3.1 70B | A100 | Response generation |
 | Vector Store | Qdrant | CPU | Document index |
-| Orchestrator | Claude Agent SDK | — | Tool routing, planning |
+| Orchestrator | Claude Agent SDK | - | Tool routing, planning |
 
 **Features Demonstrated:**
 1. Hybrid retrieval (dense + sparse + late interaction)
@@ -621,42 +627,40 @@ MEASURABLE BY tracking onboarding completion rates before/after
 ```
 
 **Evaluation Findings:**
-```yaml
-hypothesis_id: H1
-date: 2025-02-15
+```markdown
+# Evaluation Report: H1
 
-evidence_collected:
-  - source: Analytics comparison (30 days pre/post)
-    type: quantitative
-    finding: Time-to-first-success decreased only 8% (not 30%)
-    direction: partial_support
+Date: 2025-02-15
 
-  - source: User interviews (n=12)
-    type: qualitative
-    finding: Developers appreciated use-case structure but still needed endpoint reference
-    direction: neutral
+## Evidence Collected
 
-  - source: Support ticket analysis
-    type: quantitative
-    finding: "Can't find endpoint" tickets increased 15%
-    direction: contradicts
+| Source | Type | Finding | Direction |
+|--------|------|---------|-----------|
+| Analytics comparison (30 days pre/post) | quantitative | Time-to-first-success decreased only 8% (not 30%) | partial_support |
+| User interviews (n=12) | qualitative | Developers appreciated use-case structure but still needed endpoint reference | neutral |
+| Support ticket analysis | quantitative | "Can't find endpoint" tickets increased 15% | contradicts |
 
-verdict: not_supported
-confidence: medium
+## Verdict
 
-rationale: |
-  While use-case organization improved discoverability for new users,
-  experienced developers struggled without quick endpoint reference.
-  The 8% improvement is within noise. Support ticket increase suggests
-  the change created new friction for a significant user segment.
+**Verdict:** not_supported
+**Confidence:** medium
 
-alternatives_considered:
-  - alternative: Hybrid structure (use cases + endpoint reference)
-    why_ruled_out: Not tested yet, emerged from this analysis
+### Rationale
+While use-case organization improved discoverability for new users,
+experienced developers struggled without quick endpoint reference.
+The 8% improvement is within noise. Support ticket increase suggests
+the change created new friction for a significant user segment.
 
-limitations:
-  - 30-day window may be too short
-  - Sample size for interviews limited
+## Alternatives Considered
+
+| Alternative | Why Ruled Out |
+|-------------|---------------|
+| Hybrid structure (use cases + endpoint reference) | Not tested yet, emerged from this analysis |
+
+## Limitations
+
+- 30-day window may be too short
+- Sample size for interviews limited
 ```
 
 **Feedback Loop Triggered:**
@@ -667,10 +671,10 @@ Action: → Develop (refine hypothesis)
 ```
 
 **Decision Menu Presented:**
-1. **Return to Develop** — Refine hypothesis based on findings
-2. **Report as negative finding** — Document what didn't work
-3. **Investigate further** — Extend evaluation period or sample
-4. **Return to Identify** — Pivot to different opportunity
+1. **Return to Develop** - Refine hypothesis based on findings
+2. **Report as negative finding** - Document what didn't work
+3. **Investigate further** - Extend evaluation period or sample
+4. **Return to Identify** - Pivot to different opportunity
 
 **Decision:** Return to Develop
 
@@ -700,14 +704,14 @@ MEASURABLE BY tracking both onboarding completion AND support ticket categories
 
 #### Decision Log Entry
 ```markdown
-## Evaluate — 2025-02-15
+## Evaluate - 2025-02-15
 
 **Decision Point:** Hypothesis not supported by evidence
 **Options Presented:**
-1. Return to Develop — refine hypothesis
+1. Return to Develop - refine hypothesis
 2. Report as negative finding
-3. Investigate further — extend evaluation
-4. Return to Identify — pivot direction
+3. Investigate further - extend evaluation
+4. Return to Identify - pivot direction
 
 **Decision:** Return to Develop
 **Rationale:** Qualitative evidence suggests hybrid approach worth testing.
@@ -716,7 +720,7 @@ This is refinement, not failure. Client engagement preserved.
 
 ---
 
-## Develop (iteration) — 2025-02-16
+## Develop (iteration) - 2025-02-16
 
 **Decision Point:** Hypothesis refinement approach
 **Options Presented:**

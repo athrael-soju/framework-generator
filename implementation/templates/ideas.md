@@ -6,191 +6,295 @@ Artifact templates for IDEAS stage outputs: Identify → Develop → Evaluate �
 
 ## Contract Summary
 
-```yaml
-client:
-engagement_id:
-date:
+```markdown
+# Contract Summary
 
-scope:
-  in_scope:
-    - [Deliverable or activity explicitly included]
-  out_of_scope:
-    - [Deliverable or activity explicitly excluded]
-  deliverables:
-    - name:
-      format:
-      deadline:
+Client: [Name]
+Engagement ID: [ID]
+Date: YYYY-MM-DD
 
-stakeholders:
-  - name:
-    role:
-    contact:
-    involvement: primary | secondary | informed
+---
 
-terms:
-  start_date:
-  end_date:
-  total_value:
-  payment_schedule:
-  ip_ownership: client | consultant | shared
-  publication_rights: permitted | requires_approval | prohibited
-  review_period_days:
-  confidentiality_notes:
+## Scope
 
-key_constraints:
-  - [Constraint that affects research approach]
+### In Scope
+- [Deliverable or activity explicitly included]
+
+### Out of Scope
+- [Deliverable or activity explicitly excluded]
+
+### Deliverables
+
+| Deliverable | Format | Deadline |
+|-------------|--------|----------|
+| [Name] | [Format] | [Date] |
+
+---
+
+## Stakeholders
+
+| Name | Role | Contact | Involvement |
+|------|------|---------|-------------|
+| [Name] | [Role] | [Email] | primary / secondary / informed |
+
+---
+
+## Terms
+
+**Start Date:**
+**End Date:**
+**Total Value:**
+**Payment Schedule:**
+**IP Ownership:** client / consultant / shared
+**Publication Rights:** permitted / requires_approval / prohibited
+**Review Period:** [X] days
+**Confidentiality Notes:**
+
+---
+
+## Key Constraints
+
+- [Constraint that affects research approach]
 ```
 
 ---
 
 ## Research Agenda
 
-```yaml
-client:
-engagement_id:
-date:
+```markdown
+# Research Agenda
 
-engagement_overview:
-  timeline:
-    start:
-    end:
-  key_stakeholders: []
-  primary_objective:
+Client: [Name]
+Engagement ID: [ID]
+Date: YYYY-MM-DD
 
-gap_analysis:
-  - gap_id:
-    name:
-    current_state:
-    desired_state:
-    severity: critical | major | minor
-    notes:
+---
 
-opportunities:
-  - id:
-    name:
-    gap_reference:
-    research_direction:
-    initial_hypothesis:
-    your_capability:
-    feasibility: proceed | caution | blocked
-    priority: high | medium | low
-    rationale:
+## Engagement Overview
 
-prioritization_factors:
-  client_value: # 40%
-  feasibility: # 30%
-  timeline_fit: # 20%
-  strategic_value: # 10%
+**Timeline:** [Start] to [End]
+**Primary Objective:** [What we're trying to achieve]
 
-selected:
-  - opportunity_id:
-    allocation: # portion of engagement
+### Key Stakeholders
+- [Name, Role]
 
-deferred:
-  - opportunity_id:
-    reason:
+---
 
-constraints_and_dependencies:
-  - [Key constraint from contract]
-  - [Dependency between opportunities]
+## Gap Analysis
 
-success_criteria:
-  - [How we'll know if we succeeded]
+| ID | Gap | Current State | Desired State | Severity |
+|----|-----|---------------|---------------|----------|
+| G1 | [Gap name] | [Current] | [Desired] | critical / major / minor |
+
+---
+
+## Opportunities
+
+| ID | Name | Gap Ref | Priority | Feasibility |
+|----|------|---------|----------|-------------|
+| O1 | [Opportunity] | G1 | high / medium / low | proceed / caution / blocked |
+
+### O1: [Opportunity Name]
+
+**Research Direction:** [Approach]
+**Initial Hypothesis:** [What we think we'll find]
+**Your Capability:** [Why you can address this]
+**Rationale:** [Why this priority and feasibility]
+
+---
+
+## Prioritization
+
+Weights: Client Value (40%) | Feasibility (30%) | Timeline Fit (20%) | Strategic Value (10%)
+
+### Selected
+
+| Opportunity | Allocation |
+|-------------|------------|
+| O1 | [Percentage or time allocation] |
+
+### Deferred
+
+| Opportunity | Reason |
+|-------------|--------|
+| [ID] | [Why deferred] |
+
+---
+
+## Constraints & Dependencies
+
+- [Key constraint from contract]
+- [Dependency between opportunities]
+
+---
+
+## Success Criteria
+
+- [How we'll know if we succeeded]
 ```
 
 ---
 
 ## Hypothesis Document
 
-```yaml
-id:
-opportunity:
-statement:
-  if:
-  then:
-  because:
-  measurable_by:
+```markdown
+# Hypothesis: [ID]
 
-prior_work: []
+Opportunity: [Reference]
+Date: YYYY-MM-DD
 
-feasibility:
-  data_availability: {score: , notes: }
-  resources: {score: , notes: }
-  timeline: {score: , notes: }
-  skill_match: {score: , notes: }
-  client_dependency: {score: , notes: }
-  total:
+---
 
-scope:
-  included: []
-  excluded: []
+## Statement
 
-risks: []
+**If:** [Condition or action]
+**Then:** [Expected outcome]
+**Because:** [Underlying reasoning]
+**Measurable by:** [How we'll know]
+
+---
+
+## Prior Work
+
+- [Reference to existing research, internal or external]
+
+---
+
+## Feasibility Assessment
+
+| Factor | Score (1-5) | Notes |
+|--------|-------------|-------|
+| Data Availability | [Score] | [Assessment] |
+| Resources | [Score] | [Assessment] |
+| Timeline | [Score] | [Assessment] |
+| Skill Match | [Score] | [Assessment] |
+| Client Dependency | [Score] | [Assessment] |
+
+**Total:** [Sum or weighted score]
+
+---
+
+## Scope
+
+### Included
+- [What's in scope for this hypothesis]
+
+### Excluded
+- [What's explicitly out of scope]
+
+---
+
+## Risks
+
+- [Risk and potential mitigation]
 ```
 
 ---
 
 ## Prior Work Review
 
-```yaml
-opportunity_id:
-date:
+```markdown
+# Prior Work Review
 
-seminal_work:
-  - citation:
-    contribution:
-    relevance:
+Opportunity ID: [ID]
+Date: YYYY-MM-DD
 
-recent_work:
-  - citation:
-    contribution:
-    relevance:
+---
 
-established_findings:
-  - finding:
-    confidence: high | medium | low
+## Seminal Work
 
-open_questions:
-  - question:
-    tractability: high | medium | low
+| Citation | Contribution | Relevance |
+|----------|--------------|-----------|
+| [Author, Year, Title] | [What it established] | [Why it matters here] |
 
-methodological_approaches:
-  - approach:
-    when_to_use:
-    limitations:
+---
 
-gap_addressed: |
-  [How this research extends existing knowledge]
+## Recent Work
+
+| Citation | Contribution | Relevance |
+|----------|--------------|-----------|
+| [Author, Year, Title] | [Key finding] | [How it informs our work] |
+
+---
+
+## Established Findings
+
+| Finding | Confidence |
+|---------|------------|
+| [What is known] | high / medium / low |
+
+---
+
+## Open Questions
+
+| Question | Tractability |
+|----------|--------------|
+| [Unanswered question] | high / medium / low |
+
+---
+
+## Methodological Approaches
+
+| Approach | When to Use | Limitations |
+|----------|-------------|-------------|
+| [Method] | [Conditions] | [Caveats] |
+
+---
+
+## Gap Addressed
+
+[How this research extends existing knowledge]
 ```
 
 ---
 
 ## Evaluation Report
 
-```yaml
-hypothesis_id:
-date:
+```markdown
+# Evaluation Report: [Hypothesis ID]
 
-evidence_collected:
-  - source:
-    type: quantitative | qualitative | secondary | expert | anecdotal
-    finding:
-    direction: supports | contradicts | neutral
+Date: YYYY-MM-DD
 
-verdict: strongly_supported | supported | inconclusive | not_supported | refuted
-confidence: high | medium | low
+---
 
-rationale: |
-  [Summary of evidence assessment]
+## Evidence Collected
 
-alternatives_considered:
-  - alternative:
-    why_ruled_out:
+| Source | Type | Finding | Direction |
+|--------|------|---------|-----------|
+| [Source] | quantitative / qualitative / secondary / expert / anecdotal | [What we found] | supports / contradicts / neutral |
 
-limitations: []
+---
 
-problem_fit: high | medium | low
-problem_fit_rationale:
+## Verdict
+
+**Verdict:** strongly_supported / supported / inconclusive / not_supported / refuted
+**Confidence:** high / medium / low
+
+### Rationale
+[Summary of evidence assessment and why this verdict]
+
+---
+
+## Alternatives Considered
+
+| Alternative | Why Ruled Out |
+|-------------|---------------|
+| [Alternative explanation] | [Reason] |
+
+---
+
+## Limitations
+
+- [Limitation of the analysis]
+
+---
+
+## Problem Fit
+
+**Problem Fit:** high / medium / low
+
+**Rationale:**
+[How well the findings address the original problem]
 ```
 
 ---
@@ -200,43 +304,71 @@ problem_fit_rationale:
 ```markdown
 # [Deliverable Title]
 
+---
+
 ## Metadata
-- Engagement:
-- Deliverable ID:
-- Date:
-- Version:
-- Audience: executive | technical | marketing | board
-- Format: report | presentation | workshop | documentation
+
+- **Engagement:** [Name/ID]
+- **Deliverable ID:** [ID]
+- **Date:** YYYY-MM-DD
+- **Version:** [X.Y]
+- **Audience:** executive / technical / marketing / board
+- **Format:** report / presentation / workshop / documentation
+
+---
 
 ## Executive Summary
-- Key Findings:
-- Recommendations:
-- Immediate Actions:
 
-## Sections
-### [Section Title]
-[Content summary]
+### Key Findings
+- [Finding 1]
+- [Finding 2]
+
+### Recommendations
+- [Recommendation 1]
+- [Recommendation 2]
+
+### Immediate Actions
+- [Action 1]
+
+---
+
+## [Section Title]
+
+[Content]
+
+---
 
 ## Recommendations
+
 | ID | Title | Priority | Effort | Rationale | Success Metrics |
-|----|-------|----------|--------|-----------|----------------|
-| R1 |       | high | low |           |                |
+|----|-------|----------|--------|-----------|-----------------|
+| R1 | [Title] | high / medium / low | high / medium / low | [Why] | [How to measure] |
+
+---
 
 ## Roadmap
+
 ### Quick Wins
 - [Action] - [Expected outcome]
 
 ### Phase 1: [Name]
-- Timeline:
-- Actions:
-- Milestone:
+**Timeline:** [Duration]
+**Actions:**
+- [Action]
+
+**Milestone:** [What marks completion]
 
 ### Phase 2: [Name]
-- Timeline:
-- Actions:
-- Milestone:
+**Timeline:** [Duration]
+**Actions:**
+- [Action]
+
+**Milestone:** [What marks completion]
+
+---
 
 ## Appendices
+
 - [Appendix item]
 ```
 
@@ -244,45 +376,64 @@ problem_fit_rationale:
 
 ## Delivery Log
 
-```yaml
-engagement:
-date:
+```markdown
+# Delivery Log
 
-deliveries:
-  - deliverable:
-    channel: presentation | report | workshop | documentation
-    recipients: []
-    timestamp:
-    access_url:
-    confirmation: received | pending
+Engagement: [Name/ID]
+Date: YYYY-MM-DD
 
-feedback_log:
-  - source:
-    category: clarification | scope_concern | disagreement | implementation | new_direction
-    content:
-    action_taken:
-    status: resolved | pending | deferred
+---
 
-handoff_materials:
-  - type: executive_summary | technical_docs | how_to_guide | data | faq
-    location:
-    recipient:
+## Deliveries
 
-knowledge_transfer:
-  - activity: walkthrough | qa_session | documentation_handoff
-    date:
-    attendees: []
-    notes:
+| Deliverable | Channel | Recipients | Timestamp | Status |
+|-------------|---------|------------|-----------|--------|
+| [Name] | presentation / report / workshop / documentation | [Names] | [Datetime] | received / pending |
 
-engagement_closure:
-  final_deliverables_confirmed: true | false
-  feedback_collected: true | false
-  knowledge_transferred: true | false
-  admin_complete: true | false
+---
 
-follow_up:
-  follow_on_opportunities: []
-  re_engagement_triggers: []
-  referral_requested: true | false
-  referral_received:
+## Feedback Log
+
+| Source | Category | Content | Action Taken | Status |
+|--------|----------|---------|--------------|--------|
+| [Name] | clarification / scope_concern / disagreement / implementation / new_direction | [Feedback] | [Response] | resolved / pending / deferred |
+
+---
+
+## Handoff Materials
+
+| Type | Location | Recipient |
+|------|----------|-----------|
+| executive_summary / technical_docs / how_to_guide / data / faq | [Path/URL] | [Name] |
+
+---
+
+## Knowledge Transfer
+
+| Activity | Date | Attendees | Notes |
+|----------|------|-----------|-------|
+| walkthrough / qa_session / documentation_handoff | [Date] | [Names] | [Summary] |
+
+---
+
+## Engagement Closure
+
+- [ ] Final deliverables confirmed
+- [ ] Feedback collected
+- [ ] Knowledge transferred
+- [ ] Admin complete
+
+---
+
+## Follow-Up
+
+### Follow-On Opportunities
+- [Opportunity]
+
+### Re-engagement Triggers
+- [Trigger]
+
+### Referral
+**Requested:** yes / no
+**Received:** [Details if yes]
 ```

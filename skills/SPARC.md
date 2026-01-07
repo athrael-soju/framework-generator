@@ -81,9 +81,9 @@ See [rank/SKILL.md](../.claude/skills/rank/SKILL.md) for the detailed 1/3/5 scor
 ### Outreach Structure
 
 Messages follow a four-part structure:
-1. **Hook** — Reference specific signal or their content
-2. **Insight** — Non-obvious observation from analysis
-3. **Bridge** — Connect gap to your capability
-4. **Ask** — Low-commitment next step
+1. **Hook** - Reference specific signal or their content
+2. **Insight** - Non-obvious observation from analysis
+3. **Bridge** - Connect gap to your capability
+4. **Ask** - Low-commitment next step
 
 See [craft/SKILL.md](../.claude/skills/craft/SKILL.md) for channel guidelines and anti-patterns.

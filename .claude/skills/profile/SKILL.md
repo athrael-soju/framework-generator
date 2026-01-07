@@ -146,7 +146,7 @@ When finished, present for approval:
 
 On approval, save outputs to run directory:
 1. Create stage folder: `artifacts/2_profile_YYYY-MM-DD/`
-2. Save company profile to `artifacts/2_profile_YYYY-MM-DD/company_profile.yaml`
+2. Save company profile to `artifacts/2_profile_YYYY-MM-DD/company_profile.md`
 3. Log decision to `decisions.md` with rationale
 4. Update `run.yaml` with `current_stage: profile`
 

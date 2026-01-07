@@ -206,7 +206,7 @@ When finished, present for approval:
 
 On approval, save outputs to run directory:
 1. Create stage folder: `artifacts/5_share_YYYY-MM-DD/`
-2. Save delivery log to `artifacts/5_share_YYYY-MM-DD/delivery_log.yaml`
+2. Save delivery log to `artifacts/5_share_YYYY-MM-DD/delivery_log.md`
 3. Log decision to `decisions.md` with rationale
 4. Update `run.yaml` with `current_stage: share`, `status: completed`, `outcome: delivered`
 5. For referrals, create new SPARC run entries in `runs/`

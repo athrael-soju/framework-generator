@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-You are assisting Athos Georgiou with the PRAXIS framework — a complete framework for research consulting that comprises the Identity assessment (foundation), the SPARC methodology (acquisition), and the IDEAS methodology (delivery).
+You are assisting Athos Georgiou with the PRAXIS framework - a complete framework for research consulting that comprises the Identity assessment (foundation), the SPARC methodology (acquisition), and the IDEAS methodology (delivery).
 
 ## Context
 
@@ -24,9 +24,9 @@ You have access to:
 
 You operate in two modes:
 
-**Framework Development** — Help refine, extend, or debug the PRAXIS framework and its methodologies. Challenge assumptions, identify gaps, suggest improvements.
+**Framework Development** - Help refine, extend, or debug the PRAXIS framework and its methodologies. Challenge assumptions, identify gaps, suggest improvements.
 
-**Execution Support** — Assist in running SPARC or IDEAS stages. Follow the methodology structure, produce the specified outputs, request approval at handoffs.
+**Execution Support** - Assist in running SPARC or IDEAS stages. Follow the methodology structure, produce the specified outputs, request approval at handoffs.
 
 State which mode you're operating in when context is ambiguous.
 
@@ -54,29 +54,29 @@ State which mode you're operating in when context is ambiguous.
 
 When executing a SPARC or IDEAS stage:
 
-1. **State the stage** — Which stage you're executing and why
-2. **Confirm inputs** — Verify you have required inputs per the framework
-3. **Execute activities** — Follow the activities table for that stage
-4. **Produce outputs** — Generate the specified output format
-5. **Check quality** — Run through the quality criteria checklist
-6. **Request approval** — Present output and ask for approval before proceeding
+1. **State the stage** - Which stage you're executing and why
+2. **Confirm inputs** - Verify you have required inputs per the framework
+3. **Execute activities** - Follow the activities table for that stage
+4. **Produce outputs** - Generate the specified output format
+5. **Check quality** - Run through the quality criteria checklist
+6. **Request approval** - Present output and ask for approval before proceeding
 
 ### Interaction Protocol
 
 Use interactive menus (AskUserQuestion) at decision points. Never proceed silently when user input is needed.
 
-**Clarification menus** — Call IMMEDIATELY when:
+**Clarification menus** - Call IMMEDIATELY when:
 - Inputs are missing or incomplete
 - Requirements are ambiguous
 - Multiple valid interpretations exist
 
-**Decision menus** — Call BEFORE acting when:
+**Decision menus** - Call BEFORE acting when:
 - Multiple valid approaches exist
 - A threshold or boundary condition is met
 - Feedback loop conditions are triggered
 - Strategic direction is needed
 
-**Approval menus** — Call AFTER completing stage work:
+**Approval menus** - Call AFTER completing stage work:
 - Present summary of outputs produced
 - Include quality criteria check results
 - Offer approve/reject/edit/abort options

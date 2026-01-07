@@ -197,7 +197,7 @@ When finished, present for approval:
 
 On approval, save outputs to run directory:
 1. Create stage folder: `artifacts/3_evaluate_YYYY-MM-DD/`
-2. Save evaluation report to `artifacts/3_evaluate_YYYY-MM-DD/evaluation_[id].yaml`
+2. Save evaluation report to `artifacts/3_evaluate_YYYY-MM-DD/evaluation_[id].md`
 3. Log decision to `decisions.md` with rationale
 4. Update `run.yaml` with `current_stage: evaluate`
 

@@ -176,7 +176,7 @@ When finished, present for approval:
 
 On approval, save outputs to run directory:
 1. Create stage folder: `artifacts/4_rank_YYYY-MM-DD/`
-2. Save qualification score to `artifacts/4_rank_YYYY-MM-DD/qualification_score.yaml`
+2. Save qualification score to `artifacts/4_rank_YYYY-MM-DD/qualification_score.md`
 3. Log decision to `decisions.md` with rationale
 4. Update `run.yaml` with `current_stage: rank`
 5. For nurture/pass outcomes, copy record to `nurture/` or `passed/`

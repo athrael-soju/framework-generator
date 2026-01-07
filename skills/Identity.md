@@ -16,7 +16,7 @@ For conceptual overview, see [Identity.md](../methodologies/Identity.md). For ex
 The skill is a self-contained instruction set that defines:
 - **Inputs**: What information to collect from the user
 - **Process**: Four-phase methodology (Collect, Discover, Enquire, Synthesize)
-- **Outputs**: Structured YAML profile
+- **Outputs**: Structured Markdown profile
 - **Decision Points**: Where user input is required
 - **Quality Criteria**: Checklist before completion
 
@@ -64,11 +64,11 @@ The Identity profile informs every SPARC stage:
 
 | Stage | Profile Input Used |
 |-------|-------------------|
-| Signal | `ideal_client.signals` — Buying indicators to weight |
-| Profile | `ideal_client.characteristics` — Criteria for comparison |
-| Analyze | `positioning`, `expertise` — Finding angles |
-| Rank | `ideal_client`, `constraints` — Scoring weights |
-| Craft | `positioning`, `services` — Value proposition |
+| Signal | `ideal_client.signals` - Buying indicators to weight |
+| Profile | `ideal_client.characteristics` - Criteria for comparison |
+| Analyze | `positioning`, `expertise` - Finding angles |
+| Rank | `ideal_client`, `constraints` - Scoring weights |
+| Craft | `positioning`, `services` - Value proposition |
 
 ### Integration with IDEAS
 
@@ -76,11 +76,11 @@ The Identity profile informs research scoping:
 
 | Stage | Profile Input Used |
 |-------|-------------------|
-| Identify | `expertise.primary` — Filter to strengths |
-| Develop | `expertise.methods` — Available approaches |
-| Evaluate | `expertise.tools` — Feasible data sources |
-| Articulate | `services.offerings` — Frame recommendations |
-| Share | `positioning` — Professional framing |
+| Identify | `expertise.primary` - Filter to strengths |
+| Develop | `expertise.methods` - Available approaches |
+| Evaluate | `expertise.tools` - Feasible data sources |
+| Articulate | `services.offerings` - Frame recommendations |
+| Share | `positioning` - Professional framing |
 
 ---
 
