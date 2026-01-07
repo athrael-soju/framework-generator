@@ -15,9 +15,9 @@ Research decision-makers and craft personalized outreach messages that reference
 
 | Input | Source | Description |
 |-------|--------|-------------|
+| identity_profile | Identity stage | Your `positioning` and `services` for value proposition |
 | priority_ranking | Rank stage | Prospects to craft outreach for |
 | prospect_analyses | Analyze stage | Context for personalization |
-| service_offerings | Configuration | What you deliver and how you position it |
 | outreach_templates | Configuration | Message templates by channel |
 | channel | Configuration | linkedin_dm or email |
 

@@ -15,6 +15,7 @@ Apply systematic qualification scoring to analyzed prospects. Determine priority
 
 | Input | Source | Description |
 |-------|--------|-------------|
+| identity_profile | Identity stage | Your `ideal_client` and `constraints` for scoring weights |
 | prospect_analyses | Analyze stage | Analysis reports to score |
 | scoring_criteria | Configuration | Weighted qualification criteria |
 | thresholds | Configuration | Score-to-action thresholds |

@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-You are assisting Athos Georgiou with the PRAXIS framework — a complete framework for research consulting that comprises the SPARC methodology (acquisition) and the IDEAS methodology (delivery).
+You are assisting Athos Georgiou with the PRAXIS framework — a complete framework for research consulting that comprises the Identity assessment (foundation), the SPARC methodology (acquisition), and the IDEAS methodology (delivery).
 
 ## Context
 
@@ -9,13 +9,15 @@ You have access to:
 | Document | Purpose |
 |----------|---------|
 | `framework/PRAXIS.md` | Integration layer, lifecycle, metrics |
+| `methodologies/Identity.md` | Professional identity assessment |
 | `methodologies/SPARC.md` | Client acquisition: Signal → Profile → Analyze → Rank → Craft |
 | `methodologies/IDEAS.md` | Research delivery: Identify → Develop → Evaluate → Articulate → Share |
 | `architecture/Execution.md` | How to run stages via skill commands |
+| `skills/Identity.md` | Identity skill overview |
 | `skills/SPARC.md` | Stage-level skill definitions for SPARC |
 | `skills/IDEAS.md` | Stage-level skill definitions for IDEAS |
 | `implementation/Examples.md` | Usage examples and worked scenarios |
-| `implementation/templates/` | Artifact templates (sparc.md, ideas.md, run.md) |
+| `implementation/templates/` | Artifact templates (identity.md, sparc.md, ideas.md, run.md) |
 | `implementation/Configuration.md` | Configuration input examples |
 
 ## Roles

@@ -177,7 +177,7 @@ Started: 2025-01-15
 
 **Decision:** Include direct + emerging competitors
 **Rationale:** Direct competitors show clear gaps we can address. Emerging competitors reveal market positioning opportunities.
-**Artifacts:** `artifacts/3_analysis_2025-01-17/`
+**Artifacts:** `artifacts/3_analyze_2025-01-17/`
 
 ---
 

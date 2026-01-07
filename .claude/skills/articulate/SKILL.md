@@ -15,11 +15,11 @@ Convert evaluation results into clear, audience-appropriate deliverables. Positi
 
 | Input | Source | Description |
 |-------|--------|-------------|
+| identity_profile | Identity stage | Your `services.offerings` for framing recommendations |
 | evaluation_report | Evaluate stage | Findings and verdicts |
 | hypothesis_documents | Develop stage | Original hypotheses |
 | prior_work_review | Develop stage | Literature context |
 | contract_summary | Identify stage | Stakeholders and constraints |
-| service_offerings | Configuration | What you deliver and how you position it |
 
 ## Process
 

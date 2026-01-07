@@ -15,10 +15,10 @@ Transform a signed client engagement into a prioritized research agenda. Identif
 
 | Input | Source | Description |
 |-------|--------|-------------|
+| identity_profile | Identity stage | Your `expertise.primary` for filtering to strengths |
 | signed_agreement | SPARC Craft | Client contract |
 | prospect_analysis | SPARC Analyze | Analysis from acquisition |
 | outreach_brief | SPARC Craft | Hypothesis seeds and engagement context |
-| expertise_inventory | Configuration | Your capabilities and constraints |
 
 ## Process
 

@@ -14,72 +14,46 @@ config:
     lineColor: gray
 ---
 flowchart TB
+    subgraph Foundation ["Identity"]
+        Identity["Identity"]
+    end
+
     subgraph SPARC ["SPARC — Acquisition"]
         S["Signal"] --> P["Profile"]
         P --> A["Analyze"]
         A --> R["Rank"]
         R --> C["Craft"]
     end
-    
+
     subgraph IDEAS ["IDEAS — Delivery"]
-        I["Identify"] --> D["Develop"]
+        Id["Identify"] --> D["Develop"]
         D --> E["Evaluate"]
         E --> Ar["Articulate"]
         Ar --> Sh["Share"]
     end
-    
-    C --> |"signed agreement"| I
+
+    Identity --> S
+    Identity --> Id
+    C --> |"signed agreement"| Id
     Sh -.-> |"referral"| S
-    Sh -.-> |"iterate"| I
+    Sh -.-> |"iterate"| Id
 ```
 
 ---
 
 ## Overview
 
-PRAXIS comprises two methodologies:
+PRAXIS comprises three components:
 
-| Methodology | Purpose | Stages | Trigger |
-|-------------|---------|--------|---------|
+| Component | Purpose | Structure | Trigger |
+|-----------|---------|-----------|---------|
+| **Identity** | Professional identity | Single assessment | Once to initialize, update when positioning shifts |
 | **SPARC** | Client acquisition | Signal → Profile → Analyze → Rank → Craft | Ongoing (pipeline building) |
 | **IDEAS** | Research delivery | Identify → Develop → Evaluate → Articulate → Share | Signed agreement |
 
-Both methodologies share design principles: defined inputs/outputs per stage, explicit feedback loops, human approval gates, and quality criteria.
+**Identity** defines who you are professionally. This profile informs both SPARC (finding better-fit opportunities) and IDEAS (leveraging your strengths). Run it once to bootstrap the framework, then update as your positioning evolves.
 
----
-
-## The Complete Lifecycle
-
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                              PRAXIS LIFECYCLE                               │
-├─────────────────────────────────────────────────────────────────────────────┤
-│                                                                             │
-│   SPARC (Acquisition)                    IDEAS (Delivery)                   │
-│   ───────────────────                    ─────────────────                  │
-│                                                                             │
-│   ┌─────────┐                            ┌─────────┐                        │
-│   │ Signal  │ ← ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─│  Share  │ (referrals)           │
-│   └────┬────┘                            └────┬────┘                        │
-│        ↓                                      ↑                             │
-│   ┌─────────┐                            ┌─────────┐                        │
-│   │ Profile │                            │Articulate│                       │
-│   └────┬────┘                            └────┬────┘                        │
-│        ↓                                      ↑                             │
-│   ┌─────────┐                            ┌─────────┐                        │
-│   │ Analyze │                            │Evaluate │                        │
-│   └────┬────┘                            └────┬────┘                        │
-│        ↓                                      ↑                             │
-│   ┌─────────┐                            ┌─────────┐                        │
-│   │  Rank   │                            │ Develop │                        │
-│   └────┬────┘                            └────┬────┘                        │
-│        ↓                                      ↑                             │
-│   ┌─────────┐    signed agreement       ┌─────────┐                        │
-│   │  Craft  │ ─────────────────────────→│Identify │                        │
-│   └─────────┘                            └─────────┘                        │
-│                                                                             │
-└─────────────────────────────────────────────────────────────────────────────┘
-```
+SPARC and IDEAS share design principles: defined inputs/outputs per stage, explicit feedback loops, human approval gates, and quality criteria.
 
 ---
 
@@ -118,14 +92,17 @@ When Share completes successfully, outcomes feed back to SPARC:
 
 ## Shared Inputs
 
-Both frameworks depend on foundational definitions:
+Both SPARC and IDEAS depend on your **Identity Profile** — your professional identity definition:
 
-| Input | Description | Used By |
-|-------|-------------|---------|
-| Positioning Statement | Who you help, with what, your differentiation | SPARC (filtering), IDEAS (scoping) |
-| Ideal Client Profile | Company characteristics indicating fit | SPARC (Signal, Rank) |
-| Service Offerings | What you deliver, price points | SPARC (Craft), IDEAS (Articulate) |
-| Expertise Inventory | Your skills, methods, past work | SPARC (Analyze), IDEAS (Identify) |
+| Identity Profile Section | Used By SPARC | Used By IDEAS |
+|-------------------|---------------|---------------|
+| `positioning` | Filtering prospects, messaging | Scoping research |
+| `ideal_client` | Signal detection, ranking | — |
+| `services` | Craft outreach | Articulate recommendations |
+| `expertise` | Analyze gaps, find angles | Identify opportunities, Develop methods |
+| `constraints` | Rank scoring | Scope feasibility |
+
+Run `/identity` to generate your profile before starting SPARC or IDEAS. See [Identity Methodology](../methodologies/Identity.md) for details.
 
 ---
 
@@ -235,10 +212,11 @@ Beyond stage-level loops, some conditions route between frameworks:
 
 ## Execution
 
-Run PRAXIS stages via skill commands:
+Run PRAXIS via skill commands:
 
-| Methodology | Commands |
-|-------------|----------|
+| Component | Commands |
+|-----------|----------|
+| Identity | `/identity` (run once to initialize) |
 | SPARC | `/signal` → `/profile` → `/analyze` → `/rank` → `/craft` |
 | IDEAS | `/identify` → `/develop` → `/evaluate` → `/articulate` → `/share` |
 
@@ -248,20 +226,22 @@ Each stage requires approval before proceeding to the next. See `architecture/Ex
 
 ## Getting Started
 
-### Phase 1: Foundation
-1. Define positioning, ICP, and service offerings
-2. Set up Signal monitoring sources
+### Phase 1: Identity
+1. Run `/identity` to define your professional profile
+2. Review and refine positioning, ideal client, constraints
 3. Establish data storage (Notion, Airtable, or similar)
 
 ### Phase 2: First Cycle
-1. Run SPARC to first signed agreement
-2. Execute IDEAS for first delivery
-3. Request referral, capture learnings
+1. Set up Signal monitoring sources
+2. Run SPARC to first signed agreement
+3. Execute IDEAS for first delivery
+4. Request referral, capture learnings
 
 ### Phase 3: Steady State
 1. Maintain 2 concurrent IDEAS engagements
 2. Run SPARC in background (20-30% time)
-3. Iterate frameworks based on experience
+3. Update Identity profile as positioning evolves
+4. Iterate frameworks based on experience
 
 ---
 
@@ -270,12 +250,13 @@ Each stage requires approval before proceeding to the next. See `architecture/Ex
 | Document | Purpose |
 |----------|---------|
 | `framework/PRAXIS.md` | This document - overview and integration |
+| `methodologies/Identity.md` | Professional identity assessment |
 | `methodologies/SPARC.md` | Client acquisition methodology |
 | `methodologies/IDEAS.md` | Research delivery methodology |
 | `architecture/Execution.md` | How to run stages via skill commands |
 | `skills/SPARC.md` | Stage-level skill definitions for SPARC |
 | `skills/IDEAS.md` | Stage-level skill definitions for IDEAS |
 | `implementation/Examples.md` | Usage examples and worked scenarios |
-| `implementation/templates/` | Artifact templates (sparc.md, ideas.md, run.md) |
+| `implementation/templates/` | Artifact templates (identity.md, sparc.md, ideas.md, run.md) |
 | `implementation/Configuration.md` | Configuration input examples |
 | `CLAUDE.md` | Project instructions for Claude Code |

@@ -15,6 +15,7 @@ Execute delivery of client deliverables, collect feedback, transfer knowledge, a
 
 | Input | Source | Description |
 |-------|--------|-------------|
+| identity_profile | Identity stage | Your `positioning` for professional framing |
 | client_deliverable | Articulate stage | Final deliverables |
 | audience_profiles | Articulate stage | Who receives what |
 | contract_summary | Identify stage | Delivery requirements, publication rights |

@@ -15,6 +15,7 @@ Transform prioritized opportunities into formal, testable hypotheses. Review pri
 
 | Input | Source | Description |
 |-------|--------|-------------|
+| identity_profile | Identity stage | Your `expertise.methods` for available approaches |
 | research_agenda | Identify stage | Prioritized opportunities |
 | opportunity_details | Identify stage | Initial hypothesis seeds |
 | constraints | Identify stage | Timeline, resources, access |

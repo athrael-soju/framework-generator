@@ -15,6 +15,7 @@ Identify companies exhibiting signals that suggest they may need your services. 
 
 | Input | Source | Description |
 |-------|--------|-------------|
+| identity_profile | Identity stage | Your `ideal_client.signals` and `ideal_client.characteristics` |
 | target_criteria | Configuration | Industry, size, geography filters |
 | signal_types | Configuration | What signals to look for |
 | lookback_days | Configuration | How far back to search (default: 30) |

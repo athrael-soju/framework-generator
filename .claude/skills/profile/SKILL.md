@@ -15,6 +15,7 @@ Transform signal data into structured company profiles with enough depth to supp
 
 | Input | Source | Description |
 |-------|--------|-------------|
+| identity_profile | Identity stage | Your `ideal_client.characteristics` for comparison criteria |
 | signal_log | Signal stage | Companies to profile with initial signals |
 | profile_template | Configuration | Standard profile structure |
 | priority_tier | Signal stage | Which tier to profile (typically: hot) |

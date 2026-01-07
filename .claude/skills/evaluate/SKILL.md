@@ -15,6 +15,7 @@ Gather evidence to test formalized hypotheses. Execute analysis, assess findings
 
 | Input | Source | Description |
 |-------|--------|-------------|
+| identity_profile | Identity stage | Your `expertise.tools` for feasible data sources |
 | hypothesis_documents | Develop stage | Formal hypotheses to test |
 | scope_definitions | Develop stage | Data sources and methods |
 | feasibility_scores | Develop stage | Risk factors to monitor |

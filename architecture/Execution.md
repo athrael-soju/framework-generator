@@ -1,6 +1,6 @@
 # Executing PRAXIS
 
-How to run SPARC and IDEAS stages using Claude Code skills.
+How to run PRAXIS components using Claude Code skills.
 
 ```mermaid
 ---
@@ -12,6 +12,10 @@ config:
     lineColor: gray
 ---
 flowchart TB
+    subgraph Foundation ["Identity"]
+        Identity["/identity"]
+    end
+
     subgraph SPARC ["SPARC - Acquisition"]
         S["/signal"] --> P["/profile"]
         P --> A["/analyze"]
@@ -20,13 +24,15 @@ flowchart TB
     end
 
     subgraph IDEAS ["IDEAS - Delivery"]
-        I["/identify"] --> D["/develop"]
+        Id["/identify"] --> D["/develop"]
         D --> E["/evaluate"]
         E --> Ar["/articulate"]
         Ar --> Sh["/share"]
     end
 
-    C --> |"signed agreement"| I
+    Identity --> S
+    Identity --> Id
+    C --> |"signed agreement"| Id
     Sh -.-> |"referral"| S
 ```
 
@@ -34,10 +40,11 @@ flowchart TB
 
 ## Skills Overview
 
-Each PRAXIS stage has a corresponding skill that defines its methodology:
+Each PRAXIS component has corresponding skills:
 
-| Methodology | Stage | Skill Command | Purpose |
-|-------------|-------|---------------|---------|
+| Component | Stage | Skill Command | Purpose |
+|-----------|-------|---------------|---------|
+| Identity | — | `/identity` | Define professional identity profile |
 | SPARC | Signal | `/signal` | Detect and score prospect signals |
 | SPARC | Profile | `/profile` | Build comprehensive company profiles |
 | SPARC | Analyze | `/analyze` | Assess competitive position |
@@ -48,6 +55,8 @@ Each PRAXIS stage has a corresponding skill that defines its methodology:
 | IDEAS | Evaluate | `/evaluate` | Test hypotheses |
 | IDEAS | Articulate | `/articulate` | Create deliverables |
 | IDEAS | Share | `/share` | Deliver and disseminate |
+
+**Note:** Run `/identity` once before starting SPARC or IDEAS. The Identity profile provides foundational inputs that inform both methodologies.
 
 ---
 
@@ -69,16 +78,17 @@ Each stage expects specific inputs. The skill will request them or use outputs f
 
 | Stage | Required Inputs |
 |-------|-----------------|
-| Signal | Target criteria, signal types, lookback window |
-| Profile | Signal log, profile template, priority tier |
-| Analyze | Company profiles, positioning statement, analysis dimensions, expertise inventory |
-| Rank | Prospect analyses, scoring criteria, thresholds |
-| Craft | Priority ranking, prospect analyses, outreach templates, channel, service offerings |
-| Identify | Signed agreement, prospect analysis, outreach brief (hypothesis seeds), expertise inventory |
-| Develop | Research agenda, opportunity details, constraints |
-| Evaluate | Hypothesis documents, scope definitions, feasibility scores |
-| Articulate | Evaluation report, hypothesis documents, prior work review, contract summary, service offerings |
-| Share | Client deliverable, audience profiles, contract summary |
+| Identity | Name, LinkedIn URL (recommended), portfolio URL (recommended), other links (optional) |
+| Signal | Identity profile, target criteria, signal types, lookback window |
+| Profile | Identity profile, signal log, profile template, priority tier |
+| Analyze | Identity profile, company profiles, analysis dimensions |
+| Rank | Identity profile, prospect analyses, scoring criteria, thresholds |
+| Craft | Identity profile, priority ranking, prospect analyses, outreach templates, channel |
+| Identify | Identity profile, signed agreement, prospect analysis, outreach brief (hypothesis seeds) |
+| Develop | Identity profile, research agenda, opportunity details, constraints |
+| Evaluate | Identity profile, hypothesis documents, scope definitions, feasibility scores |
+| Articulate | Identity profile, evaluation report, hypothesis documents, prior work review, contract summary |
+| Share | Identity profile, client deliverable, audience profiles, contract summary |
 
 ### 3. Work Through the Process
 
@@ -187,6 +197,9 @@ Each PRAXIS run persists two things:
 
 ```
 praxis/
+├── identity/
+│   └── profile.yaml                      # Your professional identity
+│
 ├── runs/
 │   ├── 2025-01-15_vultr_sparc/
 │   │   ├── run.yaml                    # Run metadata
@@ -327,7 +340,7 @@ Before approving stage output, confirm:
 
 ### Starting Fresh
 
-Begin with `/signal` and work through SPARC sequentially. This builds context and ensures each stage has proper inputs.
+Begin with `/identity` to create your professional identity profile. Then run `/signal` and work through SPARC sequentially. This builds context and ensures each stage has proper inputs.
 
 ### Resuming Work
 

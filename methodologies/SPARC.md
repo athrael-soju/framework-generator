@@ -22,7 +22,7 @@ flowchart TB
 
 ## Inputs
 
-SPARC assumes the following are defined:
+SPARC requires an **Identity Profile** (run `/identity` first) which provides:
 
 - **Positioning Statement** — Who you help, with what problem, and your differentiation
 - **Ideal Client Profile (ICP)** — Company characteristics that indicate fit
@@ -55,9 +55,9 @@ Detect companies exhibiting buying signals.
 
 | Tier | Criteria | Action |
 |------|----------|--------|
-| Hot | Funding + AI hiring + public gap acknowledgment | Immediate Profile |
-| Warm | Funding OR AI hiring + relevant vertical | Profile within 1 week |
-| Watch | Single weak signal | Add to monitoring list |
+| Hot | Multiple strong signals, recent timing (e.g., funding + hiring in last 14 days) | Immediate Profile |
+| Warm | Single strong or multiple moderate signals (e.g., Series B, or 3+ relevant job posts) | Profile within 1 week |
+| Watch | Weak signals, early indicators (e.g., mentioned AI strategy, 1 relevant hire) | Add to monitoring list |
 
 **Output:** Signal Log — timestamped records with company, signal type, source, link, score
 
