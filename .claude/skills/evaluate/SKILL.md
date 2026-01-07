@@ -158,11 +158,8 @@ Run QA checklist before proceeding:
 
 | Output | Type | Description |
 |--------|------|-------------|
-| raw_data | object | Collected data by source |
-| collection_log | document | What was collected, when, how |
-| analysis_results | document | Findings and visualizations |
-| evaluation_report | document | Verdict per hypothesis |
-| qa_report | document | Quality check results |
+| evaluation_report | document | Verdict per hypothesis with evidence summary, analysis results, and QA status |
+| raw_data | external | Collected data by source (stored per project conventions) |
 
 ## Decision Points
 

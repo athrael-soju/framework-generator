@@ -153,9 +153,7 @@ For each approved hypothesis:
 | Output | Type | Description |
 |--------|------|-------------|
 | prior_work_review | document | Literature summary per opportunity |
-| hypothesis_documents | document | Formal hypotheses with structure |
-| feasibility_scores | document | Scoring and risk assessment |
-| scope_definitions | document | Precise scope per hypothesis |
+| hypothesis_documents | document | Formal hypotheses with feasibility scores, scope, and risks |
 
 ## Decision Points
 

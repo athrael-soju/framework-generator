@@ -94,83 +94,9 @@ Combine findings into a structured Markdown profile covering:
 
 ## Output
 
-A single Markdown profile document:
+A single Markdown profile document covering all sections from the Synthesize phase.
 
-```markdown
-# Identity Profile
-
-Generated: YYYY-MM-DD
-
-## Identity
-
-**Name:**
-**Tagline:**
-
-### Contact
-- Email:
-- LinkedIn:
-- Website:
-
-## Positioning
-
-**Who you help:**
-**With what problem:**
-**Differentiation:**
-
-### Proof Points
-- [Evidence supporting claims]
-
-## Expertise
-
-### Primary Skills
-- [Core skills you lead with]
-
-### Secondary Skills
-- [Supporting skills]
-
-### Methods
-- [Frameworks, approaches]
-
-### Tools
-- [Technologies, platforms]
-
-## Experience
-
-**Industries:**
-**Years:**
-
-### Notable Projects
-
-| Project | Client Type | Outcome | Relevance |
-|---------|-------------|---------|-----------|
-| [Name] | [Type] | [Result] | [Why it matters] |
-
-## Services
-
-| Offering | Description | Price Range | Engagement Type |
-|----------|-------------|-------------|-----------------|
-| [Name] | [What's included] | [Range] | project / retainer / advisory |
-
-## Ideal Client
-
-### Characteristics
-- [Company attributes that indicate fit]
-
-### Signals
-- [What indicates they're ready to buy]
-
-### Red Flags
-- [Warning signs to avoid]
-
-## Constraints
-
-**Rate Floor:**
-**Availability:**
-**Geography:**
-
-### Deal Breakers
-- [Absolute no-gos]
-```
+See [implementation/templates/identity.md](../implementation/templates/identity.md) for the complete template and example.
 
 ---
 

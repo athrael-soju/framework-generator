@@ -173,11 +173,7 @@ Create final deliverables per audience:
 
 | Output | Type | Description |
 |--------|------|-------------|
-| contribution_statement | document | Positioning and significance |
-| audience_profiles | document | Targeting decisions |
-| recommendations | document | Prioritized actions |
-| roadmap | document | Phased implementation plan |
-| client_deliverable | document | Final deliverable(s) |
+| client_deliverable | document | Final deliverable(s) with contribution positioning, recommendations, and roadmap |
 
 ## Decision Points
 

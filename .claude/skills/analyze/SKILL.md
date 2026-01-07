@@ -137,7 +137,8 @@ On approval, save outputs to run directory:
 1. Create stage folder: `artifacts/3_analyze_YYYY-MM-DD/`
 2. Save prospect analysis to `artifacts/3_analyze_YYYY-MM-DD/prospect_analysis.md`
 3. Save competitor matrix to `artifacts/3_analyze_YYYY-MM-DD/competitor_matrix.md`
-4. Log decision to `decisions.md` with rationale
-5. Update `run.yaml` with `current_stage: analyze`
+4. Save opportunity summary to `artifacts/3_analyze_YYYY-MM-DD/opportunity_summary.md` (when multiple prospects analyzed)
+5. Log decision to `decisions.md` with rationale
+6. Update `run.yaml` with `current_stage: analyze`
 
 See [Execution.md](../../../architecture/Execution.md#artifact-persistence) for structure details.

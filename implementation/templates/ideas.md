@@ -437,3 +437,90 @@ Date: YYYY-MM-DD
 **Requested:** yes / no
 **Received:** [Details if yes]
 ```
+
+---
+
+## Publication Plan
+
+```markdown
+# Publication Plan: [Title]
+
+Engagement: [Name/ID]
+Date: YYYY-MM-DD
+
+---
+
+## Overview
+
+**Working Title:** [Title]
+**Target Venue:** ArXiv / Workshop / Conference / Journal / Blog
+**Timeline:** [Target submission date]
+
+---
+
+## Publication Rights
+
+**Contract Clause:** [Reference to relevant section]
+**Client Review Period:** [X] days
+**Restrictions:** [Any confidential elements to exclude]
+
+---
+
+## Contribution Summary
+
+**Type:** Novel Finding / Quantified Confirmation / Framework / Benchmark
+**Key Claim:** [One-sentence summary of main contribution]
+
+### What's New
+- [What this adds to existing knowledge]
+
+### Why It Matters
+- [Significance to target audience]
+
+---
+
+## Authorship
+
+| Author | Affiliation | Contribution |
+|--------|-------------|--------------|
+| [Name] | [Affiliation] | lead / methodology / data / review |
+
+**Acknowledgments:**
+- [Client acknowledgment text]
+- [Other contributors]
+
+---
+
+## Client Review
+
+**Draft Sent:** YYYY-MM-DD
+**Review Deadline:** YYYY-MM-DD
+**Status:** pending / approved / revisions_requested
+
+### Requested Changes
+- [Change 1]
+
+### Redactions Applied
+- [Confidential element removed]
+
+---
+
+## Submission Checklist
+
+- [ ] Client review complete
+- [ ] Redactions applied
+- [ ] Formatting per venue requirements
+- [ ] Supplementary materials prepared
+- [ ] Code/data repository ready (if applicable)
+
+---
+
+## Dissemination Plan
+
+| Channel | Timing | Notes |
+|---------|--------|-------|
+| ArXiv / Venue | [Date] | Primary publication |
+| LinkedIn | Post-publication | Summary thread |
+| Client channels | [Date] | Coordinated announcement |
+| Communities | [Date] | Relevant forums, Slack groups |
+```
