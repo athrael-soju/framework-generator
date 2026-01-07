@@ -15,9 +15,9 @@ PRAXIS/
 │   ├── SPARC.md         # Client acquisition
 │   └── IDEAS.md         # Research delivery
 │
-├── skills/              # Stage-level skill definitions
-│   ├── SPARC.md         # Skills for SPARC stages
-│   └── IDEAS.md         # Skills for IDEAS stages
+├── skills/              # Skill overview documentation
+│   ├── SPARC.md         # Overview of SPARC skills (links to SKILL.md files)
+│   └── IDEAS.md         # Overview of IDEAS skills (links to SKILL.md files)
 │
 ├── architecture/        # Execution patterns
 │   └── Execution.md     # How to run stages
@@ -30,17 +30,17 @@ PRAXIS/
 │       ├── ideas.md     # IDEAS stage outputs
 │       └── run.md       # Run tracking templates
 │
-└── .claude/skills/      # Individual stage skills (invoked via /command)
-    ├── signal/          # SPARC stages
-    ├── profile/
-    ├── analyze/
-    ├── rank/
-    ├── craft/
-    ├── identify/        # IDEAS stages
-    ├── develop/
-    ├── evaluate/
-    ├── articulate/
-    └── share/
+└── .claude/skills/      # Executable skill definitions (invoked via /command)
+    ├── signal/SKILL.md      # SPARC: Detect and score signals
+    ├── profile/SKILL.md     # SPARC: Build company profiles
+    ├── analyze/SKILL.md     # SPARC: Assess competitive position
+    ├── rank/SKILL.md        # SPARC: Score and prioritize prospects
+    ├── craft/SKILL.md       # SPARC: Create personalized outreach
+    ├── identify/SKILL.md    # IDEAS: Define research opportunities
+    ├── develop/SKILL.md     # IDEAS: Formalize hypotheses
+    ├── evaluate/SKILL.md    # IDEAS: Test hypotheses
+    ├── articulate/SKILL.md  # IDEAS: Create deliverables
+    └── share/SKILL.md       # IDEAS: Deliver and disseminate
 ```
 
 ## Methodologies

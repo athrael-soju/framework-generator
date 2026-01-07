@@ -175,9 +175,10 @@ When finished, present for approval:
 ## Artifact Persistence
 
 On approval, save outputs to run directory:
-1. Save contract summary to `artifacts/1_contract_summary.yaml`
-2. Save research agenda (including gap_analysis and opportunity_map) to `artifacts/1_research_agenda.yaml`
-3. Log decision to `decisions.md` with rationale
-4. Update `run.yaml` with `current_stage: identify`
+1. Create stage folder: `artifacts/1_identify_YYYY-MM-DD/`
+2. Save contract summary to `artifacts/1_identify_YYYY-MM-DD/contract_summary.yaml`
+3. Save research agenda to `artifacts/1_identify_YYYY-MM-DD/research_agenda.yaml`
+4. Log decision to `decisions.md` with rationale
+5. Update `run.yaml` with `current_stage: identify`
 
-See [Execution.md](../../architecture/Execution.md#artifact-persistence) for structure details.
+See [Execution.md](../../../architecture/Execution.md#artifact-persistence) for structure details.

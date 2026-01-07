@@ -109,8 +109,9 @@ When finished, present for approval:
 ## Artifact Persistence
 
 On approval, save outputs to run directory:
-1. Save signal log to `artifacts/1_signal_log.yaml`
-2. Log decision to `decisions.md` with rationale
-3. Update `run.yaml` with `current_stage: signal`
+1. Create stage folder: `artifacts/1_signal_YYYY-MM-DD/`
+2. Save signal log to `artifacts/1_signal_YYYY-MM-DD/signal_log.yaml`
+3. Log decision to `decisions.md` with rationale
+4. Update `run.yaml` with `current_stage: signal`
 
-See [Execution.md](../../architecture/Execution.md#artifact-persistence) for structure details.
+See [Execution.md](../../../architecture/Execution.md#artifact-persistence) for structure details.

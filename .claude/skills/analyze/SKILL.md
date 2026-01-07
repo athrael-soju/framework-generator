@@ -135,8 +135,10 @@ When finished, present for approval:
 ## Artifact Persistence
 
 On approval, save outputs to run directory:
-1. Save prospect analysis to `artifacts/3_prospect_analysis.yaml`
-2. Log decision to `decisions.md` with rationale
-3. Update `run.yaml` with `current_stage: analyze`
+1. Create stage folder: `artifacts/3_analyze_YYYY-MM-DD/`
+2. Save prospect analysis to `artifacts/3_analyze_YYYY-MM-DD/prospect_analysis.yaml`
+3. Save competitor matrix to `artifacts/3_analyze_YYYY-MM-DD/competitor_matrix.yaml`
+4. Log decision to `decisions.md` with rationale
+5. Update `run.yaml` with `current_stage: analyze`
 
-See [Execution.md](../../architecture/Execution.md#artifact-persistence) for structure details.
+See [Execution.md](../../../architecture/Execution.md#artifact-persistence) for structure details.

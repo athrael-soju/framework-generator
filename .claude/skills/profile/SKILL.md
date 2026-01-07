@@ -144,8 +144,9 @@ When finished, present for approval:
 ## Artifact Persistence
 
 On approval, save outputs to run directory:
-1. Save company profile to `artifacts/2_company_profile.yaml`
-2. Log decision to `decisions.md` with rationale
-3. Update `run.yaml` with `current_stage: profile`
+1. Create stage folder: `artifacts/2_profile_YYYY-MM-DD/`
+2. Save company profile to `artifacts/2_profile_YYYY-MM-DD/company_profile.yaml`
+3. Log decision to `decisions.md` with rationale
+4. Update `run.yaml` with `current_stage: profile`
 
-See [Execution.md](../../architecture/Execution.md#artifact-persistence) for structure details.
+See [Execution.md](../../../architecture/Execution.md#artifact-persistence) for structure details.

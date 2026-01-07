@@ -174,9 +174,10 @@ When finished, present for approval:
 ## Artifact Persistence
 
 On approval, save outputs to run directory:
-1. Save qualification score to `artifacts/4_qualification_score.yaml`
-2. Log decision to `decisions.md` with rationale
-3. Update `run.yaml` with `current_stage: rank`
-4. For nurture/pass outcomes, copy record to `nurture/` or `passed/`
+1. Create stage folder: `artifacts/4_rank_YYYY-MM-DD/`
+2. Save qualification score to `artifacts/4_rank_YYYY-MM-DD/qualification_score.yaml`
+3. Log decision to `decisions.md` with rationale
+4. Update `run.yaml` with `current_stage: rank`
+5. For nurture/pass outcomes, copy record to `nurture/` or `passed/`
 
-See [Execution.md](../../architecture/Execution.md#artifact-persistence) for structure details.
+See [Execution.md](../../../architecture/Execution.md#artifact-persistence) for structure details.

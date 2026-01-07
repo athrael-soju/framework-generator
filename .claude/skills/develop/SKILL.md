@@ -187,8 +187,10 @@ When finished, present for approval:
 ## Artifact Persistence
 
 On approval, save outputs to run directory:
-1. Save hypothesis document to `artifacts/2_hypothesis_[id].yaml`
-2. Log decision to `decisions.md` with rationale
-3. Update `run.yaml` with `current_stage: develop`
+1. Create stage folder: `artifacts/2_develop_YYYY-MM-DD/`
+2. Save hypothesis documents to `artifacts/2_develop_YYYY-MM-DD/hypothesis_[id].yaml`
+3. Save prior work review to `artifacts/2_develop_YYYY-MM-DD/prior_work_review.yaml`
+4. Log decision to `decisions.md` with rationale
+5. Update `run.yaml` with `current_stage: develop`
 
-See [Execution.md](../../architecture/Execution.md#artifact-persistence) for structure details.
+See [Execution.md](../../../architecture/Execution.md#artifact-persistence) for structure details.

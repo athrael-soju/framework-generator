@@ -195,8 +195,9 @@ When finished, present for approval:
 ## Artifact Persistence
 
 On approval, save outputs to run directory:
-1. Save evaluation report to `artifacts/3_evaluation_[id].yaml`
-2. Log decision to `decisions.md` with rationale
-3. Update `run.yaml` with `current_stage: evaluate`
+1. Create stage folder: `artifacts/3_evaluate_YYYY-MM-DD/`
+2. Save evaluation report to `artifacts/3_evaluate_YYYY-MM-DD/evaluation_[id].yaml`
+3. Log decision to `decisions.md` with rationale
+4. Update `run.yaml` with `current_stage: evaluate`
 
-See [Execution.md](../../architecture/Execution.md#artifact-persistence) for structure details.
+See [Execution.md](../../../architecture/Execution.md#artifact-persistence) for structure details.

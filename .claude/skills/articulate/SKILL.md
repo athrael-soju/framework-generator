@@ -211,8 +211,9 @@ When finished, present for approval:
 ## Artifact Persistence
 
 On approval, save outputs to run directory:
-1. Save client deliverable to `artifacts/4_deliverable_[id].md`
-2. Log decision to `decisions.md` with rationale
-3. Update `run.yaml` with `current_stage: articulate`
+1. Create stage folder: `artifacts/4_articulate_YYYY-MM-DD/`
+2. Save client deliverable to `artifacts/4_articulate_YYYY-MM-DD/deliverable_report.md`
+3. Log decision to `decisions.md` with rationale
+4. Update `run.yaml` with `current_stage: articulate`
 
-See [Execution.md](../../architecture/Execution.md#artifact-persistence) for structure details.
+See [Execution.md](../../../architecture/Execution.md#artifact-persistence) for structure details.

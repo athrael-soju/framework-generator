@@ -168,34 +168,12 @@ At stage completion:
 
 ## Feedback Loops
 
-Some conditions route back to earlier stages:
+Some conditions route back to earlier stages. When a feedback condition is triggered, the skill presents options and guides you to the appropriate stage.
 
-### SPARC Feedback Loops
-
-| Condition | From | To |
-|-----------|------|-----|
-| Insufficient public data | Profile | Signal (monitor) |
-| Problem doesn't match positioning | Analyze | Pass or Nurture |
-| Score below threshold | Rank | Nurture or Pass |
-| No response after 2 touches | Craft | Nurture |
-| Response but no fit | Craft | Pass |
-| Response + fit | Craft | Discovery -> Proposal -> IDEAS |
-
-### IDEAS Feedback Loops
-
-| Condition | From | To |
-|-----------|------|-----|
-| Idea not tractable | Develop | Identify |
-| Wrong problem | Evaluate | Identify |
-| Results don't support theory | Evaluate | Develop |
-| Weak novelty | Articulate | Identify |
-| Overclaiming results | Articulate | Evaluate |
-| Peer review rejection | Share | Evaluate |
-| Implementation issues | Share | Develop |
-| Client feedback requires changes | Share | Articulate |
-| Fundamental misalignment | Any | Exit/Renegotiate |
-
-When a feedback condition is triggered, the skill will present options and guide you to the appropriate stage.
+For the complete feedback loop definitions, see:
+- [SPARC Feedback Loops](../methodologies/SPARC.md#feedback-loops)
+- [IDEAS Feedback Loops](../methodologies/IDEAS.md#feedback-loops)
+- [Cross-Framework Feedback Loops](../framework/PRAXIS.md#cross-framework-feedback-loops)
 
 ---
 
@@ -218,7 +196,7 @@ praxis/
 │   │       │   └── signal_log.yaml
 │   │       ├── 2_profile_2025-01-16/
 │   │       │   └── company_profile.yaml
-│   │       ├── 3_analysis_2025-01-17/
+│   │       ├── 3_analyze_2025-01-17/
 │   │       │   ├── prospect_analysis.yaml
 │   │       │   └── competitor_matrix.yaml
 │   │       ├── 4_rank_2025-01-18/
@@ -281,7 +259,7 @@ Each stage produces a folder with a stage number, name, and completion date:
 |-------|--------------|--------------|
 | 1 | `1_signal_YYYY-MM-DD/` | `1_identify_YYYY-MM-DD/` |
 | 2 | `2_profile_YYYY-MM-DD/` | `2_develop_YYYY-MM-DD/` |
-| 3 | `3_analysis_YYYY-MM-DD/` | `3_evaluate_YYYY-MM-DD/` |
+| 3 | `3_analyze_YYYY-MM-DD/` | `3_evaluate_YYYY-MM-DD/` |
 | 4 | `4_rank_YYYY-MM-DD/` | `4_articulate_YYYY-MM-DD/` |
 | 5 | `5_craft_YYYY-MM-DD/` | `5_share_YYYY-MM-DD/` |
 

@@ -4,17 +4,73 @@ Artifact templates for IDEAS stage outputs: Identify → Develop → Evaluate �
 
 ---
 
-## Opportunity Summary
+## Contract Summary
 
 ```yaml
 client:
+engagement_id:
 date:
+
+scope:
+  in_scope:
+    - [Deliverable or activity explicitly included]
+  out_of_scope:
+    - [Deliverable or activity explicitly excluded]
+  deliverables:
+    - name:
+      format:
+      deadline:
+
+stakeholders:
+  - name:
+    role:
+    contact:
+    involvement: primary | secondary | informed
+
+terms:
+  start_date:
+  end_date:
+  total_value:
+  payment_schedule:
+  ip_ownership: client | consultant | shared
+  publication_rights: permitted | requires_approval | prohibited
+  review_period_days:
+  confidentiality_notes:
+
+key_constraints:
+  - [Constraint that affects research approach]
+```
+
+---
+
+## Research Agenda
+
+```yaml
+client:
+engagement_id:
+date:
+
+engagement_overview:
+  timeline:
+    start:
+    end:
+  key_stakeholders: []
+  primary_objective:
+
+gap_analysis:
+  - gap_id:
+    name:
+    current_state:
+    desired_state:
+    severity: critical | major | minor
+    notes:
 
 opportunities:
   - id:
     name:
     gap_reference:
     research_direction:
+    initial_hypothesis:
     your_capability:
     feasibility: proceed | caution | blocked
     priority: high | medium | low
@@ -33,6 +89,13 @@ selected:
 deferred:
   - opportunity_id:
     reason:
+
+constraints_and_dependencies:
+  - [Key constraint from contract]
+  - [Dependency between opportunities]
+
+success_criteria:
+  - [How we'll know if we succeeded]
 ```
 
 ---
