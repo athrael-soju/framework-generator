@@ -69,16 +69,16 @@ Each stage expects specific inputs. The skill will request them or use outputs f
 
 | Stage | Required Inputs |
 |-------|-----------------|
-| Signal | Target criteria, signal types to monitor |
-| Profile | Signal log with companies to profile |
-| Analyze | Company profiles to analyze |
-| Rank | Prospect analyses to score |
-| Craft | Ranked prospects for outreach |
-| Identify | Signed agreement, prospect analysis |
-| Develop | Research agenda with opportunities |
-| Evaluate | Hypothesis documents to test |
-| Articulate | Evaluation reports to transform |
-| Share | Client deliverables to distribute |
+| Signal | Target criteria, signal types, lookback window |
+| Profile | Signal log, profile template, priority tier |
+| Analyze | Company profiles, positioning statement, analysis dimensions, expertise inventory |
+| Rank | Prospect analyses, scoring criteria, thresholds |
+| Craft | Priority ranking, prospect analyses, outreach templates, channel, service offerings |
+| Identify | Signed agreement, prospect analysis, outreach brief (hypothesis seeds), expertise inventory |
+| Develop | Research agenda, opportunity details, constraints |
+| Evaluate | Hypothesis documents, scope definitions, feasibility scores |
+| Articulate | Evaluation report, hypothesis documents, prior work review, contract summary, service offerings |
+| Share | Client deliverable, audience profiles, contract summary |
 
 ### 3. Work Through the Process
 
@@ -179,6 +179,7 @@ Some conditions route back to earlier stages:
 | Score below threshold | Rank | Nurture or Pass |
 | No response after 2 touches | Craft | Nurture |
 | Response but no fit | Craft | Pass |
+| Response + fit | Craft | Discovery -> Proposal -> IDEAS |
 
 ### IDEAS Feedback Loops
 
@@ -267,6 +268,8 @@ Prefix artifacts with stage number to maintain execution order:
 | 3 | `3_prospect_analysis.yaml` | `3_evaluation_[id].yaml` |
 | 4 | `4_qualification_score.yaml` | `4_deliverable_[id].md` |
 | 5 | `5_outreach_message.md`, `5_outreach_brief.yaml` | `5_delivery_log.yaml` |
+
+For single deliverables, use `report` as the id (for example, `4_deliverable_report.md`).
 
 ### Starting a Run
 

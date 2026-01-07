@@ -17,6 +17,7 @@ Transform a signed client engagement into a prioritized research agenda. Identif
 |-------|--------|-------------|
 | signed_agreement | SPARC Craft | Client contract |
 | prospect_analysis | SPARC Analyze | Analysis from acquisition |
+| outreach_brief | SPARC Craft | Hypothesis seeds and engagement context |
 | expertise_inventory | Configuration | Your capabilities and constraints |
 
 ## Process
@@ -141,11 +142,11 @@ Rank opportunities for execution:
 | Output | Type | Description |
 |--------|------|-------------|
 | contract_summary | document | Extracted scope, stakeholders, terms |
-| gap_analysis | document | Current vs desired state gaps |
-| opportunity_map | document | Gaps mapped to research directions |
-| research_agenda | document | Prioritized opportunities for execution |
+| research_agenda | document | Prioritized opportunities for execution, including gap_analysis and opportunity_map |
 
 ## Decision Points
+
+All menus must include an Other option for custom input.
 
 | Point | Type | Options |
 |-------|------|---------|
@@ -175,7 +176,7 @@ When finished, present for approval:
 
 On approval, save outputs to run directory:
 1. Save contract summary to `artifacts/1_contract_summary.yaml`
-2. Save research agenda to `artifacts/1_research_agenda.yaml`
+2. Save research agenda (including gap_analysis and opportunity_map) to `artifacts/1_research_agenda.yaml`
 3. Log decision to `decisions.md` with rationale
 4. Update `run.yaml` with `current_stage: identify`
 

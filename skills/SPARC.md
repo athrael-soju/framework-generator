@@ -116,7 +116,7 @@ Each skill is a self-contained instruction set that defines:
 - Pricing transparency
 - Enterprise features
 
-**Outputs:** prospect_analysis_report, competitive_matrix, opportunities
+**Outputs:** prospect_analysis, competitor_matrix, opportunity_summary
 
 **Decision Points:**
 | Point | Type | Options |

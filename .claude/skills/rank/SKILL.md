@@ -141,11 +141,11 @@ When a nurture trigger fires:
 
 | Output | Type | Description |
 |--------|------|-------------|
-| qualification_scores | document | Detailed scoring per prospect |
-| priority_ranking | list | Ordered list for outreach |
-| action_assignments | document | Recommendation per prospect |
+| qualification_score | document | Detailed scoring per prospect, including priority ranking and action assignments |
 
 ## Decision Points
+
+All menus must include an Other option for custom input.
 
 | Point | Type | Options |
 |-------|------|---------|

@@ -77,12 +77,11 @@ Produce signal log with:
 
 | Output | Type | Description |
 |--------|------|-------------|
-| signal_log | document | All detected signals with metadata |
-| hot_prospects | list | Companies requiring immediate profiling |
-| warm_prospects | list | Companies to queue for profiling |
-| watch_list | list | Companies to monitor |
+| signal_log | document | All detected signals with metadata, including hot/warm/watch lists |
 
 ## Decision Points
+
+All menus must include an Other option for custom input.
 
 | Point | Type | Options |
 |-------|------|---------|

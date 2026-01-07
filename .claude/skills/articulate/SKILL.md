@@ -19,6 +19,7 @@ Convert evaluation results into clear, audience-appropriate deliverables. Positi
 | hypothesis_documents | Develop stage | Original hypotheses |
 | prior_work_review | Develop stage | Literature context |
 | contract_summary | Identify stage | Stakeholders and constraints |
+| service_offerings | Configuration | What you deliver and how you position it |
 
 ## Process
 
@@ -179,6 +180,8 @@ Create final deliverables per audience:
 | client_deliverable | document | Final deliverable(s) |
 
 ## Decision Points
+
+All menus must include an Other option for custom input.
 
 | Point | Type | Options |
 |-------|------|---------|

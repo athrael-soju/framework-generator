@@ -165,6 +165,8 @@ Run QA checklist before proceeding:
 
 ## Decision Points
 
+All menus must include an Other option for custom input.
+
 | Point | Type | Options |
 |-------|------|---------|
 | Evidence insufficiency | Decision | Collect more, proceed with caveats, revise hypothesis |

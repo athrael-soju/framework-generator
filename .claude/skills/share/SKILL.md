@@ -76,7 +76,7 @@ Gather and process feedback:
 
 **Feedback Processing:**
 ```
-## Feedback Summary
+## Feedback Log
 
 ### Received
 | Source | Category | Content | Action |
@@ -95,7 +95,7 @@ Gather and process feedback:
 
 Ensure client can sustain and build on work:
 
-**Handoff Package:**
+**Handoff Materials:**
 - Executive summary
 - Technical documentation
 - How-to guides for ongoing use
@@ -167,13 +167,12 @@ Wrap up and set up future value:
 
 | Output | Type | Description |
 |--------|------|-------------|
-| delivery_log | document | What was delivered, when, to whom |
-| feedback_summary | document | Collected feedback and responses |
-| handoff_package | document | Materials for ongoing use |
+| delivery_log | document | What was delivered, when, to whom, including feedback_log, handoff_materials, and engagement_closure |
 | publication (optional) | document | Published paper/article |
-| engagement_closure | document | Final status and next steps |
 
 ## Decision Points
+
+All menus must include an Other option for custom input.
 
 | Point | Type | Options |
 |-------|------|---------|
@@ -205,7 +204,7 @@ When finished, present for approval:
 ## Artifact Persistence
 
 On approval, save outputs to run directory:
-1. Save delivery log to `artifacts/5_delivery_log.yaml`
+1. Save delivery log (including feedback_log, handoff_materials, engagement_closure) to `artifacts/5_delivery_log.yaml`
 2. Log decision to `decisions.md` with rationale
 3. Update `run.yaml` with `current_stage: share`, `status: completed`, `outcome: delivered`
 4. For referrals, create new SPARC run entries in `runs/`

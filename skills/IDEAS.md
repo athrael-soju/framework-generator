@@ -47,7 +47,7 @@ Each skill is a self-contained instruction set that defines:
 3. Opportunity Mapping — Map gaps to research directions
 4. Prioritization — Rank and select opportunities
 
-**Outputs:** contract_summary, gap_analysis, opportunity_map, research_agenda
+**Outputs:** contract_summary, research_agenda (includes gap_analysis and opportunity_map)
 
 **Decision Points:**
 | Point | Type | Options |
@@ -160,7 +160,7 @@ Each skill is a self-contained instruction set that defines:
 9. Peer Review Response — Handle reviewer feedback
 10. Post-Publication — Maximize impact
 
-**Outputs:** delivery_log, feedback_log, handoff_materials, publication (if applicable)
+**Outputs:** delivery_log (includes feedback_log, handoff_materials, and engagement_closure), publication (if applicable)
 
 **Decision Points:**
 | Point | Type | Options |

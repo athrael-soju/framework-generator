@@ -27,6 +27,7 @@ IDEAS assumes the following are provided:
 
 - **Client Contract Agreement** — Scope of work, deliverables, engagement boundaries, timeline
 - **Client Analysis Report** — Deep-dive analysis identifying areas where you can provide value
+- **Outreach Brief** - Hypothesis seeds and engagement context from SPARC
 
 ---
 
@@ -52,7 +53,7 @@ Surface research opportunities from client context.
 | Which gaps align with your expertise and scope? | Filter to tractable work |
 | What creates most value within timeline? | Prioritize ruthlessly |
 
-**Output:** Research Opportunities Document — prioritized list with rationale, initial hypotheses
+**Output:** Research Agenda — prioritized list with rationale, initial hypotheses
 
 ---
 
@@ -204,7 +205,7 @@ Deliver outputs to relevant audiences.
 
 Publication requires contract permission. See [Examples.md](../implementation/Examples.md#research-publication-example) for a worked example.
 
-**Output:** Delivery Confirmation + Feedback Log + Follow-up Actions
+**Output:** Delivery Log (includes feedback log, handoff materials, and engagement closure)
 
 ---
 
@@ -230,11 +231,11 @@ For cross-framework feedback loops (e.g., client not a fit routing to SPARC, mar
 
 | Stage | Output | Format |
 |-------|--------|--------|
-| Identify | Research Opportunities Document | Prioritized list |
+| Identify | Research Agenda | Prioritized list |
 | Develop | Hypothesis Document | Structured hypotheses |
 | Evaluate | Evaluation Report | Evidence + verdicts |
 | Articulate | Client Deliverable | Report/slides/prototype |
-| Share | Delivery Confirmation | Log + actions |
+| Share | Delivery Log | Log + actions |
 
 ---
 

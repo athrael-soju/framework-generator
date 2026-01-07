@@ -158,6 +158,8 @@ For each approved hypothesis:
 
 ## Decision Points
 
+All menus must include an Other option for custom input.
+
 | Point | Type | Options |
 |-------|------|---------|
 | Hypothesis framing | Clarification | Refine IF/THEN/BECAUSE structure |

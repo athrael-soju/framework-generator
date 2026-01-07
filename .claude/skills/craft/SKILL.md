@@ -17,6 +17,7 @@ Research decision-makers and craft personalized outreach messages that reference
 |-------|--------|-------------|
 | priority_ranking | Rank stage | Prospects to craft outreach for |
 | prospect_analyses | Analyze stage | Context for personalization |
+| service_offerings | Configuration | What you deliver and how you position it |
 | outreach_templates | Configuration | Message templates by channel |
 | channel | Configuration | linkedin_dm or email |
 
@@ -129,6 +130,8 @@ Prepare for responses:
 - Obviously templated
 
 ## Decision Points
+
+All menus must include an Other option for custom input.
 
 | Point | Type | Options |
 |-------|------|---------|

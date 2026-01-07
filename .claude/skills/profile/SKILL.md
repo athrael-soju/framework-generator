@@ -114,6 +114,8 @@ Combine all data into structured profile:
 
 ## Decision Points
 
+All menus must include an Other option for custom input.
+
 | Point | Type | Options |
 |-------|------|---------|
 | Incomplete data | Decision | Continue with gaps noted, return to Signal, request manual input |

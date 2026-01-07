@@ -776,48 +776,47 @@ problem_fit_rationale:
 ```
 
 ### Client Deliverable
-```yaml
-engagement:
-deliverable_id:
-date:
-version:
+```markdown
+# [Deliverable Title]
 
-metadata:
-  title:
-  audience: executive | technical | marketing | board
-  format: report | presentation | workshop | documentation
+## Metadata
+- Engagement:
+- Deliverable ID:
+- Date:
+- Version:
+- Audience: executive | technical | marketing | board
+- Format: report | presentation | workshop | documentation
 
-executive_summary:
-  key_findings: []
-  recommendations: []
-  immediate_actions: []
+## Executive Summary
+- Key Findings:
+- Recommendations:
+- Immediate Actions:
 
-sections:
-  - title:
-    content_summary:
+## Sections
+### [Section Title]
+[Content summary]
 
-recommendations:
-  - id:
-    title:
-    priority: high | medium | low
-    effort: high | medium | low
-    rationale:
-    success_metrics: []
+## Recommendations
+| ID | Title | Priority | Effort | Rationale | Success Metrics |
+|----|-------|----------|--------|-----------|----------------|
+| R1 |       | high | low |           |                |
 
-roadmap:
-  quick_wins: []
-  phase_1:
-    name:
-    timeline:
-    actions: []
-    milestone:
-  phase_2:
-    name:
-    timeline:
-    actions: []
-    milestone:
+## Roadmap
+### Quick Wins
+- [Action] - [Expected outcome]
 
-appendices: []
+### Phase 1: [Name]
+- Timeline:
+- Actions:
+- Milestone:
+
+### Phase 2: [Name]
+- Timeline:
+- Actions:
+- Milestone:
+
+## Appendices
+- [Appendix item]
 ```
 
 ---

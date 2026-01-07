@@ -125,7 +125,7 @@ Both frameworks depend on foundational definitions:
 | Positioning Statement | Who you help, with what, your differentiation | SPARC (filtering), IDEAS (scoping) |
 | Ideal Client Profile | Company characteristics indicating fit | SPARC (Signal, Rank) |
 | Service Offerings | What you deliver, price points | SPARC (Craft), IDEAS (Articulate) |
-| Expertise Inventory | Your skills, methods, past work | SPARC (Analyze), IDEAS (Develop) |
+| Expertise Inventory | Your skills, methods, past work | SPARC (Analyze), IDEAS (Identify) |
 
 ---
 
