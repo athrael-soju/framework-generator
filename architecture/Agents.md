@@ -100,12 +100,23 @@ Persistence and retrieval.
 
 ### notify-mcp
 
-Human interaction.
+Human interaction via interactive menus.
 
 | Tool | Purpose | Inputs | Outputs |
 |------|---------|--------|---------|
-| `request_approval` | Pause for human approval | context, options | decision |
+| `request_approval` | Stage approval gate | context, options[] | decision, feedback |
+| `request_decision` | Multi-option choice | question, options[], multi_select | selection(s) |
+| `request_clarification` | Input clarification | question, options[], context | selection, custom_input |
 | `send_notification` | Alert human | channel, message | confirmation |
+
+**Menu Option Structure:**
+```python
+{
+    "label": str,        # Short display text (1-5 words)
+    "description": str,  # Explanation of what this option means
+    "value": str         # Value returned if selected
+}
+```
 
 ---
 
@@ -155,6 +166,46 @@ def load_skill(stage: str) -> str:
     path = f".claude/skills/{stage}/SKILL.md"
     return read_file(path)
 
+INTERACTION_PROTOCOL = """
+## Interaction Protocol
+
+You MUST use interactive menus at decision points. Never proceed silently when user input is needed.
+
+### Required Menu Calls
+
+**Clarification (request_clarification)** — Call IMMEDIATELY when:
+- Inputs are missing or incomplete
+- Requirements are ambiguous
+- Multiple valid interpretations exist
+- You need to confirm understanding before proceeding
+
+**Decision (request_decision)** — Call BEFORE acting when:
+- Multiple valid approaches exist
+- A threshold or boundary condition is met
+- Feedback loop conditions are triggered
+- Strategic direction is needed
+
+**Approval (request_approval)** — Call AFTER completing stage work:
+- Present summary of outputs produced
+- Include quality criteria check results
+- Offer approve/reject/edit/abort options
+
+### Menu Format
+
+Always structure options as:
+- label: Short text (1-5 words)
+- description: What this option means or does
+- value: Machine-readable identifier
+
+### Execution Pattern
+
+1. Check inputs → if unclear, call request_clarification
+2. Before each major decision → call request_decision
+3. Execute work using MCP tools
+4. Before stage completion → call request_approval with quality check
+5. Wait for response before proceeding
+"""
+
 def build_agent_prompt(stage: str, framework: str) -> str:
     """Build complete agent system prompt."""
     return f"""
@@ -162,7 +213,9 @@ You are the {stage.title()} Agent for {framework.upper()}.
 
 {load_skill(stage)}
 
-When finished, call request_approval with your outputs summary.
+{INTERACTION_PROTOCOL}
+
+IMPORTANT: You must call menu tools (request_clarification, request_decision, request_approval) at every decision point defined in your skill. Never skip these interactions.
 """
 ```
 
@@ -465,6 +518,172 @@ flowchart LR
     "feedback": "Optional feedback for retry",
     "edits": {"field": "new_value"}  # If decision is "edit"
 }
+```
+
+---
+
+## Interactive Menus
+
+Interactive menus present structured choices at decision points throughout the pipeline. They replace free-form prompts with selectable options, improving consistency and reducing ambiguity.
+
+### Menu Types
+
+| Type | Tool | Use Case |
+|------|------|----------|
+| **Approval** | `request_approval` | Stage transitions, quality gates |
+| **Decision** | `request_decision` | Strategy choices, approach selection |
+| **Clarification** | `request_clarification` | Missing inputs, ambiguous requirements |
+
+### When to Use Menus
+
+**Always use menus for:**
+- Stage approval gates (approve/reject/edit/abort)
+- Feedback loop triggers (proceed/retry/reroute)
+- Quality criteria validation (pass/fail per criterion)
+- Strategy selection when multiple valid approaches exist
+- Missing or ambiguous input clarification
+
+**Use prose for:**
+- Status updates and summaries
+- Error messages requiring explanation
+- Open-ended feedback collection
+
+### Approval Menus
+
+Stage transitions present a standard four-option menu:
+
+```python
+await request_approval(
+    context={
+        "stage": "analyze",
+        "summary": "Completed competitive analysis for Vultr...",
+        "outputs": ["prospect_analysis_report_vultr.md"],
+        "quality_check": {"all_criteria_met": True}
+    },
+    options=[
+        {"label": "Approve", "description": "Proceed to Rank stage", "value": "approve"},
+        {"label": "Reject", "description": "Retry with feedback", "value": "reject"},
+        {"label": "Edit", "description": "Modify outputs, then proceed", "value": "edit"},
+        {"label": "Abort", "description": "End pipeline", "value": "abort"}
+    ]
+)
+```
+
+### Decision Menus
+
+Present when the agent needs strategic direction:
+
+```python
+# Example: Rank stage threshold decision
+await request_decision(
+    question="Prospect scored 2.8 (Nurture threshold). How should we proceed?",
+    options=[
+        {"label": "Nurture", "description": "Add to nurture sequence, revisit in 30 days", "value": "nurture"},
+        {"label": "Qualify anyway", "description": "Proceed to Craft despite score", "value": "qualify"},
+        {"label": "Pass", "description": "Mark as not a fit, no further action", "value": "pass"}
+    ]
+)
+
+# Example: Evaluate stage methodology choice
+await request_decision(
+    question="Which analysis approach for this hypothesis?",
+    options=[
+        {"label": "Quantitative", "description": "Statistical analysis of metrics data", "value": "quantitative"},
+        {"label": "Qualitative", "description": "Interview-based thematic analysis", "value": "qualitative"},
+        {"label": "Mixed methods", "description": "Combine both approaches", "value": "mixed"}
+    ]
+)
+```
+
+### Clarification Menus
+
+Request missing information or resolve ambiguity:
+
+```python
+# Example: Signal stage - unclear priority
+await request_clarification(
+    question="Multiple hot signals detected. Which should we prioritize?",
+    context="Found: Series B funding ($50M), VP Engineering hire, and API launch",
+    options=[
+        {"label": "Funding signal", "description": "Prioritize the Series B announcement", "value": "funding"},
+        {"label": "Hiring signal", "description": "Prioritize the VP Engineering role", "value": "hiring"},
+        {"label": "Product signal", "description": "Prioritize the API launch", "value": "product"},
+        {"label": "All equally", "description": "Profile all signals with equal weight", "value": "all"}
+    ]
+)
+
+# Example: Identify stage - scope clarification
+await request_clarification(
+    question="Contract mentions 'platform optimization'. Which interpretation?",
+    context="Could mean performance, UX, or cost optimization",
+    options=[
+        {"label": "Performance", "description": "Speed, latency, throughput improvements", "value": "performance"},
+        {"label": "User experience", "description": "Usability, accessibility, design", "value": "ux"},
+        {"label": "Cost efficiency", "description": "Infrastructure and operational costs", "value": "cost"}
+    ]
+)
+```
+
+### Multi-Select Menus
+
+For non-mutually-exclusive choices:
+
+```python
+# Example: Share stage - channel selection
+await request_decision(
+    question="Which channels for deliverable distribution?",
+    options=[
+        {"label": "Executive brief", "description": "Send summary to C-suite", "value": "exec"},
+        {"label": "Technical report", "description": "Full report to engineering", "value": "tech"},
+        {"label": "Workshop", "description": "Schedule interactive session", "value": "workshop"},
+        {"label": "Documentation", "description": "Add to client knowledge base", "value": "docs"}
+    ],
+    multi_select=True
+)
+```
+
+### Quality Check Menus
+
+Present quality criteria as confirmable items:
+
+```python
+# Example: Before stage completion
+await request_decision(
+    question="Confirm quality criteria for Analyze stage:",
+    options=[
+        {"label": "Competitive comparison done", "description": "Gap matrix generated for all competitors", "value": "competition"},
+        {"label": "Gaps tied to positioning", "description": "Each gap linked to service capability", "value": "gaps"},
+        {"label": "Entry point identified", "description": "Clear path to engagement defined", "value": "entry"},
+        {"label": "Budget estimated", "description": "Rough engagement value calculated", "value": "budget"}
+    ],
+    multi_select=True
+)
+```
+
+### Feedback Loop Menus
+
+When conditions trigger potential reroutes:
+
+```python
+# Example: Profile stage - insufficient data
+await request_decision(
+    question="Profile data incomplete (missing: funding history, tech stack). How to proceed?",
+    options=[
+        {"label": "Continue anyway", "description": "Proceed to Analyze with gaps noted", "value": "continue"},
+        {"label": "Extended research", "description": "Return to Signal for deeper monitoring", "value": "signal"},
+        {"label": "Manual input", "description": "I'll provide the missing data", "value": "manual"}
+    ]
+)
+
+# Example: Evaluate stage - hypothesis not supported
+await request_decision(
+    question="Evidence does not support hypothesis H1. What next?",
+    options=[
+        {"label": "Revise hypothesis", "description": "Return to Develop with new framing", "value": "develop"},
+        {"label": "Pivot scope", "description": "Return to Identify for new direction", "value": "identify"},
+        {"label": "Report negative", "description": "Proceed to Articulate with null result", "value": "proceed"}
+    ]
+)
 ```
 
 ---

@@ -60,6 +60,13 @@ Each skill is a self-contained instruction set that defines:
 
 **Outputs:** signal_log with company identifiers and scores
 
+**Decision Points:**
+| Point | Type | Options |
+|-------|------|---------|
+| Multiple hot signals | Clarification | Prioritize by type (funding/hiring/product) or weight equally |
+| Signal source conflict | Decision | Trust source A, trust source B, flag for manual verification |
+| Stage completion | Approval | Approve → Profile, Reject → retry, Edit → modify, Abort |
+
 ---
 
 ## Profile Skill
@@ -82,6 +89,14 @@ Each skill is a self-contained instruction set that defines:
 **Tools:** `web_search`, `web_fetch`, `company_lookup`, `github_profile`, `save_document`, `get_document`
 
 **Outputs:** company_profile with gap annotations
+
+**Decision Points:**
+| Point | Type | Options |
+|-------|------|---------|
+| Incomplete data | Decision | Continue with gaps, return to Signal, request manual input |
+| Conflicting information | Clarification | Which source to trust, how to reconcile |
+| Key person identification | Clarification | Confirm decision-maker role and priority |
+| Stage completion | Approval | Approve → Analyze, Reject → retry, Edit → modify, Abort |
 
 ---
 
@@ -109,6 +124,15 @@ Each skill is a self-contained instruction set that defines:
 **Tools:** `web_search`, `web_fetch`, `compare_competitors`, `save_document`, `get_document`, `list_documents`
 
 **Outputs:** prospect_analysis_report, competitive_matrix, opportunities
+
+**Decision Points:**
+| Point | Type | Options |
+|-------|------|---------|
+| Competitor set selection | Clarification | Which competitors to include in analysis |
+| Problem-solution mismatch | Decision | Pass (not a fit), Nurture (revisit later), adjust positioning |
+| Opportunity prioritization | Decision | Rank order of identified opportunities |
+| Quality criteria check | Multi-select | Confirm each criterion met before completion |
+| Stage completion | Approval | Approve → Rank, Reject → retry, Edit → modify, Abort |
 
 ---
 
@@ -142,6 +166,15 @@ Each skill is a self-contained instruction set that defines:
 
 **Outputs:** qualification_score with breakdown and recommendation
 
+**Decision Points:**
+| Point | Type | Options |
+|-------|------|---------|
+| Threshold boundary (score near cutoff) | Decision | Nurture, Qualify anyway, Pass |
+| Criterion weighting adjustment | Clarification | Override default weights for this prospect |
+| Pipeline capacity check | Decision | Proceed, defer to next cycle, fast-track |
+| Quality criteria check | Multi-select | Confirm scoring rationale documented |
+| Stage completion | Approval | Approve → Craft, Reject → retry, Edit → modify, Abort |
+
 ---
 
 ## Craft Skill
@@ -165,6 +198,16 @@ Each skill is a self-contained instruction set that defines:
 **Tools:** `web_search`, `web_fetch`, `save_document`, `get_document`, `list_documents`
 
 **Outputs:** decision_maker_profile, outreach_message, variants, response_brief
+
+**Decision Points:**
+| Point | Type | Options |
+|-------|------|---------|
+| Decision-maker selection | Clarification | Which contact to target first |
+| Channel selection | Decision | Email, LinkedIn, warm intro, event |
+| Message variant selection | Decision | Choose from generated variants |
+| Tone/positioning adjustment | Clarification | Formal/casual, technical/business focus |
+| Quality criteria check | Multi-select | Hook references signal, insight shows depth, ask is concrete |
+| Stage completion | Approval | Approve → Send/IDEAS, Reject → retry, Edit → modify, Abort |
 
 ---
 

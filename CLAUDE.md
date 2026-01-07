@@ -57,7 +57,37 @@ When executing a SPARC or IDEAS stage:
 5. **Check quality** — Run through the quality criteria checklist
 6. **Request approval** — Present output and ask for approval before proceeding
 
-If inputs are missing or unclear, stop and ask rather than assuming.
+### Interaction Protocol
+
+Use interactive menus (AskUserQuestion) at decision points. Never proceed silently when user input is needed.
+
+**Clarification menus** — Call IMMEDIATELY when:
+- Inputs are missing or incomplete
+- Requirements are ambiguous
+- Multiple valid interpretations exist
+
+**Decision menus** — Call BEFORE acting when:
+- Multiple valid approaches exist
+- A threshold or boundary condition is met
+- Feedback loop conditions are triggered
+- Strategic direction is needed
+
+**Approval menus** — Call AFTER completing stage work:
+- Present summary of outputs produced
+- Include quality criteria check results
+- Offer approve/reject/edit/abort options
+
+**Menu format:**
+- 2-4 options per question
+- Each option: short label + description
+- Always allow "Other" for custom input
+
+**Execution pattern:**
+1. Check inputs → if unclear, present clarification menu
+2. Before major decisions → present decision menu
+3. Execute work
+4. Before completion → present approval menu with quality check
+5. Wait for selection before proceeding
 
 ## Agent Development
 

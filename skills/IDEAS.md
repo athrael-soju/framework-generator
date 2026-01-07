@@ -52,6 +52,16 @@ Each skill is a self-contained instruction set that defines:
 
 **Outputs:** contract_summary, gap_analysis, opportunity_map, research_agenda
 
+**Decision Points:**
+| Point | Type | Options |
+|-------|------|---------|
+| Scope interpretation | Clarification | Confirm understanding of ambiguous contract terms |
+| Gap prioritization | Decision | Which gaps to address first |
+| Opportunity selection | Multi-select | Which opportunities to include in agenda |
+| Resource constraints | Decision | Full scope, reduced scope, phased approach |
+| Quality criteria check | Multi-select | Deliverables mapped, opportunities aligned, timeline actionable |
+| Stage completion | Approval | Approve → Develop, Reject → retry, Edit → modify, Abort |
+
 ---
 
 ## Develop Skill
@@ -69,6 +79,16 @@ Each skill is a self-contained instruction set that defines:
 **Tools:** `web_search`, `web_fetch`, `save_document`, `get_document`, `list_documents`
 
 **Outputs:** prior_work_review, hypothesis_documents, feasibility_scores, scope_definitions
+
+**Decision Points:**
+| Point | Type | Options |
+|-------|------|---------|
+| Hypothesis framing | Clarification | Refine IF/THEN/BECAUSE structure |
+| Feasibility concerns | Decision | Proceed, adjust scope, return to Identify |
+| Data source access | Decision | Use available sources, seek alternatives, descope |
+| Methodology selection | Decision | Quantitative, qualitative, mixed methods |
+| Quality criteria check | Multi-select | Hypotheses falsifiable, evidence specified, assumptions stated |
+| Stage completion | Approval | Approve → Evaluate, Reject → retry, Edit → modify, Abort |
 
 ---
 
@@ -88,6 +108,16 @@ Each skill is a self-contained instruction set that defines:
 
 **Outputs:** raw_data, collection_log, analysis_results, evaluation_report, qa_report
 
+**Decision Points:**
+| Point | Type | Options |
+|-------|------|---------|
+| Evidence insufficiency | Decision | Collect more, proceed with caveats, revise hypothesis |
+| Unexpected results | Decision | Report as-is, investigate further, return to Develop |
+| Hypothesis not supported | Decision | Report negative, pivot to new hypothesis, return to Identify |
+| Confidence level | Clarification | Confirm appropriate confidence assignment |
+| Quality criteria check | Multi-select | Methods documented, analysis reproducible, alternatives considered |
+| Stage completion | Approval | Approve → Articulate, Reject → retry, Edit → modify, Abort |
+
 ---
 
 ## Articulate Skill
@@ -105,6 +135,17 @@ Each skill is a self-contained instruction set that defines:
 **Tools:** `save_document`, `get_document`, `list_documents`
 
 **Outputs:** contribution_statement, audience_profiles, recommendations, roadmap, client_deliverable
+
+**Decision Points:**
+| Point | Type | Options |
+|-------|------|---------|
+| Audience prioritization | Multi-select | Which stakeholders to target |
+| Deliverable format | Decision | Report, presentation, workshop, documentation |
+| Recommendation strength | Clarification | Confirm claim strength matches evidence |
+| Novelty framing | Clarification | How to position contribution |
+| Limitation disclosure | Decision | Which limitations to emphasize |
+| Quality criteria check | Multi-select | Claims supported, recommendations actionable, limitations acknowledged |
+| Stage completion | Approval | Approve → Share, Reject → retry, Edit → modify, Abort |
 
 ---
 
@@ -131,6 +172,17 @@ Each skill is a self-contained instruction set that defines:
 **Tools:** `save_document`, `get_document`, `list_documents`, `send_notification`
 
 **Outputs:** delivery_log, feedback_log, handoff_materials, publication (if applicable)
+
+**Decision Points:**
+| Point | Type | Options |
+|-------|------|---------|
+| Channel selection | Multi-select | Executive brief, technical report, workshop, documentation |
+| Publication decision | Decision | Pursue publication, client-only, defer decision |
+| Venue selection | Clarification | Which publication venue to target |
+| Feedback handling | Decision | Incorporate feedback, note for future, escalate |
+| Knowledge transfer scope | Decision | Full handoff, partial, ongoing support |
+| Quality criteria check | Multi-select | Deliverable reviewed, channel appropriate, feedback mechanism in place |
+| Stage completion | Approval | Approve → Complete, Reject → retry, Edit → modify, Abort |
 
 ---
 

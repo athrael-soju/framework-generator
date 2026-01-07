@@ -33,6 +33,16 @@ PRAXIS/
 | **SPARC** | Client acquisition | Signal - Profile - Analyze - Rank - Craft |
 | **IDEAS** | Research delivery | Identify - Develop - Evaluate - Articulate - Share |
 
+## Usage
+
+Run SPARC stages for client acquisition:
+- `/signal` → `/profile` → `/analyze` → `/rank` → `/craft`
+
+Run IDEAS stages for research delivery:
+- `/identify` → `/develop` → `/evaluate` → `/articulate` → `/share`
+
+Each stage requires approval before proceeding to the next.
+
 ## Getting Started
 
 Start with [framework/PRAXIS.md](framework/PRAXIS.md) for the complete overview.
