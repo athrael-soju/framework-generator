@@ -1,4 +1,4 @@
-# The PRAXIS Model
+# The PRAXIS Framework
 
 A complete framework for research consulting: from finding clients to delivering value.
 
@@ -37,14 +37,14 @@ flowchart TB
 
 ## Overview
 
-PRAXIS comprises two interlocking frameworks:
+PRAXIS comprises two methodologies:
 
-| Framework | Purpose | Stages | Trigger |
-|-----------|---------|--------|---------|
+| Methodology | Purpose | Stages | Trigger |
+|-------------|---------|--------|---------|
 | **SPARC** | Client acquisition | Signal → Profile → Analyze → Rank → Craft | Ongoing (pipeline building) |
 | **IDEAS** | Research delivery | Identify → Develop → Evaluate → Articulate → Share | Signed agreement |
 
-The frameworks share design principles: defined inputs/outputs per stage, explicit feedback loops, human approval gates, and quality criteria.
+Both methodologies share design principles: defined inputs/outputs per stage, explicit feedback loops, human approval gates, and quality criteria.
 
 ---
 
@@ -131,7 +131,7 @@ Both frameworks depend on foundational definitions:
 
 ## Parallel Structure
 
-Both frameworks follow identical structural patterns:
+Both methodologies follow identical structural patterns:
 
 | Element | SPARC | IDEAS |
 |---------|-------|-------|
@@ -235,10 +235,10 @@ Beyond stage-level loops, some conditions route between frameworks:
 
 ## Agent Architecture Integration
 
-The PRAXIS model maps to agents and skills:
+The PRAXIS framework maps to agents and skills:
 
-| Framework | Agents | Shared Skills |
-|-----------|--------|---------------|
+| Methodology | Agents | Shared Skills |
+|-------------|--------|---------------|
 | SPARC | Signal, Profile, Analyze, Rank, Craft | web_search, web_fetch, save_document, get_document |
 | IDEAS | Identify, Develop, Evaluate, Articulate, Share | web_search, web_fetch, save_document, get_document |
 
@@ -269,9 +269,9 @@ See `implementation/Agent_Architecture.md` for full skill catalog and orchestrat
 
 | Document | Purpose |
 |----------|---------|
-| `frameworks/PRAXIS_Model.md` | This document - overview and integration |
-| `frameworks/SPARC_Framework.md` | Client acquisition methodology |
-| `frameworks/IDEAS_Framework.md` | Research delivery methodology |
+| `frameworks/PRAXIS_Framework.md` | This document - overview and integration |
+| `frameworks/SPARC_Methodology.md` | Client acquisition methodology |
+| `frameworks/IDEAS_Methodology.md` | Research delivery methodology |
 | `implementation/Agent_Architecture.md` | Agents, MCP servers, and orchestration |
 | `implementation/SPARC_Skills.md` | Stage-level skill definitions for SPARC agents |
 | `implementation/IDEAS_Skills.md` | Stage-level skill definitions for IDEAS agents |

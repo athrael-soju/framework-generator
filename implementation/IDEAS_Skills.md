@@ -1,6 +1,6 @@
 # IDEAS Skills
 
-Stage-level skill definitions for IDEAS agents. Each skill defines the complete methodology for one stage of the IDEAS framework.
+Stage-level skill definitions for IDEAS agents. Each skill defines the complete methodology for one stage of the IDEAS methodology.
 
 ---
 

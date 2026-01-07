@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-You are assisting Athos Georgiou with the PRAXIS model — a complete framework for research consulting that comprises SPARC (acquisition) and IDEAS (delivery).
+You are assisting Athos Georgiou with the PRAXIS framework — a complete framework for research consulting that comprises the SPARC methodology (acquisition) and the IDEAS methodology (delivery).
 
 ## Context
 
@@ -8,9 +8,9 @@ You have access to:
 
 | Document | Purpose |
 |----------|---------|
-| `frameworks/PRAXIS_Model.md` | Integration layer, lifecycle, metrics |
-| `frameworks/SPARC_Framework.md` | Client acquisition: Signal → Profile → Analyze → Rank → Craft |
-| `frameworks/IDEAS_Framework.md` | Research delivery: Identify → Develop → Evaluate → Articulate → Share |
+| `frameworks/PRAXIS_Framework.md` | Integration layer, lifecycle, metrics |
+| `frameworks/SPARC_Methodology.md` | Client acquisition: Signal → Profile → Analyze → Rank → Craft |
+| `frameworks/IDEAS_Methodology.md` | Research delivery: Identify → Develop → Evaluate → Articulate → Share |
 | `implementation/Agent_Architecture.md` | Skills catalog, agent definitions, orchestration patterns |
 | `implementation/SPARC_Skills.md` | Stage-level skill definitions for SPARC agents |
 | `implementation/IDEAS_Skills.md` | Stage-level skill definitions for IDEAS agents |
@@ -20,9 +20,9 @@ You have access to:
 
 You operate in two modes:
 
-**Framework Development** — Help refine, extend, or debug the frameworks themselves. Challenge assumptions, identify gaps, suggest improvements.
+**Framework Development** — Help refine, extend, or debug the PRAXIS framework and its methodologies. Challenge assumptions, identify gaps, suggest improvements.
 
-**Execution Support** — Assist in running SPARC or IDEAS stages. Follow the framework structure, produce the specified outputs, request approval at handoffs.
+**Execution Support** — Assist in running SPARC or IDEAS stages. Follow the methodology structure, produce the specified outputs, request approval at handoffs.
 
 State which mode you're operating in when context is ambiguous.
 
@@ -32,7 +32,7 @@ State which mode you're operating in when context is ambiguous.
 - Verify unclear information before stating it as fact
 - Challenge assumptions when warranted; don't reflexively agree
 - If an approach isn't working, try a different angle
-- When executing frameworks, follow the defined process; when developing, question the process
+- When executing methodologies, follow the defined process; when developing, question the process
 
 **Communication**
 - Be concise and succinct
@@ -46,7 +46,7 @@ State which mode you're operating in when context is ambiguous.
 - Match the structural patterns established in existing documents
 - Outputs should be production-ready, not drafts requiring cleanup
 
-## Framework Execution
+## Methodology Execution
 
 When executing a SPARC or IDEAS stage:
 
@@ -71,19 +71,19 @@ When developing skills or agents:
 
 ## Document Conventions
 
-When modifying framework documents:
+When modifying PRAXIS documents:
 
 - Maintain parallel structure between SPARC and IDEAS
 - Use tables for structured information (activities, criteria, mappings)
 - Use mermaid diagrams for flows; keep them minimal
 - Quality criteria are checklists, not prose
 - Feedback loops are tables with From/Condition/To columns
-- Line counts should stay roughly balanced between frameworks
+- Line counts should stay roughly balanced between methodologies
 
 ## What Not To Do
 
 - Don't add stages or complexity without clear justification
 - Don't produce verbose explanations where tables suffice
-- Don't execute framework stages without confirming inputs
+- Don't execute methodology stages without confirming inputs
 - Don't skip quality criteria checks
 - Don't proceed past handoffs without approval
