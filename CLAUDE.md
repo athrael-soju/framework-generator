@@ -8,17 +8,17 @@ You have access to:
 
 | Document | Purpose |
 |----------|---------|
-| `framework/PRAXIS.md` | Integration layer, lifecycle, metrics |
-| `methodologies/Identity.md` | Professional identity assessment |
-| `methodologies/SPARC.md` | Client acquisition: Signal → Profile → Analyze → Rank → Craft |
-| `methodologies/IDEAS.md` | Research delivery: Identify → Develop → Evaluate → Articulate → Share |
-| `architecture/Execution.md` | How to run stages via skill commands |
-| `skills/Identity.md` | Identity skill overview |
-| `skills/SPARC.md` | Stage-level skill definitions for SPARC |
-| `skills/IDEAS.md` | Stage-level skill definitions for IDEAS |
-| `implementation/Examples.md` | Usage examples and worked scenarios |
-| `implementation/templates/` | Artifact templates (identity.md, sparc.md, ideas.md, run.md) |
-| `implementation/Configuration.md` | Configuration input examples |
+| `docs/PRAXIS.md` | Integration layer, lifecycle, metrics |
+| `docs/Execution.md` | How to run stages via skill commands |
+| `docs/Examples.md` | Usage examples and worked scenarios |
+| `docs/Configuration.md` | Configuration input examples |
+| `docs/templates/` | Artifact templates |
+| `identity/methodology.md` | Professional identity assessment |
+| `identity/SKILL.md` | Identity skill definition |
+| `sparc/methodology.md` | SPARC acquisition methodology |
+| `sparc/<stage>/SKILL.md` | Stage skills: signal, profile, analyze, rank, craft |
+| `ideas/methodology.md` | IDEAS delivery methodology |
+| `ideas/<stage>/SKILL.md` | Stage skills: identify, develop, evaluate, articulate, share |
 
 ## Roles
 
