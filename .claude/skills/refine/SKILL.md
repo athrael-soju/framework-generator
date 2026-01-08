@@ -15,6 +15,43 @@ Specify each stage in detail.
 | stage_map | Organize stage output |
 | domain_knowledge | User input: specifics about the workflow |
 
+### Input Format
+
+**From Frame stage (`output/forge/{date}/{model}-charter.md`):**
+
+```markdown
+## Problem
+{Workflow being addressed}
+
+## Scope
+**In:** {What's covered}
+**Out:** {What's excluded}
+```
+
+**From Organize stage (`output/forge/{date}/{model}-stage-map.md`):**
+
+```markdown
+## Stages
+
+| Stage | Purpose | Inputs | Outputs |
+|-------|---------|--------|---------|
+| {Name} | {Description} | {Inputs} | {Outputs} |
+
+## Feedback Loops
+
+| From | Condition | To |
+```
+
+**User-provided domain knowledge:**
+
+```yaml
+domain_knowledge:
+  criteria: [Scoring criteria, thresholds]
+  categories: [Types, tiers, channels]
+  sources: [Where to get data]
+  constraints: [Rules, limits]
+```
+
 ## Process
 
 For each stage in the stage map:

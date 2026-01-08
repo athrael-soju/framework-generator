@@ -14,6 +14,38 @@ Map the stages and flow of the model.
 | model_charter | Frame stage output |
 | reference_models | Optional: existing models for structural patterns |
 
+### Input Format
+
+**From Frame stage (`output/forge/{date}/{model}-charter.md`):**
+
+```markdown
+# Model Charter: {NAME}
+
+## Problem
+{Workflow being addressed}
+
+## Purpose
+{Why this model exists}
+
+## Scope
+**In:** {What's covered}
+**Out:** {What's excluded}
+
+## Type
+{Foundation / Pipeline}
+
+## Dependencies
+| Requires | From | Why |
+```
+
+**Optional reference models:**
+
+```yaml
+reference_models:
+  - path: docs/models/sparc.md    # For pipeline patterns
+  - path: docs/models/identity.md # For foundation patterns
+```
+
 ## Process
 
 **1. Identify Stages** - Break the workflow into distinct stages:

@@ -14,6 +14,35 @@ Score prospects against qualification criteria. Prioritize for outreach.
 | identity_profile | Identity stage (`ideal_client`, `constraints`) |
 | prospect_analyses | Analyze stage |
 
+### Input Format
+
+**From Identity profile (`output/identity/profile.md`):**
+
+```yaml
+ideal_client:
+  characteristics: [Attributes]
+  signals: [Buying indicators]
+  red_flags: [Warning signs]
+
+constraints:
+  rate_floor: [Minimum rate]
+  availability: [Capacity]
+  deal_breakers: [No-gos]
+```
+
+**From Analyze stage (`output/sparc/{date}/{company}-analysis.md`):**
+
+```markdown
+## Entry Point
+**Buyer Persona:** [Who would buy]
+**Budget Indicators:** [Signs of budget]
+**Timing Assessment:** [Why now]
+**Access Path:** [How to reach]
+
+## Gap Analysis
+| Gap | Severity | Your Capability | Opportunity |
+```
+
 ## Scoring Criteria
 
 | Criterion | Weight | 1 (Poor) | 5 (Strong) |

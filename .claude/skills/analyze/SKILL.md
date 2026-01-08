@@ -14,6 +14,37 @@ Compare prospects against competitors. Identify gaps matching your capabilities.
 | identity_profile | Identity stage (`positioning`, `expertise`) |
 | company_profiles | Profile stage |
 
+### Input Format
+
+**From Identity profile (`output/identity/profile.md`):**
+
+```yaml
+positioning:
+  who_you_help: [Audience]
+  with_what_problem: [Problem]
+  differentiation: [Why you]
+
+expertise:
+  primary_skills: [Skills]
+  methods: [Approaches]
+```
+
+**From Profile stage (`output/sparc/{date}/{company}-profile.md`):**
+
+```markdown
+## Company Overview
+**Employees:** [Number]
+**Vertical:** [Industry]
+
+## Market Position
+**Differentiation:** [How they position]
+### Competitors
+- [Competitor list]
+
+## Key People
+| Name | Title | Notes |
+```
+
 ## Process
 
 **1. Competitors** — Identify top 3-5 direct competitors

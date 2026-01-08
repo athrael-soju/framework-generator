@@ -15,6 +15,36 @@ Define the purpose and boundaries of a new model.
 | context | User input: domain, constraints, intended users |
 | reference_models | Optional: existing models to draw patterns from |
 
+### Input Format
+
+**User-provided problem description:**
+
+```yaml
+problem_description: |
+  What workflow or process needs systematizing?
+  What's painful or inconsistent about it?
+  What would success look like?
+```
+
+**User-provided context:**
+
+```yaml
+context:
+  domain: [Area of work]
+  constraints: [Limitations, requirements]
+  intended_users: [Who will run this model]
+```
+
+**Optional reference models:**
+
+```yaml
+reference_models:
+  - name: SPARC
+    path: docs/models/sparc.md
+  - name: Identity
+    path: docs/models/identity.md
+```
+
 ## Process
 
 **1. Clarify Problem** - Ask what workflow or process the user wants to systematize:

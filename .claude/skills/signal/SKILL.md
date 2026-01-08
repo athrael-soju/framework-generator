@@ -16,6 +16,33 @@ Detect companies exhibiting buying signals. Score by strength to prioritize prof
 | signal_types | Funding, hiring, product, news |
 | lookback_days | Default: 30 |
 
+### Input Format
+
+**From Identity profile (`output/identity/profile.md`):**
+
+```yaml
+# Required sections from Identity
+ideal_client:
+  characteristics:
+    - [Company attributes]
+  signals:
+    - [Buying indicators]
+  red_flags:
+    - [Warning signs]
+```
+
+**User-provided criteria:**
+
+```yaml
+target_criteria:
+  industries: [Developer tools, API platforms]
+  company_size: [50-500 employees]
+  geography: [US, Europe]
+
+signal_types: [funding, hiring, product, news]
+lookback_days: 30
+```
+
 ## Process
 
 **1. Detect** — Search for signals by type:

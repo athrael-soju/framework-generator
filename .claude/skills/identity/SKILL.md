@@ -17,6 +17,19 @@ Define your professional identity to inform client acquisition.
 | github | Optional |
 | other_links | Optional |
 
+### Input Format
+
+```yaml
+# User-provided inputs
+name: "Full Name"
+linkedin: "https://linkedin.com/in/username"
+portfolio: "https://example.com"
+github: "https://github.com/username"
+other_links:
+  - "https://twitter.com/username"
+  - "https://medium.com/@username"
+```
+
 ## Process
 
 **1. Collect** — Gather name and profile URLs

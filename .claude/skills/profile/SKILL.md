@@ -15,6 +15,32 @@ Build structured company profiles from public data for prioritized prospects.
 | signal_log | Signal stage (hot/warm prospects) |
 | priority_tier | Which tier to profile (default: hot) |
 
+### Input Format
+
+**From Identity profile (`output/identity/profile.md`):**
+
+```yaml
+ideal_client:
+  characteristics:
+    - [Company attributes indicating fit]
+```
+
+**From Signal stage (`output/sparc/{date}/signal-log.md`):**
+
+```markdown
+## Signals
+
+| Company | Signal Type | Source | Strength | Notes |
+|---------|-------------|--------|----------|-------|
+| [Name] | [Type] | [Source] | hot / warm / watch | [Context] |
+```
+
+**User-provided:**
+
+```yaml
+priority_tier: hot  # Which tier to profile: hot, warm, or watch
+```
+
 ## Process
 
 **1. Firmographics** — Name, HQ, employees, funding, investors

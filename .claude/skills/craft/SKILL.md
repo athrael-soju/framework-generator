@@ -16,6 +16,45 @@ Research decision-makers. Draft personalized outreach messages.
 | prospect_analyses | Analyze stage |
 | channel | linkedin_dm or email |
 
+### Input Format
+
+**From Identity profile (`output/identity/profile.md`):**
+
+```yaml
+positioning:
+  who_you_help: [Audience]
+  differentiation: [Why you]
+
+services:
+  - name: [Offering]
+    description: [What's included]
+```
+
+**From Rank stage (`output/sparc/{date}/qualification.md`):**
+
+```markdown
+## Result
+**Total Score:** [Score]
+**Recommendation:** prioritize / qualified
+```
+
+**From Analyze stage (`output/sparc/{date}/{company}-analysis.md`):**
+
+```markdown
+## Entry Point
+**Buyer Persona:** [Who to contact]
+**Access Path:** [How to reach]
+
+## Recommended Approach
+**Value Proposition:** [What to offer]
+```
+
+**User-provided:**
+
+```yaml
+channel: linkedin_dm  # or email, warm_intro
+```
+
 ## Process
 
 **1. Research** — Decision-maker background, recent activity, posts

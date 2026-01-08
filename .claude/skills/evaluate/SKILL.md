@@ -13,7 +13,40 @@ Validate the generated model and iterate if needed.
 |-------|--------|
 | model_document | Generate stage output |
 | skill_files | Generate stage output |
-| templates | Generate stage output |
+
+### Input Format
+
+**Model document (`docs/models/{model}.md`):**
+
+```markdown
+# The {NAME} Model
+{Description}
+{Mermaid diagram}
+## Purpose
+## Inputs
+## Stages
+### {Stage 1}
+## Feedback Loops
+## Quality Criteria
+## Stage Outputs Summary
+```
+
+**Skill files (`.claude/skills/{stage}/SKILL.md`):**
+
+```markdown
+---
+name: {stage}
+description: {One line}
+---
+# {Stage}
+## Inputs
+### Input Format
+## Process
+## Output
+{Embedded templates}
+## Quality Criteria
+## Completion
+```
 
 ## Process
 
@@ -59,8 +92,9 @@ Validate the generated model and iterate if needed.
 - [ ] Frontmatter has name and description
 - [ ] Description is one line, action-oriented
 - [ ] Has inputs table with sources
+- [ ] Has input format section
 - [ ] Has numbered process steps
-- [ ] Has output format template
+- [ ] Has output format with embedded templates
 - [ ] Has quality criteria checklist
 - [ ] Has completion section with next action
 

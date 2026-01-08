@@ -16,7 +16,6 @@ PRAXIS/
 │   │   └── forge.md          # FORGE model
 │   └── guides/
 │       ├── execution.md      # How to run stages
-│       ├── configuration.md  # Configuration inputs
 │       └── run.md            # Run tracking
 │
 ├── .claude/

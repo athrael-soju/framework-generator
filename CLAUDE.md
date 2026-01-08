@@ -13,9 +13,7 @@ You have access to:
 | `docs/models/sparc.md` | SPARC model |
 | `docs/models/forge.md` | FORGE model (meta-model for creating models) |
 | `docs/guides/execution.md` | How to run stages via skill commands |
-| `docs/guides/configuration.md` | Configuration input examples |
 | `docs/guides/run.md` | Run tracking templates |
-| `.claude/skills/*/template.md` | Stage output templates |
 
 ## Roles
 

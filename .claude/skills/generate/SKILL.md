@@ -15,6 +15,43 @@ Produce the model document and skill files.
 | stage_map | Organize stage output |
 | stage_specifications | Refine stage output (all stages) |
 
+### Input Format
+
+**From Frame stage (`output/forge/{date}/{model}-charter.md`):**
+
+```markdown
+# Model Charter: {NAME}
+## Problem
+## Purpose
+## Scope
+## Type
+## Dependencies
+```
+
+**From Organize stage (`output/forge/{date}/{model}-stage-map.md`):**
+
+```markdown
+# Stage Map: {NAME}
+## Stages
+| Stage | Purpose | Inputs | Outputs |
+## Flow
+{Mermaid diagram}
+## Feedback Loops
+## Terminal States
+```
+
+**From Refine stage (`output/forge/{date}/{model}-{stage}-spec.md`):**
+
+```markdown
+# Stage Specification: {STAGE}
+## Purpose
+## Activities
+## {Context Tables}
+## Output Format
+## Quality Criteria
+## Completion
+```
+
 ## Process
 
 **1. Generate Model Document** - Create `docs/models/{name}.md`:
@@ -120,6 +157,14 @@ description: {One line for skill picker}
 | Input | Source |
 |-------|--------|
 
+### Input Format
+
+**From {source} (`{path}`):**
+
+```yaml or markdown
+{Expected structure}
+```
+
 ## Process
 **1. {Step}** - {Description}
 
@@ -165,7 +210,8 @@ Save to `output/{model}/{date}/`.
 - [ ] Model document follows framework structure
 - [ ] All stages have corresponding skill files
 - [ ] Skill frontmatter is valid (name, description)
-- [ ] Skills follow standard structure (inputs, process, output with embedded templates, criteria, completion)
+- [ ] Skills have input format section after inputs table
+- [ ] Skills follow standard structure (inputs, input format, process, output with embedded templates, criteria, completion)
 - [ ] Output templates embedded in each skill's Output section
 - [ ] Index documents updated (overview.md, CLAUDE.md, README.md)
 - [ ] Guide documents updated (execution.md, run.md)
