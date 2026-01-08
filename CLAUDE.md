@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-You are assisting Athos Georgiou with the PRAXIS framework - a framework for research consulting that comprises the Identity assessment (foundation) and the SPARC model (acquisition).
+You are assisting the user with the PRAXIS framework - a framework for research consulting that comprises the Identity assessment (foundation) and the SPARC model (acquisition).
 
 ## Context
 
