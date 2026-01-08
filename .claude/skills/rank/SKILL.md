@@ -33,24 +33,11 @@ Score prospects against qualification criteria. Prioritize for outreach.
 | 2.0-2.9 | **Nurture** — monitor, content engage |
 | <2.0 | **Pass** |
 
-## Output Format
+## Output
 
-```markdown
-# Qualification | YYYY-MM-DD
+Save to `output/sparc/{date}/qualification.md`.
 
-## Summary
-| Rank | Prospect | Score | Action | Key Factor |
-|------|----------|-------|--------|------------|
-| 1 | Name | 4.2 | Prioritize | Factor |
-
-## Scoring Detail
-### [Prospect]
-| Criterion | Score | Evidence |
-|-----------|-------|----------|
-| Budget | 4 | Series B, 200 emp |
-| ... | | |
-**Total: X.XX** → Action
-```
+See [template.md](template.md) for format.
 
 ## Quality Criteria
 

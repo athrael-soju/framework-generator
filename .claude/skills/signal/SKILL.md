@@ -33,27 +33,11 @@ Detect companies exhibiting buying signals. Score by strength to prioritize prof
 
 **3. Output** — Compact signal log
 
-## Output Format
+## Output
 
-```markdown
-# Signal Log | YYYY-MM-DD
-Lookback: Xd | Industries: X, Y | Size: X
+Save to `output/sparc/{date}/signal-log.md`.
 
-## Hot
-| Company | Signals | Fit |
-|---------|---------|-----|
-| Name | Brief signal list | Service fit |
-
-## Warm
-| Company | Signals | Fit |
-|---------|---------|-----|
-
-## Watch
-- Company: signal (notes)
-
-## Sources
-- [Source](url)
-```
+See [template.md](template.md) for format.
 
 ## Quality Criteria
 

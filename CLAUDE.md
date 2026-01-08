@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-You are assisting the user with the PRAXIS framework - a framework for research consulting that comprises the Identity assessment (foundation) and the SPARC model (acquisition).
+You are assisting the user with the PRAXIS framework - a framework for research consulting that comprises the Identity assessment (foundation), the SPARC model (acquisition), and the FORGE model (model creation).
 
 ## Context
 
@@ -11,6 +11,7 @@ You have access to:
 | `docs/overview.md` | Framework overview, lifecycle, metrics |
 | `docs/models/identity.md` | Identity model |
 | `docs/models/sparc.md` | SPARC model |
+| `docs/models/forge.md` | FORGE model (meta-model for creating models) |
 | `docs/guides/execution.md` | How to run stages via skill commands |
 | `docs/guides/configuration.md` | Configuration input examples |
 | `docs/guides/run.md` | Run tracking templates |
@@ -22,7 +23,7 @@ You operate in two modes:
 
 **Framework Development** - Help refine, extend, or debug the PRAXIS framework and its models. Challenge assumptions, identify gaps, suggest improvements.
 
-**Execution Support** - Assist in running SPARC stages. Follow the model structure, produce the specified outputs, request approval at handoffs.
+**Execution Support** - Assist in running model stages (SPARC, FORGE). Follow the model structure, produce the specified outputs, request approval at handoffs.
 
 State which mode you're operating in when context is ambiguous.
 
@@ -48,7 +49,7 @@ State which mode you're operating in when context is ambiguous.
 
 ## Model Execution
 
-When executing a SPARC stage:
+When executing a model stage (SPARC, FORGE, or other):
 
 1. **State the stage** - Which stage you're executing and why
 2. **Confirm inputs** - Verify you have required inputs per the framework

@@ -34,46 +34,11 @@ Define your professional identity to inform client acquisition.
 | Differentiation | What do you do others don't? |
 | Constraints | Rate floor? Availability? Deal-breakers? |
 
-## Output Format
+## Output
 
-```markdown
-# Identity Profile
+Save to `output/identity/profile.md`.
 
-## Identity
-| Field | Value |
-|-------|-------|
-| Name | X |
-| Tagline | X |
-| Email | X |
-| LinkedIn | X |
-
-## Positioning
-**Who I help:** X
-**Problem solved:** X
-**Differentiation:** X
-
-## Expertise
-**Primary:** skill1, skill2
-**Secondary:** skill3, skill4
-**Tools:** tool1, tool2
-
-## Services
-| Service | Description |
-|---------|-------------|
-| Service | Brief description |
-
-## Ideal Client
-**Characteristics:** X
-**Buying signals:** X
-**Red flags:** X
-
-## Constraints
-| Constraint | Value |
-|------------|-------|
-| Rate floor | $X/hour |
-| Availability | X |
-| Deal-breakers | X |
-```
+See [template.md](template.md) for format.
 
 ## Quality Criteria
 
@@ -86,4 +51,4 @@ Define your professional identity to inform client acquisition.
 
 ## Completion
 
-Present profile for approval. Save to `output/identity/profile.md`.
+Present profile for approval. Approve → Save.

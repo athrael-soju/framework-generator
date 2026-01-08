@@ -32,27 +32,11 @@ Research decision-makers. Draft personalized outreach messages.
 | Bridge | Connect gap to capability |
 | Ask | Low-commitment next step |
 
-## Output Format
+## Output
 
-```markdown
-# Outreach: [Prospect] | YYYY-MM-DD
-Channel: LinkedIn DM | Contact: Name (Title)
+Save to `output/sparc/{date}/{company}-outreach.md`.
 
-## Message (XXX chars)
-[Message text]
-
-## Variants
-**B:** [Alternative hook]
-**C:** [Alternative angle]
-
-## Talking Points
-**If interested:** Schedule call, share research
-**If objection:** [Response]
-**If no response:** Follow up day 7
-
-## Send
-When: Day, time (timezone)
-```
+See [template.md](template.md) for format.
 
 ## Channel Limits
 

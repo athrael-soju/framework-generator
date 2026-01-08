@@ -23,42 +23,11 @@ Build structured company profiles from public data for prioritized prospects.
 **4. People** — Decision-makers, titles, backgrounds
 **5. Activity** — Recent signals, news, hiring
 
-## Output Format
+## Output
 
-```markdown
-# Profile: [Company] | YYYY-MM-DD
-Tier: Hot | Priority: X
+Save to `output/sparc/{date}/{company}-profile.md`.
 
-## Overview
-| Field | Value |
-|-------|-------|
-| Domain | x.com |
-| Size | ~X employees |
-| Funding | $XM (Series X) |
-| HQ | Location |
-
-## Technical
-- GitHub: X repos, primary langs
-- Docs: X/5 quality
-- Stack: Key technologies
-
-## People
-| Name | Title | Notes |
-|------|-------|-------|
-| Name | Title | Background |
-
-## Signals
-- Signal 1 (date, source)
-- Signal 2
-
-## Fit
-| Service | Relevance |
-|---------|-----------|
-| Service | High/Med/Low + reason |
-
-## Gaps
-- Gap 1 (impact)
-```
+See [template.md](template.md) for format.
 
 ## Quality Criteria
 

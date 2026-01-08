@@ -22,31 +22,11 @@ Compare prospects against competitors. Identify gaps matching your capabilities.
 **4. Gaps** — Map gaps to your capabilities
 **5. Entry points** — Identify buyer, budget, timing
 
-## Output Format
+## Output
 
-```markdown
-# Analysis: [Company] | YYYY-MM-DD
+Save to `output/sparc/{date}/{company}-analysis.md`.
 
-## Position
-- Leads: strength 1, strength 2
-- Lags: gap 1, gap 2
-
-## Competitors
-| Dimension | Prospect | Comp1 | Comp2 |
-|-----------|----------|-------|-------|
-| Docs | 3 | 5 | 4 |
-
-## Gaps → Capabilities
-| Gap | Severity | Your Capability | Opportunity |
-|-----|----------|-----------------|-------------|
-| Gap | High/Med | Capability | Primary/Secondary |
-
-## Entry Point
-- Contact: Name (Title)
-- Budget: Indicators
-- Timing: Assessment
-- Approach: Recommended angle
-```
+See [template.md](template.md) for format.
 
 ## Quality Criteria
 
