@@ -1,4 +1,4 @@
-# Profile Templates
+# Profile Template
 
 ## Company Profile
 

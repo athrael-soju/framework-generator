@@ -1,4 +1,4 @@
-# Identity Templates
+# Identity Template
 
 Profile template for the Identity model output.
 

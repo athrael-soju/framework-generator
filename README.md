@@ -20,22 +20,22 @@ PRAXIS/
 │   └── skills/
 │       ├── identity/
 │       │   ├── SKILL.md
-│       │   └── templates.md
+│       │   └── template.md
 │       ├── signal/
 │       │   ├── SKILL.md
-│       │   └── templates.md
+│       │   └── template.md
 │       ├── profile/
 │       │   ├── SKILL.md
-│       │   └── templates.md
+│       │   └── template.md
 │       ├── analyze/
 │       │   ├── SKILL.md
-│       │   └── templates.md
+│       │   └── template.md
 │       ├── rank/
 │       │   ├── SKILL.md
-│       │   └── templates.md
+│       │   └── template.md
 │       └── craft/
 │           ├── SKILL.md
-│           └── templates.md
+│           └── template.md
 │
 ├── CLAUDE.md
 └── README.md

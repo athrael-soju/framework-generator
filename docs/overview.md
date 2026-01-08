@@ -144,5 +144,5 @@ Each stage requires approval before proceeding to the next. See [execution.md](e
 | `docs/identity.md` | Identity model |
 | `docs/sparc.md` | SPARC model |
 | `docs/run.md` | Run tracking templates |
-| `.claude/skills/*/templates.md` | Stage output templates |
+| `.claude/skills/*/template.md` | Stage output templates |
 | `CLAUDE.md` | Project instructions for Claude Code |

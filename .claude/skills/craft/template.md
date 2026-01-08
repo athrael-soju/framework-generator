@@ -1,4 +1,4 @@
-# Craft Templates
+# Craft Template
 
 ## Outreach Brief
 

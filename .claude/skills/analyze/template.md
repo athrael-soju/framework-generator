@@ -1,4 +1,4 @@
-# Analyze Templates
+# Analyze Template
 
 ## Prospect Analysis Report
 

@@ -14,7 +14,7 @@ You have access to:
 | `docs/identity.md` | Identity model |
 | `docs/sparc.md` | SPARC model |
 | `docs/run.md` | Run tracking templates |
-| `.claude/skills/*/templates.md` | Stage output templates |
+| `.claude/skills/*/template.md` | Stage output templates |
 
 ## Roles
 

@@ -1,4 +1,4 @@
-# Rank Templates
+# Rank Template
 
 ## Qualification Score
 

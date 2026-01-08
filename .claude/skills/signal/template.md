@@ -1,4 +1,4 @@
-# Signal Templates
+# Signal Template
 
 ## Signal Log Entry
 
