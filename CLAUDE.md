@@ -13,12 +13,10 @@ You have access to:
 | `docs/Examples.md` | Usage examples and worked scenarios |
 | `docs/Configuration.md` | Configuration input examples |
 | `docs/templates/` | Artifact templates |
-| `identity/methodology.md` | Professional identity assessment |
-| `identity/SKILL.md` | Identity skill definition |
-| `sparc/methodology.md` | SPARC acquisition methodology |
-| `sparc/<stage>/SKILL.md` | Stage skills: signal, profile, analyze, rank, craft |
-| `ideas/methodology.md` | IDEAS delivery methodology |
-| `ideas/<stage>/SKILL.md` | Stage skills: identify, develop, evaluate, articulate, share |
+| `methodology/TEMPLATE.md` | Template for creating new methodologies |
+| `methodology/identity/` | Identity assessment (foundation) |
+| `methodology/sparc/` | SPARC acquisition: signal, profile, analyze, rank, craft |
+| `methodology/ideas/` | IDEAS delivery: identify, develop, evaluate, articulate, share |
 
 ## Roles
 
@@ -98,9 +96,9 @@ Use interactive menus (AskUserQuestion) at decision points. Never proceed silent
 When developing or modifying skills:
 
 - Each stage has one skill that defines its complete methodology
-- Skills are in `.claude/skills/<stage>/SKILL.md` (one per SPARC/IDEAS stage)
-- Skills define *what* to do and produce
-- Follow the SKILL.md pattern in existing skills
+- Skills live in `methodology/<name>/<stage>/SKILL.md`
+- Symlinks in `.claude/skills/` point to methodology folders
+- Use `methodology/TEMPLATE.md` as a guide for new methodologies
 - Human approval gates exist at every stage handoff
 
 ## Document Conventions
