@@ -96,20 +96,9 @@ Save to `output/{date}/` (same date as Frame).
 | `run.md` | Append Organize decisions |
 | `{name}-stage-map.md` | Stage map |
 
-### Run Log (run.md) - Append
+### Run Log (run.md)
 
-```markdown
----
-
-## Organize - {date}
-
-**Decisions:**
-| Question | Choice |
-|----------|--------|
-| {question} | {selection} |
-
-**Output:** `{name}-stage-map.md`
-```
+Append Organize decisions. See `docs/execution.md` "Run Log Conventions" for format.
 
 ### Stage Map ({name}-stage-map.md)
 

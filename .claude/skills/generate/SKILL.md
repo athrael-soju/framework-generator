@@ -94,25 +94,9 @@ See CLAUDE.md "Interaction Protocol" for tool usage and menu format.
 
 **Run log** updated in `output/{date}/run.md`.
 
-### Run Log (run.md) - Append
+### Run Log (run.md)
 
-```markdown
----
-
-## Generate - {date}
-
-**Files created:**
-- `docs/models/{name}.md`
-- `.claude/skills/{stage}/SKILL.md` (for each stage)
-
-**Index updates:**
-- `docs/overview.md`
-- `CLAUDE.md`
-- `README.md`
-
-**Guide updates:**
-- `docs/execution.md`
-```
+Append Generate entry. List files created, index updates, and guide updates instead of decisions table.
 
 ### Framework Document Structure
 

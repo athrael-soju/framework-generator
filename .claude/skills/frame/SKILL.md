@@ -94,29 +94,9 @@ If running multiple times on the same day, add a suffix: `output/2026-01-08-02/`
 | `run.md` | Initialize run log |
 | `{name}-charter.md` | Framework charter |
 
-### Run Log (run.md) - Initialize
+### Run Log (run.md)
 
-```markdown
-# Framework Run: {Name}
-
-Started: {date}
-Status: in_progress
-
----
-
-## Frame - {date}
-
-**Inputs provided:**
-- Problem: {summary}
-- Context: {summary}
-
-**Decisions:**
-| Question | Choice |
-|----------|--------|
-| {question} | {selection} |
-
-**Output:** `{name}-charter.md`
-```
+Initialize run log. See `docs/execution.md` "Run Log Conventions" for format.
 
 ### Framework Charter ({name}-charter.md)
 

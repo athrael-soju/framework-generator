@@ -123,36 +123,9 @@ Save to `output/{date}/` (same date as Frame).
 | `run.md` | Append Evaluate decisions and final outcome |
 | `{name}-validation.md` | Validation report |
 
-### Run Log (run.md) - Finalize
+### Run Log (run.md)
 
-```markdown
----
-
-## Evaluate - {date}
-
-**Checks performed:**
-- Convention compliance: {pass/fail}
-- Completeness: {pass/fail}
-- Consistency: {pass/fail}
-- Dry run: {pass/fail}
-
-**Decisions:**
-| Question | Choice |
-|----------|--------|
-| {question} | {selection} |
-
-**Output:** `{name}-validation.md`
-
----
-
-## Outcome
-
-**Status:** complete / aborted
-**Result:** {name} framework created with {n} stages
-**Files generated:**
-- `docs/models/{name}.md`
-- `.claude/skills/{stage}/SKILL.md` (per stage)
-```
+Finalize run log. See `docs/execution.md` "Run Log Conventions" for format.
 
 ### Validation Report ({name}-validation.md)
 

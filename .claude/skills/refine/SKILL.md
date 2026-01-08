@@ -101,22 +101,9 @@ Save to `output/{date}/` (same date as Frame).
 | `run.md` | Append Refine decisions |
 | `{name}-{stage}-spec.md` | One file per stage specification |
 
-### Run Log (run.md) - Append
+### Run Log (run.md)
 
-```markdown
----
-
-## Refine - {date}
-
-**Stages specified:** {list}
-
-**Decisions:**
-| Question | Choice |
-|----------|--------|
-| {question} | {selection} |
-
-**Outputs:** `{name}-{stage}-spec.md` for each stage
-```
+Append Refine decisions. See `docs/execution.md` "Run Log Conventions" for format. Include "Stages specified" list.
 
 ### Stage Specification ({name}-{stage}-spec.md)
 

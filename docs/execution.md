@@ -170,6 +170,80 @@ docs/models/{name}.md             # Framework documentation
 - Date folders: `output/YYYY-MM-DD/`
 - Multiple runs same day: Add suffix (`2026-01-08-02`)
 
+### Run Log Conventions
+
+The run log (`run.md`) tracks decisions across stages.
+
+**Initialize** (Frame stage):
+
+```markdown
+# Framework Run: {Name}
+
+Started: {date}
+Status: in_progress
+
+---
+
+## Frame - {date}
+
+**Inputs provided:**
+- Problem: {summary}
+- Context: {summary}
+
+**Decisions:**
+| Question | Choice |
+|----------|--------|
+| {question} | {selection} |
+
+**Output:** `{name}-charter.md`
+```
+
+**Append** (Organize, Refine, Generate stages):
+
+```markdown
+---
+
+## {Stage} - {date}
+
+**Decisions:**
+| Question | Choice |
+|----------|--------|
+| {question} | {selection} |
+
+**Output:** `{filename}.md`
+```
+
+**Finalize** (Evaluate stage):
+
+```markdown
+---
+
+## Evaluate - {date}
+
+**Checks performed:**
+- Convention compliance: {pass/fail}
+- Completeness: {pass/fail}
+- Consistency: {pass/fail}
+- Dry run: {pass/fail}
+
+**Decisions:**
+| Question | Choice |
+|----------|--------|
+| {question} | {selection} |
+
+**Output:** `{name}-validation.md`
+
+---
+
+## Outcome
+
+**Status:** complete / aborted
+**Result:** {name} framework created with {n} stages
+**Files generated:**
+- `docs/models/{name}.md`
+- `.claude/skills/{stage}/SKILL.md` (per stage)
+```
+
 ---
 
 ## Quality Gates
