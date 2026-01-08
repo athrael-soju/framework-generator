@@ -71,7 +71,7 @@ Produce the framework document and skill files.
 - `README.md`: Add to structure tree, stages table, usage commands
 
 **4. Update Guide Documents**:
-- `docs/guides/execution.md`: Add to skills table, output structure section
+- `docs/execution.md`: Add to skills table, output structure section
 
 ## Output
 
@@ -101,7 +101,7 @@ Produce the framework document and skill files.
 - `README.md`
 
 **Guide updates:**
-- `docs/guides/execution.md`
+- `docs/execution.md`
 ```
 
 ### Framework Document Structure

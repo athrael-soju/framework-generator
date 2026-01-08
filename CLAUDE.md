@@ -8,7 +8,7 @@ You are assisting with the Framework Generator - a tool for creating structured,
 |----------|---------|
 | `docs/overview.md` | Project overview |
 | `docs/model.md` | Framework Generator model |
-| `docs/guides/execution.md` | How to run stages |
+| `docs/execution.md` | How to run stages |
 
 ## Roles
 

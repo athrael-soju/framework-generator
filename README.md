@@ -8,8 +8,7 @@ A tool for creating structured, repeatable frameworks with executable skills.
 ├── docs/
 │   ├── overview.md           # Project overview
 │   ├── model.md              # Framework Generator model
-│   └── guides/
-│       └── execution.md      # How to run stages
+│   └── execution.md          # How to run stages
 │
 ├── .claude/skills/
 │   ├── frame/                # Define purpose and boundaries

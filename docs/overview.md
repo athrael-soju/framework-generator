@@ -55,7 +55,7 @@ Run stages via skill commands:
 /frame → /organize → /refine → /generate → /evaluate
 ```
 
-Each stage requires approval before proceeding. See [execution.md](guides/execution.md) for details.
+Each stage requires approval before proceeding. See [execution.md](execution.md) for details.
 
 ---
 
@@ -86,5 +86,5 @@ docs/models/{name}.md             # Framework documentation
 |----------|---------|
 | `docs/overview.md` | This document |
 | `docs/model.md` | Framework Generator model |
-| `docs/guides/execution.md` | How to run stages |
+| `docs/execution.md` | How to run stages |
 | `CLAUDE.md` | Project instructions |
