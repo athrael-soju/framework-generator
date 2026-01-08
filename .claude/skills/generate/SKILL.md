@@ -104,7 +104,6 @@ Produce the model document and skill files.
 
 **Guide updates:**
 - `docs/guides/execution.md`
-- `docs/guides/run.md`
 ```
 
 ### Model Document Structure
