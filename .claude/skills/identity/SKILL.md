@@ -38,7 +38,99 @@ Define your professional identity to inform client acquisition.
 
 Save to `output/identity/profile.md`.
 
-See [template.md](template.md) for format.
+### Profile Template
+
+```markdown
+# Identity Profile
+
+Generated: YYYY-MM-DD
+Sources: linkedin, portfolio, github
+
+---
+
+## Identity
+
+**Name:** [Full Name]
+**Tagline:** [One-line positioning, e.g., "AI researcher helping devtools companies ship better docs"]
+
+### Contact
+- Email:
+- LinkedIn:
+- Website:
+- GitHub:
+
+---
+
+## Positioning
+
+**Who you help:** [Specific audience, e.g., "Series A-C devtools startups"]
+**With what problem:** [Core problem you solve]
+**Differentiation:** [Why you over alternatives]
+
+### Proof Points
+- [Evidence supporting claims]
+
+---
+
+## Expertise
+
+### Primary Skills
+- [Core skills you lead with]
+
+### Secondary Skills
+- [Supporting skills]
+
+### Methods
+- [Frameworks, approaches you use]
+
+### Tools
+- [Technologies, platforms]
+
+---
+
+## Experience
+
+**Industries:** [List]
+**Years:** [Number]
+
+### Notable Projects
+
+| Project | Client Type | Outcome | Relevance |
+|---------|-------------|---------|-----------|
+| [Name] | [Industry/size] | [Measurable result] | [Why this matters] |
+
+---
+
+## Services
+
+| Offering | Description | Price Range | Engagement Type |
+|----------|-------------|-------------|-----------------|
+| [Name] | [What's included] | [e.g., $5k-15k] | project / retainer / advisory / workshop |
+
+---
+
+## Ideal Client
+
+### Characteristics
+- [Company attributes that indicate fit]
+
+### Signals
+- [Buying indicators to watch for]
+
+### Red Flags
+- [Warning signs to avoid]
+
+---
+
+## Constraints
+
+**Rate Floor:** [Minimum acceptable rate]
+**Availability:** [e.g., "20 hrs/week" or "1 project at a time"]
+**Geography:** [Timezone or location preferences]
+
+### Deal Breakers
+- [Absolute no-gos]
+```
 
 ## Quality Criteria
 
