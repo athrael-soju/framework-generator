@@ -86,4 +86,4 @@ Define your professional identity to inform client acquisition.
 
 ## Completion
 
-Present profile for approval. Save to `praxis/identity/profile.md`.
+Present profile for approval. Save to `output/identity/profile.md`.

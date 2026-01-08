@@ -155,14 +155,14 @@ For the complete feedback loop definitions, see:
 
 ## Output Structure
 
-Stage outputs are saved to a date-based folder structure:
+Stage outputs are saved to a structured folder:
 
 ```
 output/
-└── YYYY-MM-DD/
-    ├── identity/
-    │   └── profile.md
-    └── sparc/
+├── identity/
+│   └── profile.md                  # Single file, reused across runs
+└── sparc/
+    └── YYYY-MM-DD/
         ├── signal-log.md
         ├── company-profile.md
         ├── prospect-analysis.md
@@ -172,19 +172,20 @@ output/
 
 ### Naming Convention
 
-- **Date format**: `YYYY-MM-DD` (sorts chronologically)
+- **Identity**: Single `output/identity/profile.md`, updated when positioning shifts
+- **SPARC runs**: Date folder under `output/sparc/YYYY-MM-DD/` (sorts chronologically)
 - **Multiple runs same day**: Add suffix (`2026-01-08`, `2026-01-08-02`, `2026-01-08-03`)
 
 ### Output Files
 
 | Stage | File |
 |-------|------|
-| Identity | `identity/profile.md` |
-| Signal | `sparc/signal-log.md` |
-| Profile | `sparc/company-profile.md` |
-| Analyze | `sparc/prospect-analysis.md` |
-| Rank | `sparc/ranked-prospects.md` |
-| Craft | `sparc/outreach.md` |
+| Identity | `output/identity/profile.md` |
+| Signal | `output/sparc/YYYY-MM-DD/signal-log.md` |
+| Profile | `output/sparc/YYYY-MM-DD/company-profile.md` |
+| Analyze | `output/sparc/YYYY-MM-DD/prospect-analysis.md` |
+| Rank | `output/sparc/YYYY-MM-DD/ranked-prospects.md` |
+| Craft | `output/sparc/YYYY-MM-DD/outreach.md` |
 
 ---
 

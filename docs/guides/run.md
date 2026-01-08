@@ -71,7 +71,7 @@ Started: [date]
 
 **Decision:** [Which option was chosen]
 **Rationale:** [Why this decision was made]
-**Artifacts:** `artifacts/1_signal_[date]/`
+**Output:** `output/sparc/[date]/signal-log.md`
 
 ---
 
@@ -85,7 +85,7 @@ Started: [date]
 
 **Decision:** [Which option was chosen]
 **Rationale:** [Why this decision was made]
-**Artifacts:** `artifacts/2_profile_[date]/`
+**Output:** `output/sparc/[date]/company-profile.md`
 
 ---
 
@@ -125,7 +125,7 @@ Started: 2025-01-15
 
 **Decision:** Prioritize by funding signal
 **Rationale:** $333M funding round indicates immediate budget availability and strategic investment in growth areas matching our positioning.
-**Artifacts:** `artifacts/1_signal_2025-01-15/`
+**Output:** `output/sparc/2025-01-15/signal-log.md`
 
 ---
 
@@ -140,7 +140,7 @@ Started: 2025-01-15
 
 **Decision:** Continue with gaps noted
 **Rationale:** Sufficient data exists for competitive analysis. Community gap is itself a finding that supports our value proposition.
-**Artifacts:** `artifacts/2_profile_2025-01-16/`
+**Output:** `output/sparc/2025-01-15/company-profile.md`
 
 ---
 
@@ -155,7 +155,7 @@ Started: 2025-01-15
 
 **Decision:** Include direct + emerging competitors
 **Rationale:** Direct competitors show clear gaps we can address. Emerging competitors reveal market positioning opportunities.
-**Artifacts:** `artifacts/3_analyze_2025-01-17/`
+**Output:** `output/sparc/2025-01-15/prospect-analysis.md`
 
 ---
 
@@ -170,7 +170,7 @@ Started: 2025-01-15
 
 **Decision:** Approve
 **Rationale:** Score of 4.8 clearly qualifies for Prioritize tier. All criteria scored with strong evidence.
-**Artifacts:** `artifacts/4_rank_2025-01-18/`
+**Output:** `output/sparc/2025-01-15/ranked-prospects.md`
 
 ---
 
@@ -185,7 +185,7 @@ Started: 2025-01-15
 
 **Decision:** LinkedIn DM
 **Rationale:** CMO actively posts about developer experience; DM allows casual tone and quick response. Can escalate to email if no response.
-**Artifacts:** `artifacts/5_craft_2025-01-19/`
+**Output:** `output/sparc/2025-01-15/outreach.md`
 
 ---
 
