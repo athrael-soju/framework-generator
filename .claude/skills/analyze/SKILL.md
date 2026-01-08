@@ -24,9 +24,14 @@ Compare prospects against competitors. Identify gaps matching your capabilities.
 
 ## Output
 
-Save to `output/sparc/{date}/{company}-analysis.md`.
+Save to `output/sparc/{date}/` (same date as Signal).
 
-See [template.md](template.md) for format.
+| File | Content |
+|------|---------|
+| `run.md` | Append Analyze decisions |
+| `{company}-analysis.md` | Prospect analysis |
+
+See [template.md](template.md) for formats.
 
 ## Quality Criteria
 

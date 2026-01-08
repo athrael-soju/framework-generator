@@ -25,9 +25,14 @@ Build structured company profiles from public data for prioritized prospects.
 
 ## Output
 
-Save to `output/sparc/{date}/{company}-profile.md`.
+Save to `output/sparc/{date}/` (same date as Signal).
 
-See [template.md](template.md) for format.
+| File | Content |
+|------|---------|
+| `run.md` | Append Profile decisions |
+| `{company}-profile.md` | Company profile |
+
+See [template.md](template.md) for formats.
 
 ## Quality Criteria
 

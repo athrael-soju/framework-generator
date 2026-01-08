@@ -1,5 +1,9 @@
 # Analyze Template
 
+Output templates for the Analyze stage.
+
+---
+
 ## Prospect Analysis Report
 
 ```markdown
@@ -114,4 +118,21 @@ Date: YYYY-MM-DD
 
 ### Biggest Gaps
 - [Gap with largest negative differential]
+```
+
+---
+
+## Run Log (run.md) - Append
+
+```markdown
+---
+
+## Analyze - {date}
+
+**Decisions:**
+| Question | Choice |
+|----------|--------|
+| {question} | {selection} |
+
+**Output:** `{company}-analysis.md`
 ```

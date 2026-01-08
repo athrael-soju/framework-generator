@@ -1,5 +1,9 @@
 # Rank Template
 
+Output templates for the Rank stage.
+
+---
+
 ## Qualification Score
 
 ```markdown
@@ -101,4 +105,21 @@ Date: YYYY-MM-DD
 
 **Date:** YYYY-MM-DD
 **Action:** Review signals, update profile if warranted, re-score
+```
+
+---
+
+## Run Log (run.md) - Append
+
+```markdown
+---
+
+## Rank - {date}
+
+**Decisions:**
+| Question | Choice |
+|----------|--------|
+| {question} | {selection} |
+
+**Output:** `qualification.md`
 ```

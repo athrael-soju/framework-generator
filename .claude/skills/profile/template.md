@@ -1,5 +1,9 @@
 # Profile Template
 
+Output templates for the Profile stage.
+
+---
+
 ## Company Profile
 
 ```markdown
@@ -55,4 +59,21 @@ Date: YYYY-MM-DD
 ## Recent Activity
 
 - [Date]: [Activity description]
+```
+
+---
+
+## Run Log (run.md) - Append
+
+```markdown
+---
+
+## Profile - {date}
+
+**Decisions:**
+| Question | Choice |
+|----------|--------|
+| {question} | {selection} |
+
+**Output:** `{company}-profile.md`
 ```

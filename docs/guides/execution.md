@@ -163,11 +163,12 @@ output/
 │   └── profile.md                  # Single file, reused across runs
 └── sparc/
     └── YYYY-MM-DD/
+        ├── run.md                  # Run log (decisions at each stage)
         ├── signal-log.md
-        ├── company-profile.md
-        ├── prospect-analysis.md
-        ├── ranked-prospects.md
-        └── outreach.md
+        ├── {company}-profile.md
+        ├── {company}-analysis.md
+        ├── qualification.md
+        └── {company}-outreach.md
 ```
 
 ### Naming Convention
@@ -181,11 +182,11 @@ output/
 | Stage | File |
 |-------|------|
 | Identity | `output/identity/profile.md` |
-| Signal | `output/sparc/YYYY-MM-DD/signal-log.md` |
-| Profile | `output/sparc/YYYY-MM-DD/company-profile.md` |
-| Analyze | `output/sparc/YYYY-MM-DD/prospect-analysis.md` |
-| Rank | `output/sparc/YYYY-MM-DD/ranked-prospects.md` |
-| Craft | `output/sparc/YYYY-MM-DD/outreach.md` |
+| Signal | `output/sparc/YYYY-MM-DD/run.md`, `signal-log.md` |
+| Profile | `output/sparc/YYYY-MM-DD/{company}-profile.md` |
+| Analyze | `output/sparc/YYYY-MM-DD/{company}-analysis.md` |
+| Rank | `output/sparc/YYYY-MM-DD/qualification.md` |
+| Craft | `output/sparc/YYYY-MM-DD/{company}-outreach.md` |
 
 ---
 

@@ -34,9 +34,14 @@ Research decision-makers. Draft personalized outreach messages.
 
 ## Output
 
-Save to `output/sparc/{date}/{company}-outreach.md`.
+Save to `output/sparc/{date}/` (same date as Signal).
 
-See [template.md](template.md) for format.
+| File | Content |
+|------|---------|
+| `run.md` | Append Craft decisions and outcome |
+| `{company}-outreach.md` | Outreach message + brief |
+
+See [template.md](template.md) for formats.
 
 ## Channel Limits
 

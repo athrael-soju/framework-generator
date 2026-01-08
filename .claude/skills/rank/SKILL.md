@@ -35,9 +35,14 @@ Score prospects against qualification criteria. Prioritize for outreach.
 
 ## Output
 
-Save to `output/sparc/{date}/qualification.md`.
+Save to `output/sparc/{date}/` (same date as Signal).
 
-See [template.md](template.md) for format.
+| File | Content |
+|------|---------|
+| `run.md` | Append Rank decisions |
+| `qualification.md` | Ranked prospect list |
+
+See [template.md](template.md) for formats.
 
 ## Quality Criteria
 

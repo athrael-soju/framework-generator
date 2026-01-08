@@ -35,9 +35,14 @@ Detect companies exhibiting buying signals. Score by strength to prioritize prof
 
 ## Output
 
-Save to `output/sparc/{date}/signal-log.md`.
+Save to `output/sparc/{date}/` where `{date}` is today (YYYY-MM-DD).
 
-See [template.md](template.md) for format.
+| File | Content |
+|------|---------|
+| `run.md` | Initialize run log |
+| `signal-log.md` | Signal log |
+
+See [template.md](template.md) for formats.
 
 ## Quality Criteria
 

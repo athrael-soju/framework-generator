@@ -1,5 +1,9 @@
 # Craft Template
 
+Output templates for the Craft stage.
+
+---
+
 ## Outreach Brief
 
 ```markdown
@@ -58,4 +62,21 @@ Channel: linkedin_dm / email / warm_intro
 | Objection | Response |
 |-----------|----------|
 | [Likely objection] | [How to address it] |
+```
+
+---
+
+## Run Log (run.md) - Append
+
+```markdown
+---
+
+## Craft - {date}
+
+**Decisions:**
+| Question | Choice |
+|----------|--------|
+| {question} | {selection} |
+
+**Output:** `{company}-outreach.md`
 ```

@@ -29,6 +29,23 @@ SPARC requires an **Identity Profile** (run `/identity` first) which provides:
 
 ---
 
+## Outputs
+
+All SPARC artifacts save to `output/sparc/{date}/` where `{date}` is the run start date.
+
+| Artifact | Path | Created At |
+|----------|------|------------|
+| Run log | `output/sparc/{date}/run.md` | Signal (updated each stage) |
+| Signal log | `output/sparc/{date}/signal-log.md` | Signal |
+| Company profile | `output/sparc/{date}/{company}-profile.md` | Profile |
+| Analysis | `output/sparc/{date}/{company}-analysis.md` | Analyze |
+| Qualification | `output/sparc/{date}/qualification.md` | Rank |
+| Outreach | `output/sparc/{date}/{company}-outreach.md` | Craft |
+
+See [run.md guide](../guides/run.md) for run log format.
+
+---
+
 ## Stages
 
 ### Signal

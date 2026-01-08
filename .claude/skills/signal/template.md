@@ -1,6 +1,32 @@
 # Signal Template
 
-## Signal Log Entry
+Output templates for the Signal stage.
+
+---
+
+## Run Log (run.md) - Initialize
+
+```markdown
+# SPARC Run: {Prospect Name}
+
+Started: {date}
+Status: in_progress
+
+---
+
+## Signal - {date}
+
+**Decisions:**
+| Question | Choice |
+|----------|--------|
+| {question} | {selection} |
+
+**Output:** `signal-log.md`
+```
+
+---
+
+## Signal Log (signal-log.md)
 
 ```markdown
 # Signal Log
