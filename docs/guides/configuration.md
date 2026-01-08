@@ -2,30 +2,9 @@
 
 Configuration inputs referenced by PRAXIS models.
 
-## Structure
-
-- **Shared configs** (Identity) live here - used by multiple models
-- **Model-specific configs** live in each skill's `config.md` file
-
-```
-.claude/skills/
-├── signal/config.md       # SPARC Signal config
-├── profile/config.md      # SPARC Profile config
-├── ...
-├── retrieve/config.md     # RECON Retrieve config
-├── extract/config.md      # RECON Extract config
-├── connect/config.md      # RECON Connect config
-├── order/config.md        # RECON Order config
-└── narrate/config.md      # RECON Narrate config
-```
-
-Store configs in your preferred format (YAML, JSON, Notion database, etc.).
+This file contains **Identity configuration** - shared settings used by multiple models (SPARC, RECON). Model-specific criteria, thresholds, and scoring weights are embedded directly in each skill's SKILL.md file.
 
 ---
-
-# Shared Configuration (Identity)
-
-These configs come from your Identity profile and are used by multiple models.
 
 ## Positioning Statement
 
@@ -161,29 +140,3 @@ expertise:
     travel: Limited
     timezone: US Eastern
 ```
-
----
-
-# Model-Specific Configs
-
-Each model's stage-specific configurations live alongside the skill files.
-
-## SPARC
-
-| Stage | Config Location |
-|-------|-----------------|
-| Signal | `.claude/skills/signal/config.md` |
-| Profile | `.claude/skills/profile/config.md` |
-| Analyze | `.claude/skills/analyze/config.md` |
-| Rank | `.claude/skills/rank/config.md` |
-| Craft | `.claude/skills/craft/config.md` |
-
-## RECON
-
-| Stage | Config Location |
-|-------|-----------------|
-| Retrieve | `.claude/skills/retrieve/config.md` |
-| Extract | `.claude/skills/extract/config.md` |
-| Connect | `.claude/skills/connect/config.md` |
-| Order | `.claude/skills/order/config.md` |
-| Narrate | `.claude/skills/narrate/config.md` |
