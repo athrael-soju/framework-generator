@@ -102,7 +102,7 @@ Both SPARC and IDEAS depend on your **Identity Profile** - your professional ide
 | `expertise` | Analyze gaps, find angles | Identify opportunities, Develop methods |
 | `constraints` | Rank scoring | Scope feasibility |
 
-Run `/identity` to generate your profile before starting SPARC or IDEAS. See [Identity Methodology](../methodologies/Identity.md) for details.
+Run `/identity` to generate your profile before starting SPARC or IDEAS. See [Identity Methodology](../methodology/identity/methodology.md) for details.
 
 ---
 
@@ -220,7 +220,7 @@ Run PRAXIS via skill commands:
 | SPARC | `/signal` → `/profile` → `/analyze` → `/rank` → `/craft` |
 | IDEAS | `/identify` → `/develop` → `/evaluate` → `/articulate` → `/share` |
 
-Each stage requires approval before proceeding to the next. See `architecture/Execution.md` for detailed patterns.
+Each stage requires approval before proceeding to the next. See [Execution.md](Execution.md) for detailed patterns.
 
 ---
 
@@ -249,14 +249,13 @@ Each stage requires approval before proceeding to the next. See `architecture/Ex
 
 | Document | Purpose |
 |----------|---------|
-| `framework/PRAXIS.md` | This document - overview and integration |
-| `methodologies/Identity.md` | Professional identity assessment |
-| `methodologies/SPARC.md` | Client acquisition methodology |
-| `methodologies/IDEAS.md` | Research delivery methodology |
-| `architecture/Execution.md` | How to run stages via skill commands |
-| `skills/SPARC.md` | Stage-level skill definitions for SPARC |
-| `skills/IDEAS.md` | Stage-level skill definitions for IDEAS |
-| `implementation/Examples.md` | Usage examples and worked scenarios |
-| `implementation/templates/` | Artifact templates (identity.md, sparc.md, ideas.md, run.md) |
-| `implementation/Configuration.md` | Configuration input examples |
+| `docs/PRAXIS.md` | This document - overview and integration |
+| `docs/Execution.md` | How to run stages via skill commands |
+| `docs/Examples.md` | Usage examples and worked scenarios |
+| `docs/Configuration.md` | Configuration input examples |
+| `docs/templates/` | Artifact templates |
+| `methodology/TEMPLATE.md` | Template for creating new methodologies |
+| `methodology/identity/` | Identity assessment (foundation) |
+| `methodology/sparc/` | SPARC acquisition methodology + stage skills |
+| `methodology/ideas/` | IDEAS delivery methodology + stage skills |
 | `CLAUDE.md` | Project instructions for Claude Code |

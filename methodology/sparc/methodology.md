@@ -177,7 +177,7 @@ Develop tailored outreach based on analysis.
 | Craft | Response but no fit | Pass or refer out |
 | Craft | Response + fit | Discovery → Proposal → IDEAS |
 
-For cross-framework feedback loops (e.g., scope expansion routing back to Craft, referrals routing from IDEAS), see [PRAXIS.md](../framework/PRAXIS.md#cross-framework-feedback-loops).
+For cross-framework feedback loops (e.g., scope expansion routing back to Craft, referrals routing from IDEAS), see [PRAXIS.md](../../docs/PRAXIS.md#cross-framework-feedback-loops).
 
 ---
 
@@ -234,7 +234,7 @@ When a nurture trigger fires:
 3. Re-score through Rank
 4. If score improves to 3.0+, proceed to Craft
 
-See [Examples.md](../implementation/Examples.md#feedback-loop-example) for a worked example.
+See [Examples.md](../../docs/Examples.md#feedback-loop-example) for a worked example.
 
 ---
 
@@ -287,4 +287,4 @@ When Craft produces a signed agreement, artifacts transfer to IDEAS for research
 - Signed Agreement → Client Contract Agreement
 - Outreach Brief → Initial hypothesis seeds
 
-See [PRAXIS.md](../framework/PRAXIS.md#sparc--ideas-agreement-handoff) for the complete handoff checklist.
+See [PRAXIS.md](../../docs/PRAXIS.md#sparc--ideas-agreement-handoff) for the complete handoff checklist.

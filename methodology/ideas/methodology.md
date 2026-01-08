@@ -27,7 +27,7 @@ IDEAS assumes the following are provided:
 
 - **Client Contract Agreement** - Scope of work, deliverables, engagement boundaries, timeline
 - **Client Analysis Report** - Deep-dive analysis identifying areas where you can provide value
-- **Outreach Brief** - Hypothesis seeds and engagement context from [SPARC Craft](SPARC.md#craft)
+- **Outreach Brief** - Hypothesis seeds and engagement context from [SPARC Craft](../sparc/methodology.md#craft)
 
 ---
 
@@ -203,7 +203,7 @@ Deliver outputs to relevant audiences.
 | 4 | Peer review response | As required |
 | 5 | Dissemination | Post-acceptance |
 
-Publication requires contract permission. See [Examples.md](../implementation/Examples.md#research-publication-example) for a worked example.
+Publication requires contract permission. See [Examples.md](../../docs/Examples.md#research-publication-example) for a worked example.
 
 **Output:** Delivery Log (includes feedback log, handoff materials, and engagement closure)
 
@@ -223,7 +223,7 @@ Publication requires contract permission. See [Examples.md](../implementation/Ex
 | Share | Client feedback | Articulate |
 | Any | Fundamental misalignment | Exit/Renegotiate |
 
-For cross-framework feedback loops (e.g., client not a fit routing to SPARC, market insights informing Signal), see [PRAXIS.md](../framework/PRAXIS.md#cross-framework-feedback-loops).
+For cross-framework feedback loops (e.g., client not a fit routing to SPARC, market insights informing Signal), see [PRAXIS.md](../../docs/PRAXIS.md#cross-framework-feedback-loops).
 
 ---
 
@@ -281,4 +281,4 @@ IDEAS receives inputs from a completed SPARC cycle:
 - Client Contract Agreement (signed)
 - Initial hypothesis seeds (from Outreach Brief)
 
-See [PRAXIS.md](../framework/PRAXIS.md#sparc--ideas-agreement-handoff) for the complete handoff checklist and required actions.
+See [PRAXIS.md](../../docs/PRAXIS.md#sparc--ideas-agreement-handoff) for the complete handoff checklist and required actions.

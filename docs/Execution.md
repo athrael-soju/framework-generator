@@ -181,9 +181,9 @@ At stage completion:
 Some conditions route back to earlier stages. When a feedback condition is triggered, the skill presents options and guides you to the appropriate stage.
 
 For the complete feedback loop definitions, see:
-- [SPARC Feedback Loops](../methodologies/SPARC.md#feedback-loops)
-- [IDEAS Feedback Loops](../methodologies/IDEAS.md#feedback-loops)
-- [Cross-Framework Feedback Loops](../framework/PRAXIS.md#cross-framework-feedback-loops)
+- [SPARC Feedback Loops](../methodology/sparc/methodology.md#feedback-loops)
+- [IDEAS Feedback Loops](../methodology/ideas/methodology.md#feedback-loops)
+- [Cross-Framework Feedback Loops](PRAXIS.md#cross-framework-feedback-loops)
 
 ---
 
@@ -310,7 +310,7 @@ When an IDEAS run follows a SPARC run, link them via `linked_run` in `run.yaml`.
 - Tracing client engagements back to acquisition
 - Referencing SPARC artifacts from IDEAS stages
 
-See [run.md](../implementation/templates/run.md) for `run.yaml` and `decisions.md` templates.
+See [run.md](templates/run.md) for `run.yaml` and `decisions.md` templates.
 
 ---
 

@@ -96,7 +96,7 @@ Combine findings into a structured Markdown profile covering:
 
 A single Markdown profile document covering all sections from the Synthesize phase.
 
-See [implementation/templates/identity.md](../implementation/templates/identity.md) for the complete template and example.
+See [identity.md](../../docs/templates/identity.md) for the complete template and example.
 
 ---
 

@@ -14,9 +14,14 @@ methodology/<name>/
 └── ...
 ```
 
-Plus symlinks in `.claude/skills/`:
+Plus symlinks in `.claude/skills/` pointing to stage **directories** (not files):
 ```bash
+# Symlinks point to directories containing SKILL.md
 ln -s ../../methodology/<name>/<stage> .claude/skills/<stage>
+
+# Example for a "review" methodology with "assess" stage:
+ln -s ../../methodology/review/assess .claude/skills/assess
+# Claude then reads .claude/skills/assess/SKILL.md
 ```
 
 ---
@@ -184,9 +189,21 @@ Present: <what to show user>. Approve → <next stage>.
 - Artifacts should be **scannable** (tables > prose)
 
 ### Quality Criteria
-- **3-5 checkboxes** per stage
+
+Quality criteria exist at two levels:
+
+| Level | Location | Purpose |
+|-------|----------|---------|
+| Methodology | `methodology.md` | High-level success indicators for stage outcomes |
+| Execution | `SKILL.md` | Specific verification points during execution |
+
+The methodology-level criteria answer "did the stage succeed?" while SKILL.md criteria answer "did I execute correctly?"
+
+Guidelines:
+- **3-5 checkboxes** per stage at each level
 - Focus on **completeness** and **accuracy**
 - Reviewable by human in <2 minutes
+- SKILL.md criteria may be more specific/technical than methodology criteria
 
 ### Feedback Loops
 - Define **conditions** that trigger loops (not just "if needed")
