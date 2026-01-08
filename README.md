@@ -11,7 +11,6 @@ PRAXIS/
 ├── docs/                      # Framework documentation
 │   ├── PRAXIS.md              # Integration layer, lifecycle, metrics
 │   ├── Execution.md           # How to run stages
-│   ├── Examples.md            # Worked scenarios
 │   ├── Configuration.md       # Configuration inputs
 │   └── templates/             # Artifact templates
 │

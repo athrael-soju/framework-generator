@@ -203,7 +203,7 @@ Deliver outputs to relevant audiences.
 | 4 | Peer review response | As required |
 | 5 | Dissemination | Post-acceptance |
 
-Publication requires contract permission. See [Examples.md](../../docs/Examples.md#research-publication-example) for a worked example.
+Publication requires contract permission.
 
 **Output:** Delivery Log (includes feedback log, handoff materials, and engagement closure)
 

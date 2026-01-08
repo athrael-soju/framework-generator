@@ -234,8 +234,6 @@ When a nurture trigger fires:
 3. Re-score through Rank
 4. If score improves to 3.0+, proceed to Craft
 
-See [Examples.md](../../docs/Examples.md#feedback-loop-example) for a worked example.
-
 ---
 
 ## Stage Outputs Summary
