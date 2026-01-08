@@ -1,4 +1,4 @@
-# The Identity Methodology
+# The Identity Model
 
 A structured assessment for defining your professional identity to inform client acquisition.
 
@@ -12,7 +12,7 @@ config:
     lineColor: gray
 ---
 flowchart TB
-    Identity["<b>Identity</b>"] --> SPARC["SPARC Methodology"]
+    Identity["<b>Identity</b>"] --> SPARC["SPARC Model"]
 ```
 
 ## Purpose

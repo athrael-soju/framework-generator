@@ -41,7 +41,7 @@ Each PRAXIS component has corresponding skills:
 | SPARC | Rank | `/rank` | Score and prioritize prospects |
 | SPARC | Craft | `/craft` | Create personalized outreach |
 
-**Note:** Run `/identity` once before starting SPARC. The Identity profile provides foundational inputs that inform the methodology.
+**Note:** Run `/identity` once before starting SPARC. The Identity profile provides foundational inputs that inform the model.
 
 ---
 
@@ -55,7 +55,7 @@ Run the skill command for the stage you want to execute:
 /signal
 ```
 
-The skill will guide you through the stage methodology, prompting for inputs and decisions as needed.
+The skill will guide you through the stage, prompting for inputs and decisions as needed.
 
 ### 2. Provide Inputs
 
@@ -72,7 +72,7 @@ Each stage expects specific inputs. The skill will request them or use outputs f
 
 ### 3. Work Through the Process
 
-The skill executes its methodology:
+The skill executes its process:
 - Performs research and analysis
 - Presents findings
 - Requests decisions at key points

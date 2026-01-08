@@ -12,8 +12,8 @@ PRAXIS/
 │   ├── overview.md           # Framework overview
 │   ├── execution.md          # How to run stages
 │   ├── configuration.md      # Configuration inputs
-│   ├── identity.md           # Identity methodology
-│   ├── sparc.md              # SPARC methodology
+│   ├── identity.md           # Identity model
+│   ├── sparc.md              # SPARC model
 │   └── run.md                # Run tracking templates
 │
 ├── .claude/
@@ -33,9 +33,9 @@ PRAXIS/
 └── README.md
 ```
 
-## Methodologies
+## Models
 
-| Methodology | Purpose | Stages |
+| Model | Purpose | Stages |
 |-------------|---------|--------|
 | **Identity** | Professional identity | Single assessment |
 | **SPARC** | Client acquisition | Signal - Profile - Analyze - Rank - Craft |

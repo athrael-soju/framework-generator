@@ -1,6 +1,6 @@
-# The SPARC Methodology
+# The SPARC Model
 
-A structured methodology for identifying and pitching research consulting clients.
+A structured model for identifying and pitching research consulting clients.
 
 ```mermaid
 ---

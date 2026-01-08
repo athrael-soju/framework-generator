@@ -55,7 +55,7 @@ SPARC depends on your **Identity Profile** - your professional identity definiti
 | `expertise` | Analyze gaps, find angles |
 | `constraints` | Rank scoring |
 
-Run `/identity` to generate your profile before starting SPARC. See [Identity Methodology](identity.md) for details.
+Run `/identity` to generate your profile before starting SPARC. See [Identity Model](identity.md) for details.
 
 ---
 
@@ -141,8 +141,8 @@ Each stage requires approval before proceeding to the next. See [execution.md](e
 | `docs/overview.md` | This document - overview and integration |
 | `docs/execution.md` | How to run stages via skill commands |
 | `docs/configuration.md` | Configuration input examples |
-| `docs/identity.md` | Identity methodology |
-| `docs/sparc.md` | SPARC methodology |
+| `docs/identity.md` | Identity model |
+| `docs/sparc.md` | SPARC model |
 | `docs/run.md` | Run tracking templates |
 | `.claude/skills/*/templates.md` | Stage output templates |
 | `CLAUDE.md` | Project instructions for Claude Code |
