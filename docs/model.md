@@ -1,6 +1,6 @@
-# The FORGE Model
+# Framework Generator
 
-A meta-model for creating new models within the PRAXIS framework.
+A meta-model for creating structured, repeatable frameworks.
 
 ```mermaid
 ---
@@ -21,48 +21,44 @@ flowchart TB
 
 ## Purpose
 
-FORGE creates new models by guiding you through a structured design process. Use it when:
+Create new frameworks by guiding you through a structured design process. Use it when:
 
-- You need a repeatable workflow for a domain PRAXIS doesn't cover
-- An existing model needs to be split or restructured
-- You're extending the framework for others to use
+- You need a repeatable workflow for a domain
+- An existing framework needs to be restructured
+- You're building frameworks for others to use
 
-**Output:** A complete model (document + skill files) ready for execution.
+**Output:** A complete framework (documentation + executable skill files) ready for use.
 
 ---
 
 ## Inputs
 
-FORGE requires:
-
 | Input | Required | Description |
 |-------|----------|-------------|
 | Problem description | Yes | What workflow or process needs systematizing |
 | Context | Yes | Domain, constraints, who will use it |
-| Existing patterns | Recommended | Reference models to draw from (e.g., SPARC) |
-
-FORGE does not depend on Identity - it's a framework development tool.
+| Reference frameworks | Recommended | Existing frameworks to draw patterns from |
 
 ---
 
 ## Outputs
 
-All FORGE artifacts are saved to `output/forge/{date}/` where `{date}` is the run start date (YYYY-MM-DD).
+All artifacts are saved to `output/{date}/` where `{date}` is the run start date (YYYY-MM-DD).
 
 | Artifact | Path | Created At |
 |----------|------|------------|
-| Run log | `output/forge/{date}/run.md` | Frame (updated each stage) |
-| Model charter | `output/forge/{date}/{model}-charter.md` | Frame |
-| Stage map | `output/forge/{date}/{model}-stage-map.md` | Organize |
-| Stage specs | `output/forge/{date}/{model}-{stage}-spec.md` | Refine |
-| Validation report | `output/forge/{date}/{model}-validation.md` | Evaluate |
+| Run log | `output/{date}/run.md` | Frame (updated each stage) |
+| Framework charter | `output/{date}/{name}-charter.md` | Frame |
+| Stage map | `output/{date}/{name}-stage-map.md` | Organize |
+| Stage specs | `output/{date}/{name}-{stage}-spec.md` | Refine |
+| Validation report | `output/{date}/{name}-validation.md` | Evaluate |
 
-### Run Log (run.md)
+### Run Log
 
-Tracks decisions made at each stage. Updated after each stage approval.
+Tracks decisions made at each stage.
 
 ```markdown
-# FORGE Run: {Model Name}
+# Framework Run: {Name}
 
 Started: {date}
 Status: in_progress / complete / aborted
@@ -80,7 +76,7 @@ Status: in_progress / complete / aborted
 |----------|--------|-----------|
 | {question asked} | {option selected} | {why} |
 
-**Output:** `{model}-charter.md`
+**Output:** `{name}-charter.md`
 
 ---
 
@@ -91,7 +87,7 @@ Status: in_progress / complete / aborted
 |----------|--------|-----------|
 | {question asked} | {option selected} | {why} |
 
-**Output:** `{model}-stage-map.md`
+**Output:** `{name}-stage-map.md`
 
 ---
 
@@ -103,7 +99,7 @@ Status: in_progress / complete / aborted
 ## Outcome
 
 **Status:** complete / aborted
-**Result:** {model name} model created with {n} stages
+**Result:** {name} framework created with {n} stages
 **Files generated:** {list}
 ```
 
@@ -121,38 +117,40 @@ Define purpose and boundaries.
 | Purpose Articulation | Problem statement, context | Purpose statement |
 | Boundary Setting | Purpose, context | Scope (in/out) |
 | Trigger Identification | Purpose, usage patterns | Trigger conditions |
-| Type Determination | Purpose, flow needs | Model type (foundation/pipeline) |
+| Type Determination | Purpose, flow needs | Framework type |
 
-**Model Types:**
+**Framework Types:**
 
-| Type | Characteristics | Example |
-|------|-----------------|---------|
-| Foundation | Single assessment, run once, feeds other models | Identity |
-| Pipeline | Sequential stages, ongoing execution, feedback loops | SPARC |
+| Type | Characteristics |
+|------|-----------------|
+| Foundation | Single assessment, run once, feeds other frameworks |
+| Pipeline | Sequential stages, ongoing execution, feedback loops |
+| Cyclical | Repeating execution on a cadence |
+| Hub | Central stage that others connect to |
 
-**Output:** Model Charter
+**Output:** Framework Charter
 
 ```markdown
-# Model Charter: [NAME]
+# Framework Charter: [NAME]
 
 ## Problem
 [What workflow/process does this address?]
 
 ## Purpose
-[Why does this model need to exist?]
+[Why does this framework need to exist?]
 
 ## Scope
 **In:** [What's covered]
 **Out:** [What's excluded]
 
 ## Triggers
-[When should this model be run?]
+[When should this framework be run?]
 
 ## Type
-[Foundation / Pipeline]
+[Foundation / Pipeline / Cyclical / Hub]
 
 ## Dependencies
-[Other models this requires as input, if any]
+[Other frameworks this requires as input, if any]
 ```
 
 ---
@@ -163,20 +161,11 @@ Map stages and flow.
 
 | Activity | Inputs | Outputs |
 |----------|--------|---------|
-| Stage Identification | Model charter | Stage list with purposes |
+| Stage Identification | Framework charter | Stage list with purposes |
 | Flow Mapping | Stage list, type | Flow diagram |
-| Dependency Mapping | Charter, other models | Integration points |
+| Dependency Mapping | Charter, other frameworks | Integration points |
 | Loop Definition | Flow, failure modes | Feedback loops table |
 | Terminal States | Flow, outcomes | Exit conditions |
-
-**Flow Patterns:**
-
-| Pattern | When to Use |
-|---------|-------------|
-| Linear | Each stage feeds the next, no branching |
-| Branching | Different paths based on conditions |
-| Cyclical | Repeating execution (e.g., weekly cadence) |
-| Hub | Central stage that others connect to |
 
 **Output:** Stage Map
 
@@ -192,9 +181,9 @@ Map stages and flow.
 [Mermaid diagram]
 
 ## Dependencies
-| This Model Needs | From |
-|------------------|------|
-| [Input] | [Source model/stage] |
+| This Framework Needs | From |
+|----------------------|------|
+| [Input] | [Source] |
 
 ## Feedback Loops
 | From | Condition | To |
@@ -222,8 +211,6 @@ Specify each stage in detail.
 
 **Stage Specification Structure:**
 
-Each stage needs:
-
 | Component | Purpose |
 |-----------|---------|
 | Activities table | What happens, with inputs/outputs |
@@ -231,7 +218,7 @@ Each stage needs:
 | Output format | Template or structure for stage output |
 | Quality criteria | Checklist for completion |
 
-**Output:** Complete Stage Specifications (one per stage)
+**Output:** Stage Specifications (one per stage)
 
 ```markdown
 # Stage Specification: [STAGE NAME]
@@ -258,21 +245,21 @@ Each stage needs:
 
 ### Generate
 
-Produce model document and skill files.
+Produce framework documentation and skill files.
 
 | Activity | Inputs | Outputs |
 |----------|--------|---------|
-| Model Document | Charter, stage map, specifications | `docs/models/{name}.md` |
+| Framework Document | Charter, stage map, specifications | `docs/models/{name}.md` |
 | Skill Files | Specifications | `.claude/skills/{stage}/SKILL.md` |
-| Index Updates | New model | Updated `overview.md`, `CLAUDE.md`, `README.md` |
-| Guide Updates | New model | Updated `execution.md` |
+| Documentation Updates | New framework | Updated `overview.md`, `CLAUDE.md`, `README.md` |
+| Execution Guide | New framework | Updated `execution.md` |
 
 **File Structure:**
 
 ```
-docs/models/{model-name}.md          # Model definition
-.claude/skills/{stage-1}/SKILL.md    # Stage 1 skill (includes output templates)
-.claude/skills/{stage-2}/SKILL.md    # Stage 2 skill
+docs/models/{name}.md              # Framework definition
+.claude/skills/{stage-1}/SKILL.md  # Stage 1 skill
+.claude/skills/{stage-2}/SKILL.md  # Stage 2 skill
 ...
 ```
 
@@ -307,7 +294,7 @@ description: {One-line description for skill picker}
 
 ## Output
 
-Save to `output/{model}/{date}/`.
+Save to `output/{date}/`.
 
 | File | Content |
 |------|---------|
@@ -326,8 +313,6 @@ Save to `output/{model}/{date}/`.
 {What to present, next action}
 ```
 
-**Output:** Complete file set ready for use
-
 ---
 
 ### Evaluate
@@ -336,14 +321,14 @@ Validate and iterate.
 
 | Activity | Inputs | Outputs |
 |----------|--------|---------|
-| Convention Check | Generated files, framework patterns | Compliance report |
+| Convention Check | Generated files, patterns | Compliance report |
 | Completeness Audit | Files, specification | Gap list |
 | Dry Run | First stage skill | Execution notes |
 | Refinement | Gaps, notes | Updated specifications |
 
 **Convention Checklist:**
 
-- [ ] Model document follows structure (purpose, inputs, stages, loops, criteria)
+- [ ] Framework document follows structure (purpose, inputs, stages, loops, criteria)
 - [ ] Each stage has activities table with inputs/outputs
 - [ ] Quality criteria are actionable checklists
 - [ ] Feedback loops have clear conditions
@@ -353,10 +338,10 @@ Validate and iterate.
 - [ ] Output templates embedded in skill Output section
 - [ ] Mermaid diagrams render correctly
 
-**Output:** Validation Report + Refined Artifacts
+**Output:** Validation Report
 
 ```markdown
-# Validation Report: [MODEL NAME]
+# Validation Report: [NAME]
 
 ## Convention Compliance
 - [x] / [ ] {Each checklist item}
@@ -391,14 +376,14 @@ Validate and iterate.
 
 **Frame:**
 - [ ] Problem is specific, not generic
-- [ ] Purpose explains why this model vs. ad-hoc process
+- [ ] Purpose explains why this framework vs. ad-hoc process
 - [ ] Scope boundaries are clear
-- [ ] Model type matches the workflow pattern
+- [ ] Framework type matches the workflow pattern
 
 **Organize:**
 - [ ] Stages are distinct (no overlap)
 - [ ] Flow is logical (outputs feed inputs)
-- [ ] Dependencies on other models identified
+- [ ] Dependencies on other frameworks identified
 - [ ] Feedback loops cover failure modes
 
 **Refine:**
@@ -407,9 +392,9 @@ Validate and iterate.
 - [ ] Quality criteria are checkboxes, not prose
 
 **Generate:**
-- [ ] All files follow framework conventions
+- [ ] All files follow conventions
 - [ ] Skills are executable (not just documentation)
-- [ ] Index documents updated
+- [ ] Documentation updated
 
 **Evaluate:**
 - [ ] Dry run attempted
@@ -422,8 +407,8 @@ Validate and iterate.
 
 | Stage | Output | Format |
 |-------|--------|--------|
-| Frame | Model Charter | Structured markdown |
+| Frame | Framework Charter | Structured markdown |
 | Organize | Stage Map | Markdown + mermaid diagram |
 | Refine | Stage Specifications | Markdown per stage |
-| Generate | Model + Skills | File set |
+| Generate | Framework + Skills | File set |
 | Evaluate | Validation Report | Markdown |

@@ -1,11 +1,11 @@
 ---
 name: frame
-description: Execute FORGE Frame stage to define a new model's purpose and boundaries. Use when starting to create a new model for the PRAXIS framework.
+description: Execute Frame stage to define a new framework's purpose and boundaries. Use when starting to create a new framework.
 ---
 
 # Frame
 
-Define the purpose and boundaries of a new model.
+Define the purpose and boundaries of a new framework.
 
 ## Inputs
 
@@ -13,7 +13,7 @@ Define the purpose and boundaries of a new model.
 |-------|--------|
 | problem_description | User input: what workflow needs systematizing |
 | context | User input: domain, constraints, intended users |
-| reference_models | Optional: existing models to draw patterns from |
+| reference_frameworks | Optional: existing frameworks to draw patterns from |
 
 ### Input Format
 
@@ -35,14 +35,12 @@ context:
   intended_users: [Who will run this model]
 ```
 
-**Optional reference models:**
+**Optional reference frameworks:**
 
 ```yaml
-reference_models:
-  - name: SPARC
-    path: docs/models/sparc.md
-  - name: Identity
-    path: docs/models/identity.md
+reference_frameworks:
+  - name: [Framework Name]
+    path: docs/models/[framework].md
 ```
 
 ## Process
@@ -65,27 +63,29 @@ reference_models:
 - One-time vs. ongoing?
 - What events or conditions trigger execution?
 
-**5. Determine Type** - Foundation or pipeline:
-- Foundation: single assessment, run once, feeds other models
+**5. Determine Type** - What kind of framework:
+- Foundation: single assessment, run once, feeds other frameworks
 - Pipeline: sequential stages, ongoing, feedback loops
+- Cyclical: repeating execution on a cadence
+- Hub: central stage that others connect to
 
-**6. Map Dependencies** - What other models does this require:
-- Does it need Identity?
-- Does it need outputs from another model?
+**6. Map Dependencies** - What other frameworks does this require:
+- Does it need outputs from another framework?
+- What external inputs are required?
 
 ## Output
 
-Save to `output/forge/{date}/` where `{date}` is today (YYYY-MM-DD).
+Save to `output/{date}/` where `{date}` is today (YYYY-MM-DD).
 
 | File | Content |
 |------|---------|
 | `run.md` | Initialize run log |
-| `{model}-charter.md` | Model charter |
+| `{name}-charter.md` | Framework charter |
 
 ### Run Log (run.md) - Initialize
 
 ```markdown
-# FORGE Run: {Model Name}
+# Framework Run: {Name}
 
 Started: {date}
 Status: in_progress
@@ -103,13 +103,13 @@ Status: in_progress
 |----------|--------|
 | {question} | {selection} |
 
-**Output:** `{model}-charter.md`
+**Output:** `{name}-charter.md`
 ```
 
-### Model Charter ({model}-charter.md)
+### Framework Charter ({name}-charter.md)
 
 ```markdown
-# Model Charter: {NAME}
+# Framework Charter: {NAME}
 
 **Acronym:** {If applicable}
 
@@ -118,7 +118,7 @@ Status: in_progress
 {Current pain points}
 
 ## Purpose
-{Why this model needs to exist}
+{Why this framework needs to exist}
 {Value over ad-hoc approach}
 
 ## Scope
@@ -132,12 +132,12 @@ Status: in_progress
 - {When to run this model}
 
 ## Type
-{Foundation / Pipeline}
+{Foundation / Pipeline / Cyclical / Hub}
 
 ## Dependencies
 | Requires | From | Why |
 |----------|------|-----|
-| {Input} | {Model} | {How it's used} |
+| {Input} | {Source} | {How it's used} |
 ```
 
 ## Quality Criteria

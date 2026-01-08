@@ -1,26 +1,26 @@
 ---
 name: generate
-description: Execute FORGE Generate stage to produce model document and skill files. Use after Refine to create the actual artifacts.
+description: Execute Generate stage to produce framework document and skill files. Use after Refine to create the actual artifacts.
 ---
 
 # Generate
 
-Produce the model document and skill files.
+Produce the framework document and skill files.
 
 ## Inputs
 
 | Input | Source |
 |-------|--------|
-| model_charter | Frame stage output |
+| framework_charter | Frame stage output |
 | stage_map | Organize stage output |
 | stage_specifications | Refine stage output (all stages) |
 
 ### Input Format
 
-**From Frame stage (`output/forge/{date}/{model}-charter.md`):**
+**From Frame stage (`output/{date}/{name}-charter.md`):**
 
 ```markdown
-# Model Charter: {NAME}
+# Framework Charter: {NAME}
 ## Problem
 ## Purpose
 ## Scope
@@ -28,7 +28,7 @@ Produce the model document and skill files.
 ## Dependencies
 ```
 
-**From Organize stage (`output/forge/{date}/{model}-stage-map.md`):**
+**From Organize stage (`output/{date}/{name}-stage-map.md`):**
 
 ```markdown
 # Stage Map: {NAME}
@@ -40,7 +40,7 @@ Produce the model document and skill files.
 ## Terminal States
 ```
 
-**From Refine stage (`output/forge/{date}/{model}-{stage}-spec.md`):**
+**From Refine stage (`output/{date}/{name}-{stage}-spec.md`):**
 
 ```markdown
 # Stage Specification: {STAGE}
@@ -54,9 +54,9 @@ Produce the model document and skill files.
 
 ## Process
 
-**1. Generate Model Document** - Create `docs/models/{name}.md`:
+**1. Generate Framework Document** - Create `docs/models/{name}.md`:
 - Combine charter, stage map, and specifications
-- Follow structure of existing models (SPARC, Identity)
+- Follow structure in docs/model.md
 - Include: purpose, inputs, stages, feedback loops, quality criteria
 
 **2. Generate Skill Files** - For each stage, create `.claude/skills/{stage}/SKILL.md`:
@@ -81,10 +81,10 @@ Produce the model document and skill files.
 
 | Artifact | Path |
 |----------|------|
-| Model document | `docs/models/{model-name}.md` |
+| Framework document | `docs/models/{name}.md` |
 | Stage skill | `.claude/skills/{stage-name}/SKILL.md` |
 
-**Run log** updated in `output/forge/{date}/run.md`.
+**Run log** updated in `output/{date}/run.md`.
 
 ### Run Log (run.md) - Append
 
@@ -94,7 +94,7 @@ Produce the model document and skill files.
 ## Generate - {date}
 
 **Files created:**
-- `docs/models/{model}.md`
+- `docs/models/{name}.md`
 - `.claude/skills/{stage}/SKILL.md` (for each stage)
 
 **Index updates:**
@@ -106,7 +106,7 @@ Produce the model document and skill files.
 - `docs/guides/execution.md`
 ```
 
-### Model Document Structure
+### Framework Document Structure
 
 ```markdown
 # The {NAME} Model
@@ -168,7 +168,7 @@ description: {One line for skill picker}
 
 ## Output
 
-Save to `output/{model}/{date}/`.
+Save to `output/{date}/`.
 
 | File | Content |
 |------|---------|
@@ -205,7 +205,7 @@ Save to `output/{model}/{date}/`.
 
 ## Quality Criteria
 
-- [ ] Model document follows framework structure
+- [ ] Framework document follows structure
 - [ ] All stages have corresponding skill files
 - [ ] Skill frontmatter is valid (name, description)
 - [ ] Skills have input format section after inputs table
