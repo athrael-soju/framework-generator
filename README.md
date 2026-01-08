@@ -13,6 +13,7 @@ PRAXIS/
 │   ├── models/
 │   │   ├── identity.md       # Identity model
 │   │   ├── sparc.md          # SPARC model
+│   │   ├── recon.md          # RECON model
 │   │   └── forge.md          # FORGE model
 │   └── guides/
 │       └── execution.md      # How to run stages
@@ -25,6 +26,11 @@ PRAXIS/
 │       ├── analyze/
 │       ├── rank/
 │       ├── craft/
+│       ├── receive/          # RECON stages
+│       ├── explore/
+│       ├── correlate/
+│       ├── outline/
+│       ├── narrate/
 │       ├── frame/            # FORGE stages
 │       ├── organize/
 │       ├── refine/
@@ -34,6 +40,7 @@ PRAXIS/
 ├── output/                   # Run outputs
 │   ├── identity/
 │   ├── sparc/
+│   ├── recon/
 │   └── forge/
 │
 ├── CLAUDE.md
@@ -46,6 +53,7 @@ PRAXIS/
 |-------------|---------|--------|
 | **Identity** | Professional identity | Single assessment |
 | **SPARC** | Client acquisition | Signal → Profile → Analyze → Rank → Craft |
+| **RECON** | Individual research | Receive → Explore → Correlate → Outline → Narrate |
 | **FORGE** | Model creation | Frame → Organize → Refine → Generate → Evaluate |
 
 ## Usage
@@ -55,6 +63,9 @@ First, define your professional identity:
 
 Run SPARC stages for client acquisition:
 - `/signal` → `/profile` → `/analyze` → `/rank` → `/craft`
+
+Run RECON stages to research an individual:
+- `/receive` → `/explore` → `/correlate` → `/outline` → `/narrate`
 
 Run FORGE to create new models:
 - `/frame` → `/organize` → `/refine` → `/generate` → `/evaluate`

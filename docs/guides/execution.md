@@ -23,6 +23,13 @@ flowchart TB
         R --> C["/craft"]
     end
 
+    subgraph RECON ["RECON - Individual Research"]
+        Rc["/receive"] --> Ex["/explore"]
+        Ex --> Co["/correlate"]
+        Co --> Ou["/outline"]
+        Ou --> Na["/narrate"]
+    end
+
     subgraph FORGE ["FORGE - Model Creation"]
         Fr["/frame"] --> O["/organize"]
         O --> Re["/refine"]
@@ -47,6 +54,11 @@ Each PRAXIS component has corresponding skills:
 | SPARC | Analyze | `/analyze` | Assess competitive position |
 | SPARC | Rank | `/rank` | Score and prioritize prospects |
 | SPARC | Craft | `/craft` | Create personalized outreach |
+| RECON | Receive | `/receive` | Collect identifiers and research context |
+| RECON | Explore | `/explore` | Search across sources for findings |
+| RECON | Correlate | `/correlate` | Cross-reference and verify findings |
+| RECON | Outline | `/outline` | Structure findings and identify gaps |
+| RECON | Narrate | `/narrate` | Synthesize into profile with insights |
 | FORGE | Frame | `/frame` | Define model purpose and boundaries |
 | FORGE | Organize | `/organize` | Map stages and flow |
 | FORGE | Refine | `/refine` | Specify each stage in detail |
@@ -162,6 +174,7 @@ Some conditions route back to earlier stages. When a feedback condition is trigg
 
 For the complete feedback loop definitions, see:
 - [SPARC Feedback Loops](../models/sparc.md#feedback-loops)
+- [RECON Feedback Loops](../models/recon.md#feedback-loops)
 - [FORGE Feedback Loops](../models/forge.md#feedback-loops)
 
 ---
@@ -182,6 +195,14 @@ output/
 │       ├── {company}-analysis.md
 │       ├── qualification.md
 │       └── {company}-outreach.md
+├── recon/
+│   └── YYYY-MM-DD/
+│       ├── run.md                  # Run log (decisions at each stage)
+│       ├── {subject}-seed.md
+│       ├── {subject}-explore.md
+│       ├── {subject}-correlate.md
+│       ├── {subject}-outline.md
+│       └── {subject}-profile.md
 └── forge/
     └── YYYY-MM-DD/
         ├── run.md                  # Run log (decisions at each stage)
@@ -195,6 +216,7 @@ output/
 
 - **Identity**: Single `output/identity/profile.md`, updated when positioning shifts
 - **SPARC runs**: Date folder under `output/sparc/YYYY-MM-DD/` (sorts chronologically)
+- **RECON runs**: Date folder under `output/recon/YYYY-MM-DD/`
 - **FORGE runs**: Date folder under `output/forge/YYYY-MM-DD/`
 - **Multiple runs same day**: Add suffix (`2026-01-08`, `2026-01-08-02`, `2026-01-08-03`)
 
@@ -208,6 +230,11 @@ output/
 | SPARC | Analyze | `{company}-analysis.md` |
 | SPARC | Rank | `qualification.md` |
 | SPARC | Craft | `{company}-outreach.md` |
+| RECON | Receive | `run.md`, `{subject}-seed.md` |
+| RECON | Explore | `{subject}-explore.md` |
+| RECON | Correlate | `{subject}-correlate.md` |
+| RECON | Outline | `{subject}-outline.md` |
+| RECON | Narrate | `{subject}-profile.md` |
 | FORGE | Frame | `run.md`, `{model}-charter.md` |
 | FORGE | Organize | `{model}-stage-map.md` |
 | FORGE | Refine | `{model}-{stage}-spec.md` |
