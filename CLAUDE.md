@@ -94,7 +94,7 @@ Use interactive menus (AskUserQuestion) at decision points. Never proceed silent
 When developing or modifying skills:
 
 - Each stage has one skill that defines its complete model
-- Skills live in `.claude/skills/<model>/<stage>/SKILL.md`
+- Skills live in `.claude/skills/<stage>/SKILL.md`
 - Human approval gates exist at every stage handoff
 
 ## Document Conventions

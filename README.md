@@ -21,13 +21,21 @@ PRAXIS/
 │       ├── identity/
 │       │   ├── SKILL.md
 │       │   └── templates.md
-│       └── sparc/
-│           ├── templates.md
-│           ├── signal/SKILL.md
-│           ├── profile/SKILL.md
-│           ├── analyze/SKILL.md
-│           ├── rank/SKILL.md
-│           └── craft/SKILL.md
+│       ├── signal/
+│       │   ├── SKILL.md
+│       │   └── templates.md
+│       ├── profile/
+│       │   ├── SKILL.md
+│       │   └── templates.md
+│       ├── analyze/
+│       │   ├── SKILL.md
+│       │   └── templates.md
+│       ├── rank/
+│       │   ├── SKILL.md
+│       │   └── templates.md
+│       └── craft/
+│           ├── SKILL.md
+│           └── templates.md
 │
 ├── CLAUDE.md
 └── README.md
