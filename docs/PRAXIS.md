@@ -251,7 +251,6 @@ Each stage requires approval before proceeding to the next. See [Execution.md](E
 |----------|---------|
 | `docs/PRAXIS.md` | This document - overview and integration |
 | `docs/Execution.md` | How to run stages via skill commands |
-| `docs/Examples.md` | Usage examples and worked scenarios |
 | `docs/Configuration.md` | Configuration input examples |
 | `docs/templates/` | Artifact templates |
 | `methodology/TEMPLATE.md` | Template for creating new methodologies |
