@@ -93,9 +93,7 @@ Combine findings into a structured Markdown profile covering:
 
 ## Output
 
-A single Markdown profile document covering all sections from the Synthesize phase.
-
-See [template.md](../../.claude/skills/identity/template.md) for the complete template and example.
+A single Markdown profile saved to `output/identity/profile.md` covering all sections from the Synthesize phase.
 
 ---
 

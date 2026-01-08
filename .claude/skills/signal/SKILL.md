@@ -16,6 +16,33 @@ Detect companies exhibiting buying signals. Score by strength to prioritize prof
 | signal_types | Funding, hiring, product, news |
 | lookback_days | Default: 30 |
 
+### Input Format
+
+**From Identity profile (`output/identity/profile.md`):**
+
+```yaml
+# Required sections from Identity
+ideal_client:
+  characteristics:
+    - [Company attributes]
+  signals:
+    - [Buying indicators]
+  red_flags:
+    - [Warning signs]
+```
+
+**User-provided criteria:**
+
+```yaml
+target_criteria:
+  industries: [Developer tools, API platforms]
+  company_size: [50-500 employees]
+  geography: [US, Europe]
+
+signal_types: [funding, hiring, product, news]
+lookback_days: 30
+```
+
 ## Process
 
 **1. Detect** — Search for signals by type:
@@ -33,26 +60,64 @@ Detect companies exhibiting buying signals. Score by strength to prioritize prof
 
 **3. Output** — Compact signal log
 
-## Output Format
+## Output
+
+Save to `output/sparc/{date}/` where `{date}` is today (YYYY-MM-DD).
+
+| File | Content |
+|------|---------|
+| `run.md` | Initialize run log |
+| `signal-log.md` | Signal log |
+
+### Run Log (run.md) - Initialize
 
 ```markdown
-# Signal Log | YYYY-MM-DD
-Lookback: Xd | Industries: X, Y | Size: X
+# SPARC Run: {Prospect Name}
 
-## Hot
-| Company | Signals | Fit |
-|---------|---------|-----|
-| Name | Brief signal list | Service fit |
+Started: {date}
+Status: in_progress
 
-## Warm
-| Company | Signals | Fit |
-|---------|---------|-----|
+---
 
-## Watch
-- Company: signal (notes)
+## Signal - {date}
 
-## Sources
-- [Source](url)
+**Decisions:**
+| Question | Choice |
+|----------|--------|
+| {question} | {selection} |
+
+**Output:** `signal-log.md`
+```
+
+### Signal Log (signal-log.md)
+
+```markdown
+# Signal Log
+
+Date: YYYY-MM-DD
+
+---
+
+## Signals
+
+| Company | Signal Type | Source | Strength | Notes |
+|---------|-------------|--------|----------|-------|
+| [Name] | funding / hiring / announcement / social / technical | [Source + URL] | hot / warm / watch | [Brief context] |
+
+---
+
+## Signal Details
+
+### [Company Name]
+
+**Date Detected:** YYYY-MM-DD
+**Signal Type:** funding / hiring / announcement / social / technical
+**Source:** [Source Name]
+**URL:** [Link]
+**Strength:** hot / warm / watch
+
+**Notes:**
+[Brief context about why this signal matters]
 ```
 
 ## Quality Criteria

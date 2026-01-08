@@ -16,6 +16,45 @@ Research decision-makers. Draft personalized outreach messages.
 | prospect_analyses | Analyze stage |
 | channel | linkedin_dm or email |
 
+### Input Format
+
+**From Identity profile (`output/identity/profile.md`):**
+
+```yaml
+positioning:
+  who_you_help: [Audience]
+  differentiation: [Why you]
+
+services:
+  - name: [Offering]
+    description: [What's included]
+```
+
+**From Rank stage (`output/sparc/{date}/qualification.md`):**
+
+```markdown
+## Result
+**Total Score:** [Score]
+**Recommendation:** prioritize / qualified
+```
+
+**From Analyze stage (`output/sparc/{date}/{company}-analysis.md`):**
+
+```markdown
+## Entry Point
+**Buyer Persona:** [Who to contact]
+**Access Path:** [How to reach]
+
+## Recommended Approach
+**Value Proposition:** [What to offer]
+```
+
+**User-provided:**
+
+```yaml
+channel: linkedin_dm  # or email, warm_intro
+```
+
 ## Process
 
 **1. Research** — Decision-maker background, recent activity, posts
@@ -32,26 +71,88 @@ Research decision-makers. Draft personalized outreach messages.
 | Bridge | Connect gap to capability |
 | Ask | Low-commitment next step |
 
-## Output Format
+## Output
+
+Save to `output/sparc/{date}/` (same date as Signal).
+
+| File | Content |
+|------|---------|
+| `run.md` | Append Craft decisions and outcome |
+| `{company}-outreach.md` | Outreach message + brief |
+
+### Outreach Brief ({company}-outreach.md)
 
 ```markdown
-# Outreach: [Prospect] | YYYY-MM-DD
-Channel: LinkedIn DM | Contact: Name (Title)
+# Outreach Brief: [Prospect Name]
 
-## Message (XXX chars)
-[Message text]
+Date: YYYY-MM-DD
+Channel: linkedin_dm / email / warm_intro
 
-## Variants
-**B:** [Alternative hook]
-**C:** [Alternative angle]
+---
+
+## Decision Maker
+
+**Name:**
+**Title:**
+**LinkedIn:** [URL]
+
+### Recent Activity
+- [Recent post, talk, or activity relevant to outreach]
+
+---
+
+## Message
+
+**Hook:** [Opening that grabs attention]
+
+**Insight:** [Observation that demonstrates understanding]
+
+**Bridge:** [Connection to your value]
+
+**Ask:** [Clear, low-friction next step]
+
+---
+
+## Message Variants
+
+### Variant 1
+**Hook:** [Alternative opening]
+**Tone:** [e.g., more casual, more formal]
+
+### Variant 2
+**Hook:** [Alternative opening]
+**Tone:** [e.g., different angle]
+
+---
 
 ## Talking Points
-**If interested:** Schedule call, share research
-**If objection:** [Response]
-**If no response:** Follow up day 7
 
-## Send
-When: Day, time (timezone)
+### Likely Questions
+
+| Question | Response |
+|----------|----------|
+| [Anticipated question] | [Prepared response] |
+
+### Objection Handling
+
+| Objection | Response |
+|-----------|----------|
+| [Likely objection] | [How to address it] |
+```
+
+### Run Log (run.md) - Append
+
+```markdown
+---
+
+## Craft - {date}
+
+**Decisions:**
+| Question | Choice |
+|----------|--------|
+| {question} | {selection} |
+
+**Output:** `{company}-outreach.md`
 ```
 
 ## Channel Limits

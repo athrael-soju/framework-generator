@@ -14,6 +14,35 @@ Score prospects against qualification criteria. Prioritize for outreach.
 | identity_profile | Identity stage (`ideal_client`, `constraints`) |
 | prospect_analyses | Analyze stage |
 
+### Input Format
+
+**From Identity profile (`output/identity/profile.md`):**
+
+```yaml
+ideal_client:
+  characteristics: [Attributes]
+  signals: [Buying indicators]
+  red_flags: [Warning signs]
+
+constraints:
+  rate_floor: [Minimum rate]
+  availability: [Capacity]
+  deal_breakers: [No-gos]
+```
+
+**From Analyze stage (`output/sparc/{date}/{company}-analysis.md`):**
+
+```markdown
+## Entry Point
+**Buyer Persona:** [Who would buy]
+**Budget Indicators:** [Signs of budget]
+**Timing Assessment:** [Why now]
+**Access Path:** [How to reach]
+
+## Gap Analysis
+| Gap | Severity | Your Capability | Opportunity |
+```
+
 ## Scoring Criteria
 
 | Criterion | Weight | 1 (Poor) | 5 (Strong) |
@@ -33,23 +62,127 @@ Score prospects against qualification criteria. Prioritize for outreach.
 | 2.0-2.9 | **Nurture** — monitor, content engage |
 | <2.0 | **Pass** |
 
-## Output Format
+## Output
+
+Save to `output/sparc/{date}/` (same date as Signal).
+
+| File | Content |
+|------|---------|
+| `run.md` | Append Rank decisions |
+| `qualification.md` | Ranked prospect list |
+
+### Qualification Score (qualification.md)
 
 ```markdown
-# Qualification | YYYY-MM-DD
+# Qualification Score: [Company Name]
 
-## Summary
-| Rank | Prospect | Score | Action | Key Factor |
-|------|----------|-------|--------|------------|
-| 1 | Name | 4.2 | Prioritize | Factor |
+Date: YYYY-MM-DD
 
-## Scoring Detail
-### [Prospect]
-| Criterion | Score | Evidence |
-|-----------|-------|----------|
-| Budget | 4 | Series B, 200 emp |
-| ... | | |
-**Total: X.XX** → Action
+---
+
+## Scoring
+
+| Criterion | Score (1-5) | Rationale |
+|-----------|-------------|-----------|
+| Budget | [Score] | [Why this score] |
+| Problem Fit | [Score] | [Why this score] |
+| Timing | [Score] | [Why this score] |
+| Access | [Score] | [Why this score] |
+| Strategic Value | [Score] | [Why this score] |
+
+---
+
+## Result
+
+**Total Score:** [Sum or weighted average]
+**Recommendation:** prioritize / qualified / nurture / pass
+
+**Rationale:**
+[Brief explanation of the recommendation]
+```
+
+### Pass Record
+
+```markdown
+# Pass Record: [Company Name]
+
+**Passed Date:** YYYY-MM-DD
+**Stage Exited:** signal / profile / analyze / rank / craft
+**Reason:** Not in ICP / No budget indicators / Problem mismatch / Rejected outreach / [Other]
+
+---
+
+## Context
+
+**Original Signal:** [What triggered initial interest]
+**Time in Pipeline:** [Duration from signal to pass]
+
+---
+
+## Learnings
+
+[Optional insight for ICP refinement, positioning adjustment, or process improvement]
+
+---
+
+## Re-engagement Conditions
+
+- [ ] Would reconsider if: [Specific condition that would change assessment]
+```
+
+### Nurture Record
+
+```markdown
+# Nurture Record: [Company Name]
+
+**Entered Nurture:** YYYY-MM-DD
+**Reason:** Timing not right / Budget uncertain / Access blocked / Partial fit / [Other]
+**Check-in Date:** YYYY-MM-DD (quarterly review)
+
+---
+
+## Context
+
+**Original Score:** [Score from Rank stage]
+**Key Blocker:** [Primary reason for nurture vs qualified]
+
+---
+
+## Re-engagement Triggers
+
+- [Trigger 1: e.g., "New funding round"]
+- [Trigger 2: e.g., "DevRel hiring resumes"]
+- [Trigger 3: e.g., "New product launch in target area"]
+
+---
+
+## Engagement History
+
+| Date | Activity | Notes |
+|------|----------|-------|
+| [Date] | [Content engagement, event, etc.] | [Outcome] |
+
+---
+
+## Next Review
+
+**Date:** YYYY-MM-DD
+**Action:** Review signals, update profile if warranted, re-score
+```
+
+### Run Log (run.md) - Append
+
+```markdown
+---
+
+## Rank - {date}
+
+**Decisions:**
+| Question | Choice |
+|----------|--------|
+| {question} | {selection} |
+
+**Output:** `qualification.md`
 ```
 
 ## Quality Criteria

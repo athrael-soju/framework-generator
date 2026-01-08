@@ -25,19 +25,28 @@ flowchart TB
         R --> C["Craft"]
     end
 
+    subgraph FORGE ["FORGE - Model Creation"]
+        Fr["Frame"] --> O["Organize"]
+        O --> Re["Refine"]
+        Re --> G["Generate"]
+        G --> E["Evaluate"]
+    end
+
     Identity --> S
+    FORGE -.-> |creates| SPARC
 ```
 
 ---
 
 ## Overview
 
-PRAXIS comprises two components:
+PRAXIS comprises three components:
 
 | Component | Purpose | Structure | Trigger |
 |-----------|---------|-----------|---------|
 | **Identity** | Professional identity | Single assessment | Once to initialize, update when positioning shifts |
 | **SPARC** | Client acquisition | Signal → Profile → Analyze → Rank → Craft | Ongoing (pipeline building) |
+| **FORGE** | Model creation | Frame → Organize → Refine → Generate → Evaluate | When creating new models |
 
 **Identity** defines who you are professionally. This profile informs SPARC by helping you find better-fit opportunities. Run it once to bootstrap the framework, then update as your positioning evolves.
 
@@ -110,6 +119,7 @@ Run PRAXIS via skill commands:
 |-----------|----------|
 | Identity | `/identity` (run once to initialize) |
 | SPARC | `/signal` → `/profile` → `/analyze` → `/rank` → `/craft` |
+| FORGE | `/frame` → `/organize` → `/refine` → `/generate` → `/evaluate` |
 
 Each stage requires approval before proceeding to the next. See [execution.md](guides/execution.md) for detailed patterns.
 
@@ -141,8 +151,6 @@ Each stage requires approval before proceeding to the next. See [execution.md](g
 | `docs/overview.md` | This document - overview and integration |
 | `docs/models/identity.md` | Identity model |
 | `docs/models/sparc.md` | SPARC model |
+| `docs/models/forge.md` | FORGE model (meta-model for creating models) |
 | `docs/guides/execution.md` | How to run stages via skill commands |
-| `docs/guides/configuration.md` | Configuration input examples |
-| `docs/guides/run.md` | Run tracking templates |
-| `.claude/skills/*/template.md` | Stage output templates |
 | `CLAUDE.md` | Project instructions for Claude Code |

@@ -15,6 +15,32 @@ Build structured company profiles from public data for prioritized prospects.
 | signal_log | Signal stage (hot/warm prospects) |
 | priority_tier | Which tier to profile (default: hot) |
 
+### Input Format
+
+**From Identity profile (`output/identity/profile.md`):**
+
+```yaml
+ideal_client:
+  characteristics:
+    - [Company attributes indicating fit]
+```
+
+**From Signal stage (`output/sparc/{date}/signal-log.md`):**
+
+```markdown
+## Signals
+
+| Company | Signal Type | Source | Strength | Notes |
+|---------|-------------|--------|----------|-------|
+| [Name] | [Type] | [Source] | hot / warm / watch | [Context] |
+```
+
+**User-provided:**
+
+```yaml
+priority_tier: hot  # Which tier to profile: hot, warm, or watch
+```
+
 ## Process
 
 **1. Firmographics** — Name, HQ, employees, funding, investors
@@ -23,41 +49,85 @@ Build structured company profiles from public data for prioritized prospects.
 **4. People** — Decision-makers, titles, backgrounds
 **5. Activity** — Recent signals, news, hiring
 
-## Output Format
+## Output
+
+Save to `output/sparc/{date}/` (same date as Signal).
+
+| File | Content |
+|------|---------|
+| `run.md` | Append Profile decisions |
+| `{company}-profile.md` | Company profile |
+
+### Company Profile ({company}-profile.md)
 
 ```markdown
-# Profile: [Company] | YYYY-MM-DD
-Tier: Hot | Priority: X
+# Company Profile: [Company Name]
 
-## Overview
-| Field | Value |
-|-------|-------|
-| Domain | x.com |
-| Size | ~X employees |
-| Funding | $XM (Series X) |
-| HQ | Location |
+Date: YYYY-MM-DD
 
-## Technical
-- GitHub: X repos, primary langs
-- Docs: X/5 quality
-- Stack: Key technologies
+---
 
-## People
+## Company Overview
+
+**Legal Name:**
+**DBA:**
+**HQ:**
+**Founded:**
+**Employees:**
+
+### Funding History
+
+| Round | Amount | Date | Valuation |
+|-------|--------|------|-----------|
+| [Series] | [Amount] | [Date] | [Valuation] |
+
+---
+
+## Market Position
+
+**Vertical:**
+**Differentiation:**
+
+### Competitors
+- [Competitor 1]
+- [Competitor 2]
+
+---
+
+## Key People
+
 | Name | Title | Notes |
 |------|-------|-------|
-| Name | Title | Background |
+| [Name] | [Title] | [Relevant background, activity] |
 
-## Signals
-- Signal 1 (date, source)
-- Signal 2
+---
 
-## Fit
-| Service | Relevance |
-|---------|-----------|
-| Service | High/Med/Low + reason |
+## Technical Presence
 
-## Gaps
-- Gap 1 (impact)
+**GitHub:** [URL or assessment]
+**Docs Quality:** [Assessment]
+**Community:** [Assessment]
+
+---
+
+## Recent Activity
+
+- [Date]: [Activity description]
+```
+
+### Run Log (run.md) - Append
+
+```markdown
+---
+
+## Profile - {date}
+
+**Decisions:**
+| Question | Choice |
+|----------|--------|
+| {question} | {selection} |
+
+**Output:** `{company}-profile.md`
 ```
 
 ## Quality Criteria
