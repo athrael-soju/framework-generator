@@ -153,106 +153,38 @@ For the complete feedback loop definitions, see:
 
 ---
 
-## Artifact Persistence
+## Output Structure
 
-Each PRAXIS run persists two things:
-1. **Decision log** - What the user decided at each stage and why
-2. **Artifacts** - Complete outputs from each stage
-
-### Run-Based Structure
+Stage outputs are saved to a date-based folder structure:
 
 ```
-praxis/
-├── identity/
-│   └── profile.md                        # Your professional identity
-│
-├── runs/
-│   ├── 2025-01-15_vultr_sparc/
-│   │   ├── run.yaml                    # Run metadata (state tracking)
-│   │   ├── decisions.md                # Decision log
-│   │   └── artifacts/
-│   │       ├── 1_signal_2025-01-15/
-│   │       │   └── signal_log.md
-│   │       ├── 2_profile_2025-01-16/
-│   │       │   └── company_profile.md
-│   │       ├── 3_analyze_2025-01-17/
-│   │       │   ├── prospect_analysis.md
-│   │       │   └── competitor_matrix.md
-│   │       ├── 4_rank_2025-01-18/
-│   │       │   └── qualification_score.md
-│   │       └── 5_craft_2025-01-19/
-│   │           ├── outreach_message.md
-│   │           └── outreach_brief.md
-│   │
-│   └── 2025-01-20_streamdata_sparc/
-│       └── ...
-│
-├── nurture/                            # Prospects in nurture state
-│   └── cloudscale.md
-│
-└── passed/                             # Archived pass records
-    └── acme.md
+output/
+└── YYYY-MM-DD/
+    ├── identity/
+    │   └── profile.md
+    └── sparc/
+        ├── signal-log.md
+        ├── company-profile.md
+        ├── prospect-analysis.md
+        ├── ranked-prospects.md
+        └── outreach.md
 ```
 
-### Run Naming Convention
+### Naming Convention
 
-```
-YYYY-MM-DD_[entity-slug]_sparc
-```
+- **Date format**: `YYYY-MM-DD` (sorts chronologically)
+- **Multiple runs same day**: Add suffix (`2026-01-08`, `2026-01-08-02`, `2026-01-08-03`)
 
-- **Date**: Run start date
-- **Entity**: Prospect name, lowercase with hyphens
-- **Type**: `sparc`
+### Output Files
 
-Examples:
-- `2025-01-15_vultr_sparc`
-- `2025-01-20_streamdata_sparc`
-
-### Artifact Folder Naming
-
-Each stage produces a folder with a stage number, name, and completion date:
-
-```
-[stage_number]_[stage_name]_[YYYY-MM-DD]/
-```
-
-| Stage | Folder |
-|-------|--------|
-| 1 | `1_signal_YYYY-MM-DD/` |
-| 2 | `2_profile_YYYY-MM-DD/` |
-| 3 | `3_analyze_YYYY-MM-DD/` |
-| 4 | `4_rank_YYYY-MM-DD/` |
-| 5 | `5_craft_YYYY-MM-DD/` |
-
-Files within each folder use descriptive names without prefixes (e.g., `signal_log.md`, `company_profile.md`).
-
-### Starting a Run
-
-When beginning a new SPARC execution:
-
-1. Create run directory: `praxis/runs/YYYY-MM-DD_entity_sparc/`
-2. Initialize `run.yaml` with metadata
-3. Create empty `decisions.md`
-4. Create `artifacts/` directory
-
-### During Execution
-
-At each stage completion:
-
-1. Create stage folder in `artifacts/` using naming convention
-2. Save all stage outputs to the folder
-3. Append decision entry to `decisions.md`
-4. Update `run.yaml` with current stage
-
-### Completing a Run
-
-When run finishes:
-
-1. Update `run.yaml` status to `completed`
-2. Set outcome (`signed_agreement`, `nurture`, `pass`, etc.)
-3. For nurture/pass outcomes, copy record to `nurture/` or `passed/`
-
-See [run.md](run.md) for `run.yaml` and `decisions.md` templates.
+| Stage | File |
+|-------|------|
+| Identity | `identity/profile.md` |
+| Signal | `sparc/signal-log.md` |
+| Profile | `sparc/company-profile.md` |
+| Analyze | `sparc/prospect-analysis.md` |
+| Rank | `sparc/ranked-prospects.md` |
+| Craft | `sparc/outreach.md` |
 
 ---
 
