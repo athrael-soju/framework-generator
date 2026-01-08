@@ -1,49 +1,48 @@
 ---
 name: organize
-description: Execute FORGE Organize stage to map stages and flow for a new model. Use after Frame to design the model's structure.
+description: Execute Organize stage to map stages and flow for a new framework. Use after Frame to design the framework's structure.
 ---
 
 # Organize
 
-Map the stages and flow of the model.
+Map the stages and flow of the framework.
 
 ## Inputs
 
 | Input | Source |
 |-------|--------|
-| model_charter | Frame stage output |
-| reference_models | Optional: existing models for structural patterns |
+| framework_charter | Frame stage output |
+| reference_frameworks | Optional: existing frameworks for structural patterns |
 
 ### Input Format
 
-**From Frame stage (`output/forge/{date}/{model}-charter.md`):**
+**From Frame stage (`output/{date}/{name}-charter.md`):**
 
 ```markdown
-# Model Charter: {NAME}
+# Framework Charter: {NAME}
 
 ## Problem
 {Workflow being addressed}
 
 ## Purpose
-{Why this model exists}
+{Why this framework exists}
 
 ## Scope
 **In:** {What's covered}
 **Out:** {What's excluded}
 
 ## Type
-{Foundation / Pipeline}
+{Foundation / Pipeline / Cyclical / Hub}
 
 ## Dependencies
 | Requires | From | Why |
 ```
 
-**Optional reference models:**
+**Optional reference frameworks:**
 
 ```yaml
-reference_models:
-  - path: docs/models/sparc.md    # For pipeline patterns
-  - path: docs/models/identity.md # For foundation patterns
+reference_frameworks:
+  - path: docs/models/[framework].md
 ```
 
 ## Process
@@ -51,7 +50,7 @@ reference_models:
 **1. Identify Stages** - Break the workflow into distinct stages:
 - What are the major phases of work?
 - Each stage should have a clear purpose and output
-- Aim for 3-7 stages (fewer for foundation models)
+- Aim for 3-7 stages (fewer for foundation frameworks)
 
 **2. Name Stages** - Choose clear, action-oriented names:
 - Verbs or nouns that describe what happens
@@ -64,27 +63,27 @@ reference_models:
 - Hub: Central stage others connect to
 - Draw the flow as a mermaid diagram
 
-**4. Define Dependencies** - What does this model need from others:
-- Which inputs come from other models?
+**4. Define Dependencies** - What does this framework need from others:
+- Which inputs come from other frameworks?
 - At which stage are they needed?
 
 **5. Identify Feedback Loops** - When to go backwards:
 - What conditions cause a return to earlier stages?
 - What triggers re-evaluation?
 
-**6. Define Terminal States** - How does the model end:
+**6. Define Terminal States** - How does the framework end:
 - Success state(s)
 - Failure/exit states
 - What actions accompany each?
 
 ## Output
 
-Save to `output/forge/{date}/` (same date as Frame).
+Save to `output/{date}/` (same date as Frame).
 
 | File | Content |
 |------|---------|
 | `run.md` | Append Organize decisions |
-| `{model}-stage-map.md` | Stage map |
+| `{name}-stage-map.md` | Stage map |
 
 ### Run Log (run.md) - Append
 
@@ -98,13 +97,13 @@ Save to `output/forge/{date}/` (same date as Frame).
 |----------|--------|
 | {question} | {selection} |
 
-**Output:** `{model}-stage-map.md`
+**Output:** `{name}-stage-map.md`
 ```
 
-### Stage Map ({model}-stage-map.md)
+### Stage Map ({name}-stage-map.md)
 
 ```markdown
-# Stage Map: {MODEL NAME}
+# Stage Map: {NAME}
 
 ## Stages
 
@@ -123,9 +122,9 @@ flowchart TB
 
 ## Dependencies
 
-| This Model Needs | From | At Stage |
-|------------------|------|----------|
-| {Input} | {Source model} | {Which stage} |
+| This Framework Needs | From | At Stage |
+|----------------------|------|----------|
+| {Input} | {Source} | {Which stage} |
 
 ## Feedback Loops
 

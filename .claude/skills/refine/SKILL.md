@@ -1,6 +1,6 @@
 ---
 name: refine
-description: Execute FORGE Refine stage to specify each stage in detail. Use after Organize to fully define activities, outputs, and criteria.
+description: Execute Refine stage to specify each stage in detail. Use after Organize to fully define activities, outputs, and criteria.
 ---
 
 # Refine
@@ -11,13 +11,13 @@ Specify each stage in detail.
 
 | Input | Source |
 |-------|--------|
-| model_charter | Frame stage output |
+| framework_charter | Frame stage output |
 | stage_map | Organize stage output |
 | domain_knowledge | User input: specifics about the workflow |
 
 ### Input Format
 
-**From Frame stage (`output/forge/{date}/{model}-charter.md`):**
+**From Frame stage (`output/{date}/{name}-charter.md`):**
 
 ```markdown
 ## Problem
@@ -28,7 +28,7 @@ Specify each stage in detail.
 **Out:** {What's excluded}
 ```
 
-**From Organize stage (`output/forge/{date}/{model}-stage-map.md`):**
+**From Organize stage (`output/{date}/{name}-stage-map.md`):**
 
 ```markdown
 ## Stages
@@ -83,12 +83,12 @@ For each stage in the stage map:
 
 ## Output
 
-Save to `output/forge/{date}/` (same date as Frame).
+Save to `output/{date}/` (same date as Frame).
 
 | File | Content |
 |------|---------|
 | `run.md` | Append Refine decisions |
-| `{model}-{stage}-spec.md` | One file per stage specification |
+| `{name}-{stage}-spec.md` | One file per stage specification |
 
 ### Run Log (run.md) - Append
 
@@ -104,10 +104,10 @@ Save to `output/forge/{date}/` (same date as Frame).
 |----------|--------|
 | {question} | {selection} |
 
-**Outputs:** `{model}-{stage}-spec.md` for each stage
+**Outputs:** `{name}-{stage}-spec.md` for each stage
 ```
 
-### Stage Specification ({model}-{stage}-spec.md)
+### Stage Specification ({name}-{stage}-spec.md)
 
 One file per stage.
 

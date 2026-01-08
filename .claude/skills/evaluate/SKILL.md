@@ -1,25 +1,25 @@
 ---
 name: evaluate
-description: Execute FORGE Evaluate stage to validate generated model artifacts. Use after Generate to check conventions and run a dry test.
+description: Execute Evaluate stage to validate generated framework artifacts. Use after Generate to check conventions and run a dry test.
 ---
 
 # Evaluate
 
-Validate the generated model and iterate if needed.
+Validate the generated framework and iterate if needed.
 
 ## Inputs
 
 | Input | Source |
 |-------|--------|
-| model_document | Generate stage output |
+| framework_document | Generate stage output |
 | skill_files | Generate stage output |
 
 ### Input Format
 
-**Model document (`docs/models/{model}.md`):**
+**Framework document (`docs/models/{name}.md`):**
 
 ```markdown
-# The {NAME} Model
+# The {NAME} Framework
 {Description}
 {Mermaid diagram}
 ## Purpose
@@ -51,7 +51,7 @@ description: {One line}
 ## Process
 
 **1. Convention Check** - Verify structure compliance:
-- Model document has required sections
+- Framework document has required sections
 - Skills have valid frontmatter
 - Output templates exist where needed
 - Mermaid diagrams render
@@ -79,7 +79,7 @@ description: {One line}
 
 ## Convention Checklist
 
-**Model Document:**
+**Framework Document:**
 - [ ] Has purpose statement
 - [ ] Has inputs section with dependencies
 - [ ] Has stages section with activities tables
@@ -99,18 +99,18 @@ description: {One line}
 - [ ] Has completion section with next action
 
 **Consistency:**
-- [ ] Stage names match between model doc and skills
+- [ ] Stage names match between framework doc and skills
 - [ ] Inputs/outputs chain correctly across stages
 - [ ] Quality criteria align with activities
 
 ## Output
 
-Save to `output/forge/{date}/` (same date as Frame).
+Save to `output/{date}/` (same date as Frame).
 
 | File | Content |
 |------|---------|
 | `run.md` | Append Evaluate decisions and final outcome |
-| `{model}-validation.md` | Validation report |
+| `{name}-validation.md` | Validation report |
 
 ### Run Log (run.md) - Finalize
 
@@ -130,27 +130,27 @@ Save to `output/forge/{date}/` (same date as Frame).
 |----------|--------|
 | {question} | {selection} |
 
-**Output:** `{model}-validation.md`
+**Output:** `{name}-validation.md`
 
 ---
 
 ## Outcome
 
 **Status:** complete / aborted
-**Result:** {model} model created with {n} stages
+**Result:** {name} framework created with {n} stages
 **Files generated:**
-- `docs/models/{model}.md`
+- `docs/models/{name}.md`
 - `.claude/skills/{stage}/SKILL.md` (per stage)
 ```
 
-### Validation Report ({model}-validation.md)
+### Validation Report ({name}-validation.md)
 
 ```markdown
-# Validation Report: {MODEL NAME}
+# Validation Report: {NAME}
 
 ## Convention Compliance
 
-### Model Document
+### Framework Document
 - [ ] Has purpose statement
 - [ ] Has inputs section
 - [ ] Has stages with activities
@@ -192,7 +192,7 @@ Save to `output/forge/{date}/` (same date as Frame).
 [ ] Needs rescoping (return to Frame)
 
 ## Next Steps
-{If ready: how to use the model}
+{If ready: how to use the framework}
 {If not: what to fix first}
 ```
 
@@ -206,4 +206,4 @@ Save to `output/forge/{date}/` (same date as Frame).
 
 ## Completion
 
-Present: Validation report with status. If ready → Model complete. If not → Return to indicated stage.
+Present: Validation report with status. If ready → Framework complete. If not → Return to indicated stage.

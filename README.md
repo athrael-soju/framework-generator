@@ -1,66 +1,49 @@
-# PRAXIS
+# Framework Generator
 
-A framework for research consulting client acquisition.
-
-**PRAXIS** = Practice + Axis - the central axis around which your consulting practice operates.
+A tool for creating structured, repeatable frameworks with executable skills.
 
 ## Structure
 
 ```
-PRAXIS/
 ├── docs/
-│   ├── overview.md           # Framework overview
-│   ├── models/
-│   │   ├── identity.md       # Identity model
-│   │   ├── sparc.md          # SPARC model
-│   │   └── forge.md          # FORGE model
+│   ├── overview.md           # Project overview
+│   ├── model.md              # Framework Generator model
 │   └── guides/
 │       └── execution.md      # How to run stages
 │
-├── .claude/
-│   └── skills/
-│       ├── identity/         # Identity assessment
-│       ├── signal/           # SPARC stages
-│       ├── profile/
-│       ├── analyze/
-│       ├── rank/
-│       ├── craft/
-│       ├── frame/            # FORGE stages
-│       ├── organize/
-│       ├── refine/
-│       ├── generate/
-│       └── evaluate/
+├── .claude/skills/
+│   ├── frame/                # Define purpose and boundaries
+│   ├── organize/             # Map stages and flow
+│   ├── refine/               # Specify each stage
+│   ├── generate/             # Produce framework files
+│   └── evaluate/             # Validate and iterate
 │
 ├── output/                   # Run outputs
-│   ├── identity/
-│   ├── sparc/
-│   └── forge/
 │
 ├── CLAUDE.md
 └── README.md
 ```
 
-## Models
+## Stages
 
-| Model | Purpose | Stages |
-|-------------|---------|--------|
-| **Identity** | Professional identity | Single assessment |
-| **SPARC** | Client acquisition | Signal → Profile → Analyze → Rank → Craft |
-| **FORGE** | Model creation | Frame → Organize → Refine → Generate → Evaluate |
+| Stage | Purpose | Output |
+|-------|---------|--------|
+| Frame | Define purpose and boundaries | Framework charter |
+| Organize | Map stages and flow | Stage map |
+| Refine | Specify each stage in detail | Stage specifications |
+| Generate | Produce documentation and skills | Framework files |
+| Evaluate | Validate and iterate | Validation report |
 
 ## Usage
 
-First, define your professional identity:
-- `/identity` (run once to initialize, update when positioning shifts)
+Run stages in sequence:
 
-Run SPARC stages for client acquisition:
-- `/signal` → `/profile` → `/analyze` → `/rank` → `/craft`
+```
+/frame → /organize → /refine → /generate → /evaluate
+```
 
-Run FORGE to create new models:
-- `/frame` → `/organize` → `/refine` → `/generate` → `/evaluate`
-
-Each stage requires approval before proceeding to the next.
+Each stage requires approval before proceeding.
 
 ## Getting Started
 
-Start with [docs/overview.md](docs/overview.md) for the complete overview.
+See [docs/overview.md](docs/overview.md) for the complete overview.

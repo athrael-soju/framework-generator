@@ -1,26 +1,26 @@
 ---
 name: generate
-description: Execute FORGE Generate stage to produce model document and skill files. Use after Refine to create the actual artifacts.
+description: Execute Generate stage to produce framework document and skill files. Use after Refine to create the actual artifacts.
 ---
 
 # Generate
 
-Produce the model document and skill files.
+Produce the framework document and skill files.
 
 ## Inputs
 
 | Input | Source |
 |-------|--------|
-| model_charter | Frame stage output |
+| framework_charter | Frame stage output |
 | stage_map | Organize stage output |
 | stage_specifications | Refine stage output (all stages) |
 
 ### Input Format
 
-**From Frame stage (`output/forge/{date}/{model}-charter.md`):**
+**From Frame stage (`output/{date}/{name}-charter.md`):**
 
 ```markdown
-# Model Charter: {NAME}
+# Framework Charter: {NAME}
 ## Problem
 ## Purpose
 ## Scope
@@ -28,7 +28,7 @@ Produce the model document and skill files.
 ## Dependencies
 ```
 
-**From Organize stage (`output/forge/{date}/{model}-stage-map.md`):**
+**From Organize stage (`output/{date}/{name}-stage-map.md`):**
 
 ```markdown
 # Stage Map: {NAME}
@@ -40,7 +40,7 @@ Produce the model document and skill files.
 ## Terminal States
 ```
 
-**From Refine stage (`output/forge/{date}/{model}-{stage}-spec.md`):**
+**From Refine stage (`output/{date}/{name}-{stage}-spec.md`):**
 
 ```markdown
 # Stage Specification: {STAGE}
@@ -54,26 +54,24 @@ Produce the model document and skill files.
 
 ## Process
 
-**1. Generate Model Document** - Create `docs/models/{name}.md`:
+**1. Generate Framework Document** - Create `docs/models/{name}.md`:
 - Combine charter, stage map, and specifications
-- Follow structure of existing models (SPARC, Identity)
+- Follow structure in docs/model.md
 - Include: purpose, inputs, stages, feedback loops, quality criteria
 
-**2. Generate Skill Files** - For each stage, create `.claude/skills/{stage}/SKILL.md`:
-- Frontmatter with name and description
-- Inputs table
-- Process steps
-- Output format with embedded templates
-- Quality criteria
-- Completion section
+**2. Generate Skill Files** - For each stage:
+- Create directory: `.claude/skills/{stage}/`
+- Create skill file: `.claude/skills/{stage}/SKILL.md`
+- Include: frontmatter, inputs table, input format, process steps, output with embedded templates, quality criteria, completion
+- First stage skill initializes run.md; subsequent stages append
 
 **3. Update Index Documents**:
-- Add to `docs/overview.md` component table, diagram, execution commands, document index
-- Add to `CLAUDE.md` context table
-- Add to `README.md`: structure tree, models table, usage commands
+- `docs/overview.md`: Add to document index table
+- `CLAUDE.md`: Add framework to context table
+- `README.md`: Add to structure tree, stages table, usage commands
 
 **4. Update Guide Documents**:
-- Add to `docs/guides/execution.md`: mermaid diagram, skills table, output structure, feedback loops reference
+- `docs/guides/execution.md`: Add to skills table, output structure section
 
 ## Output
 
@@ -81,10 +79,10 @@ Produce the model document and skill files.
 
 | Artifact | Path |
 |----------|------|
-| Model document | `docs/models/{model-name}.md` |
+| Framework document | `docs/models/{name}.md` |
 | Stage skill | `.claude/skills/{stage-name}/SKILL.md` |
 
-**Run log** updated in `output/forge/{date}/run.md`.
+**Run log** updated in `output/{date}/run.md`.
 
 ### Run Log (run.md) - Append
 
@@ -94,7 +92,7 @@ Produce the model document and skill files.
 ## Generate - {date}
 
 **Files created:**
-- `docs/models/{model}.md`
+- `docs/models/{name}.md`
 - `.claude/skills/{stage}/SKILL.md` (for each stage)
 
 **Index updates:**
@@ -106,10 +104,10 @@ Produce the model document and skill files.
 - `docs/guides/execution.md`
 ```
 
-### Model Document Structure
+### Framework Document Structure
 
 ```markdown
-# The {NAME} Model
+# The {NAME} Framework
 
 {Brief description}
 
@@ -141,6 +139,80 @@ Produce the model document and skill files.
 
 ### Skill File Structure
 
+**For first stage** (initializes run log):
+
+```markdown
+---
+name: {stage-name}
+description: {One line for skill picker}
+---
+
+# {Stage Name}
+
+{Brief purpose}
+
+## Inputs
+| Input | Source |
+|-------|--------|
+
+### Input Format
+
+**From {source}:**
+
+```yaml or markdown
+{Expected structure}
+```
+
+## Process
+**1. {Step}** - {Description}
+
+## Output
+
+Save to `output/{framework}/{date}/`.
+
+| File | Content |
+|------|---------|
+| `run.md` | Initialize run log |
+| `{output-file}.md` | {Description} |
+
+### Run Log (run.md) - Initialize
+
+```markdown
+# {Framework} Run: {Name}
+
+Started: {date}
+Status: in_progress
+
+---
+
+## {Stage} - {date}
+
+**Inputs provided:**
+- {Input}: {summary}
+
+**Decisions:**
+| Question | Choice |
+|----------|--------|
+| {question} | {selection} |
+
+**Output:** `{filename}.md`
+```
+
+### {Output File} ({filename}.md)
+
+```markdown
+{Full template with placeholders}
+```
+
+## Quality Criteria
+- [ ] {Criterion}
+
+## Completion
+{What to present, next action}
+```
+
+**For subsequent stages** (appends to run log):
+
 ```markdown
 ---
 name: {stage-name}
@@ -159,7 +231,7 @@ description: {One line for skill picker}
 
 **From {source} (`{path}`):**
 
-```yaml or markdown
+```markdown
 {Expected structure}
 ```
 
@@ -168,18 +240,12 @@ description: {One line for skill picker}
 
 ## Output
 
-Save to `output/{model}/{date}/`.
+Save to `output/{framework}/{date}/` (same date as first stage).
 
 | File | Content |
 |------|---------|
 | `run.md` | Append {stage} decisions |
 | `{output-file}.md` | {Description} |
-
-### {Output File} ({filename}.md)
-
-```markdown
-{Full template with placeholders}
-```
 
 ### Run Log (run.md) - Append
 
@@ -196,6 +262,12 @@ Save to `output/{model}/{date}/`.
 **Output:** `{filename}.md`
 ```
 
+### {Output File} ({filename}.md)
+
+```markdown
+{Full template with placeholders}
+```
+
 ## Quality Criteria
 - [ ] {Criterion}
 
@@ -205,7 +277,7 @@ Save to `output/{model}/{date}/`.
 
 ## Quality Criteria
 
-- [ ] Model document follows framework structure
+- [ ] Framework document follows structure
 - [ ] All stages have corresponding skill files
 - [ ] Skill frontmatter is valid (name, description)
 - [ ] Skills have input format section after inputs table
