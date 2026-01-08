@@ -149,7 +149,7 @@ At stage completion:
 Some conditions route back to earlier stages. When a feedback condition is triggered, the skill presents options and guides you to the appropriate stage.
 
 For the complete feedback loop definitions, see:
-- [SPARC Feedback Loops](../methodology/sparc/methodology.md#feedback-loops)
+- [SPARC Feedback Loops](sparc.md#feedback-loops)
 
 ---
 
@@ -252,7 +252,7 @@ When run finishes:
 2. Set outcome (`signed_agreement`, `nurture`, `pass`, etc.)
 3. For nurture/pass outcomes, copy record to `nurture/` or `passed/`
 
-See [run.md](templates/run.md) for `run.yaml` and `decisions.md` templates.
+See [run.md](run.md) for `run.yaml` and `decisions.md` templates.
 
 ---
 

@@ -8,29 +8,29 @@ A framework for research consulting client acquisition.
 
 ```
 PRAXIS/
-├── docs/                      # Framework documentation
-│   ├── PRAXIS.md              # Integration layer, lifecycle, metrics
-│   ├── Execution.md           # How to run stages
-│   ├── Configuration.md       # Configuration inputs
-│   └── templates/             # Artifact templates
+├── docs/
+│   ├── overview.md           # Framework overview
+│   ├── execution.md          # How to run stages
+│   ├── configuration.md      # Configuration inputs
+│   ├── identity.md           # Identity methodology
+│   ├── sparc.md              # SPARC methodology
+│   └── run.md                # Run tracking templates
 │
-├── methodology/               # Methodology definitions
-│   ├── TEMPLATE.md            # Template for creating new methodologies
-│   ├── identity/              # Professional identity
-│   │   ├── methodology.md     # Identity methodology
-│   │   └── SKILL.md           # Identity skill
-│   └── sparc/                 # Client acquisition
-│       ├── methodology.md     # SPARC methodology
-│       ├── signal/SKILL.md
-│       ├── profile/SKILL.md
-│       ├── analyze/SKILL.md
-│       ├── rank/SKILL.md
-│       └── craft/SKILL.md
+├── .claude/
+│   └── skills/
+│       ├── identity/
+│       │   ├── SKILL.md
+│       │   └── templates.md
+│       └── sparc/
+│           ├── templates.md
+│           ├── signal/SKILL.md
+│           ├── profile/SKILL.md
+│           ├── analyze/SKILL.md
+│           ├── rank/SKILL.md
+│           └── craft/SKILL.md
 │
-└── .claude/skills/            # Symlinks to methodology skills
-    ├── identity -> ../../methodology/identity
-    ├── signal -> ../../methodology/sparc/signal
-    └── ... (all stage symlinks)
+├── CLAUDE.md
+└── README.md
 ```
 
 ## Methodologies
@@ -52,4 +52,4 @@ Each stage requires approval before proceeding to the next.
 
 ## Getting Started
 
-Start with [docs/PRAXIS.md](docs/PRAXIS.md) for the complete overview.
+Start with [docs/overview.md](docs/overview.md) for the complete overview.

@@ -8,13 +8,13 @@ You have access to:
 
 | Document | Purpose |
 |----------|---------|
-| `docs/PRAXIS.md` | Integration layer, lifecycle, metrics |
-| `docs/Execution.md` | How to run stages via skill commands |
-| `docs/Configuration.md` | Configuration input examples |
-| `docs/templates/` | Artifact templates |
-| `methodology/TEMPLATE.md` | Template for creating new methodologies |
-| `methodology/identity/` | Identity assessment (foundation) |
-| `methodology/sparc/` | SPARC acquisition: signal, profile, analyze, rank, craft |
+| `docs/overview.md` | Framework overview, lifecycle, metrics |
+| `docs/execution.md` | How to run stages via skill commands |
+| `docs/configuration.md` | Configuration input examples |
+| `docs/identity.md` | Identity methodology |
+| `docs/sparc.md` | SPARC methodology |
+| `docs/run.md` | Run tracking templates |
+| `.claude/skills/*/templates.md` | Stage output templates |
 
 ## Roles
 
@@ -94,9 +94,7 @@ Use interactive menus (AskUserQuestion) at decision points. Never proceed silent
 When developing or modifying skills:
 
 - Each stage has one skill that defines its complete methodology
-- Skills live in `methodology/<name>/<stage>/SKILL.md`
-- Symlinks in `.claude/skills/` point to methodology folders
-- Use `methodology/TEMPLATE.md` as a guide for new methodologies
+- Skills live in `.claude/skills/<methodology>/<stage>/SKILL.md`
 - Human approval gates exist at every stage handoff
 
 ## Document Conventions
