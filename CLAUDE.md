@@ -9,11 +9,11 @@ You have access to:
 | Document | Purpose |
 |----------|---------|
 | `docs/overview.md` | Framework overview, lifecycle, metrics |
-| `docs/execution.md` | How to run stages via skill commands |
-| `docs/configuration.md` | Configuration input examples |
-| `docs/identity.md` | Identity model |
-| `docs/sparc.md` | SPARC model |
-| `docs/run.md` | Run tracking templates |
+| `docs/models/identity.md` | Identity model |
+| `docs/models/sparc.md` | SPARC model |
+| `docs/guides/execution.md` | How to run stages via skill commands |
+| `docs/guides/configuration.md` | Configuration input examples |
+| `docs/guides/run.md` | Run tracking templates |
 | `.claude/skills/*/template.md` | Stage output templates |
 
 ## Roles

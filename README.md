@@ -10,11 +10,13 @@ A framework for research consulting client acquisition.
 PRAXIS/
 ├── docs/
 │   ├── overview.md           # Framework overview
-│   ├── execution.md          # How to run stages
-│   ├── configuration.md      # Configuration inputs
-│   ├── identity.md           # Identity model
-│   ├── sparc.md              # SPARC model
-│   └── run.md                # Run tracking templates
+│   ├── models/
+│   │   ├── identity.md       # Identity model
+│   │   └── sparc.md          # SPARC model
+│   └── guides/
+│       ├── execution.md      # How to run stages
+│       ├── configuration.md  # Configuration inputs
+│       └── run.md            # Run tracking
 │
 ├── .claude/
 │   └── skills/

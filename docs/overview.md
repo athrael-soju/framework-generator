@@ -55,7 +55,7 @@ SPARC depends on your **Identity Profile** - your professional identity definiti
 | `expertise` | Analyze gaps, find angles |
 | `constraints` | Rank scoring |
 
-Run `/identity` to generate your profile before starting SPARC. See [Identity Model](identity.md) for details.
+Run `/identity` to generate your profile before starting SPARC. See [Identity Model](models/identity.md) for details.
 
 ---
 
@@ -111,7 +111,7 @@ Run PRAXIS via skill commands:
 | Identity | `/identity` (run once to initialize) |
 | SPARC | `/signal` → `/profile` → `/analyze` → `/rank` → `/craft` |
 
-Each stage requires approval before proceeding to the next. See [execution.md](execution.md) for detailed patterns.
+Each stage requires approval before proceeding to the next. See [execution.md](guides/execution.md) for detailed patterns.
 
 ---
 
@@ -139,10 +139,10 @@ Each stage requires approval before proceeding to the next. See [execution.md](e
 | Document | Purpose |
 |----------|---------|
 | `docs/overview.md` | This document - overview and integration |
-| `docs/execution.md` | How to run stages via skill commands |
-| `docs/configuration.md` | Configuration input examples |
-| `docs/identity.md` | Identity model |
-| `docs/sparc.md` | SPARC model |
-| `docs/run.md` | Run tracking templates |
+| `docs/models/identity.md` | Identity model |
+| `docs/models/sparc.md` | SPARC model |
+| `docs/guides/execution.md` | How to run stages via skill commands |
+| `docs/guides/configuration.md` | Configuration input examples |
+| `docs/guides/run.md` | Run tracking templates |
 | `.claude/skills/*/template.md` | Stage output templates |
 | `CLAUDE.md` | Project instructions for Claude Code |
