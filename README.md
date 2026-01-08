@@ -12,7 +12,8 @@ PRAXIS/
 │   ├── overview.md           # Framework overview
 │   ├── models/
 │   │   ├── identity.md       # Identity model
-│   │   └── sparc.md          # SPARC model
+│   │   ├── sparc.md          # SPARC model
+│   │   └── forge.md          # FORGE model
 │   └── guides/
 │       ├── execution.md      # How to run stages
 │       ├── configuration.md  # Configuration inputs
@@ -20,24 +21,22 @@ PRAXIS/
 │
 ├── .claude/
 │   └── skills/
-│       ├── identity/
-│       │   ├── SKILL.md
-│       │   └── template.md
-│       ├── signal/
-│       │   ├── SKILL.md
-│       │   └── template.md
+│       ├── identity/         # Identity assessment
+│       ├── signal/           # SPARC stages
 │       ├── profile/
-│       │   ├── SKILL.md
-│       │   └── template.md
 │       ├── analyze/
-│       │   ├── SKILL.md
-│       │   └── template.md
 │       ├── rank/
-│       │   ├── SKILL.md
-│       │   └── template.md
-│       └── craft/
-│           ├── SKILL.md
-│           └── template.md
+│       ├── craft/
+│       ├── frame/            # FORGE stages
+│       ├── organize/
+│       ├── refine/
+│       ├── generate/
+│       └── evaluate/
+│
+├── output/                   # Run outputs
+│   ├── identity/
+│   ├── sparc/
+│   └── forge/
 │
 ├── CLAUDE.md
 └── README.md
@@ -48,7 +47,8 @@ PRAXIS/
 | Model | Purpose | Stages |
 |-------------|---------|--------|
 | **Identity** | Professional identity | Single assessment |
-| **SPARC** | Client acquisition | Signal - Profile - Analyze - Rank - Craft |
+| **SPARC** | Client acquisition | Signal → Profile → Analyze → Rank → Craft |
+| **FORGE** | Model creation | Frame → Organize → Refine → Generate → Evaluate |
 
 ## Usage
 
@@ -57,6 +57,9 @@ First, define your professional identity:
 
 Run SPARC stages for client acquisition:
 - `/signal` → `/profile` → `/analyze` → `/rank` → `/craft`
+
+Run FORGE to create new models:
+- `/frame` → `/organize` → `/refine` → `/generate` → `/evaluate`
 
 Each stage requires approval before proceeding to the next.
 

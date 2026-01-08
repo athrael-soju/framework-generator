@@ -23,6 +23,13 @@ flowchart TB
         R --> C["/craft"]
     end
 
+    subgraph FORGE ["FORGE - Model Creation"]
+        Fr["/frame"] --> O["/organize"]
+        O --> Re["/refine"]
+        Re --> G["/generate"]
+        G --> E["/evaluate"]
+    end
+
     Identity --> S
 ```
 
@@ -40,6 +47,11 @@ Each PRAXIS component has corresponding skills:
 | SPARC | Analyze | `/analyze` | Assess competitive position |
 | SPARC | Rank | `/rank` | Score and prioritize prospects |
 | SPARC | Craft | `/craft` | Create personalized outreach |
+| FORGE | Frame | `/frame` | Define model purpose and boundaries |
+| FORGE | Organize | `/organize` | Map stages and flow |
+| FORGE | Refine | `/refine` | Specify each stage in detail |
+| FORGE | Generate | `/generate` | Produce model and skill files |
+| FORGE | Evaluate | `/evaluate` | Validate and iterate |
 
 **Note:** Run `/identity` once before starting SPARC. The Identity profile provides foundational inputs that inform the model.
 
@@ -150,6 +162,7 @@ Some conditions route back to earlier stages. When a feedback condition is trigg
 
 For the complete feedback loop definitions, see:
 - [SPARC Feedback Loops](../models/sparc.md#feedback-loops)
+- [FORGE Feedback Loops](../models/forge.md#feedback-loops)
 
 ---
 
@@ -161,32 +174,45 @@ Stage outputs are saved to a structured folder:
 output/
 ├── identity/
 │   └── profile.md                  # Single file, reused across runs
-└── sparc/
+├── sparc/
+│   └── YYYY-MM-DD/
+│       ├── run.md                  # Run log (decisions at each stage)
+│       ├── signal-log.md
+│       ├── {company}-profile.md
+│       ├── {company}-analysis.md
+│       ├── qualification.md
+│       └── {company}-outreach.md
+└── forge/
     └── YYYY-MM-DD/
         ├── run.md                  # Run log (decisions at each stage)
-        ├── signal-log.md
-        ├── {company}-profile.md
-        ├── {company}-analysis.md
-        ├── qualification.md
-        └── {company}-outreach.md
+        ├── {model}-charter.md
+        ├── {model}-stage-map.md
+        ├── {model}-{stage}-spec.md
+        └── {model}-validation.md
 ```
 
 ### Naming Convention
 
 - **Identity**: Single `output/identity/profile.md`, updated when positioning shifts
 - **SPARC runs**: Date folder under `output/sparc/YYYY-MM-DD/` (sorts chronologically)
+- **FORGE runs**: Date folder under `output/forge/YYYY-MM-DD/`
 - **Multiple runs same day**: Add suffix (`2026-01-08`, `2026-01-08-02`, `2026-01-08-03`)
 
 ### Output Files
 
-| Stage | File |
-|-------|------|
-| Identity | `output/identity/profile.md` |
-| Signal | `output/sparc/YYYY-MM-DD/run.md`, `signal-log.md` |
-| Profile | `output/sparc/YYYY-MM-DD/{company}-profile.md` |
-| Analyze | `output/sparc/YYYY-MM-DD/{company}-analysis.md` |
-| Rank | `output/sparc/YYYY-MM-DD/qualification.md` |
-| Craft | `output/sparc/YYYY-MM-DD/{company}-outreach.md` |
+| Component | Stage | File |
+|-----------|-------|------|
+| Identity | - | `output/identity/profile.md` |
+| SPARC | Signal | `run.md`, `signal-log.md` |
+| SPARC | Profile | `{company}-profile.md` |
+| SPARC | Analyze | `{company}-analysis.md` |
+| SPARC | Rank | `qualification.md` |
+| SPARC | Craft | `{company}-outreach.md` |
+| FORGE | Frame | `run.md`, `{model}-charter.md` |
+| FORGE | Organize | `{model}-stage-map.md` |
+| FORGE | Refine | `{model}-{stage}-spec.md` |
+| FORGE | Generate | Model + skill files (in codebase) |
+| FORGE | Evaluate | `{model}-validation.md` |
 
 ---
 
