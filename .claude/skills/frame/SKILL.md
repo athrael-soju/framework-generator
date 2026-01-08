@@ -75,7 +75,9 @@ reference_frameworks:
 
 ## Output
 
-Save to `output/{date}/` where `{date}` is today (YYYY-MM-DD).
+Create and save to `output/{date}/` where `{date}` is today (YYYY-MM-DD).
+
+If running multiple times on the same day, add a suffix: `output/2026-01-08-02/`.
 
 | File | Content |
 |------|---------|

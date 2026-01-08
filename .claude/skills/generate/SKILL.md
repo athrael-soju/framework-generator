@@ -59,21 +59,19 @@ Produce the framework document and skill files.
 - Follow structure in docs/model.md
 - Include: purpose, inputs, stages, feedback loops, quality criteria
 
-**2. Generate Skill Files** - For each stage, create `.claude/skills/{stage}/SKILL.md`:
-- Frontmatter with name and description
-- Inputs table
-- Process steps
-- Output format with embedded templates
-- Quality criteria
-- Completion section
+**2. Generate Skill Files** - For each stage:
+- Create directory: `.claude/skills/{stage}/`
+- Create skill file: `.claude/skills/{stage}/SKILL.md`
+- Include: frontmatter, inputs table, input format, process steps, output with embedded templates, quality criteria, completion
+- First stage skill initializes run.md; subsequent stages append
 
 **3. Update Index Documents**:
-- Add to `docs/overview.md` component table, diagram, execution commands, document index
-- Add to `CLAUDE.md` context table
-- Add to `README.md`: structure tree, models table, usage commands
+- `docs/overview.md`: Add to document index table
+- `CLAUDE.md`: Add framework to context table
+- `README.md`: Add to structure tree, stages table, usage commands
 
 **4. Update Guide Documents**:
-- Add to `docs/guides/execution.md`: mermaid diagram, skills table, output structure, feedback loops reference
+- `docs/guides/execution.md`: Add to skills table, output structure section
 
 ## Output
 
@@ -141,6 +139,80 @@ Produce the framework document and skill files.
 
 ### Skill File Structure
 
+**For first stage** (initializes run log):
+
+```markdown
+---
+name: {stage-name}
+description: {One line for skill picker}
+---
+
+# {Stage Name}
+
+{Brief purpose}
+
+## Inputs
+| Input | Source |
+|-------|--------|
+
+### Input Format
+
+**From {source}:**
+
+```yaml or markdown
+{Expected structure}
+```
+
+## Process
+**1. {Step}** - {Description}
+
+## Output
+
+Save to `output/{framework}/{date}/`.
+
+| File | Content |
+|------|---------|
+| `run.md` | Initialize run log |
+| `{output-file}.md` | {Description} |
+
+### Run Log (run.md) - Initialize
+
+```markdown
+# {Framework} Run: {Name}
+
+Started: {date}
+Status: in_progress
+
+---
+
+## {Stage} - {date}
+
+**Inputs provided:**
+- {Input}: {summary}
+
+**Decisions:**
+| Question | Choice |
+|----------|--------|
+| {question} | {selection} |
+
+**Output:** `{filename}.md`
+```
+
+### {Output File} ({filename}.md)
+
+```markdown
+{Full template with placeholders}
+```
+
+## Quality Criteria
+- [ ] {Criterion}
+
+## Completion
+{What to present, next action}
+```
+
+**For subsequent stages** (appends to run log):
+
 ```markdown
 ---
 name: {stage-name}
@@ -159,7 +231,7 @@ description: {One line for skill picker}
 
 **From {source} (`{path}`):**
 
-```yaml or markdown
+```markdown
 {Expected structure}
 ```
 
@@ -168,18 +240,12 @@ description: {One line for skill picker}
 
 ## Output
 
-Save to `output/{date}/`.
+Save to `output/{framework}/{date}/` (same date as first stage).
 
 | File | Content |
 |------|---------|
 | `run.md` | Append {stage} decisions |
 | `{output-file}.md` | {Description} |
-
-### {Output File} ({filename}.md)
-
-```markdown
-{Full template with placeholders}
-```
 
 ### Run Log (run.md) - Append
 
@@ -194,6 +260,12 @@ Save to `output/{date}/`.
 | {question} | {selection} |
 
 **Output:** `{filename}.md`
+```
+
+### {Output File} ({filename}.md)
+
+```markdown
+{Full template with placeholders}
 ```
 
 ## Quality Criteria
