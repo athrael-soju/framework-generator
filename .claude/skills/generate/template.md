@@ -14,6 +14,8 @@ Output templates for the Generate stage.
 **Files created:**
 - `docs/models/{model}.md`
 - `.claude/skills/{stage}/SKILL.md` (for each stage)
+- `.claude/skills/{stage}/template.md` (for each stage)
+- `.claude/skills/{stage}/config.md` (for each stage)
 
 **Index updates:**
 - `docs/overview.md`
@@ -31,6 +33,7 @@ Generate stage produces files in their permanent codebase locations:
 | Model document | `docs/models/{model-name}.md` |
 | Stage skill | `.claude/skills/{stage-name}/SKILL.md` |
 | Output template | `.claude/skills/{stage-name}/template.md` |
+| Stage config | `.claude/skills/{stage-name}/config.md` |
 
 ### Model Document Structure
 
@@ -92,4 +95,42 @@ See template.md
 
 ## Completion
 {What to present, next action}
+```
+
+### Config File Structure
+
+```markdown
+# {Stage Name} Configuration
+
+Configuration for the {Stage Name} stage of {MODEL}.
+
+## {Section 1}
+
+```yaml
+{section_key}:
+  item_1:
+    property: value
+  item_2:
+    property: value
+```
+
+## {Section 2}
+
+```yaml
+{another_key}:
+  criteria:
+    5:
+      label: {Label}
+      definition: {Definition}
+    4:
+      ...
+```
+
+## Thresholds
+
+```yaml
+thresholds:
+  {threshold_name}: {value}    # {Comment}
+  # {Feedback trigger description}
+```
 ```

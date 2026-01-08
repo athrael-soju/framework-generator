@@ -1,8 +1,31 @@
 # PRAXIS Configuration
 
-Configuration inputs referenced by SPARC skills. Store in your preferred format (YAML, JSON, Notion database, etc.).
+Configuration inputs referenced by PRAXIS models.
+
+## Structure
+
+- **Shared configs** (Identity) live here - used by multiple models
+- **Model-specific configs** live in each skill's `config.md` file
+
+```
+.claude/skills/
+├── signal/config.md       # SPARC Signal config
+├── profile/config.md      # SPARC Profile config
+├── ...
+├── retrieve/config.md     # RECON Retrieve config
+├── extract/config.md      # RECON Extract config
+├── connect/config.md      # RECON Connect config
+├── order/config.md        # RECON Order config
+└── narrate/config.md      # RECON Narrate config
+```
+
+Store configs in your preferred format (YAML, JSON, Notion database, etc.).
 
 ---
+
+# Shared Configuration (Identity)
+
+These configs come from your Identity profile and are used by multiple models.
 
 ## Positioning Statement
 
@@ -101,81 +124,6 @@ services:
 
 ---
 
-## Signal Configuration
-
-```yaml
-# What signals to monitor and how to score them
-signal_config:
-  sources:
-    - name: Crunchbase
-      check_frequency: weekly
-      signal_types: [funding]
-
-    - name: LinkedIn
-      check_frequency: daily
-      signal_types: [hiring, content]
-
-    - name: Job Boards
-      check_frequency: weekly
-      signal_types: [hiring]
-      keywords: [DevRel, Developer Advocate, Technical Writer, API]
-
-    - name: News/Alerts
-      check_frequency: daily
-      signal_types: [news, product]
-
-  scoring:
-    hot_criteria:
-      - Funding + DevRel hiring in last 14 days
-      - Multiple strong signals same company
-    warm_criteria:
-      - Single funding event
-      - 3+ relevant job postings
-    watch_criteria:
-      - Single weak signal
-      - Mentioned relevant technology
-
-  lookback_days: 30
-```
-
----
-
-## Analysis Dimensions
-
-```yaml
-# What to compare in competitive analysis
-analysis_dimensions:
-  - name: documentation_depth
-    weight: 20%
-    assessment: Review docs site structure and coverage
-
-  - name: community_size
-    weight: 15%
-    assessment: Discord/Slack member counts, forum activity
-
-  - name: developer_experience
-    weight: 20%
-    assessment: Onboarding flow, SDK quality, time-to-first-success
-
-  - name: content_quality
-    weight: 15%
-    assessment: Blog depth, tutorial coverage, technical accuracy
-
-  - name: pricing_transparency
-    weight: 10%
-    assessment: Clarity of pricing page, self-serve options
-
-  - name: enterprise_features
-    weight: 10%
-    assessment: SSO, audit logs, compliance certifications
-
-  - name: api_design
-    weight: 10%
-    assessment: Consistency, documentation, versioning strategy
-```
-
----
-
 ## Expertise Inventory
 
 ```yaml
@@ -213,3 +161,29 @@ expertise:
     travel: Limited
     timezone: US Eastern
 ```
+
+---
+
+# Model-Specific Configs
+
+Each model's stage-specific configurations live alongside the skill files.
+
+## SPARC
+
+| Stage | Config Location |
+|-------|-----------------|
+| Signal | `.claude/skills/signal/config.md` |
+| Profile | `.claude/skills/profile/config.md` |
+| Analyze | `.claude/skills/analyze/config.md` |
+| Rank | `.claude/skills/rank/config.md` |
+| Craft | `.claude/skills/craft/config.md` |
+
+## RECON
+
+| Stage | Config Location |
+|-------|-----------------|
+| Retrieve | `.claude/skills/retrieve/config.md` |
+| Extract | `.claude/skills/extract/config.md` |
+| Connect | `.claude/skills/connect/config.md` |
+| Order | `.claude/skills/order/config.md` |
+| Narrate | `.claude/skills/narrate/config.md` |
