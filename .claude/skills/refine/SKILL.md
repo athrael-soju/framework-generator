@@ -81,6 +81,17 @@ For each stage in the stage map:
 - What approval is needed
 - What's the next stage
 
+## Interaction
+
+See CLAUDE.md "Interaction Protocol" for tool usage and menu format.
+
+**Stage-specific triggers for `AskUserQuestion`:**
+- Gathering domain knowledge (criteria, categories, thresholds)
+- Activity detail clarification
+- Output format choices
+- Quality criteria priorities
+- Stage specification approval
+
 ## Output
 
 Save to `output/{date}/` (same date as Frame).

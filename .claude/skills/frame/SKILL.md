@@ -73,6 +73,16 @@ reference_frameworks:
 - Does it need outputs from another framework?
 - What external inputs are required?
 
+## Interaction
+
+See CLAUDE.md "Interaction Protocol" for tool usage and menu format.
+
+**Stage-specific triggers for `AskUserQuestion`:**
+- Gathering problem description, context, constraints
+- Framework type selection
+- Scope boundary decisions
+- Charter approval
+
 ## Output
 
 Create and save to `output/{date}/` where `{date}` is today (YYYY-MM-DD).

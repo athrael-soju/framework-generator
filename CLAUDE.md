@@ -49,14 +49,23 @@ When executing a stage:
 
 ### Interaction Protocol
 
-**Clarification menus** - When inputs are missing or ambiguous
-**Decision menus** - Before major decisions with multiple valid approaches
-**Approval menus** - After completing stage work
+Use `AskUserQuestion` tool for structured input gathering:
+
+| Type | When to use |
+|------|-------------|
+| Clarification | Inputs missing or ambiguous |
+| Decision | Multiple valid approaches exist |
+| Approval | Stage work complete, need sign-off |
 
 **Menu format:**
 - 2-4 options per question
-- Each option: short label + description
-- Always allow "Other" for custom input
+- Each option: short label (1-5 words) + description
+- Tool auto-includes "Other" option
+
+**Use plain text for:**
+- Presenting completed outputs
+- Explaining rationale
+- Summarizing captured information
 
 ## Skill Development
 

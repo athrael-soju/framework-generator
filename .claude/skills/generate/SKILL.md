@@ -73,6 +73,16 @@ Produce the framework document and skill files.
 **4. Update Guide Documents**:
 - `docs/execution.md`: Add to skills table, output structure section
 
+## Interaction
+
+See CLAUDE.md "Interaction Protocol" for tool usage and menu format.
+
+**Stage-specific triggers for `AskUserQuestion`:**
+- File naming conventions
+- Directory structure choices
+- Ambiguous specification clarification
+- Generated files approval
+
 ## Output
 
 **Generated files** go to their permanent locations:

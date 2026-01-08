@@ -77,6 +77,17 @@ description: {One line}
 - Return to Refine if significant issues
 - Document any accepted limitations
 
+## Interaction
+
+See CLAUDE.md "Interaction Protocol" for tool usage and menu format.
+
+**Stage-specific triggers for `AskUserQuestion`:**
+- Gap handling decisions (fix vs accept)
+- Severity classification
+- Dry run test scenario input
+- Return stage selection (if issues found)
+- Validation report approval
+
 ## Convention Checklist
 
 **Framework Document:**

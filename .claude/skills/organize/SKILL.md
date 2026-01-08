@@ -76,6 +76,17 @@ reference_frameworks:
 - Failure/exit states
 - What actions accompany each?
 
+## Interaction
+
+See CLAUDE.md "Interaction Protocol" for tool usage and menu format.
+
+**Stage-specific triggers for `AskUserQuestion`:**
+- Clarifying ambiguous charter sections
+- Stage naming and count decisions
+- Flow branching choices
+- Feedback loop trigger definitions
+- Stage map approval
+
 ## Output
 
 Save to `output/{date}/` (same date as Frame).
