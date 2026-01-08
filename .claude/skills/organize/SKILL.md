@@ -25,14 +25,14 @@ Map the stages and flow of the framework.
 {Workflow being addressed}
 
 ## Purpose
-{Why this model exists}
+{Why this framework exists}
 
 ## Scope
 **In:** {What's covered}
 **Out:** {What's excluded}
 
 ## Type
-{Foundation / Pipeline}
+{Foundation / Pipeline / Cyclical / Hub}
 
 ## Dependencies
 | Requires | From | Why |
@@ -50,7 +50,7 @@ reference_frameworks:
 **1. Identify Stages** - Break the workflow into distinct stages:
 - What are the major phases of work?
 - Each stage should have a clear purpose and output
-- Aim for 3-7 stages (fewer for foundation models)
+- Aim for 3-7 stages (fewer for foundation frameworks)
 
 **2. Name Stages** - Choose clear, action-oriented names:
 - Verbs or nouns that describe what happens

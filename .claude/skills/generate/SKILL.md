@@ -109,7 +109,7 @@ Produce the framework document and skill files.
 ### Framework Document Structure
 
 ```markdown
-# The {NAME} Model
+# The {NAME} Framework
 
 {Brief description}
 

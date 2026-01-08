@@ -32,7 +32,7 @@ problem_description: |
 context:
   domain: [Area of work]
   constraints: [Limitations, requirements]
-  intended_users: [Who will run this model]
+  intended_users: [Who will run this framework]
 ```
 
 **Optional reference frameworks:**
@@ -50,16 +50,16 @@ reference_frameworks:
 - What's painful or inconsistent about it?
 - What would success look like?
 
-**2. Articulate Purpose** - Draft why this model should exist:
+**2. Articulate Purpose** - Draft why this framework should exist:
 - What value does systematizing provide?
-- Why a model vs. a checklist or ad-hoc process?
+- Why a framework vs. a checklist or ad-hoc process?
 
 **3. Set Boundaries** - Define scope:
 - What's explicitly in scope?
 - What's explicitly out of scope?
 - What adjacent problems are we not solving?
 
-**4. Identify Triggers** - When should this model be run:
+**4. Identify Triggers** - When should this framework be run:
 - One-time vs. ongoing?
 - What events or conditions trigger execution?
 
@@ -129,7 +129,7 @@ Status: in_progress
 - {What's excluded}
 
 ## Triggers
-- {When to run this model}
+- {When to run this framework}
 
 ## Type
 {Foundation / Pipeline / Cyclical / Hub}
@@ -151,4 +151,4 @@ Status: in_progress
 
 ## Completion
 
-Present: Model charter with all sections. Approve → Organize.
+Present: Framework charter with all sections. Approve → Organize.

@@ -19,7 +19,7 @@ Validate the generated framework and iterate if needed.
 **Framework document (`docs/models/{name}.md`):**
 
 ```markdown
-# The {NAME} Model
+# The {NAME} Framework
 {Description}
 {Mermaid diagram}
 ## Purpose
@@ -192,7 +192,7 @@ Save to `output/{date}/` (same date as Frame).
 [ ] Needs rescoping (return to Frame)
 
 ## Next Steps
-{If ready: how to use the model}
+{If ready: how to use the framework}
 {If not: what to fix first}
 ```
 
@@ -206,4 +206,4 @@ Save to `output/{date}/` (same date as Frame).
 
 ## Completion
 
-Present: Validation report with status. If ready → Model complete. If not → Return to indicated stage.
+Present: Validation report with status. If ready → Framework complete. If not → Return to indicated stage.
