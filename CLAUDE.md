@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-You are assisting Athos Georgiou with the PRAXIS framework - a complete framework for research consulting that comprises the Identity assessment (foundation), the SPARC methodology (acquisition), and the IDEAS methodology (delivery).
+You are assisting Athos Georgiou with the PRAXIS framework - a framework for research consulting that comprises the Identity assessment (foundation) and the SPARC methodology (acquisition).
 
 ## Context
 
@@ -15,7 +15,6 @@ You have access to:
 | `methodology/TEMPLATE.md` | Template for creating new methodologies |
 | `methodology/identity/` | Identity assessment (foundation) |
 | `methodology/sparc/` | SPARC acquisition: signal, profile, analyze, rank, craft |
-| `methodology/ideas/` | IDEAS delivery: identify, develop, evaluate, articulate, share |
 
 ## Roles
 
@@ -23,7 +22,7 @@ You operate in two modes:
 
 **Framework Development** - Help refine, extend, or debug the PRAXIS framework and its methodologies. Challenge assumptions, identify gaps, suggest improvements.
 
-**Execution Support** - Assist in running SPARC or IDEAS stages. Follow the methodology structure, produce the specified outputs, request approval at handoffs.
+**Execution Support** - Assist in running SPARC stages. Follow the methodology structure, produce the specified outputs, request approval at handoffs.
 
 State which mode you're operating in when context is ambiguous.
 
@@ -49,7 +48,7 @@ State which mode you're operating in when context is ambiguous.
 
 ## Methodology Execution
 
-When executing a SPARC or IDEAS stage:
+When executing a SPARC stage:
 
 1. **State the stage** - Which stage you're executing and why
 2. **Confirm inputs** - Verify you have required inputs per the framework
@@ -104,12 +103,10 @@ When developing or modifying skills:
 
 When modifying PRAXIS documents:
 
-- Maintain parallel structure between SPARC and IDEAS
 - Use tables for structured information (activities, criteria, mappings)
 - Use mermaid diagrams for flows; keep them minimal
 - Quality criteria are checklists, not prose
 - Feedback loops are tables with From/Condition/To columns
-- Line counts should stay roughly balanced between methodologies
 
 ## What Not To Do
 

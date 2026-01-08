@@ -1,6 +1,6 @@
 # The Identity Methodology
 
-A structured assessment for defining your professional identity to inform client acquisition and research delivery.
+A structured assessment for defining your professional identity to inform client acquisition.
 
 ```mermaid
 ---
@@ -13,12 +13,11 @@ config:
 ---
 flowchart TB
     Identity["<b>Identity</b>"] --> SPARC["SPARC Methodology"]
-    Identity --> IDEAS["IDEAS Methodology"]
 ```
 
 ## Purpose
 
-Define who you are professionally so that SPARC finds better-fit opportunities and IDEAS leverages your strengths. Without a clear identity, acquisition becomes scattershot and delivery lacks focus.
+Define who you are professionally so that SPARC finds better-fit opportunities. Without a clear identity, acquisition becomes scattershot.
 
 **Run:** Once to initialize, update when positioning shifts.
 
@@ -111,20 +110,6 @@ The Identity profile informs every SPARC stage:
 | Analyze | `positioning.differentiation`, `expertise` - Finding angles |
 | Rank | `ideal_client`, `constraints` - Scoring weights |
 | Craft | `positioning`, `services` - Value proposition and messaging |
-
----
-
-## Integration with IDEAS
-
-The Identity profile informs research scoping:
-
-| IDEAS Stage | Profile Input Used |
-|-------------|-------------------|
-| Identify | `expertise.primary` - Filter opportunities to strengths |
-| Develop | `expertise.methods` - Available approaches |
-| Evaluate | `expertise.tools` - Feasible data sources |
-| Articulate | `services.offerings` - Frame recommendations |
-| Share | `positioning` - Professional framing |
 
 ---
 

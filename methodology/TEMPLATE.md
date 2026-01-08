@@ -179,7 +179,7 @@ Present: <what to show user>. Approve → <next stage>.
 - **Human approval** required between stages
 
 ### Naming
-- Methodology names: **ACRONYM** (SPARC, IDEAS) or **Single Word** (Identity)
+- Methodology names: **ACRONYM** (SPARC) or **Single Word** (Identity)
 - Stage names: **Single verb or noun** (Signal, Profile, Craft)
 - Artifacts: **Descriptive** (Signal Log, Company Profile)
 

@@ -1,6 +1,6 @@
 # Run Templates
 
-Templates for tracking PRAXIS pipeline execution. Used by both SPARC and IDEAS runs.
+Templates for tracking PRAXIS pipeline execution.
 
 ---
 
@@ -10,13 +10,13 @@ Metadata file created at run start, updated throughout execution.
 
 > **Note:** `run.yaml` remains YAML because it's machine-read state data, not a human-reviewed artifact. It tracks run status programmatically.
 
-### SPARC Example
+### Example
 
 ```yaml
 # Run metadata
 id: 2025-01-15_vultr_sparc
-type: sparc                             # sparc | ideas
-entity: vultr                           # Prospect or client slug
+type: sparc
+entity: vultr                           # Prospect slug
 status: active                          # active | completed | aborted
 
 # Timestamps
@@ -31,45 +31,16 @@ stages_completed:
   - profile
 
 # Outcome (set on completion)
-outcome:                                # signed_agreement | nurture | pass | delivered | aborted
+outcome:                                # signed_agreement | nurture | pass | aborted
 outcome_details:                        # Brief explanation
 
 # Linking
-linked_run:                             # For IDEAS: reference to SPARC run ID
 referral_source:                        # If this run came from a referral
 
 # Notes
 notes: |
   Free-form notes about the run.
   CMO responded quickly, good engagement.
-```
-
-### IDEAS Example (with link to SPARC)
-
-```yaml
-id: 2025-02-01_vultr_ideas
-type: ideas
-entity: vultr
-status: active
-
-created: 2025-02-01T10:00:00Z
-updated: 2025-02-15T16:00:00Z
-completed:
-
-current_stage: evaluate
-stages_completed:
-  - identify
-  - develop
-
-outcome:
-outcome_details:
-
-linked_run: 2025-01-15_vultr_sparc      # Reference to acquisition run
-referral_source:
-
-notes: |
-  Research engagement following successful SPARC acquisition.
-  Focus on AI retrieval benchmarking per contract.
 ```
 
 ---
@@ -84,7 +55,7 @@ Decision log capturing choices made at each stage. This is human-readable docume
 # Decisions: [Entity Name]
 
 Run: `[run-id]`
-Type: SPARC / IDEAS
+Type: SPARC
 Started: [date]
 
 ---
@@ -127,7 +98,7 @@ Started: [date]
 ## Run Outcome - [date]
 
 **Final Status:** completed / aborted
-**Outcome:** signed_agreement / nurture / pass / delivered
+**Outcome:** signed_agreement / nurture / pass
 **Summary:** [Brief summary of the run result]
 **Next Steps:** [What happens next, if anything]
 ```
@@ -223,5 +194,5 @@ Started: 2025-01-15
 **Final Status:** completed
 **Outcome:** signed_agreement
 **Summary:** CMO responded within 24 hours. Discovery call on 2025-01-20, proposal sent same day, agreement signed 2025-01-22. $15K/month research retainer.
-**Next Steps:** Initiate IDEAS run for research delivery.
+**Next Steps:** Begin delivery engagement.
 ```

@@ -1,6 +1,6 @@
 # PRAXIS Configuration
 
-Configuration inputs referenced by SPARC and IDEAS skills. Store in your preferred format (YAML, JSON, Notion database, etc.).
+Configuration inputs referenced by SPARC skills. Store in your preferred format (YAML, JSON, Notion database, etc.).
 
 ---
 

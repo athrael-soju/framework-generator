@@ -1,6 +1,6 @@
 # PRAXIS
 
-A complete framework for research consulting: from finding clients to delivering value.
+A framework for research consulting client acquisition.
 
 **PRAXIS** = Practice + Axis - the central axis around which your consulting practice operates.
 
@@ -19,20 +19,13 @@ PRAXIS/
 │   ├── identity/              # Professional identity
 │   │   ├── methodology.md     # Identity methodology
 │   │   └── SKILL.md           # Identity skill
-│   ├── sparc/                 # Client acquisition
-│   │   ├── methodology.md     # SPARC methodology
-│   │   ├── signal/SKILL.md
-│   │   ├── profile/SKILL.md
-│   │   ├── analyze/SKILL.md
-│   │   ├── rank/SKILL.md
-│   │   └── craft/SKILL.md
-│   └── ideas/                 # Research delivery
-│       ├── methodology.md     # IDEAS methodology
-│       ├── identify/SKILL.md
-│       ├── develop/SKILL.md
-│       ├── evaluate/SKILL.md
-│       ├── articulate/SKILL.md
-│       └── share/SKILL.md
+│   └── sparc/                 # Client acquisition
+│       ├── methodology.md     # SPARC methodology
+│       ├── signal/SKILL.md
+│       ├── profile/SKILL.md
+│       ├── analyze/SKILL.md
+│       ├── rank/SKILL.md
+│       └── craft/SKILL.md
 │
 └── .claude/skills/            # Symlinks to methodology skills
     ├── identity -> ../../methodology/identity
@@ -46,7 +39,6 @@ PRAXIS/
 |-------------|---------|--------|
 | **Identity** | Professional identity | Single assessment |
 | **SPARC** | Client acquisition | Signal - Profile - Analyze - Rank - Craft |
-| **IDEAS** | Research delivery | Identify - Develop - Evaluate - Articulate - Share |
 
 ## Usage
 
@@ -55,9 +47,6 @@ First, define your professional identity:
 
 Run SPARC stages for client acquisition:
 - `/signal` → `/profile` → `/analyze` → `/rank` → `/craft`
-
-Run IDEAS stages for research delivery:
-- `/identify` → `/develop` → `/evaluate` → `/articulate` → `/share`
 
 Each stage requires approval before proceeding to the next.
 

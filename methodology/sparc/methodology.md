@@ -16,7 +16,6 @@ flowchart TB
     P --> A["<b>Analyze</b>"]
     A --> R["<b>Rank</b>"]
     R --> C["<b>Craft</b>"]
-    C -.-> |signed agreement| IDEAS["IDEAS Methodology"]
     C -.-> |no response / rejected| S
 ```
 
@@ -175,9 +174,7 @@ Develop tailored outreach based on analysis.
 | Rank | Score below threshold | Nurture or Pass |
 | Craft | No response after 2 touches | Nurture |
 | Craft | Response but no fit | Pass or refer out |
-| Craft | Response + fit | Discovery → Proposal → IDEAS |
-
-For cross-framework feedback loops (e.g., scope expansion routing back to Craft, referrals routing from IDEAS), see [PRAXIS.md](../../docs/PRAXIS.md#cross-framework-feedback-loops).
+| Craft | Response + fit | Discovery → Proposal → Agreement |
 
 ---
 
@@ -275,14 +272,3 @@ When a nurture trigger fires:
 - [ ] Insight demonstrates research depth
 - [ ] Ask is concrete and low-friction
 - [ ] Brief prepared for likely responses
-
----
-
-## SPARC → IDEAS Handoff
-
-When Craft produces a signed agreement, artifacts transfer to IDEAS for research delivery. Key transfers:
-- Prospect Analysis Report → Client Analysis Report
-- Signed Agreement → Client Contract Agreement
-- Outreach Brief → Initial hypothesis seeds
-
-See [PRAXIS.md](../../docs/PRAXIS.md#sparc--ideas-agreement-handoff) for the complete handoff checklist.
