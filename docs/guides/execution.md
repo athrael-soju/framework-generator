@@ -23,17 +23,7 @@ flowchart TB
         R --> C["/craft"]
     end
 
-    subgraph IDEAS ["IDEAS - Delivery"]
-        Id["/identify"] --> D["/develop"]
-        D --> E["/evaluate"]
-        E --> Ar["/articulate"]
-        Ar --> Sh["/share"]
-    end
-
     Identity --> S
-    Identity --> Id
-    C --> |"signed agreement"| Id
-    Sh -.-> |"referral"| S
 ```
 
 ---
@@ -50,13 +40,8 @@ Each PRAXIS component has corresponding skills:
 | SPARC | Analyze | `/analyze` | Assess competitive position |
 | SPARC | Rank | `/rank` | Score and prioritize prospects |
 | SPARC | Craft | `/craft` | Create personalized outreach |
-| IDEAS | Identify | `/identify` | Define research opportunities |
-| IDEAS | Develop | `/develop` | Formalize hypotheses |
-| IDEAS | Evaluate | `/evaluate` | Test hypotheses |
-| IDEAS | Articulate | `/articulate` | Create deliverables |
-| IDEAS | Share | `/share` | Deliver and disseminate |
 
-**Note:** Run `/identity` once before starting SPARC or IDEAS. The Identity profile provides foundational inputs that inform both methodologies.
+**Note:** Run `/identity` once before starting SPARC. The Identity profile provides foundational inputs that inform the model.
 
 ---
 
@@ -70,7 +55,7 @@ Run the skill command for the stage you want to execute:
 /signal
 ```
 
-The skill will guide you through the stage methodology, prompting for inputs and decisions as needed.
+The skill will guide you through the stage, prompting for inputs and decisions as needed.
 
 ### 2. Provide Inputs
 
@@ -84,15 +69,10 @@ Each stage expects specific inputs. The skill will request them or use outputs f
 | Analyze | Identity profile, company profiles, analysis dimensions |
 | Rank | Identity profile, prospect analyses, scoring criteria, thresholds |
 | Craft | Identity profile, priority ranking, prospect analyses, outreach templates, channel |
-| Identify | Identity profile, signed agreement, prospect analysis, outreach brief (hypothesis seeds) |
-| Develop | Identity profile, research agenda, opportunity details, constraints |
-| Evaluate | Identity profile, hypothesis documents, scope definitions, feasibility scores |
-| Articulate | Identity profile, evaluation report, hypothesis documents, prior work review, contract summary |
-| Share | Identity profile, client deliverable, audience profiles, contract summary |
 
 ### 3. Work Through the Process
 
-The skill executes its methodology:
+The skill executes its process:
 - Performs research and analysis
 - Presents findings
 - Requests decisions at key points
@@ -135,18 +115,6 @@ Run specific stages when you have existing inputs:
 [provide profiles, complete analysis]
 ```
 
-### Cross-Framework Handoff
-
-When SPARC produces a signed agreement, transition to IDEAS:
-
-```
-/craft
-[outreach succeeds, agreement signed]
-
-/identify
-[provide agreement and analysis from SPARC]
-```
-
 ---
 
 ## Decision Points
@@ -181,9 +149,7 @@ At stage completion:
 Some conditions route back to earlier stages. When a feedback condition is triggered, the skill presents options and guides you to the appropriate stage.
 
 For the complete feedback loop definitions, see:
-- [SPARC Feedback Loops](../methodology/sparc/methodology.md#feedback-loops)
-- [IDEAS Feedback Loops](../methodology/ideas/methodology.md#feedback-loops)
-- [Cross-Framework Feedback Loops](PRAXIS.md#cross-framework-feedback-loops)
+- [SPARC Feedback Loops](../models/sparc.md#feedback-loops)
 
 ---
 
@@ -218,23 +184,6 @@ praxis/
 │   │           ├── outreach_message.md
 │   │           └── outreach_brief.md
 │   │
-│   ├── 2025-02-01_vultr_ideas/
-│   │   ├── run.yaml                    # Links to SPARC run
-│   │   ├── decisions.md
-│   │   └── artifacts/
-│   │       ├── 1_identify_2025-02-01/
-│   │       │   ├── contract_summary.md
-│   │       │   └── research_agenda.md
-│   │       ├── 2_develop_2025-02-05/
-│   │       │   ├── hypothesis_h1.md
-│   │       │   └── prior_work_review.md
-│   │       ├── 3_evaluate_2025-02-12/
-│   │       │   └── evaluation_h1.md
-│   │       ├── 4_articulate_2025-02-20/
-│   │       │   └── deliverable_report.md
-│   │       └── 5_share_2025-02-25/
-│   │           └── delivery_log.md
-│   │
 │   └── 2025-01-20_streamdata_sparc/
 │       └── ...
 │
@@ -248,16 +197,15 @@ praxis/
 ### Run Naming Convention
 
 ```
-YYYY-MM-DD_[entity-slug]_[type]
+YYYY-MM-DD_[entity-slug]_sparc
 ```
 
 - **Date**: Run start date
-- **Entity**: Prospect (SPARC) or client (IDEAS) name, lowercase with hyphens
-- **Type**: `sparc` or `ideas`
+- **Entity**: Prospect name, lowercase with hyphens
+- **Type**: `sparc`
 
 Examples:
 - `2025-01-15_vultr_sparc`
-- `2025-02-01_vultr_ideas`
 - `2025-01-20_streamdata_sparc`
 
 ### Artifact Folder Naming
@@ -268,21 +216,21 @@ Each stage produces a folder with a stage number, name, and completion date:
 [stage_number]_[stage_name]_[YYYY-MM-DD]/
 ```
 
-| Stage | SPARC Folder | IDEAS Folder |
-|-------|--------------|--------------|
-| 1 | `1_signal_YYYY-MM-DD/` | `1_identify_YYYY-MM-DD/` |
-| 2 | `2_profile_YYYY-MM-DD/` | `2_develop_YYYY-MM-DD/` |
-| 3 | `3_analyze_YYYY-MM-DD/` | `3_evaluate_YYYY-MM-DD/` |
-| 4 | `4_rank_YYYY-MM-DD/` | `4_articulate_YYYY-MM-DD/` |
-| 5 | `5_craft_YYYY-MM-DD/` | `5_share_YYYY-MM-DD/` |
+| Stage | Folder |
+|-------|--------|
+| 1 | `1_signal_YYYY-MM-DD/` |
+| 2 | `2_profile_YYYY-MM-DD/` |
+| 3 | `3_analyze_YYYY-MM-DD/` |
+| 4 | `4_rank_YYYY-MM-DD/` |
+| 5 | `5_craft_YYYY-MM-DD/` |
 
-Files within each folder use descriptive names without prefixes (e.g., `signal_log.md`, `hypothesis_h1.md`).
+Files within each folder use descriptive names without prefixes (e.g., `signal_log.md`, `company_profile.md`).
 
 ### Starting a Run
 
-When beginning a new SPARC or IDEAS execution:
+When beginning a new SPARC execution:
 
-1. Create run directory: `praxis/runs/YYYY-MM-DD_entity_type/`
+1. Create run directory: `praxis/runs/YYYY-MM-DD_entity_sparc/`
 2. Initialize `run.yaml` with metadata
 3. Create empty `decisions.md`
 4. Create `artifacts/` directory
@@ -304,13 +252,7 @@ When run finishes:
 2. Set outcome (`signed_agreement`, `nurture`, `pass`, etc.)
 3. For nurture/pass outcomes, copy record to `nurture/` or `passed/`
 
-### Linking Runs
-
-When an IDEAS run follows a SPARC run, link them via `linked_run` in `run.yaml`. This enables:
-- Tracing client engagements back to acquisition
-- Referencing SPARC artifacts from IDEAS stages
-
-See [run.md](templates/run.md) for `run.yaml` and `decisions.md` templates.
+See [run.md](run.md) for `run.yaml` and `decisions.md` templates.
 
 ---
 
@@ -356,10 +298,3 @@ For multiple prospects in SPARC:
 - Profile hot prospects in sequence or batch
 - Analyze and Rank together for comparison
 - Craft individually for personalization
-
-### Multiple Engagements
-
-For concurrent IDEAS engagements:
-- Keep separate document folders per client
-- Run stages independently per engagement
-- Track status per engagement

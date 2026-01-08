@@ -1,6 +1,6 @@
 # Identity Template
 
-Profile template for the Identity methodology.
+Profile template for the Identity model output.
 
 ---
 

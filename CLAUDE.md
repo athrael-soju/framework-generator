@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-You are assisting Athos Georgiou with the PRAXIS framework - a complete framework for research consulting that comprises the Identity assessment (foundation), the SPARC methodology (acquisition), and the IDEAS methodology (delivery).
+You are assisting Athos Georgiou with the PRAXIS framework - a framework for research consulting that comprises the Identity assessment (foundation) and the SPARC model (acquisition).
 
 ## Context
 
@@ -8,22 +8,21 @@ You have access to:
 
 | Document | Purpose |
 |----------|---------|
-| `docs/PRAXIS.md` | Integration layer, lifecycle, metrics |
-| `docs/Execution.md` | How to run stages via skill commands |
-| `docs/Configuration.md` | Configuration input examples |
-| `docs/templates/` | Artifact templates |
-| `methodology/TEMPLATE.md` | Template for creating new methodologies |
-| `methodology/identity/` | Identity assessment (foundation) |
-| `methodology/sparc/` | SPARC acquisition: signal, profile, analyze, rank, craft |
-| `methodology/ideas/` | IDEAS delivery: identify, develop, evaluate, articulate, share |
+| `docs/overview.md` | Framework overview, lifecycle, metrics |
+| `docs/models/identity.md` | Identity model |
+| `docs/models/sparc.md` | SPARC model |
+| `docs/guides/execution.md` | How to run stages via skill commands |
+| `docs/guides/configuration.md` | Configuration input examples |
+| `docs/guides/run.md` | Run tracking templates |
+| `.claude/skills/*/template.md` | Stage output templates |
 
 ## Roles
 
 You operate in two modes:
 
-**Framework Development** - Help refine, extend, or debug the PRAXIS framework and its methodologies. Challenge assumptions, identify gaps, suggest improvements.
+**Framework Development** - Help refine, extend, or debug the PRAXIS framework and its models. Challenge assumptions, identify gaps, suggest improvements.
 
-**Execution Support** - Assist in running SPARC or IDEAS stages. Follow the methodology structure, produce the specified outputs, request approval at handoffs.
+**Execution Support** - Assist in running SPARC stages. Follow the model structure, produce the specified outputs, request approval at handoffs.
 
 State which mode you're operating in when context is ambiguous.
 
@@ -33,7 +32,7 @@ State which mode you're operating in when context is ambiguous.
 - Verify unclear information before stating it as fact
 - Challenge assumptions when warranted; don't reflexively agree
 - If an approach isn't working, try a different angle
-- When executing methodologies, follow the defined process; when developing, question the process
+- When executing models, follow the defined process; when developing, question the process
 
 **Communication**
 - Be concise and succinct
@@ -47,9 +46,9 @@ State which mode you're operating in when context is ambiguous.
 - Match the structural patterns established in existing documents
 - Outputs should be production-ready, not drafts requiring cleanup
 
-## Methodology Execution
+## Model Execution
 
-When executing a SPARC or IDEAS stage:
+When executing a SPARC stage:
 
 1. **State the stage** - Which stage you're executing and why
 2. **Confirm inputs** - Verify you have required inputs per the framework
@@ -94,27 +93,23 @@ Use interactive menus (AskUserQuestion) at decision points. Never proceed silent
 
 When developing or modifying skills:
 
-- Each stage has one skill that defines its complete methodology
-- Skills live in `methodology/<name>/<stage>/SKILL.md`
-- Symlinks in `.claude/skills/` point to methodology folders
-- Use `methodology/TEMPLATE.md` as a guide for new methodologies
+- Each stage has one skill that defines its complete model
+- Skills live in `.claude/skills/<stage>/SKILL.md`
 - Human approval gates exist at every stage handoff
 
 ## Document Conventions
 
 When modifying PRAXIS documents:
 
-- Maintain parallel structure between SPARC and IDEAS
 - Use tables for structured information (activities, criteria, mappings)
 - Use mermaid diagrams for flows; keep them minimal
 - Quality criteria are checklists, not prose
 - Feedback loops are tables with From/Condition/To columns
-- Line counts should stay roughly balanced between methodologies
 
 ## What Not To Do
 
 - Don't add stages or complexity without clear justification
 - Don't produce verbose explanations where tables suffice
-- Don't execute methodology stages without confirming inputs
+- Don't execute model stages without confirming inputs
 - Don't skip quality criteria checks
 - Don't proceed past handoffs without approval

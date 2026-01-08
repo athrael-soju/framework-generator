@@ -1,6 +1,6 @@
 # PRAXIS
 
-A complete framework for research consulting: from finding clients to delivering value.
+A framework for research consulting client acquisition.
 
 **PRAXIS** = Practice + Axis - the central axis around which your consulting practice operates.
 
@@ -8,45 +8,47 @@ A complete framework for research consulting: from finding clients to delivering
 
 ```
 PRAXIS/
-├── docs/                      # Framework documentation
-│   ├── PRAXIS.md              # Integration layer, lifecycle, metrics
-│   ├── Execution.md           # How to run stages
-│   ├── Configuration.md       # Configuration inputs
-│   └── templates/             # Artifact templates
+├── docs/
+│   ├── overview.md           # Framework overview
+│   ├── models/
+│   │   ├── identity.md       # Identity model
+│   │   └── sparc.md          # SPARC model
+│   └── guides/
+│       ├── execution.md      # How to run stages
+│       ├── configuration.md  # Configuration inputs
+│       └── run.md            # Run tracking
 │
-├── methodology/               # Methodology definitions
-│   ├── TEMPLATE.md            # Template for creating new methodologies
-│   ├── identity/              # Professional identity
-│   │   ├── methodology.md     # Identity methodology
-│   │   └── SKILL.md           # Identity skill
-│   ├── sparc/                 # Client acquisition
-│   │   ├── methodology.md     # SPARC methodology
-│   │   ├── signal/SKILL.md
-│   │   ├── profile/SKILL.md
-│   │   ├── analyze/SKILL.md
-│   │   ├── rank/SKILL.md
-│   │   └── craft/SKILL.md
-│   └── ideas/                 # Research delivery
-│       ├── methodology.md     # IDEAS methodology
-│       ├── identify/SKILL.md
-│       ├── develop/SKILL.md
-│       ├── evaluate/SKILL.md
-│       ├── articulate/SKILL.md
-│       └── share/SKILL.md
+├── .claude/
+│   └── skills/
+│       ├── identity/
+│       │   ├── SKILL.md
+│       │   └── template.md
+│       ├── signal/
+│       │   ├── SKILL.md
+│       │   └── template.md
+│       ├── profile/
+│       │   ├── SKILL.md
+│       │   └── template.md
+│       ├── analyze/
+│       │   ├── SKILL.md
+│       │   └── template.md
+│       ├── rank/
+│       │   ├── SKILL.md
+│       │   └── template.md
+│       └── craft/
+│           ├── SKILL.md
+│           └── template.md
 │
-└── .claude/skills/            # Symlinks to methodology skills
-    ├── identity -> ../../methodology/identity
-    ├── signal -> ../../methodology/sparc/signal
-    └── ... (all stage symlinks)
+├── CLAUDE.md
+└── README.md
 ```
 
-## Methodologies
+## Models
 
-| Methodology | Purpose | Stages |
+| Model | Purpose | Stages |
 |-------------|---------|--------|
 | **Identity** | Professional identity | Single assessment |
 | **SPARC** | Client acquisition | Signal - Profile - Analyze - Rank - Craft |
-| **IDEAS** | Research delivery | Identify - Develop - Evaluate - Articulate - Share |
 
 ## Usage
 
@@ -56,11 +58,8 @@ First, define your professional identity:
 Run SPARC stages for client acquisition:
 - `/signal` → `/profile` → `/analyze` → `/rank` → `/craft`
 
-Run IDEAS stages for research delivery:
-- `/identify` → `/develop` → `/evaluate` → `/articulate` → `/share`
-
 Each stage requires approval before proceeding to the next.
 
 ## Getting Started
 
-Start with [docs/PRAXIS.md](docs/PRAXIS.md) for the complete overview.
+Start with [docs/overview.md](docs/overview.md) for the complete overview.

@@ -1,11 +1,11 @@
 ---
 name: identity
-description: Generate a professional identity profile from user inputs and public sources. Run once to initialize PRAXIS, then update when positioning shifts. The profile informs all SPARC and IDEAS work.
+description: Generate a professional identity profile from user inputs and public sources. Run once to initialize PRAXIS, then update when positioning shifts. The profile informs all SPARC work.
 ---
 
 # Identity
 
-Define your professional identity to inform client acquisition and research delivery.
+Define your professional identity to inform client acquisition.
 
 ## Inputs
 
