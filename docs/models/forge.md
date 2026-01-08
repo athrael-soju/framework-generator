@@ -264,15 +264,14 @@ Produce model document and skill files.
 |----------|--------|---------|
 | Model Document | Charter, stage map, specifications | `docs/models/{name}.md` |
 | Skill Files | Specifications | `.claude/skills/{stage}/SKILL.md` |
-| Output Templates | Output formats | `.claude/skills/{stage}/template.md` |
-| Index Updates | New model | Updated `overview.md`, `CLAUDE.md` |
+| Index Updates | New model | Updated `overview.md`, `CLAUDE.md`, `README.md` |
+| Guide Updates | New model | Updated `execution.md` |
 
 **File Structure:**
 
 ```
 docs/models/{model-name}.md          # Model definition
-.claude/skills/{stage-1}/SKILL.md    # Stage 1 skill
-.claude/skills/{stage-1}/template.md # Stage 1 output template
+.claude/skills/{stage-1}/SKILL.md    # Stage 1 skill (includes output templates)
 .claude/skills/{stage-2}/SKILL.md    # Stage 2 skill
 ...
 ```
@@ -294,12 +293,31 @@ description: {One-line description for skill picker}
 |-------|--------|
 | {input} | {where it comes from} |
 
+### Input Format
+
+**From {source} (`{path}`):**
+
+```markdown
+{Expected structure}
+```
+
 ## Process
 **1. {Step}** - {Description}
 **2. {Step}** - {Description}
 
-## Output Format
-{Template block}
+## Output
+
+Save to `output/{model}/{date}/`.
+
+| File | Content |
+|------|---------|
+| `{output-file}.md` | {Description} |
+
+### {Output File} ({filename}.md)
+
+```markdown
+{Template with placeholders}
+```
 
 ## Quality Criteria
 - [ ] {Criterion}
@@ -330,8 +348,9 @@ Validate and iterate.
 - [ ] Quality criteria are actionable checklists
 - [ ] Feedback loops have clear conditions
 - [ ] Skills have frontmatter (name, description)
-- [ ] Skills follow process → output → criteria → completion structure
-- [ ] Output templates match stage output definitions
+- [ ] Skills have input format section after inputs table
+- [ ] Skills follow inputs → input format → process → output → criteria → completion structure
+- [ ] Output templates embedded in skill Output section
 - [ ] Mermaid diagrams render correctly
 
 **Output:** Validation Report + Refined Artifacts

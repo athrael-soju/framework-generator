@@ -19,6 +19,12 @@ flowchart TB
     C -.-> |no response / rejected| S
 ```
 
+## Purpose
+
+Systematically identify and engage research consulting prospects. Without structure, acquisition becomes reactive and inconsistent.
+
+---
+
 ## Inputs
 
 SPARC requires an **Identity Profile** (run `/identity` first) which provides:
@@ -41,8 +47,6 @@ All SPARC artifacts save to `output/sparc/{date}/` where `{date}` is the run sta
 | Analysis | `output/sparc/{date}/{company}-analysis.md` | Analyze |
 | Qualification | `output/sparc/{date}/qualification.md` | Rank |
 | Outreach | `output/sparc/{date}/{company}-outreach.md` | Craft |
-
-See [run.md guide](../guides/run.md) for run log format.
 
 ---
 
