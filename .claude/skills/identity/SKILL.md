@@ -9,13 +9,13 @@ Define your professional identity to inform client acquisition.
 
 ## Inputs
 
-| Input | Required |
-|-------|----------|
-| name | Yes |
-| linkedin | Recommended |
-| portfolio | Recommended |
-| github | Optional |
-| other_links | Optional |
+| Input | Source |
+|-------|--------|
+| name | User input (required) |
+| linkedin | User input (recommended) |
+| portfolio | User input (recommended) |
+| github | User input (optional) |
+| other_links | User input (optional) |
 
 ### Input Format
 
