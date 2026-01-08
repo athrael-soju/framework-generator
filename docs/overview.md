@@ -153,5 +153,4 @@ Each stage requires approval before proceeding to the next. See [execution.md](g
 | `docs/models/sparc.md` | SPARC model |
 | `docs/models/forge.md` | FORGE model (meta-model for creating models) |
 | `docs/guides/execution.md` | How to run stages via skill commands |
-| `docs/guides/run.md` | Run tracking templates |
 | `CLAUDE.md` | Project instructions for Claude Code |

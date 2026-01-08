@@ -74,7 +74,6 @@ Produce the model document and skill files.
 
 **4. Update Guide Documents**:
 - Add to `docs/guides/execution.md`: mermaid diagram, skills table, output structure, feedback loops reference
-- Add to `docs/guides/run.md`: model list, paths table, add example if appropriate
 
 ## Output
 
@@ -214,7 +213,7 @@ Save to `output/{model}/{date}/`.
 - [ ] Skills follow standard structure (inputs, input format, process, output with embedded templates, criteria, completion)
 - [ ] Output templates embedded in each skill's Output section
 - [ ] Index documents updated (overview.md, CLAUDE.md, README.md)
-- [ ] Guide documents updated (execution.md, run.md)
+- [ ] Guide documents updated (execution.md)
 - [ ] No broken internal links
 - [ ] Mermaid diagrams render correctly
 

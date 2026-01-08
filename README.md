@@ -15,8 +15,7 @@ PRAXIS/
 │   │   ├── sparc.md          # SPARC model
 │   │   └── forge.md          # FORGE model
 │   └── guides/
-│       ├── execution.md      # How to run stages
-│       └── run.md            # Run tracking
+│       └── execution.md      # How to run stages
 │
 ├── .claude/
 │   └── skills/

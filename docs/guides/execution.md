@@ -77,10 +77,10 @@ Each stage expects specific inputs. The skill will request them or use outputs f
 |-------|-----------------|
 | Identity | Name, LinkedIn URL (recommended), portfolio URL (recommended), other links (optional) |
 | Signal | Identity profile, target criteria, signal types, lookback window |
-| Profile | Identity profile, signal log, profile template, priority tier |
+| Profile | Identity profile, signal log, priority tier |
 | Analyze | Identity profile, company profiles, analysis dimensions |
 | Rank | Identity profile, prospect analyses, scoring criteria, thresholds |
-| Craft | Identity profile, priority ranking, prospect analyses, outreach templates, channel |
+| Craft | Identity profile, priority ranking, prospect analyses, channel |
 
 ### 3. Work Through the Process
 
