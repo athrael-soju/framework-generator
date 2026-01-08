@@ -133,80 +133,6 @@ Append Generate entry. List files created, index updates, and guide updates inst
 
 ### Skill File Structure
 
-**For first stage** (initializes run log):
-
-```markdown
----
-name: {stage-name}
-description: {One line for skill picker}
----
-
-# {Stage Name}
-
-{Brief purpose}
-
-## Inputs
-| Input | Source |
-|-------|--------|
-
-### Input Format
-
-**From {source}:**
-
-```yaml or markdown
-{Expected structure}
-```
-
-## Process
-**1. {Step}** - {Description}
-
-## Output
-
-Save to `output/{framework}/{date}/`.
-
-| File | Content |
-|------|---------|
-| `run.md` | Initialize run log |
-| `{output-file}.md` | {Description} |
-
-### Run Log (run.md) - Initialize
-
-```markdown
-# {Framework} Run: {Name}
-
-Started: {date}
-Status: in_progress
-
----
-
-## {Stage} - {date}
-
-**Inputs provided:**
-- {Input}: {summary}
-
-**Decisions:**
-| Question | Choice |
-|----------|--------|
-| {question} | {selection} |
-
-**Output:** `{filename}.md`
-```
-
-### {Output File} ({filename}.md)
-
-```markdown
-{Full template with placeholders}
-```
-
-## Quality Criteria
-- [ ] {Criterion}
-
-## Completion
-{What to present, next action}
-```
-
-**For subsequent stages** (appends to run log):
-
 ```markdown
 ---
 name: {stage-name}
@@ -225,49 +151,51 @@ description: {One line for skill picker}
 
 **From {source} (`{path}`):**
 
-```markdown
-{Expected structure}
-```
+{Expected structure in yaml or markdown}
 
 ## Process
 **1. {Step}** - {Description}
 
+## Interaction
+
+See CLAUDE.md "Interaction Protocol" for tool usage and menu format.
+
+**Stage-specific triggers for `AskUserQuestion`:**
+- {trigger 1}
+- {trigger 2}
+
 ## Output
 
-Save to `output/{framework}/{date}/` (same date as first stage).
+Save to `output/{date}/`.
 
 | File | Content |
 |------|---------|
-| `run.md` | Append {stage} decisions |
+| `run.md` | Initialize/Append run log |
 | `{output-file}.md` | {Description} |
 
-### Run Log (run.md) - Append
+### Run Log (run.md)
 
-```markdown
----
-
-## {Stage} - {date}
-
-**Decisions:**
-| Question | Choice |
-|----------|--------|
-| {question} | {selection} |
-
-**Output:** `{filename}.md`
-```
+{Initialize or Append}. See `docs/execution.md` "Run Log Conventions" for format.
 
 ### {Output File} ({filename}.md)
 
-```markdown
 {Full template with placeholders}
-```
 
 ## Quality Criteria
 - [ ] {Criterion}
 
 ## Completion
-{What to present, next action}
+
+Present: {What to show}. Approve → {Next stage}.
 ```
+
+**First vs subsequent stages:**
+
+| Aspect | First stage | Subsequent stages |
+|--------|-------------|-------------------|
+| Run log | Initialize | Append |
+| Output path | Creates `output/{date}/` | Same date as first stage |
+| Input format | From user | From previous stage files |
 
 ## Quality Criteria
 
