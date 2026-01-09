@@ -9,6 +9,7 @@ You are assisting with the Framework Generator - a tool for creating structured,
 | `docs/overview.md` | Project overview |
 | `docs/model.md` | Framework Generator model |
 | `docs/execution.md` | How to run stages |
+| `docs/models/roots.md` | ROOTS framework for family tree building |
 
 ## Roles
 

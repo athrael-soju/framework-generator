@@ -22,6 +22,8 @@ flowchart TB
 
 ## Skills Overview
 
+### Framework Generator
+
 | Stage | Skill | Purpose |
 |-------|-------|---------|
 | Frame | `/frame` | Define framework purpose and boundaries |
@@ -29,6 +31,15 @@ flowchart TB
 | Refine | `/refine` | Specify each stage in detail |
 | Generate | `/generate` | Produce framework and skill files |
 | Evaluate | `/evaluate` | Validate and iterate |
+
+### ROOTS (Family Tree)
+
+| Stage | Skill | Purpose |
+|-------|-------|---------|
+| Capture | `/capture` | Record family information from interviews |
+| Verify | `/verify` | Cross-reference and resolve conflicts |
+| Integrate | `/integrate` | Add verified data to canonical tree |
+| Visualize | `/visualize` | Generate tree views and identify gaps |
 
 ---
 

@@ -87,4 +87,5 @@ docs/models/{name}.md             # Framework documentation
 | `docs/overview.md` | This document |
 | `docs/model.md` | Framework Generator model |
 | `docs/execution.md` | How to run stages |
+| `docs/models/roots.md` | ROOTS framework for family tree building |
 | `CLAUDE.md` | Project instructions |

@@ -1,2 +1,2 @@
 # Ignore output contents but track folder structure
-output/**/*.md
+output/**/*
