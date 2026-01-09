@@ -16,7 +16,7 @@ Validate the generated framework and iterate if needed.
 
 ### Input Format
 
-**Framework document (`docs/models/{name}.md`):**
+**Framework document (`output/{date}/{name}/4-generate/docs/{name}.md`):**
 
 ```markdown
 # The {NAME} Framework
@@ -31,7 +31,16 @@ Validate the generated framework and iterate if needed.
 ## Stage Outputs Summary
 ```
 
-**Skill files (`.claude/skills/{stage}/SKILL.md`):**
+**Execution guide (`output/{date}/{name}/4-generate/docs/execution.md`):**
+
+```markdown
+## Skills Overview
+## Running a Stage
+## Output Structure
+## Run Log Conventions
+```
+
+**Skill files (`output/{date}/{name}/4-generate/.claude/skills/{stage}/SKILL.md`):**
 
 ```markdown
 ---
@@ -99,6 +108,12 @@ See CLAUDE.md "Interaction Protocol" for tool usage and menu format.
 - [ ] Has stage outputs summary
 - [ ] Mermaid diagram renders
 
+**Execution Guide:**
+- [ ] Has skills overview table
+- [ ] Has output structure diagram
+- [ ] Has run log conventions
+- [ ] Paths are relative to framework root
+
 **Skill Files:**
 - [ ] Frontmatter has name and description
 - [ ] Description is one line, action-oriented
@@ -108,6 +123,11 @@ See CLAUDE.md "Interaction Protocol" for tool usage and menu format.
 - [ ] Has output format with embedded templates
 - [ ] Has quality criteria checklist
 - [ ] Has completion section with next action
+- [ ] No references to external docs (self-contained)
+
+**Supporting Files:**
+- [ ] README has overview and quick start
+- [ ] CLAUDE.md has AI instructions and document index
 
 **Consistency:**
 - [ ] Stage names match between framework doc and skills
@@ -116,16 +136,16 @@ See CLAUDE.md "Interaction Protocol" for tool usage and menu format.
 
 ## Output
 
-Save to `output/{date}/` (same date as Frame).
+Save to `output/{date}/{name}/` (same folder as Frame).
 
 | File | Content |
 |------|---------|
-| `run.md` | Append Evaluate decisions and final outcome |
-| `{name}-validation.md` | Validation report |
+| `run.md` | Update progress + finalize with outcome |
+| `5-evaluate/validation.md` | Validation report |
 
 ### Run Log (run.md)
 
-Finalize run log. See `docs/execution.md` "Run Log Conventions" for format.
+Update progress table and finalize run log. See `docs/execution.md` "Run Log Conventions" for format.
 
 ### Validation Report ({name}-validation.md)
 

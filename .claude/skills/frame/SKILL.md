@@ -85,20 +85,20 @@ See CLAUDE.md "Interaction Protocol" for tool usage and menu format.
 
 ## Output
 
-Create and save to `output/{date}/` where `{date}` is today (YYYY-MM-DD).
+Create and save to `output/{date}/{name}/` where `{date}` is today (YYYY-MM-DD) and `{name}` is the framework name (kebab-case).
 
-If running multiple times on the same day, add a suffix: `output/2026-01-08-02/`.
+If running multiple times on the same day, add a suffix: `output/2026-01-08-02/{name}/`.
 
 | File | Content |
 |------|---------|
-| `run.md` | Initialize run log |
-| `{name}-charter.md` | Framework charter |
+| `run.md` | Initialize run log with progress tracking |
+| `1-frame/charter.md` | Framework charter |
 
 ### Run Log (run.md)
 
-Initialize run log. See `docs/execution.md` "Run Log Conventions" for format.
+Initialize run log with progress table. See `docs/execution.md` "Run Log Conventions" for format.
 
-### Framework Charter ({name}-charter.md)
+### Framework Charter (1-frame/charter.md)
 
 ```markdown
 # Framework Charter: {NAME}

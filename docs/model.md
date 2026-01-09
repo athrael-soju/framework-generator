@@ -43,19 +43,20 @@ Create new frameworks by guiding you through a structured design process. Use it
 
 ## Outputs
 
-All artifacts are saved to `output/{date}/` where `{date}` is the run start date (YYYY-MM-DD).
+All artifacts are saved to `output/{date}/{name}/` where `{date}` is the run start date (YYYY-MM-DD).
 
 | Artifact | Path | Created At |
 |----------|------|------------|
-| Run log | `output/{date}/run.md` | Frame (updated each stage) |
-| Framework charter | `output/{date}/{name}-charter.md` | Frame |
-| Stage map | `output/{date}/{name}-stage-map.md` | Organize |
-| Stage specs | `output/{date}/{name}-{stage}-spec.md` | Refine |
-| Validation report | `output/{date}/{name}-validation.md` | Evaluate |
+| Run log | `run.md` | Frame (updated each stage) |
+| Framework charter | `1-frame/charter.md` | Frame |
+| Stage map | `2-organize/stage-map.md` | Organize |
+| Stage specs | `3-refine/{stage}-spec.md` | Refine |
+| Generated framework | `4-generate/` | Generate |
+| Validation report | `5-evaluate/validation.md` | Evaluate |
 
 ### Run Log
 
-Tracks decisions made at each stage.
+Tracks progress and decisions made at each stage. See `docs/execution.md` for full format.
 
 ```markdown
 # Framework Run: {Name}
@@ -63,44 +64,26 @@ Tracks decisions made at each stage.
 Started: {date}
 Status: in_progress / complete / aborted
 
----
+## Progress
 
-## Frame - {date}
-
-**Inputs provided:**
-- Problem: {summary}
-- Context: {summary}
-
-**Decisions:**
-| Question | Choice | Rationale |
-|----------|--------|-----------|
-| {question asked} | {option selected} | {why} |
-
-**Output:** `{name}-charter.md`
+| # | Stage | Status | Started | Completed |
+|---|-------|--------|---------|-----------|
+| 1 | Frame | ✓ complete | {time} | {time} |
+| 2 | Organize | → in_progress | {time} | - |
+| 3 | Refine | ○ pending | - | - |
+| 4 | Generate | ○ pending | - | - |
+| 5 | Evaluate | ○ pending | - | - |
 
 ---
 
-## Organize - {date}
-
-**Decisions:**
-| Question | Choice | Rationale |
-|----------|--------|-----------|
-| {question asked} | {option selected} | {why} |
-
-**Output:** `{name}-stage-map.md`
-
----
-
-## {Stage} - {date}
+## 1. Frame - {date}
 ...
-
----
 
 ## Outcome
 
 **Status:** complete / aborted
 **Result:** {name} framework created with {n} stages
-**Files generated:** {list}
+**Location:** `4-generate/`
 ```
 
 ---
@@ -245,22 +228,28 @@ Specify each stage in detail.
 
 ### Generate
 
-Produce framework documentation and skill files.
+Produce a self-contained framework package.
 
 | Activity | Inputs | Outputs |
 |----------|--------|---------|
-| Framework Document | Charter, stage map, specifications | `docs/models/{name}.md` |
-| Skill Files | Specifications | `.claude/skills/{stage}/SKILL.md` |
-| Documentation Updates | New framework | Updated `overview.md`, `CLAUDE.md`, `README.md` |
-| Execution Guide | New framework | Updated `execution.md` |
+| Framework Document | Charter, stage map, specifications | `4-generate/docs/{name}.md` |
+| Execution Guide | Stage map, specifications | `4-generate/docs/execution.md` |
+| Skill Files | Specifications | `4-generate/.claude/skills/{stage}/SKILL.md` |
+| README | Charter, stage map | `4-generate/README.md` |
+| CLAUDE.md | All artifacts | `4-generate/CLAUDE.md` |
 
-**File Structure:**
+**Generated Framework Structure:**
 
 ```
-docs/models/{name}.md              # Framework definition
-.claude/skills/{stage-1}/SKILL.md  # Stage 1 skill
-.claude/skills/{stage-2}/SKILL.md  # Stage 2 skill
-...
+4-generate/
+├── README.md                      # Framework overview and usage
+├── CLAUDE.md                      # AI assistant instructions
+├── docs/
+│   ├── {name}.md                  # Framework definition
+│   └── execution.md               # How to run stages
+└── .claude/skills/
+    ├── {stage-1}/SKILL.md
+    └── {stage-2}/SKILL.md
 ```
 
 **Skill File Structure:**
@@ -294,7 +283,7 @@ description: {One-line description for skill picker}
 
 ## Output
 
-Save to `output/{date}/`.
+Save to `output/{date}/{framework-name}/{#}-{stage}/`.
 
 | File | Content |
 |------|---------|

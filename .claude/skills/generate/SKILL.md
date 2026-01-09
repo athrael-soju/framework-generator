@@ -17,7 +17,7 @@ Produce the framework document and skill files.
 
 ### Input Format
 
-**From Frame stage (`output/{date}/{name}-charter.md`):**
+**From Frame stage (`output/{date}/{name}/1-frame/charter.md`):**
 
 ```markdown
 # Framework Charter: {NAME}
@@ -28,7 +28,7 @@ Produce the framework document and skill files.
 ## Dependencies
 ```
 
-**From Organize stage (`output/{date}/{name}-stage-map.md`):**
+**From Organize stage (`output/{date}/{name}/2-organize/stage-map.md`):**
 
 ```markdown
 # Stage Map: {NAME}
@@ -40,7 +40,7 @@ Produce the framework document and skill files.
 ## Terminal States
 ```
 
-**From Refine stage (`output/{date}/{name}-{stage}-spec.md`):**
+**From Refine stage (`output/{date}/{name}/3-refine/{stage}-spec.md`):**
 
 ```markdown
 # Stage Specification: {STAGE}
@@ -54,24 +54,33 @@ Produce the framework document and skill files.
 
 ## Process
 
-**1. Generate Framework Document** - Create `docs/models/{name}.md`:
+**1. Generate Framework Document** - Create `4-generate/docs/{name}.md`:
 - Combine charter, stage map, and specifications
 - Follow structure in docs/model.md
 - Include: purpose, inputs, stages, feedback loops, quality criteria
 
-**2. Generate Skill Files** - For each stage:
-- Create directory: `.claude/skills/{stage}/`
-- Create skill file: `.claude/skills/{stage}/SKILL.md`
+**2. Generate Execution Guide** - Create `4-generate/docs/execution.md`:
+- How to run stages for this framework
+- Skills overview table
+- Output structure specific to this framework
+- Run log conventions (simplified from parent)
+
+**3. Generate Skill Files** - For each stage:
+- Create directory: `4-generate/.claude/skills/{stage}/`
+- Create skill file: `4-generate/.claude/skills/{stage}/SKILL.md`
 - Include: frontmatter, inputs table, input format, process steps, output with embedded templates, quality criteria, completion
-- First stage skill initializes run.md; subsequent stages append
+- Skills should be self-contained (no references to external docs)
 
-**3. Update Index Documents**:
-- `docs/overview.md`: Add to document index table
-- `CLAUDE.md`: Add framework to context table
-- `README.md`: Add to structure tree, stages table, usage commands
+**4. Generate README** - Create `4-generate/README.md`:
+- Framework overview from charter
+- Quick start guide
+- Stages table with purposes
+- Link to docs for details
 
-**4. Update Guide Documents**:
-- `docs/execution.md`: Add to skills table, output structure section
+**5. Generate CLAUDE.md** - Create `4-generate/CLAUDE.md`:
+- AI assistant instructions for this framework
+- Document index
+- Interaction protocols
 
 ## Interaction
 
@@ -85,18 +94,20 @@ See CLAUDE.md "Interaction Protocol" for tool usage and menu format.
 
 ## Output
 
-**Generated files** go to their permanent locations:
+Save to `output/{date}/{name}/` (same folder as Frame).
 
-| Artifact | Path |
-|----------|------|
-| Framework document | `docs/models/{name}.md` |
-| Stage skill | `.claude/skills/{stage-name}/SKILL.md` |
-
-**Run log** updated in `output/{date}/run.md`.
+| File | Content |
+|------|---------|
+| `run.md` | Update progress + append Generate entry |
+| `4-generate/README.md` | Framework overview |
+| `4-generate/CLAUDE.md` | AI assistant instructions |
+| `4-generate/docs/{name}.md` | Framework documentation |
+| `4-generate/docs/execution.md` | How to run stages |
+| `4-generate/.claude/skills/{stage}/SKILL.md` | Stage skills (one per stage) |
 
 ### Run Log (run.md)
 
-Append Generate entry. List files created, index updates, and guide updates instead of decisions table.
+Update progress table and append Generate entry. List files created instead of decisions table.
 
 ### Framework Document Structure
 
@@ -158,24 +169,18 @@ description: {One line for skill picker}
 
 ## Interaction
 
-See CLAUDE.md "Interaction Protocol" for tool usage and menu format.
-
-**Stage-specific triggers for `AskUserQuestion`:**
+Use `AskUserQuestion` tool for:
 - {trigger 1}
 - {trigger 2}
 
 ## Output
 
-Save to `output/{date}/`.
+Save to `output/{date}/{name}/{#}-{stage}/`.
 
 | File | Content |
 |------|---------|
-| `run.md` | Initialize/Append run log |
+| `../run.md` | Update progress + append decisions |
 | `{output-file}.md` | {Description} |
-
-### Run Log (run.md)
-
-{Initialize or Append}. See `docs/execution.md` "Run Log Conventions" for format.
 
 ### {Output File} ({filename}.md)
 
@@ -193,20 +198,21 @@ Present: {What to show}. Approve → {Next stage}.
 
 | Aspect | First stage | Subsequent stages |
 |--------|-------------|-------------------|
-| Run log | Initialize | Append |
-| Output path | Creates `output/{date}/` | Same date as first stage |
+| Run log | Initialize with progress table | Update progress + append |
+| Output path | Creates `output/{date}/{name}/` | Same folder |
 | Input format | From user | From previous stage files |
 
 ## Quality Criteria
 
 - [ ] Framework document follows structure
+- [ ] Execution guide created with stages and run log format
 - [ ] All stages have corresponding skill files
 - [ ] Skill frontmatter is valid (name, description)
-- [ ] Skills have input format section after inputs table
+- [ ] Skills are self-contained (no external doc references)
 - [ ] Skills follow standard structure (inputs, input format, process, output with embedded templates, criteria, completion)
 - [ ] Output templates embedded in each skill's Output section
-- [ ] Index documents updated (overview.md, CLAUDE.md, README.md)
-- [ ] Guide documents updated (execution.md)
+- [ ] README created with overview and quick start
+- [ ] CLAUDE.md created with AI instructions
 - [ ] No broken internal links
 - [ ] Mermaid diagrams render correctly
 

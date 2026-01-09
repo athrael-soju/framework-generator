@@ -16,7 +16,7 @@ Map the stages and flow of the framework.
 
 ### Input Format
 
-**From Frame stage (`output/{date}/{name}-charter.md`):**
+**From Frame stage (`output/{date}/{name}/1-frame/charter.md`):**
 
 ```markdown
 # Framework Charter: {NAME}
@@ -89,18 +89,18 @@ See CLAUDE.md "Interaction Protocol" for tool usage and menu format.
 
 ## Output
 
-Save to `output/{date}/` (same date as Frame).
+Save to `output/{date}/{name}/` (same folder as Frame).
 
 | File | Content |
 |------|---------|
-| `run.md` | Append Organize decisions |
-| `{name}-stage-map.md` | Stage map |
+| `run.md` | Update progress + append Organize decisions |
+| `2-organize/stage-map.md` | Stage map |
 
 ### Run Log (run.md)
 
-Append Organize decisions. See `docs/execution.md` "Run Log Conventions" for format.
+Update progress table and append Organize decisions. See `docs/execution.md` "Run Log Conventions" for format.
 
-### Stage Map ({name}-stage-map.md)
+### Stage Map (2-organize/stage-map.md)
 
 ```markdown
 # Stage Map: {NAME}

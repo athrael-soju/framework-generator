@@ -150,20 +150,31 @@ Some conditions route back to earlier stages:
 
 ```
 output/
-└── {date}/
-    ├── run.md                    # Decisions log
-    ├── {name}-charter.md         # Frame output
-    ├── {name}-stage-map.md       # Organize output
-    ├── {name}-{stage}-spec.md    # Refine output (per stage)
-    └── {name}-validation.md      # Evaluate output
+└── {date}/{name}/
+    ├── run.md                        # Run log with progress tracking
+    │
+    ├── 1-frame/
+    │   └── charter.md                # Framework charter
+    │
+    ├── 2-organize/
+    │   └── stage-map.md              # Stage map with flow diagram
+    │
+    ├── 3-refine/
+    │   └── {stage}-spec.md           # Stage specification (one per stage)
+    │
+    ├── 4-generate/                   # Generated framework (portable)
+    │   ├── README.md
+    │   ├── CLAUDE.md
+    │   ├── docs/
+    │   │   └── {name}.md
+    │   └── .claude/skills/
+    │       └── {stage}/SKILL.md
+    │
+    └── 5-evaluate/
+        └── validation.md             # Validation report
 ```
 
-Generated frameworks:
-
-```
-docs/models/{name}.md             # Framework documentation
-.claude/skills/{stage}/SKILL.md   # Executable skills
-```
+The generated framework in `4-generate/` is self-contained and can be copied to any location.
 
 ### Naming
 
@@ -172,7 +183,7 @@ docs/models/{name}.md             # Framework documentation
 
 ### Run Log Conventions
 
-The run log (`run.md`) tracks decisions across stages.
+The run log (`run.md`) tracks progress and decisions across stages.
 
 **Initialize** (Frame stage):
 
@@ -182,9 +193,19 @@ The run log (`run.md`) tracks decisions across stages.
 Started: {date}
 Status: in_progress
 
+## Progress
+
+| # | Stage | Status | Started | Completed |
+|---|-------|--------|---------|-----------|
+| 1 | Frame | → in_progress | {time} | - |
+| 2 | Organize | ○ pending | - | - |
+| 3 | Refine | ○ pending | - | - |
+| 4 | Generate | ○ pending | - | - |
+| 5 | Evaluate | ○ pending | - | - |
+
 ---
 
-## Frame - {date}
+## 1. Frame - {date}
 
 **Inputs provided:**
 - Problem: {summary}
@@ -195,22 +216,29 @@ Status: in_progress
 |----------|--------|
 | {question} | {selection} |
 
-**Output:** `{name}-charter.md`
+**Output:** `1-frame/charter.md`
 ```
+
+**Update progress** (each stage):
+
+Update the Progress table:
+- Current stage: `→ in_progress`
+- Completed stages: `✓ complete`
+- Pending stages: `○ pending`
 
 **Append** (Organize, Refine, Generate stages):
 
 ```markdown
 ---
 
-## {Stage} - {date}
+## {#}. {Stage} - {date}
 
 **Decisions:**
 | Question | Choice |
 |----------|--------|
 | {question} | {selection} |
 
-**Output:** `{filename}.md`
+**Output:** `{#}-{stage}/{filename}.md`
 ```
 
 **Finalize** (Evaluate stage):
@@ -218,7 +246,7 @@ Status: in_progress
 ```markdown
 ---
 
-## Evaluate - {date}
+## 5. Evaluate - {date}
 
 **Checks performed:**
 - Convention compliance: {pass/fail}
@@ -231,7 +259,7 @@ Status: in_progress
 |----------|--------|
 | {question} | {selection} |
 
-**Output:** `{name}-validation.md`
+**Output:** `5-evaluate/validation.md`
 
 ---
 
@@ -239,9 +267,7 @@ Status: in_progress
 
 **Status:** complete / aborted
 **Result:** {name} framework created with {n} stages
-**Files generated:**
-- `docs/models/{name}.md`
-- `.claude/skills/{stage}/SKILL.md` (per stage)
+**Location:** `4-generate/`
 ```
 
 ---

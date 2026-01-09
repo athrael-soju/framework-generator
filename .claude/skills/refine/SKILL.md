@@ -17,7 +17,7 @@ Specify each stage in detail.
 
 ### Input Format
 
-**From Frame stage (`output/{date}/{name}-charter.md`):**
+**From Frame stage (`output/{date}/{name}/1-frame/charter.md`):**
 
 ```markdown
 ## Problem
@@ -28,7 +28,7 @@ Specify each stage in detail.
 **Out:** {What's excluded}
 ```
 
-**From Organize stage (`output/{date}/{name}-stage-map.md`):**
+**From Organize stage (`output/{date}/{name}/2-organize/stage-map.md`):**
 
 ```markdown
 ## Stages
@@ -94,18 +94,18 @@ See CLAUDE.md "Interaction Protocol" for tool usage and menu format.
 
 ## Output
 
-Save to `output/{date}/` (same date as Frame).
+Save to `output/{date}/{name}/` (same folder as Frame).
 
 | File | Content |
 |------|---------|
-| `run.md` | Append Refine decisions |
-| `{name}-{stage}-spec.md` | One file per stage specification |
+| `run.md` | Update progress + append Refine decisions |
+| `3-refine/{stage}-spec.md` | One file per stage specification |
 
 ### Run Log (run.md)
 
-Append Refine decisions. See `docs/execution.md` "Run Log Conventions" for format. Include "Stages specified" list.
+Update progress table and append Refine decisions. See `docs/execution.md` "Run Log Conventions" for format. Include "Stages specified" list.
 
-### Stage Specification ({name}-{stage}-spec.md)
+### Stage Specification (3-refine/{stage}-spec.md)
 
 One file per stage.
 

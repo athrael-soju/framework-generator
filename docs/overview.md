@@ -63,20 +63,28 @@ Each stage requires approval before proceeding. See [execution.md](execution.md)
 
 ```
 output/
-└── {date}/
-    ├── run.md                    # Decisions at each stage
-    ├── {name}-charter.md         # From Frame
-    ├── {name}-stage-map.md       # From Organize
-    ├── {name}-{stage}-spec.md    # From Refine (one per stage)
-    └── {name}-validation.md      # From Evaluate
+└── {date}/{name}/
+    ├── run.md                        # Progress tracking + decisions
+    │
+    ├── 1-frame/
+    │   └── charter.md
+    ├── 2-organize/
+    │   └── stage-map.md
+    ├── 3-refine/
+    │   └── {stage}-spec.md           # One per stage
+    ├── 4-generate/                   # ← Portable framework
+    │   ├── README.md
+    │   ├── CLAUDE.md
+    │   ├── docs/
+    │   │   ├── {name}.md
+    │   │   └── execution.md
+    │   └── .claude/skills/
+    │       └── {stage}/SKILL.md
+    └── 5-evaluate/
+        └── validation.md
 ```
 
-Generated frameworks are written to:
-
-```
-docs/models/{name}.md             # Framework documentation
-.claude/skills/{stage}/SKILL.md   # Executable skills
-```
+The `4-generate/` folder contains a self-sufficient framework that can be copied to any project.
 
 ---
 
