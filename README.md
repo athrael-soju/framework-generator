@@ -18,6 +18,13 @@ A tool for creating structured, repeatable frameworks with executable skills.
 │   └── evaluate/             # Validate and iterate
 │
 ├── output/                   # Run outputs
+│   └── {date}/{name}/        # Per-framework run folder
+│       ├── run.md            # Progress tracking + decisions
+│       ├── 1-frame/          # Charter
+│       ├── 2-organize/       # Stage map
+│       ├── 3-refine/         # Stage specs
+│       ├── 4-generate/       # Generated framework (portable)
+│       └── 5-evaluate/       # Validation report
 │
 ├── CLAUDE.md
 └── README.md

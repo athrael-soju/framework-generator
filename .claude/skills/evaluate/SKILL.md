@@ -147,7 +147,7 @@ Save to `output/{date}/{name}/` (same folder as Frame).
 
 Update progress table and finalize run log. See `docs/execution.md` "Run Log Conventions" for format.
 
-### Validation Report ({name}-validation.md)
+### Validation Report (5-evaluate/validation.md)
 
 ```markdown
 # Validation Report: {NAME}
