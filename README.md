@@ -22,7 +22,7 @@ cp -r /path/to/this-repo ~/.claude/plugins/framework-generator
 | `/framework-generator:frame <name> [--config file]` | Define framework purpose and boundaries |
 | `/framework-generator:organize <name> [--config file]` | Map stages and flow |
 | `/framework-generator:refine <name> [--config file]` | Specify each stage in detail |
-| `/framework-generator:generate <name> [--config file]` | Produce documentation and skill files |
+| `/framework-generator:generate <name> [--config file]` | Produce framework plugin with command files |
 | `/framework-generator:evaluate <name> [--config file]` | Validate and iterate |
 | `/framework-generator:help` | Show command help |
 
@@ -85,9 +85,8 @@ For each stage, specify:
 ```
 
 Produces:
-- Framework documentation
-- Execution guide
-- Skill files for each stage
+- Plugin manifest
+- Command files for each stage
 - README and CLAUDE.md
 
 **Output:** Complete framework in `output/{date}/my-workflow/4-generate/`
@@ -237,8 +236,8 @@ Built-in iteration paths:
 - Evaluate → Organize (structural issues)
 - Evaluate → Frame (scope problems)
 
-### Self-Contained Skills
-Generated skill files include everything needed:
+### Self-Contained Commands
+Generated command files include everything needed:
 - No external document references
 - Embedded output templates
 - Complete process instructions

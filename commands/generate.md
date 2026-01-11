@@ -1,11 +1,11 @@
 ---
-description: "Execute Generate stage to produce framework document and skill files"
+description: "Execute Generate stage to produce framework plugin with command files"
 argument-hint: "<framework-name> [--config <file>]"
 ---
 
 # Generate
 
-Produce the framework document and skill files.
+Produce a framework plugin with command files.
 
 ## Arguments
 
@@ -77,15 +77,16 @@ These options customize the generated output. All inputs (charter, stage map, sp
 
 ## Process
 
-**1. Generate Framework Document** - Create `4-generate/docs/{name}.md`:
-- Combine charter, stage map, and specifications
-- Include: purpose, inputs, stages, feedback loops, quality criteria
+**1. Generate Plugin Manifest** - Create `4-generate/.claude-plugin/plugin.json`:
+- Plugin name from framework name
+- Version 1.0.0
+- Description from charter purpose
 
-**2. Generate Execution Guide** - Create `4-generate/docs/execution.md`:
-- How to run stages for this framework
-- Skills overview table
+**2. Generate README** - Create `4-generate/README.md`:
+- Framework overview from charter
+- Commands table with descriptions
+- Quick start guide
 - Output structure specific to this framework
-- Run log conventions (simplified from parent)
 
 **3. Generate Command Files** - For each stage:
 - Create directory: `4-generate/commands/`
@@ -93,20 +94,9 @@ These options customize the generated output. All inputs (charter, stage map, sp
 - Include: frontmatter (description, argument-hint), inputs table, input format, process steps, output with embedded templates, quality criteria, completion
 - Commands should be self-contained (no references to external docs)
 
-**3b. Generate Plugin Manifest** - Create `4-generate/.claude-plugin/plugin.json`:
-- Plugin name from framework name
-- Version 1.0.0
-- Description from charter purpose
-
-**4. Generate README** - Create `4-generate/README.md`:
-- Framework overview from charter
-- Quick start guide
-- Stages table with purposes
-- Link to docs for details
-
-**5. Generate CLAUDE.md** - Create `4-generate/CLAUDE.md`:
+**4. Generate CLAUDE.md** - Create `4-generate/CLAUDE.md`:
 - AI assistant instructions for this framework
-- Document index
+- Document index (README, commands/)
 - Interaction protocols
 
 ## Interaction Protocol
@@ -256,4 +246,4 @@ Present: {What to show}. Approve → {Next stage}.
 
 Present: List of generated files with locations. Approve → Evaluate.
 
-When running with `--config`, still present the generated files for approval unless called from `/framework-auto --approve-all`.
+When running with `--config`, still present the generated files for approval unless called from `/framework-generator:framework-auto --approve-all`.

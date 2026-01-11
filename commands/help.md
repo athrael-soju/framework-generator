@@ -51,7 +51,7 @@ Frame → Organize → Refine → Generate → Evaluate
 - Human approval gates at every stage handoff
 - Quality criteria checklists for each stage
 - Feedback loops for iteration
-- Self-contained skill files (no external references)
+- Self-contained command files (no external references)
 
 ## More Information
 
