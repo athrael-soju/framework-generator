@@ -87,11 +87,16 @@ These options customize the generated output. All inputs (charter, stage map, sp
 - Output structure specific to this framework
 - Run log conventions (simplified from parent)
 
-**3. Generate Skill Files** - For each stage:
-- Create directory: `4-generate/.claude/skills/{stage}/`
-- Create skill file: `4-generate/.claude/skills/{stage}/SKILL.md`
-- Include: frontmatter, inputs table, input format, process steps, output with embedded templates, quality criteria, completion
-- Skills should be self-contained (no references to external docs)
+**3. Generate Command Files** - For each stage:
+- Create directory: `4-generate/commands/`
+- Create command file: `4-generate/commands/{stage}.md`
+- Include: frontmatter (description, argument-hint), inputs table, input format, process steps, output with embedded templates, quality criteria, completion
+- Commands should be self-contained (no references to external docs)
+
+**3b. Generate Plugin Manifest** - Create `4-generate/.claude-plugin/plugin.json`:
+- Plugin name from framework name
+- Version 1.0.0
+- Description from charter purpose
 
 **4. Generate README** - Create `4-generate/README.md`:
 - Framework overview from charter
@@ -119,11 +124,10 @@ Save to `output/{date}/{name}/` (same folder as Frame).
 | File | Content |
 |------|---------|
 | `run.md` | Update progress + append Generate entry |
+| `4-generate/.claude-plugin/plugin.json` | Plugin manifest |
+| `4-generate/commands/{stage}.md` | Stage commands (one per stage) |
 | `4-generate/README.md` | Framework overview |
 | `4-generate/CLAUDE.md` | AI assistant instructions |
-| `4-generate/docs/{name}.md` | Framework documentation |
-| `4-generate/docs/execution.md` | How to run stages |
-| `4-generate/.claude/skills/{stage}/SKILL.md` | Stage skills (one per stage) |
 
 ### Framework Document Structure
 
@@ -158,17 +162,24 @@ Save to `output/{date}/{name}/` (same folder as Frame).
 {Table: stage, output, format}
 ```
 
-### Skill File Structure
+### Command File Structure
 
 ```markdown
 ---
-name: {stage-name}
-description: {One line for skill picker}
+description: "{One line description}"
+argument-hint: "<framework-name> [--config <file>]"
 ---
 
 # {Stage Name}
 
 {Brief purpose}
+
+## Arguments
+
+| Argument | Required | Description |
+|----------|----------|-------------|
+| `framework-name` | Yes | Name of the framework |
+| `--config` | No | Path to YAML config file |
 
 ## Inputs
 | Input | Source |
@@ -210,6 +221,17 @@ Save to `output/{date}/{name}/{#}-{stage}/`.
 Present: {What to show}. Approve → {Next stage}.
 ```
 
+### Plugin Manifest Structure
+
+```json
+{
+  "name": "{framework-name}",
+  "version": "1.0.0",
+  "description": "{From charter purpose}",
+  "license": "MIT"
+}
+```
+
 **First vs subsequent stages:**
 
 | Aspect | First stage | Subsequent stages |
@@ -220,17 +242,15 @@ Present: {What to show}. Approve → {Next stage}.
 
 ## Quality Criteria
 
-- [ ] Framework document follows structure
-- [ ] Execution guide created with stages and run log format
-- [ ] All stages have corresponding skill files
-- [ ] Skill frontmatter is valid (name, description)
-- [ ] Skills are self-contained (no external doc references)
-- [ ] Skills follow standard structure (inputs, input format, process, output with embedded templates, criteria, completion)
-- [ ] Output templates embedded in each skill's Output section
+- [ ] Plugin manifest created with valid JSON
+- [ ] All stages have corresponding command files
+- [ ] Command frontmatter is valid (description, argument-hint)
+- [ ] Commands are self-contained (no external doc references)
+- [ ] Commands follow standard structure (arguments, inputs, input format, process, output with embedded templates, criteria, completion)
+- [ ] Output templates embedded in each command's Output section
 - [ ] README created with overview and quick start
 - [ ] CLAUDE.md created with AI instructions
 - [ ] No broken internal links
-- [ ] Mermaid diagrams render correctly
 
 ## Completion
 

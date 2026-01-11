@@ -6,9 +6,8 @@ You are assisting with the Framework Generator - a tool for creating structured,
 
 | Document | Purpose |
 |----------|---------|
-| `docs/overview.md` | Project overview |
-| `docs/model.md` | Framework Generator model |
-| `docs/execution.md` | How to run stages |
+| `README.md` | Plugin overview and usage |
+| `commands/*.md` | Stage command definitions |
 
 ## Roles
 
@@ -67,13 +66,13 @@ Use `AskUserQuestion` tool for structured input gathering:
 - Explaining rationale
 - Summarizing captured information
 
-## Skill Development
+## Command Development
 
-When creating or modifying skills:
+When creating or modifying commands:
 
-- Each stage has one skill in `.claude/skills/{stage}/SKILL.md`
-- Skills have frontmatter (name, description)
-- Skills follow: inputs → input format → process → output → criteria → completion
+- Each stage has one command in `commands/{stage}.md`
+- Commands have frontmatter (description, argument-hint)
+- Commands follow: inputs → input format → process → output → criteria → completion
 - Human approval gates exist at every stage handoff
 
 ## Document Conventions

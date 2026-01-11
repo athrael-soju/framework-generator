@@ -27,16 +27,16 @@ Orchestrates all framework generation stages with configurable automation.
 
 ```bash
 # Fully automated with config
-/framework-auto api-review --config configs/api-review.yaml --approve-all
+/framework-generator:framework-auto api-review --config configs/api-review.yaml --approve-all
 
 # Automated with final review
-/framework-auto feature-dev --config base.yaml --break-at evaluate
+/framework-generator:framework-auto feature-dev --config base.yaml --break-at evaluate
 
 # Pause at key decision points
-/framework-auto new-process --config skeleton.yaml --break-at frame,refine
+/framework-generator:framework-auto new-process --config skeleton.yaml --break-at frame,refine
 
 # Interactive mode (same as running stages individually)
-/framework-auto experimental
+/framework-generator:framework-auto experimental
 ```
 
 ## Process
@@ -134,10 +134,12 @@ output/{date}/{framework-name}/
 ├── 3-refine/
 │   └── {stage}-spec.md (per stage)
 ├── 4-generate/
+│   ├── .claude-plugin/
+│   │   └── plugin.json
+│   ├── commands/
+│   │   └── {stage}.md
 │   ├── README.md
-│   ├── CLAUDE.md
-│   ├── docs/
-│   └── .claude/skills/
+│   └── CLAUDE.md
 └── 5-evaluate/
     └── validation.md
 ```

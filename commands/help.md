@@ -10,11 +10,11 @@ The Framework Generator creates structured, repeatable frameworks with executabl
 
 | Command | Description |
 |---------|-------------|
-| `/frame` | Define framework purpose and boundaries |
-| `/organize` | Map stages and flow |
-| `/refine` | Specify each stage in detail |
-| `/generate` | Produce documentation and skill files |
-| `/evaluate` | Validate and iterate |
+| `/framework-generator:frame` | Define framework purpose and boundaries |
+| `/framework-generator:organize` | Map stages and flow |
+| `/framework-generator:refine` | Specify each stage in detail |
+| `/framework-generator:generate` | Produce documentation and command files |
+| `/framework-generator:evaluate` | Validate and iterate |
 
 ## Workflow
 
@@ -28,7 +28,7 @@ Frame → Organize → Refine → Generate → Evaluate
 
 1. **Start a new framework:**
    ```
-   /frame my-framework
+   /framework-generator:frame my-framework
    ```
 
 2. **Continue through stages:**
