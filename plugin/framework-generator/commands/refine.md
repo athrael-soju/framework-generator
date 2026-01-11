@@ -1,19 +1,62 @@
 ---
 description: "Execute Refine stage to specify each stage in detail"
-argument-hint: "[framework-name]"
+argument-hint: "<framework-name> [--config <file>]"
 ---
 
 # Refine
 
 Specify each stage in detail.
 
+## Arguments
+
+| Argument | Required | Description |
+|----------|----------|-------------|
+| `framework-name` | Yes | Name of the framework |
+| `--config` | No | Path to YAML config file with refine inputs |
+
+## Config Support
+
+When `--config` is provided, read inputs from the config file's `refine` section:
+
+```yaml
+refine:
+  Stage1:
+    activities:
+      - name: "First activity"
+        inputs: ["input1"]
+        outputs: ["output1"]
+    context_tables:
+      - name: "Decision Matrix"
+        columns: ["Option", "Pros", "Cons"]
+        rows:
+          - {Option: "A", Pros: "Fast", Cons: "Limited"}
+    output_template: |
+      # Output Template
+      {placeholder content}
+    criteria:
+      - "All inputs validated"
+      - "Output matches template"
+  Stage2:
+    activities:
+      - name: "Review activity"
+        inputs: ["stage 1 output"]
+        outputs: ["validated output"]
+    criteria:
+      - "Meets acceptance criteria"
+```
+
+For each stage: if config provides `activities` and `criteria`, skip prompts for that stage. Missing stages or fields prompt interactively.
+
 ## Inputs
 
-| Input | Source |
-|-------|--------|
-| framework_charter | Frame stage output |
-| stage_map | Organize stage output |
-| domain_knowledge | User input: specifics about the workflow |
+| Input | Source | Config Path |
+|-------|--------|-------------|
+| framework_charter | Frame stage output | N/A (read from files) |
+| stage_map | Organize stage output | N/A (read from files) |
+| stage_activities | User input or config | `refine.{StageName}.activities` |
+| context_tables | User input or config | `refine.{StageName}.context_tables` |
+| output_template | User input or config | `refine.{StageName}.output_template` |
+| criteria | User input or config | `refine.{StageName}.criteria` |
 
 ### Input Format
 
@@ -147,3 +190,5 @@ Present: {What to show}. Approve -> {Next stage}.
 ## Completion
 
 Present: All stage specifications. Approve → Generate.
+
+When running with `--config` and all stage inputs provided, still present the specifications for approval unless called from `/framework-auto --approve-all`.

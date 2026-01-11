@@ -1,18 +1,50 @@
 ---
 description: "Execute Organize stage to map stages and flow for a framework"
-argument-hint: "[framework-name]"
+argument-hint: "<framework-name> [--config <file>]"
 ---
 
 # Organize
 
 Map the stages and flow of the framework.
 
+## Arguments
+
+| Argument | Required | Description |
+|----------|----------|-------------|
+| `framework-name` | Yes | Name of the framework |
+| `--config` | No | Path to YAML config file with organize inputs |
+
+## Config Support
+
+When `--config` is provided, read inputs from the config file's `organize` section:
+
+```yaml
+organize:
+  pattern: linear  # linear | cyclical | hub | branching
+  stages:
+    - name: Stage1
+      purpose: "What this stage accomplishes"
+      inputs: ["input1"]
+      outputs: ["output1"]
+    - name: Stage2
+      purpose: "What this stage accomplishes"
+  feedback_loops:
+    - from: Stage2
+      to: Stage1
+      condition: "When validation fails"
+```
+
+If config provides `stages`, skip stage identification prompts. If `pattern` or `feedback_loops` are missing, prompt for those fields only.
+
 ## Inputs
 
-| Input | Source |
-|-------|--------|
-| framework_charter | Frame stage output |
-| reference_frameworks | Optional: existing frameworks for structural patterns |
+| Input | Source | Config Path |
+|-------|--------|-------------|
+| framework_charter | Frame stage output | N/A (read from files) |
+| stages | User input or config | `organize.stages` |
+| pattern | User input or config | `organize.pattern` |
+| feedback_loops | User input or config | `organize.feedback_loops` |
+| reference_frameworks | Optional | N/A |
 
 ### Input Format
 
@@ -145,3 +177,5 @@ flowchart TB
 ## Completion
 
 Present: Stage map with flow diagram. Approve → Refine.
+
+When running with `--config` and all inputs provided, still present the stage map for approval unless called from `/framework-auto --approve-all`.

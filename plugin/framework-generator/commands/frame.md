@@ -1,19 +1,47 @@
 ---
 description: "Execute Frame stage to define a new framework's purpose and boundaries"
-argument-hint: "[framework-name]"
+argument-hint: "<framework-name> [--config <file>]"
 ---
 
 # Frame
 
 Define the purpose and boundaries of a new framework.
 
+## Arguments
+
+| Argument | Required | Description |
+|----------|----------|-------------|
+| `framework-name` | Yes | Name for the framework (kebab-case) |
+| `--config` | No | Path to YAML config file with frame inputs |
+
+## Config Support
+
+When `--config` is provided, read inputs from the config file's `frame` section:
+
+```yaml
+frame:
+  problem: "What problem this framework solves"
+  domain: "Domain or field"
+  users:
+    - "Primary user"
+    - "Secondary user"
+  scope:
+    in: ["included items"]
+    out: ["excluded items"]
+  constraints:
+    - "Known limitations"
+```
+
+If config provides all required fields (`problem`, `domain`, `users`), skip interactive prompts and proceed directly to output generation. If any fields are missing, prompt for those specific fields only.
+
 ## Inputs
 
-| Input | Source |
-|-------|--------|
-| problem_description | User input: what workflow needs systematizing |
-| context | User input: domain, constraints, intended users |
-| reference_frameworks | Optional: existing frameworks to draw patterns from |
+| Input | Source | Config Path |
+|-------|--------|-------------|
+| problem_description | User input or config | `frame.problem` |
+| context | User input or config | `frame.domain`, `frame.users`, `frame.constraints` |
+| scope | User input or config | `frame.scope.in`, `frame.scope.out` |
+| reference_frameworks | Optional: existing frameworks | N/A |
 
 ### Input Format
 
@@ -142,3 +170,5 @@ If running multiple times on the same day, add a suffix: `output/2026-01-08-02/{
 ## Completion
 
 Present: Framework charter with all sections. Approve → Organize.
+
+When running with `--config` and all inputs provided, still present the charter for approval unless called from `/framework-auto --approve-all`.

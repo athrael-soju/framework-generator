@@ -1,18 +1,37 @@
 ---
 description: "Execute Evaluate stage to validate generated framework artifacts"
-argument-hint: "[framework-name]"
+argument-hint: "<framework-name> [--config <file>]"
 ---
 
 # Evaluate
 
 Validate the generated framework and iterate if needed.
 
+## Arguments
+
+| Argument | Required | Description |
+|----------|----------|-------------|
+| `framework-name` | Yes | Name of the framework |
+| `--config` | No | Path to YAML config file with evaluate options |
+
+## Config Support
+
+When `--config` is provided, read options from the config file's `evaluate` section:
+
+```yaml
+evaluate:
+  dry_run_stage: Stage1   # Which stage to test
+  strict_mode: false      # Fail on warnings?
+```
+
 ## Inputs
 
-| Input | Source |
-|-------|--------|
-| framework_document | Generate stage output |
-| skill_files | Generate stage output |
+| Input | Source | Config Path |
+|-------|--------|-------------|
+| framework_document | Generate stage output | N/A (read from files) |
+| skill_files | Generate stage output | N/A (read from files) |
+| dry_run_stage | Config or prompt | `evaluate.dry_run_stage` |
+| strict_mode | Config or default | `evaluate.strict_mode` |
 
 ### Input Format
 
@@ -205,3 +224,7 @@ Save to `output/{date}/{name}/` (same folder as Frame).
 ## Completion
 
 Present: Validation report with status. If ready → Framework complete. If not → Return to indicated stage.
+
+When running with `--config` and `--approve-all`, automatically proceed based on validation status:
+- If ready: Complete and report success
+- If not ready: Report issues and stop (requires manual intervention)

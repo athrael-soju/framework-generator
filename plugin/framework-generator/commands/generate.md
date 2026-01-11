@@ -1,19 +1,42 @@
 ---
 description: "Execute Generate stage to produce framework document and skill files"
-argument-hint: "[framework-name]"
+argument-hint: "<framework-name> [--config <file>]"
 ---
 
 # Generate
 
 Produce the framework document and skill files.
 
+## Arguments
+
+| Argument | Required | Description |
+|----------|----------|-------------|
+| `framework-name` | Yes | Name of the framework |
+| `--config` | No | Path to YAML config file with generate options |
+
+## Config Support
+
+When `--config` is provided, read options from the config file's `generate` section:
+
+```yaml
+generate:
+  include_mermaid: true    # Include mermaid diagrams
+  include_examples: false  # Include usage examples
+  output_format: markdown  # markdown | mdx
+```
+
+These options customize the generated output. All inputs (charter, stage map, specifications) come from previous stage outputs.
+
 ## Inputs
 
-| Input | Source |
-|-------|--------|
-| framework_charter | Frame stage output |
-| stage_map | Organize stage output |
-| stage_specifications | Refine stage output (all stages) |
+| Input | Source | Config Path |
+|-------|--------|-------------|
+| framework_charter | Frame stage output | N/A (read from files) |
+| stage_map | Organize stage output | N/A (read from files) |
+| stage_specifications | Refine stage output | N/A (read from files) |
+| include_mermaid | Config or default | `generate.include_mermaid` |
+| include_examples | Config or default | `generate.include_examples` |
+| output_format | Config or default | `generate.output_format` |
 
 ### Input Format
 
@@ -212,3 +235,5 @@ Present: {What to show}. Approve → {Next stage}.
 ## Completion
 
 Present: List of generated files with locations. Approve → Evaluate.
+
+When running with `--config`, still present the generated files for approval unless called from `/framework-auto --approve-all`.

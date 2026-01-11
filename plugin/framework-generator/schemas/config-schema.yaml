@@ -1,0 +1,207 @@
+# Framework Generator Config Schema
+# Validates configuration files for automated framework generation
+
+type: object
+required:
+  - name
+  - frame
+
+properties:
+  name:
+    type: string
+    description: Framework name (used for output directory)
+    pattern: "^[a-z][a-z0-9-]*$"
+
+  frame:
+    type: object
+    description: Frame stage inputs
+    required:
+      - problem
+      - domain
+      - users
+    properties:
+      problem:
+        type: string
+        description: What problem does this framework solve?
+        minLength: 10
+      domain:
+        type: string
+        description: Domain or field this framework operates in
+      users:
+        type: array
+        description: Who will use this framework?
+        items:
+          type: string
+        minItems: 1
+      scope:
+        type: object
+        properties:
+          in:
+            type: array
+            description: What's included in scope
+            items:
+              type: string
+          out:
+            type: array
+            description: What's explicitly excluded
+            items:
+              type: string
+      constraints:
+        type: array
+        description: Limitations or boundaries
+        items:
+          type: string
+
+  organize:
+    type: object
+    description: Organize stage inputs
+    properties:
+      pattern:
+        type: string
+        enum:
+          - linear
+          - cyclical
+          - hub
+          - branching
+        default: linear
+        description: Flow pattern for stages
+      stages:
+        type: array
+        description: Stage definitions
+        items:
+          type: object
+          required:
+            - name
+            - purpose
+          properties:
+            name:
+              type: string
+              description: Stage name
+            purpose:
+              type: string
+              description: What this stage accomplishes
+            inputs:
+              type: array
+              items:
+                type: string
+            outputs:
+              type: array
+              items:
+                type: string
+        minItems: 2
+        maxItems: 7
+      feedback_loops:
+        type: array
+        description: Define feedback paths between stages
+        items:
+          type: object
+          properties:
+            from:
+              type: string
+            to:
+              type: string
+            condition:
+              type: string
+
+  refine:
+    type: object
+    description: Per-stage specifications (keys are stage names)
+    additionalProperties:
+      type: object
+      properties:
+        activities:
+          type: array
+          description: What happens in this stage
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              inputs:
+                type: array
+                items:
+                  type: string
+              outputs:
+                type: array
+                items:
+                  type: string
+        context_tables:
+          type: array
+          description: Reference tables for this stage
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              columns:
+                type: array
+                items:
+                  type: string
+              rows:
+                type: array
+                items:
+                  type: object
+        output_template:
+          type: string
+          description: Template for stage output document
+        criteria:
+          type: array
+          description: Quality criteria checklist
+          items:
+            type: string
+
+  generate:
+    type: object
+    description: Generate stage options
+    properties:
+      include_mermaid:
+        type: boolean
+        default: true
+      include_examples:
+        type: boolean
+        default: false
+      output_format:
+        type: string
+        enum:
+          - markdown
+          - mdx
+        default: markdown
+
+  evaluate:
+    type: object
+    description: Evaluate stage options
+    properties:
+      dry_run_stage:
+        type: string
+        description: Which stage to dry-run for validation
+      strict_mode:
+        type: boolean
+        default: false
+        description: Fail on warnings, not just errors
+
+  options:
+    type: object
+    description: Automation options
+    properties:
+      approve_all:
+        type: boolean
+        default: false
+        description: Skip all approval gates
+      break_at:
+        type: array
+        description: Stages to pause for human input
+        items:
+          type: string
+          enum:
+            - frame
+            - organize
+            - refine
+            - generate
+            - evaluate
+      on_error:
+        type: string
+        enum:
+          - stop
+          - report
+          - retry
+        default: stop

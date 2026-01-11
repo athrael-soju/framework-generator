@@ -18,11 +18,12 @@ cp -r framework-generator ~/.claude/plugins/
 
 | Command | Description |
 |---------|-------------|
-| `/frame [name]` | Define framework purpose and boundaries |
-| `/organize [name]` | Map stages and flow |
-| `/refine [name]` | Specify each stage in detail |
-| `/generate [name]` | Produce documentation and skill files |
-| `/evaluate [name]` | Validate and iterate |
+| `/framework-auto <name> [options]` | Run all stages with configurable automation |
+| `/frame <name> [--config file]` | Define framework purpose and boundaries |
+| `/organize <name> [--config file]` | Map stages and flow |
+| `/refine <name> [--config file]` | Specify each stage in detail |
+| `/generate <name> [--config file]` | Produce documentation and skill files |
+| `/evaluate <name> [--config file]` | Validate and iterate |
 | `/help` | Show command help |
 
 ## Workflow
@@ -104,6 +105,85 @@ Validates:
 - Dry run of first stage
 
 **Output:** Validation report in `output/{date}/my-workflow/5-evaluate/validation.md`
+
+## Automation (Hybrid Mode)
+
+The plugin supports configurable automation via YAML config files.
+
+### Automation Levels
+
+| Mode | Command | Human Touchpoints |
+|------|---------|-------------------|
+| **Interactive** | `/frame my-framework` | 5 (all stages) |
+| **Config-assisted** | `/frame my-framework --config base.yaml` | Gaps only |
+| **Breakpoint** | `/framework-auto my-framework --config full.yaml --break-at evaluate` | 1 |
+| **Fully automated** | `/framework-auto my-framework --config full.yaml --approve-all` | 0 |
+
+### Using Config Files
+
+Create a config file from the template:
+
+```bash
+cp templates/config-template.yaml my-framework-config.yaml
+```
+
+Run with config:
+
+```bash
+# Single stage with config
+/frame my-framework --config my-framework-config.yaml
+
+# All stages automated
+/framework-auto my-framework --config my-framework-config.yaml --approve-all
+
+# Automated with review at end
+/framework-auto my-framework --config my-framework-config.yaml --break-at evaluate
+```
+
+### Config Structure
+
+```yaml
+name: my-framework
+
+frame:
+  problem: "What problem this solves"
+  domain: "Domain area"
+  users: ["user1", "user2"]
+  scope:
+    in: ["included"]
+    out: ["excluded"]
+
+organize:
+  pattern: linear
+  stages:
+    - name: Stage1
+      purpose: "Purpose"
+    - name: Stage2
+      purpose: "Purpose"
+
+refine:
+  Stage1:
+    activities:
+      - name: "Activity"
+        inputs: ["input"]
+        outputs: ["output"]
+    criteria:
+      - "Quality check"
+
+options:
+  approve_all: false
+  break_at: [evaluate]
+  on_error: stop
+```
+
+### Config Completeness
+
+| Config Level | Behavior |
+|--------------|----------|
+| **Full** (all sections) | Auto-run all stages |
+| **Partial** (some sections) | Auto-run known, prompt for gaps |
+| **Skeleton** (structure only) | Use as starting point |
+| **None** | Fully interactive |
 
 ## Output Structure
 
