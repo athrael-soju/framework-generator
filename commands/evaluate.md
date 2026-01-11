@@ -133,7 +133,7 @@ argument-hint: "<framework-name>"
 
 ### Run Log Update
 
-Update `run.md` per CLAUDE.md § Run Log Template. Set Evaluate to Complete with token count. Update Status header to "Complete" or "Return to {stage}". Log the final total token count.
+Update `run.md` per CLAUDE.md § Run Log Template. Set Evaluate to Complete. Update Status header to "Complete" or "Return to {stage}".
 
 ### Validation Report (5-evaluate/validation.md)
 

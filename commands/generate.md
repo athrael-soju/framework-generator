@@ -88,7 +88,7 @@ Produce a framework plugin with command files.
 
 ### Run Log Update
 
-Update `run.md` per CLAUDE.md § Run Log Template. Set Generate to Complete with token count.
+Update `run.md` per CLAUDE.md § Run Log Template. Set Generate to Complete.
 
 ### Framework Document Structure
 

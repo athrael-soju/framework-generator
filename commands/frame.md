@@ -83,7 +83,7 @@ reference_frameworks:
 
 ### Run Log (run.md)
 
-Initialize using the template from CLAUDE.md § Run Log Template. Set Frame to Complete with token count.
+Initialize using the template from CLAUDE.md § Run Log Template. Set Frame to Complete.
 
 ### Framework Charter (1-frame/charter.md)
 

@@ -127,14 +127,13 @@ All stages use this shared `run.md` format. Frame initializes it; subsequent sta
 
 ## Progress
 
-| Stage | Status | Completed | Tokens |
-|-------|--------|-----------|--------|
-| Frame | Pending/Complete | {date} | {tokens} |
-| Organize | Pending/Complete | {date} | {tokens} |
-| Refine | Pending/Complete | {date} | {tokens} |
-| Generate | Pending/Complete | {date} | {tokens} |
-| Evaluate | Pending/Complete | {date} | {tokens} |
-| **Total** | | | **{sum}** |
+| Stage | Status | Completed |
+|-------|--------|-----------|
+| Frame | Pending/Complete | {date} |
+| Organize | Pending/Complete | {date} |
+| Refine | Pending/Complete | {date} |
+| Generate | Pending/Complete | {date} |
+| Evaluate | Pending/Complete | {date} |
 
 ## Log
 
@@ -144,5 +143,3 @@ All stages use this shared `run.md` format. Frame initializes it; subsequent sta
 - {key decisions}
 - **{Stage} approved** - {outcome}, ready for {next stage}
 ```
-
-**Token tracking:** After each stage, run `/cost` and record the approximate token count for that stage. Update the Total row with the running sum. At Evaluate completion, log the final total.

@@ -93,7 +93,7 @@ For each stage in the stage map:
 
 ### Run Log Update
 
-Update `run.md` per CLAUDE.md § Run Log Template. Set Refine to Complete with token count.
+Update `run.md` per CLAUDE.md § Run Log Template. Set Refine to Complete.
 
 ### Stage Specification (3-refine/{stage}-spec.md)
 

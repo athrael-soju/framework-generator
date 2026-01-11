@@ -88,7 +88,7 @@ reference_frameworks:
 
 ### Run Log Update
 
-Update `run.md` per CLAUDE.md § Run Log Template. Set Organize to Complete with token count.
+Update `run.md` per CLAUDE.md § Run Log Template. Set Organize to Complete.
 
 ### Stage Map (2-organize/stage-map.md)
 
