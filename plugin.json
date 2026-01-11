@@ -4,5 +4,6 @@
   "description": "Create structured, repeatable frameworks with executable skills through staged refinement. Five stages: Frame, Organize, Refine, Generate, Evaluate.",
   "author": "Athos Georgiou",
   "license": "MIT",
+  "commands": ["./commands/"],
   "hooks": "./hooks/hooks.json"
 }
