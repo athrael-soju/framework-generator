@@ -7,12 +7,6 @@ argument-hint: "<framework-name>"
 
 Define the purpose and boundaries of a new framework.
 
-## Arguments
-
-| Argument | Required | Description |
-|----------|----------|-------------|
-| `framework-name` | Yes | Name for the framework (kebab-case) |
-
 ## Inputs
 
 | Input | Source |
@@ -80,23 +74,7 @@ reference_frameworks:
 - Does it need outputs from another framework?
 - What external inputs are required?
 
-## Interaction Protocol
-
-Use structured questions for:
-- Gathering problem description, context, constraints
-- Framework type selection
-- Scope boundary decisions
-- Charter approval
-
-**Menu format:**
-- 2-4 options per question
-- Each option: short label (1-5 words) + description
-
 ## Output
-
-Create and save to `output/{date}/{name}/` where `{date}` is today (YYYY-MM-DD) and `{name}` is the framework name (kebab-case).
-
-If running multiple times on the same day, add a suffix: `output/2026-01-08-02/{name}/`.
 
 | File | Content |
 |------|---------|
@@ -152,4 +130,4 @@ Initialize using the template from CLAUDE.md § Run Log Template. Set Frame to C
 
 ## Completion
 
-Present: Framework charter with all sections. Approve → Organize.
+Present: Framework charter with all sections. On approval, automatically proceed to Organize stage.

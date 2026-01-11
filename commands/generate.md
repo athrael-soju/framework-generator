@@ -7,12 +7,6 @@ argument-hint: "<framework-name>"
 
 Produce a framework plugin with command files.
 
-## Arguments
-
-| Argument | Required | Description |
-|----------|----------|-------------|
-| `framework-name` | Yes | Name of the framework |
-
 ## Inputs
 
 | Input | Source |
@@ -82,17 +76,7 @@ Produce a framework plugin with command files.
 - Document index (README, commands/)
 - Interaction protocols
 
-## Interaction Protocol
-
-Use structured questions for:
-- File naming conventions
-- Directory structure choices
-- Ambiguous specification clarification
-- Generated files approval
-
 ## Output
-
-Save to `output/{date}/{name}/` (same folder as Frame).
 
 | File | Content |
 |------|---------|
@@ -194,7 +178,7 @@ Save to `output/{date}/{name}/{#}-{stage}/`.
 
 ## Completion
 
-Present: {What to show}. Approve → {Next stage}.
+Present: {What to show}. On approval, automatically proceed to {Next stage}.
 ```
 
 ### Plugin Manifest Structure
@@ -230,4 +214,4 @@ Present: {What to show}. Approve → {Next stage}.
 
 ## Completion
 
-Present: List of generated files with locations. Approve → Evaluate.
+Present: List of generated files with locations. On approval, automatically proceed to Evaluate stage.

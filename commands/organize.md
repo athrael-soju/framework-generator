@@ -7,12 +7,6 @@ argument-hint: "<framework-name>"
 
 Map the stages and flow of the framework.
 
-## Arguments
-
-| Argument | Required | Description |
-|----------|----------|-------------|
-| `framework-name` | Yes | Name of the framework |
-
 ## Inputs
 
 | Input | Source |
@@ -85,18 +79,7 @@ reference_frameworks:
 - Failure/exit states
 - What actions accompany each?
 
-## Interaction Protocol
-
-Use structured questions for:
-- Clarifying ambiguous charter sections
-- Stage naming and count decisions
-- Flow branching choices
-- Feedback loop trigger definitions
-- Stage map approval
-
 ## Output
-
-Save to `output/{date}/{name}/` (same folder as Frame).
 
 | File | Content |
 |------|---------|
@@ -157,4 +140,4 @@ flowchart TB
 
 ## Completion
 
-Present: Stage map with flow diagram. Approve → Refine.
+Present: Stage map with flow diagram. On approval, automatically proceed to Refine stage.

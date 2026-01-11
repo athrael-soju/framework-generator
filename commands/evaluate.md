@@ -7,12 +7,6 @@ argument-hint: "<framework-name>"
 
 Validate the generated framework and iterate if needed.
 
-## Arguments
-
-| Argument | Required | Description |
-|----------|----------|-------------|
-| `framework-name` | Yes | Name of the framework |
-
 ## Inputs
 
 | Input | Source |
@@ -93,15 +87,6 @@ description: {One line}
 - Return to Refine if significant issues
 - Document any accepted limitations
 
-## Interaction Protocol
-
-Use structured questions for:
-- Gap handling decisions (fix vs accept)
-- Severity classification
-- Dry run test scenario input
-- Return stage selection (if issues found)
-- Validation report approval
-
 ## Convention Checklist
 
 **Framework Document:**
@@ -140,8 +125,6 @@ Use structured questions for:
 - [ ] Quality criteria align with activities
 
 ## Output
-
-Save to `output/{date}/{name}/` (same folder as Frame).
 
 | File | Content |
 |------|---------|
@@ -215,4 +198,4 @@ Update `run.md` per CLAUDE.md § Run Log Template. Set Evaluate to Complete with
 
 ## Completion
 
-Present: Validation report with status. If ready → Framework complete. If not → Return to indicated stage.
+Present: Validation report with status. If ready → Framework complete. If issues found → automatically return to indicated stage (Frame, Organize, or Refine).

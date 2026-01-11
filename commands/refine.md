@@ -7,12 +7,6 @@ argument-hint: "<framework-name>"
 
 Specify each stage in detail.
 
-## Arguments
-
-| Argument | Required | Description |
-|----------|----------|-------------|
-| `framework-name` | Yes | Name of the framework |
-
 ## Inputs
 
 | Input | Source |
@@ -90,18 +84,7 @@ For each stage in the stage map:
 - What approval is needed
 - What's the next stage
 
-## Interaction Protocol
-
-Use structured questions for:
-- Gathering domain knowledge (criteria, categories, thresholds)
-- Activity detail clarification
-- Output format choices
-- Quality criteria priorities
-- Stage specification approval
-
 ## Output
-
-Save to `output/{date}/{name}/` (same folder as Frame).
 
 | File | Content |
 |------|---------|
@@ -159,4 +142,4 @@ Present: {What to show}. Approve -> {Next stage}.
 
 ## Completion
 
-Present: All stage specifications. Approve → Generate.
+Present: All stage specifications. On approval, automatically proceed to Generate stage.

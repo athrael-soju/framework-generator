@@ -66,13 +66,37 @@ Use `AskUserQuestion` tool for structured input gathering:
 - Explaining rationale
 - Summarizing captured information
 
+## Command Conventions
+
+All stage commands share these conventions:
+
+### Arguments
+
+| Argument | Required | Description |
+|----------|----------|-------------|
+| `framework-name` | Yes | Name of the framework (kebab-case) |
+
+### Output Path
+
+Save to `output/{date}/{name}/` where `{date}` is YYYY-MM-DD and `{name}` is the framework name.
+
+- Frame: Creates the directory (add suffix `-02` if same-day duplicate)
+- Subsequent stages: Use same folder
+
+### Completion Format
+
+Each stage ends with: `Present: {output}. Approve → {next stage}.`
+
+### Command Structure
+
+Commands follow: inputs → input format → process → output → criteria → completion
+
 ## Command Development
 
 When creating or modifying commands:
 
 - Each stage has one command in `commands/{stage}.md`
 - Commands have frontmatter (description, argument-hint)
-- Commands follow: inputs → input format → process → output → criteria → completion
 - Human approval gates exist at every stage handoff
 
 ## Document Conventions
