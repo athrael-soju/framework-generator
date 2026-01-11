@@ -21,10 +21,57 @@ PLUGIN_ROOT="${CLAUDE_PLUGIN_ROOT:-$(dirname "$(dirname "$0")")}"
 PARSE_SCRIPT="$PLUGIN_ROOT/scripts/parse-config.sh"
 
 # Find output directory (handles date-based paths)
+# Uses portable approach that works on macOS and Linux
 find_output_dir() {
     local stage_num="$1"
     local stage_name="$2"
-    find output -path "*/$FRAMEWORK/$stage_num-$stage_name" -type d 2>/dev/null | head -1
+    local search_pattern="$FRAMEWORK/$stage_num-$stage_name"
+
+    # Check if output directory exists
+    if [ ! -d "output" ]; then
+        return 1
+    fi
+
+    # Use find with -type d, compatible across systems
+    # Search for directories matching the pattern
+    local result=""
+    while IFS= read -r -d '' dir; do
+        if [ -d "$dir" ]; then
+            result="$dir"
+            break
+        fi
+    done < <(find "output" -type d -name "$stage_num-$stage_name" -print0 2>/dev/null)
+
+    # Fallback: try globbing if find didn't work
+    if [ -z "$result" ]; then
+        # shellcheck disable=SC2086
+        for dir in output/*/$FRAMEWORK/$stage_num-$stage_name output/*/*/$FRAMEWORK/$stage_num-$stage_name; do
+            if [ -d "$dir" ]; then
+                result="$dir"
+                break
+            fi
+        done
+    fi
+
+    echo "$result"
+}
+
+# Count files matching a pattern in a directory
+count_files() {
+    local dir="$1"
+    local pattern="$2"
+    local count=0
+
+    if [ -d "$dir" ]; then
+        # Use portable file counting
+        for f in "$dir"/$pattern; do
+            if [ -f "$f" ]; then
+                count=$((count + 1))
+            fi
+        done
+    fi
+
+    echo "$count"
 }
 
 # Check if config has data for a stage
@@ -32,7 +79,7 @@ config_has_stage() {
     local stage="$1"
     if [ -n "$CONFIG" ] && [ -f "$CONFIG" ]; then
         local result
-        result=$("$PARSE_SCRIPT" "$CONFIG" "$stage" 2>/dev/null)
+        result=$("$PARSE_SCRIPT" "$CONFIG" "$stage" 2>/dev/null) || return 1
         [ -n "$result" ] && [ "$result" != "null" ] && [ "$result" != "{}" ]
     else
         return 1
@@ -74,7 +121,7 @@ case "$STAGE" in
             exit 1
         fi
         # Check for at least one stage spec
-        SPEC_COUNT=$(find "$REFINE_DIR" -name "*-spec.md" 2>/dev/null | wc -l)
+        SPEC_COUNT=$(count_files "$REFINE_DIR" "*-spec.md")
         if [ "$SPEC_COUNT" -eq 0 ]; then
             echo "ERROR: No stage specifications found in $REFINE_DIR" >&2
             exit 1
@@ -89,7 +136,7 @@ case "$STAGE" in
             echo "ERROR: Generate stage not complete. Run /generate $FRAMEWORK first." >&2
             exit 1
         fi
-        # Check for README and skills
+        # Check for README
         if [ ! -f "$GEN_DIR/README.md" ]; then
             echo "ERROR: No README.md found in $GEN_DIR" >&2
             exit 1

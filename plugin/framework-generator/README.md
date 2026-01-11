@@ -121,10 +121,20 @@ The plugin supports configurable automation via YAML config files.
 
 ### Using Config Files
 
-Create a config file from the template:
+Create a config file from a template:
 
 ```bash
+# Full template (all options)
 cp templates/config-template.yaml my-framework-config.yaml
+
+# Minimal template (required fields only)
+cp templates/config-minimal.yaml my-framework-config.yaml
+```
+
+Validate your config:
+
+```bash
+./scripts/parse-config.sh my-framework-config.yaml --validate
 ```
 
 Run with config:
