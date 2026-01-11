@@ -2,8 +2,9 @@
   "name": "framework-generator",
   "version": "1.0.0",
   "description": "Create structured, repeatable frameworks with executable skills through staged refinement. Five stages: Frame, Organize, Refine, Generate, Evaluate.",
-  "author": "Athos Georgiou",
+  "author": {
+    "name": "Athrael Soju"
+  },
   "license": "MIT",
-  "commands": ["./commands/"],
-  "hooks": "./hooks/hooks.json"
+  "commands": ["../commands/"]
 }

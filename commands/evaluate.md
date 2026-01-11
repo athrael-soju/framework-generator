@@ -11,42 +11,42 @@ Validate the generated framework and iterate if needed.
 
 | Input | Source |
 |-------|--------|
-| framework_document | Generate stage output |
+| framework_readme | Generate stage output |
 | command_files | Generate stage output |
 | dry_run_stage | User input |
 
 ### Input Format
 
-**Framework document (`output/{date}/{name}/4-generate/docs/{name}.md`):**
+**Framework README (`output/{date}/{name}/4-generate/README.md`):**
 
 ```markdown
-# The {NAME} Framework
+# {NAME} Framework
 {Description}
+## Installation
+## Commands
+## Workflow
 {Mermaid diagram}
-## Purpose
-## Inputs
-## Stages
-### {Stage 1}
-## Feedback Loops
-## Quality Criteria
-## Stage Outputs Summary
+## Quick Start
+## Output Structure
+## Principles
 ```
 
-**Execution guide (`output/{date}/{name}/4-generate/docs/execution.md`):**
+**CLAUDE.md (`output/{date}/{name}/4-generate/CLAUDE.md`):**
 
 ```markdown
-## Skills Overview
-## Running a Stage
-## Output Structure
-## Run Log Conventions
+## Context
+## Roles
+## Principles
+## Stage Execution
+## Command Conventions
 ```
 
-**Skill files (`output/{date}/{name}/4-generate/.claude/skills/{stage}/SKILL.md`):**
+**Command files (`output/{date}/{name}/4-generate/commands/{stage}.md`):**
 
 ```markdown
 ---
-name: {stage}
 description: {One line}
+argument-hint: "<framework-name>"
 ---
 # {Stage}
 ## Inputs
@@ -61,14 +61,14 @@ description: {One line}
 ## Process
 
 **1. Convention Check** - Verify structure compliance:
-- Framework document has required sections
-- Skills have valid frontmatter
+- README has required sections
+- Command files have valid frontmatter
 - Output templates exist where needed
 - Mermaid diagrams render
 
 **2. Completeness Audit** - Check for gaps:
 - Every stage in map has a specification
-- Every stage has a skill file
+- Every stage has a command file
 - Quality criteria cover key concerns
 - Feedback loops handle failure modes
 
@@ -78,7 +78,7 @@ description: {One line}
 - Terminology is consistent
 
 **4. Dry Run** - Test the first stage:
-- Attempt to execute the first skill
+- Attempt to execute the first command
 - Note any ambiguities or gaps
 - Identify missing context or guidance
 
@@ -89,23 +89,22 @@ description: {One line}
 
 ## Convention Checklist
 
-**Framework Document:**
-- [ ] Has purpose statement
-- [ ] Has inputs section with dependencies
-- [ ] Has stages section with activities tables
-- [ ] Has feedback loops table
-- [ ] Has quality criteria per stage
-- [ ] Has stage outputs summary
+**README:**
+- [ ] Has installation instructions
+- [ ] Has commands table
+- [ ] Has workflow diagram
+- [ ] Has quick start guide
+- [ ] Has output structure
 - [ ] Mermaid diagram renders
 
-**Execution Guide:**
-- [ ] Has skills overview table
-- [ ] Has output structure diagram
-- [ ] Has run log conventions
+**CLAUDE.md:**
+- [ ] Has context section with document index
+- [ ] Has stage execution protocol
+- [ ] Has command conventions
 - [ ] Paths are relative to framework root
 
-**Skill Files:**
-- [ ] Frontmatter has name and description
+**Command Files:**
+- [ ] Frontmatter has description and argument-hint
 - [ ] Description is one line, action-oriented
 - [ ] Has inputs table with sources
 - [ ] Has input format section
@@ -115,12 +114,13 @@ description: {One line}
 - [ ] Has completion section with next action
 - [ ] No references to external docs (self-contained)
 
-**Supporting Files:**
-- [ ] README has overview and quick start
-- [ ] CLAUDE.md has AI instructions and document index
+**Plugin Manifest:**
+- [ ] plugin.json in .claude-plugin/ directory
+- [ ] Has name, version, description fields
+- [ ] Commands path is correct
 
 **Consistency:**
-- [ ] Stage names match between framework doc and skills
+- [ ] Stage names match between README and commands
 - [ ] Inputs/outputs chain correctly across stages
 - [ ] Quality criteria align with activities
 
@@ -142,18 +142,23 @@ Update `run.md` per CLAUDE.md § Run Log Template. Set Evaluate to Complete with
 
 ## Convention Compliance
 
-### Framework Document
-- [ ] Has purpose statement
-- [ ] Has inputs section
-- [ ] Has stages with activities
-- [ ] Has feedback loops
-- [ ] Has quality criteria
+### README
+- [ ] Has installation instructions
+- [ ] Has commands table
+- [ ] Has workflow diagram
+- [ ] Has quick start guide
+- [ ] Has output structure
 - [ ] Mermaid renders
 
-### Skill Files
-| Skill | Frontmatter | Inputs | Process | Output | Criteria | Completion |
-|-------|-------------|--------|---------|--------|----------|------------|
+### Command Files
+| Command | Frontmatter | Inputs | Process | Output | Criteria | Completion |
+|---------|-------------|--------|---------|--------|----------|------------|
 | {name} | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+
+### Plugin Manifest
+- [ ] Located in .claude-plugin/
+- [ ] Valid JSON structure
+- [ ] Commands path correct
 
 ### Consistency
 - [ ] Stage names match
