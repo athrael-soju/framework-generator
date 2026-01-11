@@ -190,5 +190,3 @@ Present: {What to show}. Approve -> {Next stage}.
 ## Completion
 
 Present: All stage specifications. Approve → Generate.
-
-When running with `--config` and all stage inputs provided, still present the specifications for approval unless called from `/framework-auto --approve-all`.

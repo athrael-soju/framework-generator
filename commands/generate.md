@@ -245,5 +245,3 @@ Present: {What to show}. Approve → {Next stage}.
 ## Completion
 
 Present: List of generated files with locations. Approve → Evaluate.
-
-When running with `--config`, still present the generated files for approval unless called from `/framework-generator:framework-auto --approve-all`.

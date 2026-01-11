@@ -1,5 +1,5 @@
 # Framework Generator Config Schema
-# Validates configuration files for automated framework generation
+# Validates configuration files for framework generation
 
 type: object
 required:
@@ -179,29 +179,3 @@ properties:
         default: false
         description: Fail on warnings, not just errors
 
-  options:
-    type: object
-    description: Automation options
-    properties:
-      approve_all:
-        type: boolean
-        default: false
-        description: Skip all approval gates
-      break_at:
-        type: array
-        description: Stages to pause for human input
-        items:
-          type: string
-          enum:
-            - frame
-            - organize
-            - refine
-            - generate
-            - evaluate
-      on_error:
-        type: string
-        enum:
-          - stop
-          - report
-          - retry
-        default: stop

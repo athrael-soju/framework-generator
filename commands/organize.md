@@ -177,5 +177,3 @@ flowchart TB
 ## Completion
 
 Present: Stage map with flow diagram. Approve → Refine.
-
-When running with `--config` and all inputs provided, still present the stage map for approval unless called from `/framework-auto --approve-all`.

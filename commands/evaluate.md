@@ -224,7 +224,3 @@ Save to `output/{date}/{name}/` (same folder as Frame).
 ## Completion
 
 Present: Validation report with status. If ready → Framework complete. If not → Return to indicated stage.
-
-When running with `--config` and `--approve-all`, automatically proceed based on validation status:
-- If ready: Complete and report success
-- If not ready: Report issues and stop (requires manual intervention)

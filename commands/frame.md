@@ -170,5 +170,3 @@ If running multiple times on the same day, add a suffix: `output/2026-01-08-02/{
 ## Completion
 
 Present: Framework charter with all sections. Approve → Organize.
-
-When running with `--config` and all inputs provided, still present the charter for approval unless called from `/framework-auto --approve-all`.

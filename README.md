@@ -18,7 +18,6 @@ cp -r /path/to/this-repo ~/.claude/plugins/framework-generator
 
 | Command | Description |
 |---------|-------------|
-| `/framework-generator:framework-auto <name> [options]` | Run all stages with configurable automation |
 | `/framework-generator:frame <name> [--config file]` | Define framework purpose and boundaries |
 | `/framework-generator:organize <name> [--config file]` | Map stages and flow |
 | `/framework-generator:refine <name> [--config file]` | Specify each stage in detail |
@@ -105,18 +104,9 @@ Validates:
 
 **Output:** Validation report in `output/{date}/my-workflow/5-evaluate/validation.md`
 
-## Automation (Hybrid Mode)
+## Config Files
 
-The plugin supports configurable automation via YAML config files.
-
-### Automation Levels
-
-| Mode | Command | Human Touchpoints |
-|------|---------|-------------------|
-| **Interactive** | `/framework-generator:frame my-framework` | 5 (all stages) |
-| **Config-assisted** | `/framework-generator:frame my-framework --config base.yaml` | Gaps only |
-| **Breakpoint** | `/framework-generator:framework-auto my-framework --config full.yaml --break-at evaluate` | 1 |
-| **Fully automated** | `/framework-generator:framework-auto my-framework --config full.yaml --approve-all` | 0 |
+The plugin supports YAML config files to pre-fill inputs for stages.
 
 ### Using Config Files
 
@@ -139,14 +129,7 @@ Validate your config:
 Run with config:
 
 ```bash
-# Single stage with config
 /framework-generator:frame my-framework --config my-framework-config.yaml
-
-# All stages automated
-/framework-generator:framework-auto my-framework --config my-framework-config.yaml --approve-all
-
-# Automated with review at end
-/framework-generator:framework-auto my-framework --config my-framework-config.yaml --break-at evaluate
 ```
 
 ### Config Structure
@@ -178,19 +161,14 @@ refine:
         outputs: ["output"]
     criteria:
       - "Quality check"
-
-options:
-  approve_all: false
-  break_at: [evaluate]
-  on_error: stop
 ```
 
 ### Config Completeness
 
 | Config Level | Behavior |
 |--------------|----------|
-| **Full** (all sections) | Auto-run all stages |
-| **Partial** (some sections) | Auto-run known, prompt for gaps |
+| **Full** (all sections) | Pre-fill all stage inputs |
+| **Partial** (some sections) | Pre-fill known, prompt for gaps |
 | **Skeleton** (structure only) | Use as starting point |
 | **None** | Fully interactive |
 

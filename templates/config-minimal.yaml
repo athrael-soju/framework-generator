@@ -3,7 +3,7 @@
 # This is the minimum required configuration.
 # All other sections are optional and will prompt interactively.
 #
-# Usage: /framework-auto my-framework --config config-minimal.yaml
+# Usage: /framework-generator:frame my-framework --config config-minimal.yaml
 
 name: my-framework
 

@@ -2,14 +2,14 @@
 #
 # Usage:
 #   1. Copy this file and rename it for your framework
-#   2. Fill in the sections you want automated
+#   2. Fill in the sections you want pre-filled
 #   3. Leave sections empty for interactive input
-#   4. Run: /framework-auto my-framework --config my-config.yaml
+#   4. Run: /framework-generator:frame my-framework --config my-config.yaml
 #
 # Tips:
 #   - Minimal config: just 'name' and 'frame' section
-#   - Full config: all sections = fully automated
-#   - Partial config: filled sections auto-run, empty sections prompt
+#   - Full config: all sections = pre-fill all stages
+#   - Partial config: filled sections pre-fill, empty sections prompt
 
 name: my-framework
 
@@ -131,16 +131,3 @@ evaluate:
   # Fail on warnings?
   strict_mode: false
 
-# ============================================================================
-# OPTIONS: Automation settings
-# ============================================================================
-options:
-  # Skip all approval gates
-  approve_all: false
-
-  # Stages to pause for human input (even with approve_all)
-  break_at:
-    - evaluate
-
-  # What to do on error: stop | report | retry
-  on_error: stop
