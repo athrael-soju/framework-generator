@@ -5,6 +5,4 @@
   "author": {
     "name": "Athrael Soju"
   },
-  "license": "MIT",
-  "commands": ["../commands/"]
-}
+  "license": "MIT"}
