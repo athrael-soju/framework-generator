@@ -1,0 +1,9 @@
+{
+  "name": "framework-generator",
+  "version": "1.0.0",
+  "description": "Create structured, repeatable frameworks with executable skills through staged refinement. Five stages: Frame, Organize, Refine, Generate, Evaluate.",
+  "author": {
+    "name": "Framework Generator",
+    "email": "framework-generator@example.com"
+  }
+}
