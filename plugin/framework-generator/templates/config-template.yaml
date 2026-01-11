@@ -1,0 +1,146 @@
+# Framework Generator Configuration Template
+#
+# Usage:
+#   1. Copy this file and rename it for your framework
+#   2. Fill in the sections you want automated
+#   3. Leave sections empty for interactive input
+#   4. Run: /framework-auto my-framework --config my-config.yaml
+#
+# Tips:
+#   - Minimal config: just 'name' and 'frame' section
+#   - Full config: all sections = fully automated
+#   - Partial config: filled sections auto-run, empty sections prompt
+
+name: my-framework
+
+# ============================================================================
+# FRAME: Define purpose and boundaries
+# ============================================================================
+frame:
+  # Required: What problem does this framework solve?
+  problem: |
+    Describe the specific problem or inefficiency this framework addresses.
+    Be concrete about pain points and current challenges.
+
+  # Required: What domain does this operate in?
+  domain: "e.g., software development, hiring, incident response, content creation"
+
+  # Required: Who will use this framework?
+  users:
+    - "Primary user role"
+    - "Secondary user role"
+
+  # Optional: What's in and out of scope?
+  scope:
+    in:
+      - "Included capability or concern"
+      - "Another included item"
+    out:
+      - "Explicitly excluded item"
+      - "Another exclusion"
+
+  # Optional: Known constraints or limitations
+  constraints:
+    - "Must work with existing tools"
+    - "Time or resource constraints"
+
+# ============================================================================
+# ORGANIZE: Map stages and flow
+# ============================================================================
+organize:
+  # Pattern: linear | cyclical | hub | branching
+  pattern: linear
+
+  # Define 2-7 stages
+  stages:
+    - name: Stage1
+      purpose: "What this stage accomplishes"
+      inputs:
+        - "What it needs"
+      outputs:
+        - "What it produces"
+
+    - name: Stage2
+      purpose: "What this stage accomplishes"
+      inputs:
+        - "Output from Stage1"
+      outputs:
+        - "Final deliverable"
+
+  # Optional: Define when to loop back
+  feedback_loops:
+    - from: Stage2
+      to: Stage1
+      condition: "When validation fails"
+
+# ============================================================================
+# REFINE: Specify each stage in detail
+# ============================================================================
+refine:
+  Stage1:
+    activities:
+      - name: "First activity"
+        inputs: ["raw input"]
+        outputs: ["processed output"]
+      - name: "Second activity"
+        inputs: ["processed output"]
+        outputs: ["stage deliverable"]
+
+    # Optional: Reference tables
+    context_tables:
+      - name: "Decision Matrix"
+        columns: ["Option", "Pros", "Cons"]
+        rows:
+          - Option: "A"
+            Pros: "Fast"
+            Cons: "Limited"
+          - Option: "B"
+            Pros: "Flexible"
+            Cons: "Complex"
+
+    # Quality criteria for this stage
+    criteria:
+      - "All inputs validated"
+      - "Output matches template"
+      - "No ambiguous language"
+
+  Stage2:
+    activities:
+      - name: "Review activity"
+        inputs: ["stage 1 output"]
+        outputs: ["validated output"]
+
+    criteria:
+      - "Meets acceptance criteria"
+      - "Stakeholder approved"
+
+# ============================================================================
+# GENERATE: Output options
+# ============================================================================
+generate:
+  include_mermaid: true
+  include_examples: false
+  output_format: markdown
+
+# ============================================================================
+# EVALUATE: Validation options
+# ============================================================================
+evaluate:
+  # Which stage to dry-run for validation
+  dry_run_stage: Stage1
+  # Fail on warnings?
+  strict_mode: false
+
+# ============================================================================
+# OPTIONS: Automation settings
+# ============================================================================
+options:
+  # Skip all approval gates
+  approve_all: false
+
+  # Stages to pause for human input (even with approve_all)
+  break_at:
+    - evaluate
+
+  # What to do on error: stop | report | retry
+  on_error: stop

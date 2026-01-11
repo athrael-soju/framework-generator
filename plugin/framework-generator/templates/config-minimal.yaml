@@ -1,0 +1,14 @@
+# Minimal Framework Generator Config
+#
+# This is the minimum required configuration.
+# All other sections are optional and will prompt interactively.
+#
+# Usage: /framework-auto my-framework --config config-minimal.yaml
+
+name: my-framework
+
+frame:
+  problem: "What problem this framework solves"
+  domain: "Domain area (e.g., software development)"
+  users:
+    - "Primary user role"
