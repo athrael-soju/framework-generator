@@ -1,6 +1,6 @@
 ---
 description: "Execute Refine stage to specify each stage in detail"
-argument-hint: "<framework-name> [--config <file>]"
+argument-hint: "<framework-name>"
 ---
 
 # Refine
@@ -12,51 +12,17 @@ Specify each stage in detail.
 | Argument | Required | Description |
 |----------|----------|-------------|
 | `framework-name` | Yes | Name of the framework |
-| `--config` | No | Path to YAML config file with refine inputs |
-
-## Config Support
-
-When `--config` is provided, read inputs from the config file's `refine` section:
-
-```yaml
-refine:
-  Stage1:
-    activities:
-      - name: "First activity"
-        inputs: ["input1"]
-        outputs: ["output1"]
-    context_tables:
-      - name: "Decision Matrix"
-        columns: ["Option", "Pros", "Cons"]
-        rows:
-          - {Option: "A", Pros: "Fast", Cons: "Limited"}
-    output_template: |
-      # Output Template
-      {placeholder content}
-    criteria:
-      - "All inputs validated"
-      - "Output matches template"
-  Stage2:
-    activities:
-      - name: "Review activity"
-        inputs: ["stage 1 output"]
-        outputs: ["validated output"]
-    criteria:
-      - "Meets acceptance criteria"
-```
-
-For each stage: if config provides `activities` and `criteria`, skip prompts for that stage. Missing stages or fields prompt interactively.
 
 ## Inputs
 
-| Input | Source | Config Path |
-|-------|--------|-------------|
-| framework_charter | Frame stage output | N/A (read from files) |
-| stage_map | Organize stage output | N/A (read from files) |
-| stage_activities | User input or config | `refine.{StageName}.activities` |
-| context_tables | User input or config | `refine.{StageName}.context_tables` |
-| output_template | User input or config | `refine.{StageName}.output_template` |
-| criteria | User input or config | `refine.{StageName}.criteria` |
+| Input | Source |
+|-------|--------|
+| framework_charter | Frame stage output |
+| stage_map | Organize stage output |
+| stage_activities | User input |
+| context_tables | User input |
+| output_template | User input |
+| criteria | User input |
 
 ### Input Format
 
@@ -141,6 +107,10 @@ Save to `output/{date}/{name}/` (same folder as Frame).
 |------|---------|
 | `run.md` | Update progress + append Refine decisions |
 | `3-refine/{stage}-spec.md` | One file per stage specification |
+
+### Run Log Update
+
+Update `run.md` per CLAUDE.md § Run Log Template. Set Refine to Complete with token count.
 
 ### Stage Specification (3-refine/{stage}-spec.md)
 

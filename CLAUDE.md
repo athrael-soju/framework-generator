@@ -89,3 +89,36 @@ When creating or modifying commands:
 - Don't execute stages without confirming inputs
 - Don't skip quality criteria checks
 - Don't proceed past handoffs without approval
+
+## Run Log Template
+
+All stages use this shared `run.md` format. Frame initializes it; subsequent stages update it.
+
+```markdown
+# Framework Run: {NAME}
+
+**Framework:** {name}
+**Started:** {date}
+**Status:** In Progress | Complete | Return to {stage}
+
+## Progress
+
+| Stage | Status | Completed | Tokens |
+|-------|--------|-----------|--------|
+| Frame | Pending/Complete | {date} | {tokens} |
+| Organize | Pending/Complete | {date} | {tokens} |
+| Refine | Pending/Complete | {date} | {tokens} |
+| Generate | Pending/Complete | {date} | {tokens} |
+| Evaluate | Pending/Complete | {date} | {tokens} |
+| **Total** | | | **{sum}** |
+
+## Log
+
+### {date}
+
+- **{Stage} started** - {brief description}
+- {key decisions}
+- **{Stage} approved** - {outcome}, ready for {next stage}
+```
+
+**Token tracking:** After each stage, run `/cost` and record the approximate token count for that stage. Update the Total row with the running sum. At Evaluate completion, log the final total.

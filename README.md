@@ -18,11 +18,11 @@ cp -r /path/to/this-repo ~/.claude/plugins/framework-generator
 
 | Command | Description |
 |---------|-------------|
-| `/framework-generator:frame <name> [--config file]` | Define framework purpose and boundaries |
-| `/framework-generator:organize <name> [--config file]` | Map stages and flow |
-| `/framework-generator:refine <name> [--config file]` | Specify each stage in detail |
-| `/framework-generator:generate <name> [--config file]` | Produce framework plugin with command files |
-| `/framework-generator:evaluate <name> [--config file]` | Validate and iterate |
+| `/framework-generator:frame <name>` | Define framework purpose and boundaries |
+| `/framework-generator:organize <name>` | Map stages and flow |
+| `/framework-generator:refine <name>` | Specify each stage in detail |
+| `/framework-generator:generate <name>` | Produce framework plugin with command files |
+| `/framework-generator:evaluate <name>` | Validate and iterate |
 | `/framework-generator:help` | Show command help |
 
 ## Workflow
@@ -103,74 +103,6 @@ Validates:
 - Dry run of first stage
 
 **Output:** Validation report in `output/{date}/my-workflow/5-evaluate/validation.md`
-
-## Config Files
-
-The plugin supports YAML config files to pre-fill inputs for stages.
-
-### Using Config Files
-
-Create a config file from a template:
-
-```bash
-# Full template (all options)
-cp templates/config-template.yaml my-framework-config.yaml
-
-# Minimal template (required fields only)
-cp templates/config-minimal.yaml my-framework-config.yaml
-```
-
-Validate your config:
-
-```bash
-./scripts/parse-config.sh my-framework-config.yaml --validate
-```
-
-Run with config:
-
-```bash
-/framework-generator:frame my-framework --config my-framework-config.yaml
-```
-
-### Config Structure
-
-```yaml
-name: my-framework
-
-frame:
-  problem: "What problem this solves"
-  domain: "Domain area"
-  users: ["user1", "user2"]
-  scope:
-    in: ["included"]
-    out: ["excluded"]
-
-organize:
-  pattern: linear
-  stages:
-    - name: Stage1
-      purpose: "Purpose"
-    - name: Stage2
-      purpose: "Purpose"
-
-refine:
-  Stage1:
-    activities:
-      - name: "Activity"
-        inputs: ["input"]
-        outputs: ["output"]
-    criteria:
-      - "Quality check"
-```
-
-### Config Completeness
-
-| Config Level | Behavior |
-|--------------|----------|
-| **Full** (all sections) | Pre-fill all stage inputs |
-| **Partial** (some sections) | Pre-fill known, prompt for gaps |
-| **Skeleton** (structure only) | Use as starting point |
-| **None** | Fully interactive |
 
 ## Output Structure
 

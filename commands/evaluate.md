@@ -1,6 +1,6 @@
 ---
 description: "Execute Evaluate stage to validate generated framework artifacts"
-argument-hint: "<framework-name> [--config <file>]"
+argument-hint: "<framework-name>"
 ---
 
 # Evaluate
@@ -12,26 +12,14 @@ Validate the generated framework and iterate if needed.
 | Argument | Required | Description |
 |----------|----------|-------------|
 | `framework-name` | Yes | Name of the framework |
-| `--config` | No | Path to YAML config file with evaluate options |
-
-## Config Support
-
-When `--config` is provided, read options from the config file's `evaluate` section:
-
-```yaml
-evaluate:
-  dry_run_stage: Stage1   # Which stage to test
-  strict_mode: false      # Fail on warnings?
-```
 
 ## Inputs
 
-| Input | Source | Config Path |
-|-------|--------|-------------|
-| framework_document | Generate stage output | N/A (read from files) |
-| skill_files | Generate stage output | N/A (read from files) |
-| dry_run_stage | Config or prompt | `evaluate.dry_run_stage` |
-| strict_mode | Config or default | `evaluate.strict_mode` |
+| Input | Source |
+|-------|--------|
+| framework_document | Generate stage output |
+| command_files | Generate stage output |
+| dry_run_stage | User input |
 
 ### Input Format
 
@@ -159,6 +147,10 @@ Save to `output/{date}/{name}/` (same folder as Frame).
 |------|---------|
 | `run.md` | Update progress + finalize with outcome |
 | `5-evaluate/validation.md` | Validation report |
+
+### Run Log Update
+
+Update `run.md` per CLAUDE.md § Run Log Template. Set Evaluate to Complete with token count. Update Status header to "Complete" or "Return to {stage}". Log the final total token count.
 
 ### Validation Report (5-evaluate/validation.md)
 

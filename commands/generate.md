@@ -1,6 +1,6 @@
 ---
 description: "Execute Generate stage to produce framework plugin with command files"
-argument-hint: "<framework-name> [--config <file>]"
+argument-hint: "<framework-name>"
 ---
 
 # Generate
@@ -12,31 +12,14 @@ Produce a framework plugin with command files.
 | Argument | Required | Description |
 |----------|----------|-------------|
 | `framework-name` | Yes | Name of the framework |
-| `--config` | No | Path to YAML config file with generate options |
-
-## Config Support
-
-When `--config` is provided, read options from the config file's `generate` section:
-
-```yaml
-generate:
-  include_mermaid: true    # Include mermaid diagrams
-  include_examples: false  # Include usage examples
-  output_format: markdown  # markdown | mdx
-```
-
-These options customize the generated output. All inputs (charter, stage map, specifications) come from previous stage outputs.
 
 ## Inputs
 
-| Input | Source | Config Path |
-|-------|--------|-------------|
-| framework_charter | Frame stage output | N/A (read from files) |
-| stage_map | Organize stage output | N/A (read from files) |
-| stage_specifications | Refine stage output | N/A (read from files) |
-| include_mermaid | Config or default | `generate.include_mermaid` |
-| include_examples | Config or default | `generate.include_examples` |
-| output_format | Config or default | `generate.output_format` |
+| Input | Source |
+|-------|--------|
+| framework_charter | Frame stage output |
+| stage_map | Organize stage output |
+| stage_specifications | Refine stage output |
 
 ### Input Format
 
@@ -119,6 +102,10 @@ Save to `output/{date}/{name}/` (same folder as Frame).
 | `4-generate/README.md` | Framework overview |
 | `4-generate/CLAUDE.md` | AI assistant instructions |
 
+### Run Log Update
+
+Update `run.md` per CLAUDE.md § Run Log Template. Set Generate to Complete with token count.
+
 ### Framework Document Structure
 
 ```markdown
@@ -157,7 +144,7 @@ Save to `output/{date}/{name}/` (same folder as Frame).
 ```markdown
 ---
 description: "{One line description}"
-argument-hint: "<framework-name> [--config <file>]"
+argument-hint: "<framework-name>"
 ---
 
 # {Stage Name}
@@ -169,7 +156,6 @@ argument-hint: "<framework-name> [--config <file>]"
 | Argument | Required | Description |
 |----------|----------|-------------|
 | `framework-name` | Yes | Name of the framework |
-| `--config` | No | Path to YAML config file |
 
 ## Inputs
 | Input | Source |
