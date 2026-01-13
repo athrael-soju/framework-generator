@@ -1,29 +1,30 @@
 # Framework Generator
 
-A Claude Code plugin for creating structured, repeatable frameworks with executable skills through staged refinement.
+A tool for creating structured, repeatable frameworks with executable skills through staged refinement. Works with Claude Code.
 
 ## Installation
 
 ```bash
-claude plugins install /path/to/this-repo
+git clone https://github.com/your-username/framework-generator.git
+cd framework-generator
+claude
 ```
 
-Or copy the repo to your plugins directory:
+Claude Code will automatically read the project's `CLAUDE.md` for context and instructions.
 
-```bash
-cp -r /path/to/this-repo ~/.claude/plugins/framework-generator
-```
+## Usage
 
-## Commands
+Once in a Claude Code session, ask Claude to execute stages:
 
-| Command | Description |
+| Request | Description |
 |---------|-------------|
-| `/framework-generator:frame <name>` | Define framework purpose and boundaries |
-| `/framework-generator:organize <name>` | Map stages and flow |
-| `/framework-generator:refine <name>` | Specify each stage in detail |
-| `/framework-generator:generate <name>` | Produce framework plugin with command files |
-| `/framework-generator:evaluate <name>` | Validate and iterate |
-| `/framework-generator:help` | Show command help |
+| "Run Frame stage for {name}" | Define framework purpose and boundaries |
+| "Run Organize stage for {name}" | Map stages and flow |
+| "Run Refine stage for {name}" | Specify each stage in detail |
+| "Run Generate stage for {name}" | Produce framework artifacts |
+| "Run Evaluate stage for {name}" | Validate and iterate |
+
+See [docs/execution.md](docs/execution.md) for detailed stage instructions.
 
 ## Workflow
 
@@ -40,7 +41,7 @@ cp -r /path/to/this-repo ~/.claude/plugins/framework-generator
 ### 1. Start a new framework
 
 ```
-/framework-generator:frame my-workflow
+Run Frame stage for my-workflow
 ```
 
 You'll be asked about:
@@ -53,7 +54,7 @@ You'll be asked about:
 ### 2. Organize the stages
 
 ```
-/framework-generator:organize my-workflow
+Run Organize stage for my-workflow
 ```
 
 Define:
@@ -66,7 +67,7 @@ Define:
 ### 3. Refine each stage
 
 ```
-/framework-generator:refine my-workflow
+Run Refine stage for my-workflow
 ```
 
 For each stage, specify:
@@ -80,20 +81,20 @@ For each stage, specify:
 ### 4. Generate artifacts
 
 ```
-/framework-generator:generate my-workflow
+Run Generate stage for my-workflow
 ```
 
 Produces:
-- Plugin manifest
-- Command files for each stage
+- Stage skill files
 - README and CLAUDE.md
+- Complete framework structure
 
 **Output:** Complete framework in `output/{date}/my-workflow/4-generate/`
 
 ### 5. Evaluate and iterate
 
 ```
-/framework-generator:evaluate my-workflow
+Run Evaluate stage for my-workflow
 ```
 
 Validates:
@@ -116,10 +117,10 @@ output/{date}/{framework-name}/
 ├── 3-refine/
 │   └── {stage}-spec.md             # Stage specifications
 ├── 4-generate/
-│   ├── .claude-plugin/
-│   │   └── plugin.json             # Plugin manifest
-│   ├── commands/
-│   │   └── {stage}.md              # Stage commands
+│   ├── .claude/
+│   │   └── skills/
+│   │       └── {stage}/
+│   │           └── SKILL.md        # Stage skill files
 │   ├── README.md                   # Framework overview
 │   └── CLAUDE.md                   # AI instructions
 └── 5-evaluate/
@@ -146,8 +147,8 @@ Built-in iteration paths:
 - Evaluate → Organize (structural issues)
 - Evaluate → Frame (scope problems)
 
-### Self-Contained Commands
-Generated command files include everything needed:
+### Self-Contained Skills
+Generated skill files include everything needed:
 - No external document references
 - Embedded output templates
 - Complete process instructions
