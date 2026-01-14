@@ -1,3 +1,2 @@
 # Ignore output contents but track folder structure
 output/**/*
-.claude/settings.local.json
