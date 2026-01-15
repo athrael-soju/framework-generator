@@ -74,7 +74,7 @@ Produce a framework plugin with command files.
 **4. Generate CLAUDE.md** - Create `4-generate/CLAUDE.md`:
 - AI assistant instructions for this framework
 - Document index (README, commands/)
-- Interaction protocols
+- Interaction protocol: explicitly instruct use of `AskUserQuestion` tool for gathering input, clarification, and approval requests
 
 ## Output
 
@@ -156,17 +156,19 @@ argument-hint: "<framework-name>"
 
 ## Interaction
 
-Use structured questions for:
+Use the `AskUserQuestion` tool for:
 - {trigger 1}
 - {trigger 2}
 
+Always use `AskUserQuestion` (not plain text) when gathering input, clarifying requirements, or requesting approval.
+
 ## Output
 
-Save to `output/{date}/{name}/{#}-{stage}/`.
+Save to `./runs/{date}/{name}/{#}-{stage}/`.
 
 | File | Content |
 |------|---------|
-| `../run.md` | Update progress + append decisions |
+| `./runs/{date}/{name}/run.md` | Update progress + append decisions |
 | `{output-file}.md` | {Description} |
 
 ### {Output File} ({filename}.md)
@@ -197,7 +199,7 @@ Present: {What to show}. On approval, automatically proceed to {Next stage}.
 | Aspect | First stage | Subsequent stages |
 |--------|-------------|-------------------|
 | Run log | Initialize with progress table | Update progress + append |
-| Output path | Creates `output/{date}/{name}/` | Same folder |
+| Output path | Creates `./runs/{date}/{name}/` | Same folder |
 | Input format | From user | From previous stage files |
 
 ## Quality Criteria
