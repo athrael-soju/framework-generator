@@ -229,11 +229,13 @@ async function handleToolCall(name: string, args: Record<string, unknown>) {
     initializeRun,
     parseRunLog,
     updateStageComplete,
+    setRunStatus,
     listRuns,
     getCurrentStage,
     getLastCompletedStage,
     createStageDir,
     writeStageFile,
+    readStageFile,
   } = await import('@/lib/state/run-manager');
 
   switch (name) {
@@ -268,6 +270,250 @@ ${(args.constraints as string[]).map((c: string) => `- ${c}`).join('\n')}
 
       return {
         content: [{ type: 'text', text: JSON.stringify({ success: true, date, name: frameworkName, stage: 'frame' }) }],
+      };
+    }
+
+    case 'framework_organize': {
+      const date = args.date as string;
+      const frameworkName = args.frameworkName as string;
+      const runLog = await parseRunLog(date, frameworkName);
+      if (!runLog) {
+        return { content: [{ type: 'text', text: JSON.stringify({ error: 'Run not found' }) }], isError: true };
+      }
+
+      const frameStatus = runLog.progress.find(p => p.stage === 'Frame');
+      if (frameStatus?.status !== 'Complete') {
+        return { content: [{ type: 'text', text: JSON.stringify({ error: 'Frame stage must be complete first' }) }], isError: true };
+      }
+
+      await createStageDir(date, frameworkName, 2, 'organize');
+
+      const stages = args.stages as Array<{name: string; purpose: string; inputs: string; outputs: string}>;
+      const feedbackLoops = (args.feedbackLoops || []) as Array<{from: string; condition: string; to: string}>;
+      const terminalStates = (args.terminalStates || []) as Array<{name: string; definition: string; actions: string}>;
+
+      const stageMap = `# Stage Map: ${frameworkName.toUpperCase()}
+
+## Stages
+
+| Stage | Purpose | Inputs | Outputs |
+|-------|---------|--------|---------|
+${stages.map(s => `| ${s.name} | ${s.purpose} | ${s.inputs} | ${s.outputs} |`).join('\n')}
+
+## Flow
+
+\`\`\`mermaid
+${args.flowDiagram}
+\`\`\`
+
+## Feedback Loops
+
+| From | Condition | To |
+|------|-----------|-----|
+${feedbackLoops.map(f => `| ${f.from} | ${f.condition} | ${f.to} |`).join('\n')}
+
+## Terminal States
+
+| State | Definition | Actions |
+|-------|------------|---------|
+${terminalStates.map(t => `| ${t.name} | ${t.definition} | ${t.actions} |`).join('\n')}
+`;
+
+      await writeStageFile(date, frameworkName, 2, 'organize', 'stage-map.md', stageMap);
+      await updateStageComplete(date, frameworkName, 'organize', 'Stage map created');
+
+      return {
+        content: [{ type: 'text', text: JSON.stringify({ success: true, date, name: frameworkName, stage: 'organize' }) }],
+      };
+    }
+
+    case 'framework_refine': {
+      const date = args.date as string;
+      const frameworkName = args.frameworkName as string;
+      const runLog = await parseRunLog(date, frameworkName);
+      if (!runLog) {
+        return { content: [{ type: 'text', text: JSON.stringify({ error: 'Run not found' }) }], isError: true };
+      }
+
+      const organizeStatus = runLog.progress.find(p => p.stage === 'Organize');
+      if (organizeStatus?.status !== 'Complete') {
+        return { content: [{ type: 'text', text: JSON.stringify({ error: 'Organize stage must be complete first' }) }], isError: true };
+      }
+
+      await createStageDir(date, frameworkName, 3, 'refine');
+
+      const specs = args.stageSpecifications as Array<{
+        stageName: string;
+        purpose: string;
+        activities: Array<{activity: string; inputs: string; outputs: string}>;
+        outputFormat: string;
+        qualityCriteria: string[];
+        completion: string;
+      }>;
+
+      for (const spec of specs) {
+        const specContent = `# Stage Specification: ${spec.stageName}
+
+## Purpose
+${spec.purpose}
+
+## Activities
+
+| Activity | Inputs | Outputs |
+|----------|--------|---------|
+${spec.activities.map(a => `| ${a.activity} | ${a.inputs} | ${a.outputs} |`).join('\n')}
+
+## Output Format
+
+${spec.outputFormat}
+
+## Quality Criteria
+
+${spec.qualityCriteria.map(c => `- [ ] ${c}`).join('\n')}
+
+## Completion
+
+${spec.completion}
+`;
+        const fileName = `${spec.stageName.toLowerCase().replace(/\s+/g, '-')}-spec.md`;
+        await writeStageFile(date, frameworkName, 3, 'refine', fileName, specContent);
+      }
+
+      await updateStageComplete(date, frameworkName, 'refine', 'Stage specifications created');
+
+      return {
+        content: [{ type: 'text', text: JSON.stringify({ success: true, date, name: frameworkName, stage: 'refine', specsCreated: specs.length }) }],
+      };
+    }
+
+    case 'framework_generate': {
+      const date = args.date as string;
+      const frameworkName = args.frameworkName as string;
+      const runLog = await parseRunLog(date, frameworkName);
+      if (!runLog) {
+        return { content: [{ type: 'text', text: JSON.stringify({ error: 'Run not found' }) }], isError: true };
+      }
+
+      const refineStatus = runLog.progress.find(p => p.stage === 'Refine');
+      if (refineStatus?.status !== 'Complete') {
+        return { content: [{ type: 'text', text: JSON.stringify({ error: 'Refine stage must be complete first' }) }], isError: true };
+      }
+
+      await createStageDir(date, frameworkName, 4, 'generate');
+
+      // Read charter for framework info
+      const charter = await readStageFile(date, frameworkName, 1, 'frame', 'charter.md');
+
+      // Generate plugin.json
+      const pluginJson = JSON.stringify({
+        name: frameworkName,
+        version: '1.0.0',
+        description: `Framework plugin for ${runLog.name}`,
+      }, null, 2);
+      await writeStageFile(date, frameworkName, 4, 'generate', '.claude-plugin/plugin.json', pluginJson);
+
+      // Generate README
+      const readme = `# ${runLog.name} Framework
+
+A Claude Code plugin for the ${runLog.name} framework.
+
+## Installation
+
+Add this plugin to your Claude Code configuration.
+
+## Commands
+
+| Command | Description |
+|---------|-------------|
+| /${frameworkName} | Run the ${runLog.name} framework |
+
+## Quick Start
+
+1. Install the plugin
+2. Run \`/${frameworkName}\` to start
+3. Follow the stage prompts
+`;
+      await writeStageFile(date, frameworkName, 4, 'generate', 'README.md', readme);
+
+      // Generate CLAUDE.md
+      const claudeMd = `# CLAUDE.md
+
+You are assisting with the ${runLog.name} Framework.
+
+## Context
+
+| Document | Purpose |
+|----------|---------|
+| \`README.md\` | Plugin overview |
+| \`commands/*.md\` | Stage definitions |
+
+## Stage Execution
+
+When executing a stage:
+1. State the stage
+2. Confirm inputs
+3. Execute activities
+4. Produce outputs
+5. Check quality
+6. Request approval
+`;
+      await writeStageFile(date, frameworkName, 4, 'generate', 'CLAUDE.md', claudeMd);
+
+      await updateStageComplete(date, frameworkName, 'generate', 'Plugin files generated');
+
+      return {
+        content: [{ type: 'text', text: JSON.stringify({ success: true, date, name: frameworkName, stage: 'generate', filesCreated: ['plugin.json', 'README.md', 'CLAUDE.md'] }) }],
+      };
+    }
+
+    case 'framework_evaluate': {
+      const date = args.date as string;
+      const frameworkName = args.frameworkName as string;
+      const runLog = await parseRunLog(date, frameworkName);
+      if (!runLog) {
+        return { content: [{ type: 'text', text: JSON.stringify({ error: 'Run not found' }) }], isError: true };
+      }
+
+      const generateStatus = runLog.progress.find(p => p.stage === 'Generate');
+      if (generateStatus?.status !== 'Complete') {
+        return { content: [{ type: 'text', text: JSON.stringify({ error: 'Generate stage must be complete first' }) }], isError: true };
+      }
+
+      await createStageDir(date, frameworkName, 5, 'evaluate');
+
+      const status = args.status as string;
+      const dryRunNotes = (args.dryRunNotes || 'No dry run notes provided') as string;
+
+      const validationReport = `# Validation Report: ${frameworkName}
+
+## Status
+**Result:** ${status}
+
+## Dry Run Notes
+${dryRunNotes}
+
+## Convention Checks
+- [x] Plugin manifest exists
+- [x] README exists
+- [x] CLAUDE.md exists
+- [x] Stage specifications created
+
+## Next Steps
+${status === 'ready' ? 'Framework is ready for use!' : `Return to ${status.replace('needs-', '')} stage to address issues.`}
+`;
+
+      await writeStageFile(date, frameworkName, 5, 'evaluate', 'validation.md', validationReport);
+
+      if (status === 'ready') {
+        await setRunStatus(date, frameworkName, 'Complete');
+      } else {
+        await setRunStatus(date, frameworkName, `Return to ${status.replace('needs-', '')}`);
+      }
+
+      await updateStageComplete(date, frameworkName, 'evaluate', status === 'ready' ? 'Framework complete' : `Needs ${status.replace('needs-', '')}`);
+
+      return {
+        content: [{ type: 'text', text: JSON.stringify({ success: true, date, name: frameworkName, stage: 'evaluate', status }) }],
       };
     }
 
