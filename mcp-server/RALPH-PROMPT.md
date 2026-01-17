@@ -1,84 +1,31 @@
 # Build MCP Server + Web UI for Framework Generator
 
-## Context
+## MANDATORY FIRST ACTION
 
-You are working in `c:\Users\athra\Projects\Personal\Framework-Generator\mcp-server` - a fresh Next.js 16 project with TypeScript and Tailwind.
+**STOP. Before doing ANYTHING else, you MUST:**
 
-The parent directory `Framework-Generator` contains a Claude Code plugin with:
-- `commands/*.md` - Stage definitions (frame.md, organize.md, refine.md, generate.md, evaluate.md)
-- `output/` - Where framework runs are stored
-- `CLAUDE.md` - Run log template and conventions
+1. **Read `PROGRESS.md`** in the project root
+2. **If it doesn't exist**, create it using the template below
+3. **Update the "Last Updated" timestamp** to the current time
+4. **Check for open High severity bugs** - fix these FIRST
+5. **Identify the next unchecked task** from the current phase
 
-## Goal
+**DO NOT skip this step. DO NOT proceed to implementation without reading PROGRESS.md first.**
 
-Build an MCP server with HTTP/SSE transport + Web UI that exposes the Framework Generator's 5-stage workflow (Frame → Organize → Refine → Generate → Evaluate).
+---
 
-## Progress Tracking
+## PROGRESS.md Template
 
-**IMPORTANT**: Maintain a `PROGRESS.md` file in the project root to track your work.
-
-### PROGRESS.md Format
+If `PROGRESS.md` doesn't exist, create it with this exact content:
 
 ```markdown
 # MCP Server Progress
 
 ## Status
-Current Phase: {1-5}
-Last Updated: {timestamp}
+Current Phase: 1
+Last Updated: {YYYY-MM-DD HH:MM}
 
 ## Features Implemented
-- [ ] Feature name - brief description
-
-## Bugs Found
-| Bug | Severity | Status | Notes |
-|-----|----------|--------|-------|
-| Description | High/Med/Low | Open/Fixed | How discovered, fix attempted |
-
-## Blockers
-- Description of what's blocking progress
-
-## Next Actions
-1. Immediate next step
-2. Following step
-```
-
-### Progress Rules
-
-1. **Before each iteration**: Read `PROGRESS.md` to understand current state
-2. **After implementing a feature**: Check the box and add completion note
-3. **When encountering a bug**: Add to bugs table immediately with severity
-4. **Before attempting a fix**: Document what you'll try in the Notes column
-5. **After fixing a bug**: Update status to "Fixed" and note the solution
-6. **If blocked**: Add to Blockers section and attempt workaround
-
-## Requirements
-
-### MCP Tools (8 total)
-| Tool | Description |
-|------|-------------|
-| `framework_frame` | Define new framework purpose/boundaries |
-| `framework_organize` | Map stages and flow |
-| `framework_refine` | Specify each stage in detail |
-| `framework_generate` | Produce framework plugin |
-| `framework_evaluate` | Validate and determine next action |
-| `framework_status` | Get current run status |
-| `framework_list` | List all framework runs |
-| `framework_resume` | Continue from last completed stage |
-
-### Web UI Pages
-| Route | Purpose |
-|-------|---------|
-| `/` | Dashboard - list frameworks and runs |
-| `/new` | Create new framework wizard |
-| `/runs/[date]/[name]` | View run progress and artifacts |
-
-### Key Patterns
-- State lives in filesystem (`../output/{date}/{name}/run.md`)
-- Parse `../commands/*.md` to extract templates and quality criteria
-- Each stage tool returns `approval: { required: true, nextStage, qualityCriteria }`
-- MCP endpoint at `/api/mcp` using SSE transport
-
-## Phases
 
 ### Phase 1: Core Infrastructure
 - [ ] Install dependencies: `@modelcontextprotocol/sdk`, `zod`, `gray-matter`
@@ -110,46 +57,160 @@ Last Updated: {timestamp}
 - [ ] MCP endpoint accepts tool calls
 - [ ] Web UI displays framework data
 
-## Iteration Protocol
+## Bugs Found
+| Bug | Severity | Status | Notes |
+|-----|----------|--------|-------|
 
-Each iteration, follow this sequence:
+## Blockers
 
-1. **Read** `PROGRESS.md` to understand current state
-2. **Check** for open bugs - prioritize High severity fixes
-3. **Identify** next unchecked feature from current phase
-4. **Implement** the feature or fix
-5. **Test** by running `npm run build` or manual verification
-6. **Update** `PROGRESS.md` with results
-7. **If phase complete**, run full verification before moving to next phase
+## Next Actions
+1. Install dependencies
+2. Create lib/types.ts
+```
+
+---
+
+## Iteration Protocol (MUST FOLLOW)
+
+Every single iteration, execute these steps IN ORDER:
+
+### Step 1: Read Progress (REQUIRED)
+```
+Read file: PROGRESS.md
+```
+Understand: What phase? What's done? Any bugs? What's next?
+
+### Step 2: Update Timestamp (REQUIRED)
+Edit PROGRESS.md to update "Last Updated" to current time.
+
+### Step 3: Check for Bugs (REQUIRED)
+If there are High severity bugs with Status=Open, fix them BEFORE any new work.
+
+### Step 4: Implement Next Task
+Find the first unchecked `- [ ]` item in the current phase. Implement it.
+
+### Step 5: Test
+Run `npm run build` to verify no errors.
+
+### Step 6: Update Progress (REQUIRED)
+Edit PROGRESS.md:
+- Check off completed task: `- [x]`
+- Add any bugs found to the table
+- Update "Next Actions"
+- If phase complete, increment "Current Phase"
+
+### Step 7: Continue or Complete
+If all phases done and all checks pass → output `<promise>DONE</promise>`
+Otherwise → continue to next iteration
+
+---
+
+## Context
+
+Working directory: `c:\Users\athra\Projects\Personal\Framework-Generator\mcp-server`
+
+Parent directory `Framework-Generator` contains:
+- `commands/*.md` - Stage definitions (frame, organize, refine, generate, evaluate)
+- `output/` - Where framework runs are stored
+- `CLAUDE.md` - Run log template and conventions
+
+## Goal
+
+Build an MCP server with HTTP/SSE transport + Web UI that exposes the Framework Generator's 5-stage workflow.
+
+## Requirements
+
+### MCP Tools (8 total)
+| Tool | Description |
+|------|-------------|
+| `framework_frame` | Define new framework purpose/boundaries |
+| `framework_organize` | Map stages and flow |
+| `framework_refine` | Specify each stage in detail |
+| `framework_generate` | Produce framework plugin |
+| `framework_evaluate` | Validate and determine next action |
+| `framework_status` | Get current run status |
+| `framework_list` | List all framework runs |
+| `framework_resume` | Continue from last completed stage |
+
+### Web UI Pages
+| Route | Purpose |
+|-------|---------|
+| `/` | Dashboard - list frameworks and runs |
+| `/new` | Create new framework wizard |
+| `/runs/[date]/[name]` | View run progress and artifacts |
+
+### Key Patterns
+- State lives in filesystem (`../output/{date}/{name}/run.md`)
+- Parse `../commands/*.md` to extract templates and quality criteria
+- Each stage tool returns `approval: { required: true, nextStage, qualityCriteria }`
+- MCP endpoint at `/api/mcp` using SSE transport
+
+## Bug Severity Guide
+
+- **High**: Blocks build, crashes app, or breaks core functionality
+- **Medium**: Feature doesn't work correctly but app still runs
+- **Low**: Cosmetic, edge case, or minor issue
 
 ## Error Handling
 
 When you encounter an error:
-
-1. **Log it** in PROGRESS.md bugs table immediately
-2. **Categorize** severity:
-   - High: Blocks build or core functionality
-   - Medium: Feature doesn't work but build passes
-   - Low: Minor issue, cosmetic, or edge case
-3. **Attempt fix** - document approach in Notes
-4. **If fix fails after 2 attempts**: Add to Blockers, try workaround or move on
-5. **If workaround found**: Note it and continue
+1. **IMMEDIATELY** add it to PROGRESS.md bugs table
+2. Assign severity (High/Med/Low)
+3. Set Status to "Open"
+4. Attempt fix - document approach in Notes column
+5. If fixed, update Status to "Fixed"
+6. If not fixed after 2 attempts, add to Blockers section
 
 ## Completion Criteria
 
-All must be true:
-- [ ] All Phase 1-4 features checked in PROGRESS.md
-- [ ] No High severity bugs open
-- [ ] `npm run build` passes
-- [ ] `npm run dev` starts successfully
-- [ ] PROGRESS.md shows all features implemented
+ALL must be true:
+- All Phase 1-5 tasks checked `[x]` in PROGRESS.md
+- No High severity bugs with Status=Open
+- `npm run build` passes
+- `npm run dev` starts successfully
 
-When ALL criteria are met, output: <promise>DONE</promise>
+When ALL criteria met: `<promise>DONE</promise>`
 
-## Notes
+## Testing the MCP Endpoint
 
-- Use App Router (not Pages Router)
+After implementing the MCP server (Phase 2), verify it works:
+
+### 1. Start the dev server
+```bash
+npm run dev
+```
+
+### 2. Test SSE connection (should stay open)
+```bash
+curl -N http://localhost:3000/api/mcp
+```
+
+### 3. Test tools/list (JSON-RPC)
+```bash
+curl -X POST http://localhost:3000/api/mcp \
+  -H "Content-Type: application/json" \
+  -d '{"jsonrpc":"2.0","method":"tools/list","id":1}'
+```
+**Expected**: Returns JSON with 8 tools listed
+
+### 4. Test framework_list tool
+```bash
+curl -X POST http://localhost:3000/api/mcp \
+  -H "Content-Type: application/json" \
+  -d '{"jsonrpc":"2.0","method":"tools/call","params":{"name":"framework_list","arguments":{}},"id":2}'
+```
+**Expected**: Returns array of framework runs (may be empty)
+
+### 5. Optional: MCP Inspector
+```bash
+npx @modelcontextprotocol/inspector http://localhost:3000/api/mcp
+```
+
+If any test fails, log it in PROGRESS.md bugs table with severity High.
+
+## Technical Notes
+
+- Use Next.js App Router (not Pages Router)
 - Prefer server components where possible
 - Keep UI minimal - function over form
-- Read existing `../commands/*.md` files to understand stage structure
-- If MCP SDK has issues, check https://github.com/modelcontextprotocol/typescript-sdk
+- MCP SDK docs: https://github.com/modelcontextprotocol/typescript-sdk
