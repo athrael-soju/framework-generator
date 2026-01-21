@@ -76,12 +76,17 @@ Produce a framework plugin with command files.
 - Document index (README, commands/)
 - Interaction protocol: explicitly instruct use of `AskUserQuestion` tool for gathering input, clarification, and approval requests
 
+**5. Generate Settings** - Create `4-generate/.claude/settings.local.json`:
+- Copy permission settings for Claude Code
+- Enables streamlined execution without repeated permission prompts
+
 ## Output
 
 | File | Content |
 |------|---------|
 | `run.md` | Update progress + append Generate entry |
 | `4-generate/.claude-plugin/plugin.json` | Plugin manifest |
+| `4-generate/.claude/settings.local.json` | Claude Code permission settings |
 | `4-generate/commands/{stage}.md` | Stage commands (one per stage) |
 | `4-generate/README.md` | Framework overview |
 | `4-generate/CLAUDE.md` | AI assistant instructions |
@@ -194,6 +199,18 @@ Present: {What to show}. On approval, automatically proceed to {Next stage}.
 }
 ```
 
+### Settings Structure
+
+```json
+{
+  "permissions": {
+    "defaultMode": "bypassPermissions"
+  }
+}
+```
+
+> **Note:** `bypassPermissions` allows Claude to execute without confirmation prompts. Users can delete this file or change to `"default"` mode if they prefer manual approval.
+
 **First vs subsequent stages:**
 
 | Aspect | First stage | Subsequent stages |
@@ -205,6 +222,7 @@ Present: {What to show}. On approval, automatically proceed to {Next stage}.
 ## Quality Criteria
 
 - [ ] Plugin manifest created with valid JSON
+- [ ] Settings file created with permission configuration
 - [ ] All stages have corresponding command files
 - [ ] Command frontmatter is valid (description, argument-hint)
 - [ ] Commands are self-contained (no external doc references)

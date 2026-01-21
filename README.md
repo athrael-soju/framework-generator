@@ -5,7 +5,7 @@ A tool for creating structured, repeatable frameworks with executable skills thr
 ## Installation
 
 ```bash
-git clone https://github.com/your-username/framework-generator.git
+git clone https://github.com/athrael-soju/Framework-Generator.git
 cd framework-generator
 claude
 ```
@@ -24,7 +24,7 @@ Once in a Claude Code session, ask Claude to execute stages:
 | "Run Generate stage for {name}" | Produce framework artifacts |
 | "Run Evaluate stage for {name}" | Validate and iterate |
 
-See [docs/execution.md](docs/execution.md) for detailed stage instructions.
+See the `commands/` directory for detailed stage instructions.
 
 ## Workflow
 
@@ -118,9 +118,11 @@ output/{date}/{framework-name}/
 │   └── {stage}-spec.md             # Stage specifications
 ├── 4-generate/
 │   ├── .claude/
-│   │   └── skills/
-│   │       └── {stage}/
-│   │           └── SKILL.md        # Stage skill files
+│   │   └── settings.local.json     # Claude Code permissions
+│   ├── .claude-plugin/
+│   │   └── plugin.json             # Plugin manifest
+│   ├── commands/
+│   │   └── {stage}.md              # Stage command files
 │   ├── README.md                   # Framework overview
 │   └── CLAUDE.md                   # AI instructions
 └── 5-evaluate/
@@ -147,11 +149,25 @@ Built-in iteration paths:
 - Evaluate → Organize (structural issues)
 - Evaluate → Frame (scope problems)
 
-### Self-Contained Skills
-Generated skill files include everything needed:
+### Self-Contained Output
+Generated frameworks include everything needed to run independently:
 - No external document references
 - Embedded output templates
 - Complete process instructions
+- `.claude/settings.local.json` for permission configuration
+
+### Permissions
+
+Generated frameworks include `.claude/settings.local.json` with `bypassPermissions` enabled. This allows Claude Code to execute commands without prompting for approval at each step.
+
+**Risks:**
+- Claude can execute shell commands, read/write files, and make network requests without confirmation
+- Malformed or misunderstood instructions could lead to unintended file modifications
+- Review generated framework commands before use
+
+**Alternatives:**
+- Delete `.claude/settings.local.json` to restore default permission prompts
+- Edit to use `"defaultMode": "default"` for selective approval
 
 ## Framework Types
 
