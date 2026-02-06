@@ -1,4 +1,4 @@
-# Framework Generator
+# Framework Generator 
 
 A tool for creating structured, repeatable frameworks with executable skills through staged refinement. Works with Claude Code.
 
